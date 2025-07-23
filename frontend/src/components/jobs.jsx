@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, MapPin, DollarSign, Clock, Building, User, Award } from 'lucide-react';
 import './jobs.css';
+import { API_ENDPOINTS } from '../config/api';
 
 // JobCard Component
 const JobCard = ({ job, onClick }) => {
   console.log('Job data in JobCard:', job); // Debug log
   
   const logoUrl = job.companyLogo
-    ? `http://localhost:5000${job.companyLogo}`
+    ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}`
     : '/default-logo.png';
 
   const skills = job.skillsRequired ? job.skillsRequired.split(',').map(s => s.trim()) : [];
@@ -118,7 +119,7 @@ const JobDetails = ({ job, onBack, onApply }) => {
 
   // Build the correct logo URL
   const logoUrl = job.companyLogo
-    ? `http://localhost:5000${job.companyLogo}`
+    ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}`
     : '/default-logo.png';
 
   return (
@@ -240,7 +241,7 @@ const Jobs = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:5000/api/jobs');
+        const response = await fetch(API_ENDPOINTS.JOBS);
         if (!response.ok) {
           throw new Error('Failed to fetch jobs');
         }

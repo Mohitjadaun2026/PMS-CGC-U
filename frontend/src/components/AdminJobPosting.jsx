@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AdminJobPosting.css';
+import { API_ENDPOINTS } from '../config/api';
 
 const initialForm = {
   companyName: '',
@@ -40,7 +41,7 @@ const AdminJobPosting = () => {
 
   // Fetch jobs from backend
   useEffect(() => {
-    fetch('http://localhost:5000/api/jobs')
+    fetch(API_ENDPOINTS.JOBS)
       .then(res => res.json())
       .then(data => setJobPostings(data));
   }, []);
@@ -116,8 +117,8 @@ const AdminJobPosting = () => {
       form.append('companyLogo', logoFile);
 
       const url = editId
-        ? `http://localhost:5000/api/jobs/${editId}`
-        : 'http://localhost:5000/api/jobs';
+        ? `${API_ENDPOINTS.JOBS}/${editId}`
+        : API_ENDPOINTS.JOBS;
 
       fetch(url, {
         method: editId ? 'PUT' : 'POST',
@@ -129,8 +130,8 @@ const AdminJobPosting = () => {
     } else {
       // No file upload, send JSON
       const url = editId
-        ? `http://localhost:5000/api/jobs/${editId}`
-        : 'http://localhost:5000/api/jobs';
+        ? `${API_ENDPOINTS.JOBS}/${editId}`
+        : API_ENDPOINTS.JOBS;
 
       fetch(url, {
         method: editId ? 'PUT' : 'POST',
@@ -185,7 +186,7 @@ const AdminJobPosting = () => {
     
     // Handle logo preview
     if (job.companyLogo) {
-      setLogoPreview(`http://localhost:5000${job.companyLogo}`);
+      setLogoPreview(`${API_ENDPOINTS.UPLOADS}${job.companyLogo}`);
     } else {
       setLogoPreview('');
     }
@@ -193,7 +194,7 @@ const AdminJobPosting = () => {
   };
 
   const handleDelete = (jobId) => {
-    fetch(`http://localhost:5000/api/jobs/${jobId}`, { method: 'DELETE' })
+    fetch(`${API_ENDPOINTS.JOBS}/${jobId}`, { method: 'DELETE' })
       .then(() => {
         setJobPostings(jobPostings.filter(job => job._id !== jobId));
       });
@@ -597,7 +598,7 @@ const AdminJobPosting = () => {
                     src={
                       posting.companyLogo.startsWith('http') 
                         ? posting.companyLogo 
-                        : `http://localhost:5000${posting.companyLogo}`
+                        : `${API_ENDPOINTS.UPLOADS}${posting.companyLogo}`
                     }
                     alt={posting.companyName}
                     className="company-logo-small"
