@@ -69,7 +69,7 @@ And it’s **100% open-source** so anyone can contribute and scale it further!
 | Backend       | Node.js, Express.js            |
 | Database      | MongoDB Atlas                  |
 | Auth System   | Coming Soon (JWT/Auth0)        |
-| Deployment    | Render.com                     |
+| Deployment    |   not yet                   |
 
 ---
 
@@ -157,12 +157,6 @@ For any questions or collaboration ideas:
 - 💼 LinkedIn: [linkedin.com/in/yourprofile](linkedin.com/in/mohit-jadaun/)
 - 📁 GitHub Issues: [Create or solve one!](https://github.com/Mohitjadaun2026/PMS-CGC-U/issues)
 
----
 
-## 📜 License
-
-This project is licensed under the **MIT License** — free for personal and commercial use!
-
----
 
 > ⭐ Star this repo if you support the idea! Fork it, contribute, and help bring placement digitalization to every campus 🚀
