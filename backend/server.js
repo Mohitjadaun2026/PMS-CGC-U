@@ -1,14 +1,16 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const cors = require('cors');
 const path = require('path');
 
 const app = express();
 
-// Enable CORS for all origins (you can restrict this later)
+const cors = require('cors');
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'https://your-frontend-domain.onrender.com'],
+  origin: [
+    'https://pms-cgc-geeehojml-mohit-jadauns-projects.vercel.app', // your Vercel frontend URL
+    'http://localhost:5173'
+  ],
   credentials: true
 }));
 
