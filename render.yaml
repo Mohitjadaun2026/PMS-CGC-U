@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: pms-cgc-u-backend
@@ -8,3 +9,6 @@ services:
     envVars:
       - key: MONGODB_URI
         value: YOUR_MONGODB_ATLAS_URI
+=======
+# This file was used for Render deployment. It is not needed for Vercel serverless API hosting.
+>>>>>>> a95c41c (Refactor backend for Vercel serverless API deployment; remove Express server and Render config)
