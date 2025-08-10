@@ -1,0 +1,79 @@
+.sign-container {
+  min-height: calc(100vh - 120px); /* Adjust 120px to header+footer height if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f4f6fb 100%);
+}
+
+.sign-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.13);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-card h2 {
+  color: #2563eb;
+  margin-bottom: 1.5rem;
+}
+
+.sign-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sign-card input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.sign-card input:focus {
+  border: 1.5px solid #2563eb;
+}
+
+.sign-card button[type="submit"] {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sign-card button[type="submit"]:hover {
+  background: #1e40af;
+}
+
+.toggle-link {
+  margin-top: 1rem;
+  font-size: 0.98rem;
+}
+
+.toggle-link button {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+  margin-left: 0.2rem;
+  text-decoration: underline;
+}
+
+.toggle-link button:hover {
+  color: #1e40af;
+}

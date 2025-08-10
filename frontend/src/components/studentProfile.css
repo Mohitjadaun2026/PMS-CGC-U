@@ -1,0 +1,344 @@
+/* Student Profile Container - DARK THEME */
+.student-profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e0e0; /* Light text for dark BG */
+  background-color: #121212; /* Dark background */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-title {
+  color: #FFD700; /* Yellow accent for titles */
+  margin: 0;
+}
+
+/* Notification Styles */
+.notification-badge {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-badge span {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #FFD700; /* Yellow accent */
+  color: #121212; /* Dark text for contrast */
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 300px;
+  background: #1E1E1E; /* Darker gray */
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  display: none;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+  font-size: 14px;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+/* Tab Styles */
+.profile-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.profile-tabs button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #aaa; /* Inactive tab color */
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.profile-tabs button:hover {
+  color: #FFD700; /* Yellow hover */
+}
+
+.profile-tabs button.active {
+  color: #FFD700; /* Active tab = yellow */
+  border-bottom: 3px solid #FFD700;
+  font-weight: 600;
+}
+
+/* Profile View */
+.profile-view {
+  display: flex;
+  gap: 30px;
+}
+
+.profile-section {
+  margin-bottom: 25px;
+  background: #1E1E1E; /* Dark card */
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-section h3 {
+  margin-top: 0;
+  color: #FFD700; /* Yellow headers */
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+/* Photo Section */
+.student-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #1E1E1E;
+  box-shadow: 0 0 0 2px #FFD700; /* Yellow outline */
+}
+
+/* Buttons */
+.profile-save-btn {
+  background-color: #FFD700; /* Yellow */
+  color: #121212; /* Dark text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.profile-save-btn:hover {
+  background-color: #FFC107; /* Brighter yellow */
+  transform: translateY(-2px);
+}
+
+.download-btn {
+  background-color: #27ae60; /* Green (kept for clarity) */
+  color: white;
+}
+
+.withdraw-btn {
+  background-color: #e74c3c; /* Red (kept for warnings) */
+}
+
+/* Tables & Cards */
+.applications-list th {
+  background-color: #1E1E1E;
+  color: #FFD700; /* Yellow headers */
+}
+
+.applications-list tr:hover {
+  background-color: #252525; /* Slightly lighter dark */
+}
+
+.drive-card {
+  background: #1E1E1E;
+  border: 1px solid #333;
+}
+
+.drive-header h4 {
+  color: #FFD700; /* Yellow titles */
+}
+
+/* Stats Cards */
+.stats-card {
+  background: #1E1E1E;
+  border: 1px solid #333;
+}
+
+.progress-bar {
+  background-color: #FFD700; /* Yellow progress */
+}
+
+/* Hover Effects */
+button:hover, .drive-card:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Yellow glow */
+}
+
+/* ===== EDIT MODE SPECIFIC STYLES ===== */
+.student-profile-form {
+  display: flex;
+  gap: 30px;
+  background: #1E1E1E; /* Dark card background */
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* Input Fields */
+.student-profile-form input[type="text"],
+.student-profile-form input[type="email"],
+.student-profile-form textarea,
+.student-profile-form select {
+  width: 100%;
+  padding: 10px;
+  background: #252525; /* Darker input BG */
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0; /* Light text */
+  margin-top: 5px;
+  transition: border 0.3s;
+}
+
+/* Focus State */
+.student-profile-form input:focus,
+.student-profile-form textarea:focus {
+  border-color: #FFD700; /* Yellow accent */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Labels */
+.student-profile-form label {
+  display: block;
+  margin-bottom: 15px;
+  color: #aaa; /* Lighter label text */
+  font-size: 14px;
+}
+
+/* File Upload */
+.student-profile-form input[type="file"] {
+  display: none; /* Hide default input */
+}
+
+/* Upload Button */
+.upload-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  height: 32px;
+}
+
+.upload-btn:hover {
+  border-color: #FFD700;
+  background: #2a2a2a;
+}
+
+/* Save/Cancel Buttons */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.save-btn, .cancel-btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 32px;
+  line-height: 1;
+  min-width: 80px;
+  text-align: center;
+}
+
+
+.save-btn:hover {
+  background: #45a049;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+  transform: translateY(-1px);
+}
+
+.cancel-btn {
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid #555;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #777;
+  transform: translateY(-1px);
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+  background: transparent;
+  color: #FFD700;
+  border: 1px solid #FFD700;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 32px;
+  line-height: 1;
+}
+
+.edit-profile-btn:hover,
+.save-btn:hover, 
+.cancel-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Resume Upload Section */
+.resume-upload {
+  background: #252525;
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+
+.resume-file {
+  color: #FFD700;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .form-actions {
+    justify-content: center;
+  }
+  
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: flex-end;
+}
+  
+  .edit-profile-btn,
+  .save-btn,
+  .cancel-btn {
+    padding: 6px 10px;
+    min-width: 70px;
+  }
+}
