@@ -27,8 +27,6 @@ app.use('/uploads', imageRoutes);
 const jobRoutes = require('./routes/jobRoutes');
 app.use('/api/jobs', jobRoutes);
 
-// Connect to MongoDB (use environment variable for production)
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB Atlas');
@@ -37,7 +35,6 @@ mongoose.connect(MONGODB_URI)
     console.error('MongoDB connection error:', err);
     process.exit(1);
   });
-
 // Use environment port or default to 5000
 const PORT = process.env.PORT || 5000;
 
