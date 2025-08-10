@@ -29,14 +29,13 @@ app.use('/api/jobs', jobRoutes);
 
 // Connect to MongoDB (use environment variable for production)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    console.log('Connected to MongoDB Atlas');
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
-  });
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("MongoDB connected successfully"))
+.catch(err => console.error("MongoDB connection error:", err));
+
 
 // Use environment port or default to 5000
 const PORT = process.env.PORT || 5000;
