@@ -12,6 +12,11 @@ app.use(cors({
   credentials: true
 }));
 
+app.get('/', (req, res) => {
+  res.send('Welcome to PMS-CGC-U Backend 🚀');
+});
+
+
 app.use(express.json());
 
 // Serve images
