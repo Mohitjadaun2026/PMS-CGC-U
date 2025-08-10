@@ -27,14 +27,14 @@ app.use('/uploads', imageRoutes);
 const jobRoutes = require('./routes/jobRoutes');
 app.use('/api/jobs', jobRoutes);
 
-// Connect to MongoDB (use environment variable for production)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+
+mongoose.connect(MONGODB_URI, {
+  // useNewUrlParser and useUnifiedTopology options are optional in newer versions
 })
 .then(() => console.log("MongoDB connected successfully"))
 .catch(err => console.error("MongoDB connection error:", err));
+
 
 
 // Use environment port or default to 5000
