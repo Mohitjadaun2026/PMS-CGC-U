@@ -22,6 +22,29 @@
   animation: fadeIn 0.8s ease-out;
 }
 
+body.light .about-bg {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
+    var(--bg-dark); /* should be light bg var */
+  padding: 2rem 0;
+}
+
+body.light .about-container {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  backdrop-filter: none; /* optional */
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  margin: 2rem auto;
+  max-width: 900px;
+  min-height: 80vh;
+  animation: fadeIn 0.8s ease-out;
+}
+
 .about-header {
   display: flex;
   align-items: center;
@@ -45,6 +68,18 @@
 }
 
 .about-logo:hover {
+  transform: scale(1.05);
+}
+
+body.light .about-logo {
+  background: rgba(212, 175, 55, 0.1); /* softer gold for light mode */
+  box-shadow: 
+    0 0 0 2px rgba(212, 175, 55, 0.3),
+    0 4px 20px rgba(212, 175, 55, 0.1);
+  transition: transform 0.3s ease;
+}
+
+body.light .about-logo:hover {
   transform: scale(1.05);
 }
 
@@ -104,6 +139,57 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+body.light .about-header h1 {
+  /* Gradient and transparent text remain, using light mode colors */
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.2); /* softer shadow */
+}
+
+body.light .about-content h2 {
+  color: var(--text-primary);
+  border-left: 4px solid var(--accent-yellow);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+body.light .about-content p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+body.light .about-content p strong {
+  color: var(--accent-yellow);
+}
+
+body.light .about-content ul {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  list-style: none;
+  margin: 2rem 0 2.5rem 2rem;
+}
+
+body.light .about-content ul li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.8rem;
+}
+
+body.light .about-content ul li::before {
+  content: "•";
+  color: var(--accent-yellow);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
 
 @media (max-width: 768px) {
   .about-container {

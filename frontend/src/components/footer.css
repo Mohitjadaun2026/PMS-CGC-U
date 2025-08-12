@@ -60,6 +60,37 @@
   width: 100%;
 }
 
+body.light .pms-footer {
+  background: rgba(245, 245, 245, 0.95); /* light translucent bg */
+  color: var(--text-primary);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: none; /* optional: remove blur on light bg */
+}
+
+body.light .copyright {
+  color: var(--text-secondary);
+}
+
+body.light .footer-links a {
+  color: var(--accent-yellow);
+  font-size: 0.95rem;
+  position: relative;
+  padding: 0.3rem 0;
+  transition: all var(--transition-speed) ease;
+}
+
+body.light .footer-links a::after {
+  background: var(--accent-yellow);
+}
+
+body.light .footer-links a:hover {
+  color: var(--text-primary);
+}
+
+body.light .footer-links a:hover::after {
+  width: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .pms-footer {

@@ -15,6 +15,22 @@
   text-align: center;
   letter-spacing: 1px;
 }
+body.light .admin-job-posting-container {
+  color: var(--text-primary);
+  background: #f9f9f9; /* light background, you can adjust */
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.light .admin-job-posting-container h1 {
+  color: var(--accent-yellow);
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+}
 
 /* Tabs */
 .admin-tabs {
@@ -50,6 +66,39 @@
   border-bottom: 3px solid #FFD600;
   font-weight: 600;
 }
+body.light .admin-tabs {
+  background: #f0f0f0; /* light background */
+  border-bottom: 2px solid var(--accent-yellow);
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+body.light .admin-tabs button {
+  background: #f0f0f0;
+  color: var(--accent-yellow);
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 14px 32px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+body.light .admin-tabs button:hover {
+  background: var(--accent-yellow);
+  color: var(--bg-dark);
+}
+
+body.light .admin-tabs button.active {
+  color: var(--bg-dark);
+  background: var(--accent-yellow);
+  border-bottom: 3px solid var(--accent-yellow);
+  font-weight: 600;
+}
+
 
 /* Form Styles */
 .job-posting-form {
@@ -129,6 +178,84 @@
   color: #FFD600;
 }
 
+body.light .job-posting-form {
+  background: #f9f9f9; /* Light background */
+  color: var(--text-primary);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.1); /* softer yellow shadow */
+}
+
+body.light .form-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+body.light .form-section h2 {
+  color: var(--accent-yellow);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+body.light .form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+body.light .form-group {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+body.light .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--accent-yellow);
+}
+
+body.light .form-group input[type="text"],
+body.light .form-group input[type="email"],
+body.light .form-group input[type="date"],
+body.light .form-group input[type="file"],
+body.light .form-group select,
+body.light .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid rgba(212, 175, 55, 0.33);
+  border-radius: 6px;
+  font-size: 15px;
+  background: #fff;
+  color: var(--bg-dark);
+  transition: border 0.2s, background 0.2s;
+}
+
+body.light .form-group input[type="text"]:focus,
+body.light .form-group input[type="email"]:focus,
+body.light .form-group input[type="date"]:focus,
+body.light .form-group select:focus,
+body.light .form-group textarea:focus {
+  border: 1.5px solid var(--accent-yellow);
+  background: #fff;
+  outline: none;
+}
+
+body.light .form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+body.light .form-group input[type="file"] {
+  padding: 5px;
+  background: #fff;
+  color: var(--accent-yellow);
+  border: 1.5px solid rgba(212, 175, 55, 0.33);
+}
+
 /* Enhanced Multi-Select Styles */
 .multi-select {
   height: auto;
@@ -165,6 +292,40 @@
   font-weight: bold;
 }
 
+body.light .multi-select {
+  background: #fff;
+  color: var(--bg-dark);
+  border: 1.5px solid rgba(212, 175, 55, 0.33);
+  min-height: 100px;
+  padding: 5px;
+  border-radius: 6px;
+  transition: border 0.2s;
+}
+
+body.light .multi-select:focus {
+  border: 1.5px solid var(--accent-yellow);
+  outline: none;
+}
+
+body.light .multi-select option {
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--bg-dark);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  transition: background 0.2s;
+}
+
+body.light .multi-select option:hover {
+  background: var(--accent-yellow);
+  color: var(--bg-dark);
+}
+
+body.light .multi-select option:checked {
+  background: var(--accent-yellow);
+  color: var(--bg-dark);
+  font-weight: bold;
+}
+
 /* Multi-select container for better styling */
 .multi-select-container {
   position: relative;
@@ -179,6 +340,10 @@
   color: #FFD600;
   pointer-events: none;
 }
+body.light .multi-select-container::after {
+  color: var(--accent-yellow);
+}
+
 
 /* Logo Upload */
 .logo-upload {
@@ -194,6 +359,11 @@
   border: 2px solid #FFD600;
   border-radius: 8px;
   background: #222;
+}
+body.light .logo-preview {
+  background: #fff;
+  border: 2px solid var(--accent-yellow);
+  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
 }
 
 /* Form Actions */
@@ -239,6 +409,30 @@
 .cancel-btn:hover {
   background: #FFD600;
   color: #181818;
+  border: 2px solid #FFD600;
+}
+
+body.light .submit-btn {
+  background: linear-gradient(90deg, #FFD600 0%, #FFEA00 100%);
+  color: #222; /* darker text for light bg */
+  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.3);
+}
+
+body.light .submit-btn:hover {
+  background: #FFC107;
+  color: #111;
+  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.4);
+}
+
+body.light .cancel-btn {
+  background: #fff;
+  color: #FFD600;
+  border: 2px solid #FFD600;
+}
+
+body.light .cancel-btn:hover {
+  background: #FFD600;
+  color: #fff;
   border: 2px solid #FFD600;
 }
 
@@ -303,6 +497,54 @@ table tr:hover {
   border: 1.5px solid #FFD600;
 }
 
+body.light .job-postings-list {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.15);
+}
+
+body.light .job-postings-list h2 {
+  color: #b38600; /* darker yellow */
+}
+
+body.light .no-postings {
+  color: #b3860040; /* lighter yellow with opacity */
+  font-style: italic;
+}
+
+body.light table {
+  background: #fff;
+  color: #222;
+}
+
+body.light table th,
+body.light table td {
+  border-bottom: 1px solid #ffecb3;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+body.light table th {
+  background-color: #fff5cc;
+  color: #b38600;
+  font-weight: 600;
+}
+
+body.light table tr:hover {
+  background-color: #fff2b8;
+}
+
+body.light .company-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+body.light .company-logo-small {
+  background: #fff5cc;
+  border: 1.5px solid #b38600;
+}
+
 /* Badge styles for eligibility tags */
 .eligibility-badge {
   display: inline-block;
@@ -314,6 +556,12 @@ table tr:hover {
   margin: 2px;
   border: 1px solid #FFD60033;
 }
+body.light .eligibility-badge {
+  background: #fff8cc; /* very light yellow */
+  color: #b38600; /* darker yellow */
+  border: 1px solid #b3860040; /* slightly transparent darker yellow */
+}
+
 
 /* Action Buttons */
 .edit-btn {
@@ -352,6 +600,32 @@ table tr:hover {
   color: #e74c3c;
   border: 1.5px solid #e74c3c;
 }
+body.light .edit-btn {
+  background: #fff1b8; /* light yellow */
+  color: #5a4700; /* dark mustard */
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+body.light .edit-btn:hover {
+  background: #5a4700; /* dark mustard */
+  color: #fff1b8; /* light yellow */
+  border: 1.5px solid #5a4700;
+}
+
+body.light .delete-btn {
+  background: #f9d6d5; /* light red/pink */
+  color: #7a1f1f; /* dark red */
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+body.light .delete-btn:hover {
+  background: #7a1f1f; /* dark red */
+  color: #f9d6d5; /* light red/pink */
+  border: 1.5px solid #7a1f1f;
+}
+
 
 /* Checkbox Grid Styles */
 .checkbox-grid {
@@ -441,6 +715,54 @@ table tr:hover {
   font-size: 14px;
 }
 
+body.light .checkbox-grid {
+  background: #f5f5f5;
+  border: 1.5px solid #ffd60055;
+}
+
+body.light .checkbox-item {
+  background: #fff;
+  border: 1px solid transparent;
+}
+
+body.light .checkbox-item:hover {
+  background: #fff8cc;
+  border-color: #ffd60080;
+}
+
+body.light .checkbox-item input[type="checkbox"] {
+  background: #fff;
+  border: 2px solid #ffd600;
+}
+
+body.light .checkbox-item input[type="checkbox"]:checked {
+  background: #ffd600;
+  border-color: #ffd600;
+}
+
+body.light .checkbox-item input[type="checkbox"]:checked::after {
+  color: #333;
+}
+
+body.light .checkbox-label {
+  color: #222;
+}
+
+body.light .checkbox-item:has(input:checked) .checkbox-label {
+  color: #b38600;
+  font-weight: 600;
+}
+
+body.light .selected-items {
+  background: #fff8cc;
+  border-left: 3px solid #ffd600;
+  color: #5a4700;
+}
+
+body.light .selected-label {
+  color: #b38600;
+}
+
 /* Selection Controls */
 .selection-controls {
   margin-bottom: 10px;
@@ -464,6 +786,31 @@ table tr:hover {
   background: #ffdd00;
   transform: translateY(-1px);
 }
+body.light .selection-controls {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+body.light .select-all-btn {
+  background: #ffd600;
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(255, 214, 0, 0.3);
+}
+
+body.light .select-all-btn:hover {
+  background: #ffea33;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 214, 0, 0.5);
+}
+
 
 /* Responsive Styles */
 @media (max-width: 900px) {
