@@ -7,6 +7,13 @@
     radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 25%),
     radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 25%);
 }
+body.light .contact-page {
+  background-color: var(--bg-dark); /* light mode var(--bg-dark) should be light, e.g. #fff or #f9f9f9 */
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 25%);
+}
+
 
 /* Hero Section */
 .contact-hero {
@@ -34,6 +41,24 @@
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  color: var(--text-secondary);
+}
+body.light .contact-hero {
+  background: linear-gradient(135deg, rgba(245, 245, 245, 0.9), rgba(239, 239, 239, 0.95));
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: none; /* optional, remove blur on light bg */
+}
+
+body.light .contact-hero h1 {
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.light .contact-hero p {
   color: var(--text-secondary);
 }
 
@@ -99,6 +124,43 @@
 }
 
 .contact-card a:hover::after {
+  width: 100%;
+}
+
+body.light .contact-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none; /* optional: remove blur for clarity */
+}
+
+body.light .contact-card h2 {
+  color: var(--accent-yellow);
+  border-bottom: 2px solid var(--accent-yellow);
+}
+
+body.light .contact-card p {
+  color: var(--text-secondary);
+}
+
+body.light .contact-label {
+  color: var(--accent-yellow);
+}
+
+body.light .contact-card a {
+  color: var(--accent-yellow);
+}
+
+body.light .contact-card a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+body.light .contact-card a::after {
+  background: var(--accent-yellow);
+}
+
+body.light .contact-card a:hover::after {
   width: 100%;
 }
 
@@ -192,6 +254,53 @@
   margin-bottom: 0.5rem;
   color: var(--text-secondary);
 }
+body.light .executive-section h2 {
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.light .executive-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none; /* optional */
+  transition: all var(--transition-speed) ease;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+body.light .executive-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+body.light .executive-photo {
+  border: 3px solid var(--accent-yellow);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+body.light .photo-overlay {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+body.light .executive-info h3 {
+  color: var(--text-primary);
+}
+
+body.light .executive-title {
+  color: var(--accent-yellow);
+}
+
+body.light .executive-contact p {
+  color: var(--text-secondary);
+}
+
 
 /* Team Section */
 .team-section {
@@ -272,6 +381,52 @@
   color: var(--text-secondary);
   font-size: 0.875rem;
 }
+body.light .team-section h2 {
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.light .team-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none; /* optional for clarity */
+  text-align: center;
+  transition: all var(--transition-speed) ease;
+}
+
+body.light .team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: rgba(212, 175, 55, 0.3);
+  background: rgba(245, 245, 245, 0.8);
+}
+
+body.light .team-photo {
+  border: 3px solid var(--accent-yellow);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  transition: all var(--transition-speed) ease;
+}
+
+body.light .team-card:hover .team-photo {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+body.light .team-card h3 {
+  color: var(--text-primary);
+}
+
+body.light .team-title {
+  color: var(--accent-yellow);
+}
+
+body.light .team-contact p {
+  color: var(--text-secondary);
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
