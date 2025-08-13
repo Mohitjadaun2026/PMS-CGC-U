@@ -1,11 +1,15 @@
-/* Dark Theme Variables */
+/* Maroon Theme Variables */
 :root {
-  --bg-dark: #121212;
-  --bg-darker: #0a0a0a;
+  --bg-dark: #600018;
+  --bg-darker: #600018;
   --text-primary: #ffffff;
   --text-secondary: #e0e0e0;
-  --accent-yellow: #ffd700;
-  --accent-yellow-dark: #ffc000;
+  --primary-maroon: #800020;
+  --primary-maroon-dark: #32010d;
+  --primary-maroon-light: #a00028;
+  --accent-gold: #d4af37;
+  --card-bg-dark: rgba(30, 30, 30, 0.85);
+  --card-bg-light: rgba(255, 255, 255, 0.85);
   --border-radius: 8px;
   --transition-speed: 0.3s;
 }
@@ -26,13 +30,15 @@
 /* Light Theme Variables */
 body.light {
   --bg-dark: #ffffff;
-  --bg-darker: #f4f4f4;
-  --text-primary: #121212;
+  --bg-darker: #f8f5f5;
+  --text-primary: #1a1a1a;
   --text-secondary: #4a4a4a;
-  --accent-yellow: #d4af37; /* a softer gold */
-  --accent-yellow-dark: #bfa12f;
-  --border-radius: 8px;
-  --transition-speed: 0.3s;
+  --primary-maroon: #a10028;
+  --primary-maroon-dark: #600018;
+  --primary-maroon-light: #a00028;
+  --accent-gold: #d4af37;
+  --card-bg-dark: rgba(245, 245, 245, 0.85);
+  --card-bg-light: rgba(255, 255, 255, 0.85);
 }
 
 /* Override global styles for light mode */
@@ -42,8 +48,7 @@ body.light .home-main {
 }
 
 body.light .container {
-  /* same container styles, but background stays neutral */
-  background-color: var(--bg-darker);
+  background-color: var(--bg-dark);
   color: var(--text-primary);
 }
 
@@ -65,7 +70,6 @@ body.light .container {
   bottom: 0;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   z-index: 1;
 }
 
@@ -75,7 +79,11 @@ body.light .container {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.7));
+  background: linear-gradient(
+    to right,
+    rgba(18, 18, 18, 0.85),
+    rgba(18, 18, 18, 0.6)
+  );
   z-index: 2;
 }
 
@@ -93,7 +101,12 @@ body.light .container {
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  /* background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--primary-maroon)
+  ); */
+  background-color: white;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -102,7 +115,7 @@ body.light .container {
 .hero-subtitle {
   display: block;
   font-size: 1.875rem;
-  color: var(--accent-yellow);
+  color: rgb(254, 219, 219);
   font-weight: 600;
   margin-top: 0.5rem;
 }
@@ -112,6 +125,7 @@ body.light .container {
   margin-bottom: 2rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  font-weight: 600;
 }
 
 .hero-buttons {
@@ -122,24 +136,35 @@ body.light .container {
 }
 
 body.light .hero-background {
-  background-color: #f5f5f5; /* light neutral bg fallback */
+  background-color: #f5f5f5;
 }
 
 body.light .hero-overlay {
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
 }
 
+/* body.light .hero-title {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--primary-maroon)
+  );
+} */
 body.light .hero-title {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
-  /* Make sure --text-primary and --accent-yellow are set for light mode */
+  color: var(--primary-maroon-dark);
 }
 
 body.light .hero-subtitle {
-  color: var(--accent-yellow);
+  color: var(--primary-maroon);
 }
 
 body.light .hero-description {
   color: var(--text-secondary);
+  font-weight: 600;
 }
 
 /* Button Styles */
@@ -157,69 +182,74 @@ body.light .hero-description {
 }
 
 .btn-primary {
-  background: linear-gradient(to right, var(--accent-yellow), var(--accent-yellow-dark));
-  color: var(--bg-dark);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  background-color: var(--primary-maroon);
+  color: var(--text-primary);
 }
 
 .btn-primary:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 20px -5px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 15px 20px -5px rgba(128, 0, 32, 0.4);
+  background: linear-gradient(
+    to right,
+    var(--primary-maroon-light),
+    var(--primary-maroon)
+  );
 }
 
 .btn-secondary {
-  border: 2px solid var(--text-primary);
-  color: var(--text-primary);
-  background: transparent;
+  border: 2px solid var(--primary-maroon-dark);
+  background-color: var(--primary-maroon);
+  color: white;
 }
 
 .btn-secondary:hover {
-  background: var(--text-primary);
-  color: var(--bg-dark);
+  background: var(--primary-maroon-light);
+  color: var(--text-primary);
 }
 
 .btn-outline {
-  border: 2px solid var(--accent-yellow);
-  color: var(--accent-yellow);
+  border: 2px solid var(--primary-maroon);
+  color: var(--primary-maroon);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background: var(--accent-yellow);
-  color: var(--bg-dark);
+  background: var(--primary-maroon);
+  color: var(--text-primary);
 }
+
 body.light .btn-primary {
-  background: linear-gradient(to right, var(--accent-yellow), var(--accent-yellow-dark));
-  color: var(--bg-dark);
+  background-color: #800020;
+  color: white;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 body.light .btn-primary:hover {
-  box-shadow: 0 15px 20px -5px rgba(212, 175, 55, 0.3); /* lighter gold shadow */
+  box-shadow: 0 15px 20px -5px rgba(128, 0, 32, 0.4);
+  background-color: #a00028;
 }
 
 body.light .btn-secondary {
-  border: 2px solid var(--text-primary);
-  color: var(--text-primary);
+  border: 2px solid var(--primary-maroon);
+  color: var(--primary-maroon);
   background: transparent;
 }
 
 body.light .btn-secondary:hover {
-  background: var(--text-primary);
-  color: var(--bg-dark);
+  background: var(--primary-maroon);
+  color: white;
 }
 
 body.light .btn-outline {
-  border: 2px solid var(--accent-yellow);
-  color: var(--accent-yellow);
+  border: 2px solid var(--primary-maroon);
+  color: var(--primary-maroon);
   background: transparent;
 }
 
 body.light .btn-outline:hover {
-  background: var(--accent-yellow);
-  color: var(--bg-dark);
+  background: var(--primary-maroon);
+  color: var(--text-primary);
 }
-
 
 /* Features Section */
 .features-section {
@@ -236,7 +266,12 @@ body.light .btn-outline:hover {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background-color: white;
+  /* background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--primary-maroon)
+  ); */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -262,7 +297,7 @@ body.light .btn-outline:hover {
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(128, 0, 32, 0.1);
   transition: all var(--transition-speed) ease;
   backdrop-filter: blur(8px);
 }
@@ -270,11 +305,11 @@ body.light .btn-outline:hover {
 .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: rgba(128, 0, 32, 0.3);
 }
 
 .feature-icon-wrapper {
-  color: var(--accent-yellow);
+  color: var(--primary-maroon);
   margin-bottom: 1.5rem;
 }
 
@@ -294,26 +329,27 @@ body.light .btn-outline:hover {
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
 body.light .features-section {
-  background: var(--bg-darker); /* light mode bg-darker should be a light neutral, e.g. #f4f4f4 */
+  background: var(--bg-darker);
 }
 
 body.light .feature-card {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.1); /* lighter gold border */
-  backdrop-filter: none; /* optional, if blur looks weird on light bg */
+  border: 1px solid rgba(128, 0, 32, 0.1);
+  backdrop-filter: none;
   color: var(--text-primary);
 }
 
 body.light .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(128, 0, 32, 0.3);
 }
 
 body.light .feature-icon-wrapper {
-  color: var(--accent-yellow);
+  color: var(--primary-maroon);
 }
 
 body.light .feature-title {
@@ -327,7 +363,7 @@ body.light .feature-description {
 /* Alumni Section */
 .alumni-section {
   padding: 5rem 0;
-  background: var(--bg-dark);
+  background: var(--primary-maroon-dark);
 }
 
 .alumni-grid {
@@ -342,14 +378,14 @@ body.light .feature-description {
   border-radius: var(--border-radius);
   text-align: center;
   transition: all var(--transition-speed) ease;
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(128, 0, 32, 0.1);
   backdrop-filter: blur(6px);
 }
 
 .alumni-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: rgba(128, 0, 32, 0.3);
 }
 
 .alumni-image {
@@ -358,8 +394,8 @@ body.light .feature-description {
   border-radius: 50%;
   margin: 0 auto 1rem;
   object-fit: cover;
-  border: 3px solid var(--accent-yellow);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  border: 3px solid var(--primary-maroon);
+  box-shadow: 0 0 15px rgba(128, 0, 32, 0.2);
   display: block;
 }
 
@@ -371,7 +407,7 @@ body.light .feature-description {
 }
 
 .alumni-company {
-  color: var(--accent-yellow);
+  color: gray;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -379,16 +415,17 @@ body.light .feature-description {
 .alumni-package {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--accent-yellow);
+  color: rgb(255, 210, 210);
 }
+
 body.light .alumni-section {
-  background: var(--bg-dark); /* var(--bg-dark) in light mode should be light, e.g. #fff or #f9f9f9 */
+  background: var(--bg-dark);
 }
 
 body.light .alumni-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1); /* softer gold */
-  backdrop-filter: none; /* optional, remove blur for clarity on light */
+  border: 1px solid rgba(128, 0, 32, 0.1);
+  backdrop-filter: none;
   color: var(--text-primary);
   transition: all var(--transition-speed) ease;
 }
@@ -396,12 +433,12 @@ body.light .alumni-card {
 body.light .alumni-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(128, 0, 32, 0.3);
 }
 
 body.light .alumni-image {
-  border: 3px solid var(--accent-yellow);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  border: 3px solid var(--primary-maroon);
+  box-shadow: 0 0 15px rgba(128, 0, 32, 0.3);
 }
 
 body.light .alumni-name {
@@ -410,9 +447,8 @@ body.light .alumni-name {
 
 body.light .alumni-company,
 body.light .alumni-package {
-  color: var(--accent-yellow);
+  color: var(--primary-maroon);
 }
-
 
 /* Partners Section */
 .partners-section {
@@ -436,13 +472,13 @@ body.light .alumni-package {
   align-items: center;
   justify-content: center;
   height: 100px;
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(128, 0, 32, 0.1);
 }
 
 .partner-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: rgba(128, 0, 32, 0.3);
 }
 
 .partner-logo {
@@ -454,23 +490,24 @@ body.light .alumni-package {
 }
 
 .partner-card:hover .partner-logo {
-  filter: brightness(1) invert(0) drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+  filter: brightness(1) invert(0) drop-shadow(0 0 5px rgba(160, 160, 160, 0.5));
 }
+
 body.light .partners-section {
-  background: var(--bg-darker); /* light mode var(--bg-darker) should be a light neutral, e.g. #f4f4f4 */
+  background: var(--bg-darker);
 }
 
 body.light .partner-card {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.1); /* softer gold border */
+  border: 1px solid rgba(128, 0, 32, 0.1);
   transition: all var(--transition-speed) ease;
 }
 
 body.light .partner-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(128, 3, 34, 0.3);
 }
 
 body.light .partner-logo {
@@ -479,25 +516,30 @@ body.light .partner-logo {
 }
 
 body.light .partner-card:hover .partner-logo {
-  filter: brightness(1) invert(0) drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+  filter: brightness(1) invert(0) drop-shadow(0 0 5px rgba(255, 160, 184, 0.5));
 }
 
 /* Stats Section */
 .stats-section {
   padding: 5rem 0;
-  background: linear-gradient(to right, rgba(255, 215, 0, 0.2), rgba(255, 192, 0, 0.1));
+  background-color: var(--primary-maroon-dark);
+  /* background: linear-gradient(
+    to right,
+    rgba(128, 0, 32, 0.2),
+    rgba(96, 0, 24, 0.1)
+  ); */
   position: relative;
   overflow: hidden;
 }
 
 .stats-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23800020' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.3;
 }
 
@@ -514,7 +556,7 @@ body.light .partner-card:hover .partner-logo {
   background: rgba(18, 18, 18, 0.8);
   padding: 2rem;
   border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(128, 0, 32, 0.2);
   backdrop-filter: blur(8px);
 }
 
@@ -522,7 +564,7 @@ body.light .partner-card:hover .partner-logo {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  color: var(--accent-yellow);
+  color: var(--primary-maroon);
 }
 
 .stat-label {
@@ -532,32 +574,35 @@ body.light .partner-card:hover .partner-logo {
 }
 
 body.light .stats-section {
-  background: linear-gradient(to right, rgba(212, 175, 55, 0.1), rgba(191, 161, 47, 0.05));
+  background: linear-gradient(
+    to right,
+    rgba(128, 0, 32, 0.1),
+    rgba(96, 0, 24, 0.05)
+  );
   position: relative;
   overflow: hidden;
 }
 
 body.light .stats-section::before {
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23800020' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.15;
 }
 
 body.light .stat-item {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1);
-  backdrop-filter: none; /* optional */
+  border: 1px solid rgba(128, 0, 32, 0.1);
+  backdrop-filter: none;
   color: var(--text-primary);
 }
 
 body.light .stat-number {
-  color: var(--accent-yellow);
+  color: var(--primary-maroon);
 }
 
 body.light .stat-label {
   color: var(--text-primary);
   opacity: 0.9;
 }
-
 
 /* CTA Section */
 .cta-section {
@@ -568,13 +613,17 @@ body.light .stat-label {
 }
 
 .cta-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(128, 0, 32, 0.05) 0%,
+    transparent 70%
+  );
 }
 
 .cta-container {
@@ -590,7 +639,7 @@ body.light .stat-label {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background-color: #ffd2dd;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -609,18 +658,37 @@ body.light .stat-label {
   gap: 1rem;
   justify-content: center;
 }
+
+.cta-buttons .btn-outline {
+  color: white;
+}
+
+body.light .btn-outline:hover {
+  box-shadow: 0 15px 20px -5px rgba(128, 0, 32, 0.4);
+  background-color: #a00028;
+  color: white;
+}
+
 body.light .cta-section {
-  background: var(--bg-dark); /* light mode var(--bg-dark) should be a light color like #fff or #f9f9f9 */
+  background: var(--bg-dark);
   position: relative;
   overflow: hidden;
 }
 
 body.light .cta-section::before {
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(128, 0, 32, 0.05) 0%,
+    transparent 70%
+  );
 }
 
 body.light .cta-title {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--primary-maroon)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -629,17 +697,6 @@ body.light .cta-title {
 body.light .cta-description {
   color: var(--text-secondary);
 }
-
-body.light .cta-container {
-  /* same styling applies; text color controlled by children */
-}
-
-body.light .cta-buttons {
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-}
-
 
 /* Responsive Design */
 @media (min-width: 640px) {
@@ -705,3 +762,75 @@ body.light .cta-buttons {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* Cards (Features, Alumni, Partners)
+.feature-card,
+.alumni-card,
+.partner-card,
+.stat-item {
+  background: var(--card-bg-dark);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(128, 0, 32, 0.15);
+  transition: all var(--transition-speed) ease;
+  backdrop-filter: blur(6px);
+}
+
+.feature-card:hover,
+.alumni-card:hover,
+.partner-card:hover,
+.stat-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  border-color: rgba(128, 0, 32, 0.3);
+}
+
+.feature-title,
+.alumni-name,
+.stat-label {
+  color: var(--text-primary);
+}
+
+.feature-description,
+.alumni-company,
+.alumni-package {
+  color: var(--primary-maroon);
+}
+
+.partner-logo {
+  filter: brightness(0) invert(1);
+}
+
+.partner-card:hover .partner-logo {
+  filter: brightness(1) invert(0) drop-shadow(0 0 5px rgba(128, 0, 32, 0.5));
+}
+
+/* Stats Numbers */
+/* .stat-number {
+  color: var(--primary-maroon);
+} */
+
+/* Light Mode Overrides */
+/* body.light .home-main {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+}
+
+body.light .feature-card,
+body.light .alumni-card,
+body.light .partner-card,
+body.light .stat-item {
+  background: var(--card-bg-light);
+  border-color: rgba(128, 0, 32, 0.1);
+  color: var(--text-primary);
+}
+
+body.light .feature-card:hover,
+body.light .alumni-card:hover,
+body.light .partner-card:hover,
+body.light .stat-item:hover {
+  border-color: rgba(128, 0, 32, 0.3);
+}
+
+body.light .partner-logo {
+  filter: brightness(1) invert(0);
+} */

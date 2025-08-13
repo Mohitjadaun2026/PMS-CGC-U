@@ -1,19 +1,30 @@
-/* Modern Dark Theme with Maroon Accents - index.css */
-
+/* Modern Theme with Maroon Accents - index.css */
 :root {
-  --bg-dark: #121212;
-  --bg-darker: #0a0a0a;
+  /* Dark Mode Defaults */
+  --bg-dark: #27000a;
+  --bg-darker: #220009;
   --text-primary: #ffffff;
   --text-secondary: #e0e0e0;
 
-  /* Updated theme colors */
-  --accent-color: #800000; /* main maroon */
-  --accent-color-dark: #660000; /* darker maroon for hover states */
+  /* Maroon Color Palette */
+  --maroon-900: #400010;
+  --maroon-800: #600018;
+  --maroon-700: #800020;
+  --maroon-600: #a00028;
+  --maroon-500: #c00030;
 
   --border-radius: 8px;
   --transition-speed: 0.3s;
   --header-height: 70px;
   --footer-height: 60px;
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] {
+  --bg-dark: #f8f9fa;
+  --bg-darker: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #495057;
 }
 
 /* Base Styles */
@@ -37,7 +48,7 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Enhancements */
+/* Typography */
 h1,
 h2,
 h3,
@@ -52,21 +63,17 @@ h6 {
 
 h1 {
   font-size: 2.5rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
+  color: var(--maroon-700);
 }
 
-/* Layout Improvements */
+/* Layout */
 #root {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-/* Scrollbar Styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -77,27 +84,27 @@ h1 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-color);
+  background: var(--maroon-700);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color-dark);
+  background: var(--maroon-800);
 }
 
-/* Selection Colors */
+/* Selection */
 ::selection {
-  background: var(--accent-color);
-  color: var(--bg-dark);
+  background: var(--maroon-700);
+  color: white;
 }
 
-/* Focus Styles for Accessibility */
+/* Focus Styles */
 :focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--maroon-700);
   outline-offset: 2px;
 }
 
-/* Animation Classes */
+/* Animations */
 .fade-in {
   animation: fadeIn var(--transition-speed) ease-in forwards;
 }
@@ -111,33 +118,53 @@ h1 {
   }
 }
 
-/* Button & Link Styles (added for consistency) */
+/* Buttons & Links */
 button {
-  background-color: var(--accent-color);
-  color: var(--text-primary);
+  background-color: var(--maroon-700);
+  color: white;
   border-radius: var(--border-radius);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
-  transition: background-color var(--transition-speed);
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 button:hover {
-  background-color: var(--accent-color-dark);
+  background-color: var(--maroon-800);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-a,
-.highlight {
-  color: var(--accent-color);
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--maroon-700);
+  color: var(--maroon-700);
+}
+
+.btn-outline:hover {
+  background: var(--maroon-700);
+  color: white;
+}
+
+a {
+  color: var(--maroon-700);
   transition: color var(--transition-speed);
+  text-decoration: none;
 }
 
-a:hover,
-.highlight:hover {
-  color: var(--accent-color-dark);
+a:hover {
+  color: var(--maroon-800);
+  text-decoration: underline;
 }
 
-/* Responsive Base */
+.highlight {
+  color: var(--maroon-700);
+  font-weight: 600;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   html {
     font-size: 14px;
@@ -145,5 +172,10 @@ a:hover,
 
   h1 {
     font-size: 2rem;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
