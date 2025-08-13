@@ -49,7 +49,7 @@ body.light .contact-page {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--text-primary), var(--maroon-500));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -75,7 +75,7 @@ body.light .contact-hero {
 }
 
 body.light .contact-hero h1 {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -104,27 +104,27 @@ body.light .contact-hero p {
 .contact-card h2 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--accent-yellow);
+  border-bottom: 2px solid var(--maroon-600);
   padding-bottom: 0.5rem;
   display: inline-block;
 }
 
 .contact-card p {
   margin-bottom: 1rem;
-  color: var(--text-secondary);
+  color: white;
   font-size: 1rem;
 }
 
 .contact-label {
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   font-weight: 600;
   margin-right: 0.5rem;
 }
 
 .contact-card a {
-  color: var(--accent-yellow);
+  color: white;
   text-decoration: none;
   transition: all var(--transition-speed) ease;
   position: relative;
@@ -142,7 +142,7 @@ body.light .contact-hero p {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent-yellow);
+  background: var(--maroon-600);
   transition: width var(--transition-speed) ease;
 }
 
@@ -158,8 +158,8 @@ body.light .contact-card {
 }
 
 body.light .contact-card h2 {
-  color: var(--accent-yellow);
-  border-bottom: 2px solid var(--accent-yellow);
+  color: var(--maroon-700);
+  border-bottom: 2px solid var(--maroon-600);
 }
 
 body.light .contact-card p {
@@ -167,11 +167,11 @@ body.light .contact-card p {
 }
 
 body.light .contact-label {
-  color: var(--accent-yellow);
+  color: var(--maroon-600);
 }
 
 body.light .contact-card a {
-  color: var(--accent-yellow);
+  color: var(--text-secondary);
 }
 
 body.light .contact-card a:hover {
@@ -180,7 +180,7 @@ body.light .contact-card a:hover {
 }
 
 body.light .contact-card a::after {
-  background: var(--accent-yellow);
+  background: var(--maroon-600);
 }
 
 body.light .contact-card a:hover::after {
@@ -200,7 +200,7 @@ body.light .contact-card a:hover::after {
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 2rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -212,7 +212,7 @@ body.light .contact-card a:hover::after {
   padding: 2.5rem;
   border-radius: var(--border-radius);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -225,7 +225,7 @@ body.light .contact-card a:hover::after {
 .executive-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 0, 0, 0.3);
 }
 
 .photo-container {
@@ -239,8 +239,8 @@ body.light .contact-card a:hover::after {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--accent-yellow);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  border: 3px solid var(--maroon-600);
+  box-shadow: 0 0 20px rgba(255, 21, 0, 0.2);
 }
 
 .photo-overlay {
@@ -250,7 +250,7 @@ body.light .contact-card a:hover::after {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(255, 0, 0, 0.1);
   opacity: 0;
   transition: opacity var(--transition-speed) ease;
 }
@@ -268,7 +268,7 @@ body.light .contact-card a:hover::after {
 
 .executive-title {
   font-size: 1.125rem;
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -277,8 +277,19 @@ body.light .contact-card a:hover::after {
   margin-bottom: 0.5rem;
   color: var(--text-secondary);
 }
+
+.executive-contact a {
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.executive-contact a:hover {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
 body.light .executive-section h2 {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -286,7 +297,7 @@ body.light .executive-section h2 {
 
 body.light .executive-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(221, 8, 8, 0.1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: none; /* optional */
   transition: all var(--transition-speed) ease;
@@ -299,12 +310,12 @@ body.light .executive-card {
 
 body.light .executive-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 15px 30px rgba(135, 3, 3, 0.15);
+  border-color: rgba(253, 13, 13, 0.3);
 }
 
 body.light .executive-photo {
-  border: 3px solid var(--accent-yellow);
+  border: 3px solid var(--maroon-600);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
@@ -317,14 +328,17 @@ body.light .executive-info h3 {
 }
 
 body.light .executive-title {
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
 }
 
+body.light .contact-label {
+  color: var(--maroon-600);
+}
 body.light .executive-contact p {
   color: var(--text-secondary);
 }
 .executive-contact a {
-  color: gray;
+  color: white;
 }
 
 /* Team Section */
@@ -340,7 +354,7 @@ body.light .executive-contact p {
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 3rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -357,7 +371,7 @@ body.light .executive-contact p {
   padding: 1.5rem;
   border-radius: var(--border-radius);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.1);
   text-align: center;
   transition: all var(--transition-speed) ease;
   backdrop-filter: blur(6px);
@@ -366,7 +380,7 @@ body.light .executive-contact p {
 .team-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 0, 0, 0.3);
   background: rgba(40, 40, 40, 0.8);
 }
 .photo-container-team {
@@ -380,16 +394,16 @@ body.light .executive-contact p {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--accent-yellow);
+  border: 3px solid var(--maroon-600);
   margin: 0 auto 1rem;
   display: block;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
   transition: all var(--transition-speed) ease;
 }
 
 .team-card:hover .team-photo {
   transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
 }
 
 .team-card h3 {
@@ -401,7 +415,7 @@ body.light .executive-contact p {
 
 .team-title {
   font-size: 1rem;
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -413,11 +427,18 @@ body.light .executive-contact p {
 
 .team-contact p {
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.team-contact a:hover {
+  margin-bottom: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.875rem;
 }
+
 body.light .team-section h2 {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -425,7 +446,7 @@ body.light .team-section h2 {
 
 body.light .team-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(238, 18, 18, 0.1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: none; /* optional for clarity */
   text-align: center;
@@ -435,19 +456,19 @@ body.light .team-card {
 body.light .team-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(255, 31, 31, 0.3);
   background: rgba(245, 245, 245, 0.8);
 }
 
 body.light .team-photo {
-  border: 3px solid var(--accent-yellow);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  border: 3px solid var(--maroon-600);
+  box-shadow: 0 0 15px rgba(255, 15, 15, 0.2);
   transition: all var(--transition-speed) ease;
 }
 
 body.light .team-card:hover .team-photo {
   transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 25px rgba(255, 1, 1, 0.3);
 }
 
 body.light .team-card h3 {
@@ -455,14 +476,14 @@ body.light .team-card h3 {
 }
 
 body.light .team-title {
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
 }
 
 body.light .team-contact p {
   color: var(--text-secondary);
 }
 .team-contact a {
-  color: gray;
+  color: var(--text-primary);
 }
 /* Responsive Design */
 @media (max-width: 768px) {
