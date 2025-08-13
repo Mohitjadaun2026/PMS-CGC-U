@@ -18,5 +18,8 @@ This document records **all contributions** to the project and assigns points ba
 
 ## 📋 **Contributor Records**
 
-| #️⃣ S.No | 👤 GitHub Profile                                | 🎯 Points | 🔗 PR No. / Link                                                      | 📌 Task Description                          |
-| ------ | ----------------------------------------------- | -------- | --------------------------------------------------------------------- | -------------------------------------------- |
+| #️⃣ S.No | 👤 GitHub Profile       | 🎯 Points | 🔗 PR No. | 📌 Task Description                          |
+|---------|------------------------|-----------|----------|----------------------------------------------|
+| 1       | hemanth5055             | 3         | #19      | Enhanced contact links appearance            |
+| 2       | Jai-76                  | 3         | #1       | License Missing from Repository              |
+| 3       | Sangeeta-20-stack       | 3         | #2       | Add Dark/Light Mode Toggle for Theme Switching |

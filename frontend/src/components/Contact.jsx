@@ -215,7 +215,7 @@ function Contact() {
         <div className="team-grid">
           {dcpdTeam.map((member, idx) => (
             <div className="team-card" key={idx}>
-              <div className="photo-container">
+              <div className="photo-container photo-container-team">
                 <img src={member.photo} alt={member.name} className="team-photo" />
                 <div className="photo-overlay"></div>
               </div>
