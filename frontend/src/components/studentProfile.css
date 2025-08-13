@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #e0e0e0; /* Light text for dark BG */
   background-color: #121212; /* Dark background */
   border-radius: 8px;
@@ -18,7 +18,7 @@
 }
 
 .profile-title {
-  color: #FFD700; /* Yellow accent for titles */
+  color: #dc0d40; /* Yellow accent for titles */
   margin: 0;
 }
 
@@ -26,7 +26,7 @@ body.light .student-profile-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #121212; /* Dark text for light BG */
   background-color: #fff; /* Light background */
   border-radius: 8px;
@@ -41,7 +41,7 @@ body.light .profile-header {
 }
 
 body.light .profile-title {
-  color: #b8860b; /* A darker golden yellow for light background */
+  color: var(--maroon-700); /* A darker golden yellow for light background */
   margin: 0;
 }
 
@@ -55,8 +55,8 @@ body.light .profile-title {
   position: absolute;
   top: -10px;
   right: -10px;
-  background-color: #FFD700; /* Yellow accent */
-  color: #121212; /* Dark text for contrast */
+  background-color: #dc0d40; /* Yellow accent */
+  color: white; /* Dark text for contrast */
   border-radius: 50%;
   padding: 5px 8px;
   font-size: 12px;
@@ -67,7 +67,7 @@ body.light .profile-title {
   right: 0;
   top: 100%;
   width: 300px;
-  background: #1E1E1E; /* Darker gray */
+  background: #1e1e1e; /* Darker gray */
   border: 1px solid #333;
   border-radius: 4px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -87,7 +87,7 @@ body.light .profile-title {
   border-bottom: none;
 }
 body.light .notification-badge span {
-  background-color: #FFD700; /* keep yellow */
+  background-color: var(--maroon-700); /* keep yellow */
   color: #fff; /* white text for better contrast on yellow */
   border: 1.5px solid #b8860b; /* subtle border to distinguish badge */
 }
@@ -108,7 +108,6 @@ body.light .notification-item:last-child {
   border-bottom: none;
 }
 
-
 /* Tab Styles */
 .profile-tabs {
   display: flex;
@@ -128,12 +127,12 @@ body.light .notification-item:last-child {
 }
 
 .profile-tabs button:hover {
-  color: #FFD700; /* Yellow hover */
+  color: white; /* Yellow hover */
 }
 
 .profile-tabs button.active {
-  color: #FFD700; /* Active tab = yellow */
-  border-bottom: 3px solid #FFD700;
+  color: white; /* Active tab = yellow */
+  border-bottom: 3px solid #dc0d40;
   font-weight: 600;
 }
 
@@ -145,7 +144,7 @@ body.light .notification-item:last-child {
 
 .profile-section {
   margin-bottom: 25px;
-  background: #1E1E1E; /* Dark card */
+  background: #1e1e1e; /* Dark card */
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -153,19 +152,31 @@ body.light .notification-item:last-child {
 
 .profile-section h3 {
   margin-top: 0;
-  color: #FFD700; /* Yellow headers */
+  color: var(--maroon-500); /* Yellow headers */
   border-bottom: 1px solid #333;
   padding-bottom: 10px;
 }
 
+.profile-section a {
+  margin-top: 0;
+  color: var(--text-secondary); /* Yellow headers */
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+.profile-section a:hover {
+  margin-top: 0;
+  color: var(--text-secondary); 
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
 /* Photo Section */
 .student-photo {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #1E1E1E;
-  box-shadow: 0 0 0 2px #FFD700; /* Yellow outline */
+  border: 5px solid #1e1e1e;
+  box-shadow: 0 0 0 2px #c0392b; /* Yellow outline */
 }
 body.light .profile-tabs {
   border-bottom: 1px solid #ccc;
@@ -178,12 +189,12 @@ body.light .profile-tabs button {
 }
 
 body.light .profile-tabs button:hover {
-  color: #b8860b; /* darker yellow hover */
+  color: var(--maroon-700); /* darker yellow hover */
 }
 
 body.light .profile-tabs button.active {
-  color: #b8860b; /* active tab dark yellow */
-  border-bottom: 3px solid #b8860b;
+  color: var(--maroon-800); /* active tab dark yellow */
+  border-bottom: 3px solid var(--maroon-800);
   font-weight: 600;
 }
 
@@ -202,7 +213,7 @@ body.light .profile-section {
 }
 
 body.light .profile-section h3 {
-  color: #b8860b; /* muted yellow */
+  color: var(--maroon-700); /* muted yellow */
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-top: 0;
@@ -211,13 +222,13 @@ body.light .profile-section h3 {
 /* Photo Section */
 body.light .student-photo {
   border: 5px solid #fff; /* white border */
-  box-shadow: 0 0 0 2px #b8860b; /* muted yellow outline */
+  box-shadow: 0 0 0 2px #b80b0b; /* muted yellow outline */
   background: #fff;
 }
 
 /* Buttons */
 .profile-save-btn {
-  background-color: #FFD700; /* Yellow */
+  background-color: #ff0000; /* Yellow */
   color: #121212; /* Dark text */
   border: none;
   padding: 10px 20px;
@@ -228,12 +239,12 @@ body.light .student-photo {
 }
 
 .profile-save-btn:hover {
-  background-color: #FFC107; /* Brighter yellow */
+  background-color: #ffc107; /* Brighter yellow */
   transform: translateY(-2px);
 }
 
 .download-btn {
-  background-color: #27ae60; /* Green (kept for clarity) */
+  background-color: #dc0d40; /* Green (kept for clarity) */
   color: white;
 }
 
@@ -257,7 +268,7 @@ body.light .profile-save-btn:hover {
 }
 
 body.light .download-btn {
-  background-color: #219150; /* Slightly darker green */
+  background-color: var(--maroon-700); /* Slightly darker green */
   color: white;
 }
 
@@ -266,11 +277,10 @@ body.light .withdraw-btn {
   color: white;
 }
 
-
 /* Tables & Cards */
 .applications-list th {
-  background-color: #1E1E1E;
-  color: #FFD700; /* Yellow headers */
+  background-color: #1e1e1e;
+  color: #dc0d40; /* Yellow headers */
 }
 
 .applications-list tr:hover {
@@ -278,17 +288,17 @@ body.light .withdraw-btn {
 }
 
 .drive-card {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid #333;
 }
 
 .drive-header h4 {
-  color: #FFD700; /* Yellow titles */
+  color: #dc0d40; /* Yellow titles */
 }
 
 body.light .applications-list th {
   background-color: #f0f0f0; /* Light gray background */
-  color: #b8860b; /* Muted yellow for headers */
+  color: var(--maroon-800); /* Muted yellow for headers */
 }
 
 body.light .applications-list tr:hover {
@@ -301,17 +311,17 @@ body.light .drive-card {
 }
 
 body.light .drive-header h4 {
-  color: #b8860b; /* Muted yellow for titles */
+  color: var(--maroon-700); /* Muted yellow for titles */
 }
 
 /* Stats Cards */
 .stats-card {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid #333;
 }
 
 .progress-bar {
-  background-color: #FFD700; /* Yellow progress */
+  background-color: #ffd700; /* Yellow progress */
 }
 body.light .stats-card {
   background: #fff; /* Light background */
@@ -323,9 +333,9 @@ body.light .progress-bar {
   background-color: #b8860b; /* Muted yellow for light mode */
 }
 
-
 /* Hover Effects */
-button:hover, .drive-card:hover {
+button:hover,
+.drive-card:hover {
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Yellow glow */
 }
 
@@ -333,14 +343,14 @@ button:hover, .drive-card:hover {
 .student-profile-form {
   display: flex;
   gap: 30px;
-  background: #1E1E1E; /* Dark card background */
+  background: #1e1e1e; /* Dark card background */
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;
 }
 body.light button:hover,
 body.light .drive-card:hover {
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15); /* Softer yellow glow */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.15); /* Softer yellow glow */
 }
 
 body.light .student-profile-form {
@@ -352,7 +362,6 @@ body.light .student-profile-form {
   gap: 30px;
   display: flex;
 }
-
 
 /* Input Fields */
 .student-profile-form input[type="text"],
@@ -386,24 +395,23 @@ body.light .student-profile-form input[type="text"]:focus,
 body.light .student-profile-form input[type="email"]:focus,
 body.light .student-profile-form textarea:focus,
 body.light .student-profile-form select:focus {
-  border-color: #FFD700; /* Yellow focus */
+  border-color: #ffd700; /* Yellow focus */
   outline: none;
 }
 
 /* Focus State */
 .student-profile-form input:focus,
 .student-profile-form textarea:focus {
-  border-color: #FFD700; /* Yellow accent */
+  border-color: #ffd700; /* Yellow accent */
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
 }
 body.light .student-profile-form input:focus,
 body.light .student-profile-form textarea:focus {
-  border-color: #FFD700; /* Yellow accent */
+  border-color: #ffd700; /* Yellow accent */
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
 }
-
 
 /* Labels */
 .student-profile-form label {
@@ -432,22 +440,21 @@ body.light .student-profile-form label {
 }
 
 .upload-btn:hover {
-  border-color: #FFD700;
+  border-color: #ffd700;
   background: #2a2a2a;
 }
 body.light .upload-btn {
-  background: #FFD600; /* bright yellow */
-  color: #121212;      /* dark text */
+  background: var(--maroon-500); /* bright yellow */
+  color: white; /* dark text */
   border: 1.5px solid transparent;
   transition: background 0.3s, border-color 0.3s;
 }
 
 body.light .upload-btn:hover {
-  background: #FFEA00; /* lighter yellow */
-  border-color: #FFD600;
+  background: #c0392b; /* lighter yellow */
+  border-color: white;
   color: #121212;
 }
-
 
 /* Save/Cancel Buttons */
 .form-actions {
@@ -457,7 +464,8 @@ body.light .upload-btn:hover {
   justify-content: flex-end;
 }
 
-.save-btn, .cancel-btn {
+.save-btn,
+.cancel-btn {
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 12px;
@@ -470,9 +478,8 @@ body.light .upload-btn:hover {
   text-align: center;
 }
 
-
 .save-btn:hover {
-  background: #45a049;
+  background: #a04545;
   box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
   transform: translateY(-1px);
 }
@@ -480,7 +487,7 @@ body.light .upload-btn:hover {
 .cancel-btn {
   background: transparent;
   color: #e0e0e0;
-  border: 1px solid #555;
+  border: 1px solid #950000;
   padding: 8px 18px;
   border-radius: 4px;
   font-size: 13px;
@@ -498,8 +505,8 @@ body.light .upload-btn:hover {
 /* Edit Profile Button */
 .edit-profile-btn {
   background: transparent;
-  color: #FFD700;
-  border: 1px solid #FFD700;
+  color: #c0392b;
+  border: 1px solid #c0392b;
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 12px;
@@ -511,7 +518,7 @@ body.light .upload-btn:hover {
 }
 
 .edit-profile-btn:hover,
-.save-btn:hover, 
+.save-btn:hover,
 .cancel-btn:hover {
   transform: translateY(-1px);
 }
@@ -525,7 +532,7 @@ body.light .upload-btn:hover {
 }
 
 .resume-file {
-  color: #FFD700;
+  color: #dc0d40;
   font-weight: 500;
   margin-left: 10px;
 }
@@ -552,13 +559,13 @@ body.light .cancel-btn {
 
 /* Save button - light mode */
 body.light .save-btn {
-  background: #45a049; /* green */
+  background: var(--maroon-700); /* green */
   color: #fff;
   border: none;
 }
 
 body.light .save-btn:hover {
-  background: #3b8e40;
+  background: var(--maroon-500);
   box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
   transform: translateY(-1px);
 }
@@ -567,13 +574,13 @@ body.light .save-btn:hover {
 body.light .cancel-btn {
   background: transparent;
   color: #555;
-  border: 1px solid #ccc;
+  border: 1px solid #950000;
   padding: 8px 18px;
   font-size: 13px;
 }
 
 body.light .cancel-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background-color: var(--maroon-500);
   border-color: #999;
   transform: translateY(-1px);
 }
@@ -581,8 +588,8 @@ body.light .cancel-btn:hover {
 /* Edit Profile Button - light mode */
 body.light .edit-profile-btn {
   background: transparent;
-  color: #b8860b; /* darker goldenrod */
-  border: 1px solid #b8860b;
+  color: #b80b0b; /* darker goldenrod */
+  border: 1px solid #950000;
   padding: 6px 12px;
   font-size: 12px;
   height: 32px;
@@ -590,8 +597,8 @@ body.light .edit-profile-btn {
 }
 
 body.light .edit-profile-btn:hover {
-  color: #ffd700;
-  border-color: #ffd700;
+  color: #950000;
+  border-color: #b80b0b;
   transform: translateY(-1px);
 }
 
@@ -604,25 +611,24 @@ body.light .resume-upload {
 }
 
 body.light .resume-file {
-  color: #b8860b;
+  color: #b80b0b;
   font-weight: 500;
   margin-left: 10px;
 }
-
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .form-actions {
     justify-content: center;
   }
-  
-.form-actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  justify-content: flex-end;
-}
-  
+
+  .form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: flex-end;
+  }
+
   .edit-profile-btn,
   .save-btn,
   .cancel-btn {
