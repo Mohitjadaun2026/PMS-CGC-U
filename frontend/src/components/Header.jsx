@@ -1,7 +1,7 @@
 import React ,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import collegeLogo from "../assets/cgc.jpeg"; // Make sure to add the logo to your assets folder
+import collegeLogo from "../assets/cgc.png"; // Make sure to add the logo to your assets folder
 
 function Header() { const [theme, setTheme] = useState('light');
 
