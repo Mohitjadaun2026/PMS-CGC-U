@@ -564,7 +564,7 @@ body.light .partner-card:hover .partner-logo {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  color: var(--primary-maroon);
+  color: var(--maroon-500);
 }
 
 .stat-label {
