@@ -15,12 +15,20 @@
     );
 }
 body.light .contact-page {
-  background-color: var(--bg-dark); /* light mode var(--bg-dark) should be light, e.g. #fff or #f9f9f9 */
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 25%);
+  background-color: var(
+    --bg-dark
+  ); /* light mode var(--bg-dark) should be light, e.g. #fff or #f9f9f9 */
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(212, 175, 55, 0.05) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(212, 175, 55, 0.05) 0%,
+      transparent 25%
+    );
 }
-
 
 /* Hero Section */
 .contact-hero {
@@ -55,7 +63,11 @@ body.light .contact-page {
   color: var(--text-secondary);
 }
 body.light .contact-hero {
-  background: linear-gradient(135deg, rgba(245, 245, 245, 0.9), rgba(239, 239, 239, 0.95));
+  background: linear-gradient(
+    135deg,
+    rgba(245, 245, 245, 0.9),
+    rgba(239, 239, 239, 0.95)
+  );
   color: var(--text-primary);
   margin-bottom: 3rem;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -311,7 +323,9 @@ body.light .executive-title {
 body.light .executive-contact p {
   color: var(--text-secondary);
 }
-
+.executive-contact a {
+  color: gray;
+}
 
 /* Team Section */
 .team-section {
@@ -447,8 +461,6 @@ body.light .team-title {
 body.light .team-contact p {
   color: var(--text-secondary);
 }
-
-
 .team-contact a {
   color: gray;
 }
