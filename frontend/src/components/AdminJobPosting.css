@@ -10,7 +10,7 @@
 }
 
 .admin-job-posting-container h1 {
-  color: #FFD600;
+  color: #c00030;
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 1px;
@@ -26,7 +26,7 @@ body.light .admin-job-posting-container {
 }
 
 body.light .admin-job-posting-container h1 {
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 1px;
@@ -36,7 +36,7 @@ body.light .admin-job-posting-container h1 {
 .admin-tabs {
   display: flex;
   margin-bottom: 30px;
-  border-bottom: 2px solid #FFD600;
+  border-bottom: 2px solid #c00030;
   background: #181818;
   border-radius: 12px 12px 0 0;
   overflow: hidden;
@@ -48,7 +48,7 @@ body.light .admin-job-posting-container h1 {
   border: none;
   cursor: pointer;
   font-size: 17px;
-  color: #FFD600;
+  color: #c00030;
   border-bottom: 3px solid transparent;
   transition: all 0.3s;
   font-weight: 500;
@@ -56,19 +56,19 @@ body.light .admin-job-posting-container h1 {
 }
 
 .admin-tabs button:hover {
-  background: #FFD600;
+  background: #de0a3f;
   color: #181818;
 }
 
 .admin-tabs button.active {
   color: #181818;
-  background: #FFD600;
-  border-bottom: 3px solid #FFD600;
+  background: #de0a3f;
+  border-bottom: 3px solid #c00030;
   font-weight: 600;
 }
 body.light .admin-tabs {
   background: #f0f0f0; /* light background */
-  border-bottom: 2px solid var(--accent-yellow);
+  border-bottom: 2px solid var(--maroon-700);
   border-radius: 12px 12px 0 0;
   overflow: hidden;
   margin-bottom: 30px;
@@ -77,7 +77,7 @@ body.light .admin-tabs {
 
 body.light .admin-tabs button {
   background: #f0f0f0;
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
   border: none;
   border-bottom: 3px solid transparent;
   cursor: pointer;
@@ -88,14 +88,14 @@ body.light .admin-tabs button {
 }
 
 body.light .admin-tabs button:hover {
-  background: var(--accent-yellow);
+  background: var(--maroon-500);
   color: var(--bg-dark);
 }
 
 body.light .admin-tabs button.active {
   color: var(--bg-dark);
-  background: var(--accent-yellow);
-  border-bottom: 3px solid var(--accent-yellow);
+  background: var(--maroon-800);
+  border-bottom: 3px solid var(--maroon-700);
   font-weight: 600;
 }
 
@@ -112,11 +112,11 @@ body.light .admin-tabs button.active {
 .form-section {
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #FFD60033;
+  border-bottom: 1px solid #c0003033;
 }
 
 .form-section h2 {
-  color: #FFD600;
+  color: #c00030;
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 20px;
@@ -138,7 +138,7 @@ body.light .admin-tabs button.active {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #FFD600;
+  color: #c00030;
 }
 
 .form-group input[type="text"],
@@ -149,7 +149,7 @@ body.light .admin-tabs button.active {
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1.5px solid #FFD60055;
+  border: 1.5px solid #c0003055;
   border-radius: 6px;
   font-size: 15px;
   background: #222;
@@ -162,7 +162,7 @@ body.light .admin-tabs button.active {
 .form-group input[type="date"]:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border: 1.5px solid #FFD600;
+  border: 1.5px solid #c00030;
   background: #181818;
   outline: none;
 }
@@ -175,7 +175,7 @@ body.light .admin-tabs button.active {
 .form-group input[type="file"] {
   padding: 5px;
   background: #222;
-  color: #FFD600;
+  color: #c00030;
 }
 
 body.light .job-posting-form {
@@ -189,11 +189,11 @@ body.light .job-posting-form {
 body.light .form-section {
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
 }
 
 body.light .form-section h2 {
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 20px;
@@ -215,7 +215,7 @@ body.light .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
 }
 
 body.light .form-group input[type="text"],
@@ -226,7 +226,7 @@ body.light .form-group select,
 body.light .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1.5px solid rgba(212, 175, 55, 0.33);
+  border: 1.5px solid rgba(128, 3, 3, 0.279);
   border-radius: 6px;
   font-size: 15px;
   background: #fff;
@@ -239,7 +239,7 @@ body.light .form-group input[type="email"]:focus,
 body.light .form-group input[type="date"]:focus,
 body.light .form-group select:focus,
 body.light .form-group textarea:focus {
-  border: 1.5px solid var(--accent-yellow);
+  border: 1.5px solid var(--maroon-700);
   background: #fff;
   outline: none;
 }
@@ -252,7 +252,7 @@ body.light .form-group textarea {
 body.light .form-group input[type="file"] {
   padding: 5px;
   background: #fff;
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
   border: 1.5px solid rgba(212, 175, 55, 0.33);
 }
 
@@ -263,13 +263,13 @@ body.light .form-group input[type="file"] {
   padding: 5px;
   background: #222;
   color: #fff;
-  border: 1.5px solid #FFD60055;
+  border: 1.5px solid #c0003055;
   border-radius: 6px;
   transition: border 0.2s;
 }
 
 .multi-select:focus {
-  border: 1.5px solid #FFD600;
+  border: 1.5px solid #c00030;
   outline: none;
 }
 
@@ -277,17 +277,17 @@ body.light .form-group input[type="file"] {
   padding: 8px 12px;
   background: #222;
   color: #fff;
-  border-bottom: 1px solid #FFD60033;
+  border-bottom: 1px solid #c0003033;
   transition: background 0.2s;
 }
 
 .multi-select option:hover {
-  background: #FFD600;
+  background: #c00030;
   color: #181818;
 }
 
 .multi-select option:checked {
-  background: #FFD600;
+  background: #c00030;
   color: #181818;
   font-weight: bold;
 }
@@ -303,7 +303,7 @@ body.light .multi-select {
 }
 
 body.light .multi-select:focus {
-  border: 1.5px solid var(--accent-yellow);
+  border: 1.5px solid var(--maroon-700);
   outline: none;
 }
 
@@ -316,12 +316,12 @@ body.light .multi-select option {
 }
 
 body.light .multi-select option:hover {
-  background: var(--accent-yellow);
+  background: var(--maroon-700);
   color: var(--bg-dark);
 }
 
 body.light .multi-select option:checked {
-  background: var(--accent-yellow);
+  background: var(--maroon-700);
   color: var(--bg-dark);
   font-weight: bold;
 }
@@ -337,11 +337,11 @@ body.light .multi-select option:checked {
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
-  color: #FFD600;
+  color: #c00030;
   pointer-events: none;
 }
 body.light .multi-select-container::after {
-  color: var(--accent-yellow);
+  color: var(--maroon-700);
 }
 
 
@@ -356,13 +356,13 @@ body.light .multi-select-container::after {
   width: 60px;
   height: 60px;
   object-fit: contain;
-  border: 2px solid #FFD600;
+  border: 2px solid #c00030;
   border-radius: 8px;
   background: #222;
 }
 body.light .logo-preview {
   background: #fff;
-  border: 2px solid var(--accent-yellow);
+  border: 2px solid var(--maroon-700);
   filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
 }
 
@@ -375,8 +375,8 @@ body.light .logo-preview {
 }
 
 .submit-btn {
-  background: linear-gradient(90deg, #FFD600 0%, #FFEA00 100%);
-  color: #181818;
+  background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
+  color: white;
   border: none;
   padding: 12px 32px;
   border-radius: 8px;
@@ -389,15 +389,15 @@ body.light .logo-preview {
 }
 
 .submit-btn:hover {
-  background: #FFD600;
-  color: #111;
+  background: #64021b;
+  color: white;
   box-shadow: 0 4px 24px rgba(255, 214, 0, 0.18);
 }
 
 .cancel-btn {
   background: #181818;
-  color: #FFD600;
-  border: 2px solid #FFD600;
+  color: #c00030;
+  border: 2px solid #c00030;
   padding: 12px 32px;
   border-radius: 8px;
   cursor: pointer;
@@ -407,33 +407,33 @@ body.light .logo-preview {
 }
 
 .cancel-btn:hover {
-  background: #FFD600;
+  background: #c00030;
   color: #181818;
-  border: 2px solid #FFD600;
+  border: 2px solid #c00030;
 }
 
 body.light .submit-btn {
-  background: linear-gradient(90deg, #FFD600 0%, #FFEA00 100%);
-  color: #222; /* darker text for light bg */
-  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.3);
+  background: linear-gradient(90deg, #c00030 0%, #b30000 100%);
+  color: white; /* darker text for light bg */
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
 }
 
 body.light .submit-btn:hover {
-  background: #FFC107;
-  color: #111;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.4);
+  background: #de0a3f;
+  color: white;
+  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.4);
 }
 
 body.light .cancel-btn {
   background: #fff;
-  color: #FFD600;
-  border: 2px solid #FFD600;
+  color: #c00030;
+  border: 2px solid #c00030;
 }
 
 body.light .cancel-btn:hover {
-  background: #FFD600;
+  background: #c00030;
   color: #fff;
-  border: 2px solid #FFD600;
+  border: 2px solid #c00030;
 }
 
 /* Job Postings List */
@@ -447,14 +447,14 @@ body.light .cancel-btn:hover {
 
 .job-postings-list h2 {
   margin-top: 0;
-  color: #FFD600;
+  color: #c00030;
   margin-bottom: 20px;
 }
 
 .no-postings {
   text-align: center;
   padding: 40px;
-  color: #FFD60099;
+  color: #c0003099;
   font-style: italic;
 }
 
@@ -469,13 +469,13 @@ table th,
 table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #FFD60033;
+  border-bottom: 1px solid #c0003033;
 }
 
 table th {
   background-color: #222;
   font-weight: 600;
-  color: #FFD600;
+  color: #c00030;
 }
 
 table tr:hover {
@@ -494,7 +494,7 @@ table tr:hover {
   object-fit: contain;
   border-radius: 50%;
   background: #222;
-  border: 1.5px solid #FFD600;
+  border: 1.5px solid #c00030;
 }
 
 body.light .job-postings-list {
@@ -526,7 +526,7 @@ body.light table td {
 
 body.light table th {
   background-color: #fff5cc;
-  color: #b38600;
+  color: #b30000;
   font-weight: 600;
 }
 
@@ -548,13 +548,13 @@ body.light .company-logo-small {
 /* Badge styles for eligibility tags */
 .eligibility-badge {
   display: inline-block;
-  background: #FFD60022;
-  color: #FFD600;
+  background: #c0003022;
+  color: #c00030;
   padding: 3px 8px;
   border-radius: 12px;
   font-size: 12px;
   margin: 2px;
-  border: 1px solid #FFD60033;
+  border: 1px solid #c0003033;
 }
 body.light .eligibility-badge {
   background: #fff8cc; /* very light yellow */
@@ -565,7 +565,7 @@ body.light .eligibility-badge {
 
 /* Action Buttons */
 .edit-btn {
-  background: #FFD600;
+  background: #c00030;
   color: #181818;
   border: none;
   padding: 7px 16px;
@@ -579,12 +579,12 @@ body.light .eligibility-badge {
 
 .edit-btn:hover {
   background: #181818;
-  color: #FFD600;
-  border: 1.5px solid #FFD600;
+  color: #c00030;
+  border: 1.5px solid #c00030;
 }
 
 .delete-btn {
-  background: #e74c3c;
+  background: #c00030;
   color: #fff;
   border: none;
   padding: 7px 16px;
@@ -596,9 +596,9 @@ body.light .eligibility-badge {
 }
 
 .delete-btn:hover {
-  background: #FFD600;
-  color: #e74c3c;
-  border: 1.5px solid #e74c3c;
+  background: #c00030;
+  color: #c00030;
+  border: 1.5px solid #c00030;
 }
 body.light .edit-btn {
   background: #fff1b8; /* light yellow */
@@ -636,7 +636,7 @@ body.light .delete-btn:hover {
   padding: 15px;
   background: #222;
   border-radius: 8px;
-  border: 1.5px solid #FFD60055;
+  border: 1.5px solid #c0003055;
 }
 
 .checkbox-item {
@@ -652,15 +652,15 @@ body.light .delete-btn:hover {
 }
 
 .checkbox-item:hover {
-  background: #FFD60020;
-  border-color: #FFD60050;
+  background: #c0003020;
+  border-color: #c0003050;
 }
 
 .checkbox-item input[type="checkbox"] {
   appearance: none;
   width: 18px;
   height: 18px;
-  border: 2px solid #FFD600;
+  border: 2px solid #c00030;
   border-radius: 3px;
   background: #222;
   cursor: pointer;
@@ -669,8 +669,8 @@ body.light .delete-btn:hover {
 }
 
 .checkbox-item input[type="checkbox"]:checked {
-  background: #FFD600;
-  border-color: #FFD600;
+  background: #c00030;
+  border-color: #c00030;
 }
 
 .checkbox-item input[type="checkbox"]:checked::after {
@@ -692,20 +692,20 @@ body.light .delete-btn:hover {
 }
 
 .checkbox-item:has(input:checked) .checkbox-label {
-  color: #FFD600;
+  color: #c00030;
   font-weight: 600;
 }
 
 .selected-items {
   margin-top: 10px;
   padding: 10px;
-  background: #FFD60010;
+  background: #c0003010;
   border-radius: 6px;
-  border-left: 3px solid #FFD600;
+  border-left: 3px solid #c00030;
 }
 
 .selected-label {
-  color: #FFD600;
+  color: #c00030;
   font-weight: 600;
   margin-right: 8px;
 }
@@ -717,7 +717,7 @@ body.light .delete-btn:hover {
 
 body.light .checkbox-grid {
   background: #f5f5f5;
-  border: 1.5px solid #ffd60055;
+  border: 1.5px solid #c0003055;
 }
 
 body.light .checkbox-item {
@@ -726,18 +726,18 @@ body.light .checkbox-item {
 }
 
 body.light .checkbox-item:hover {
-  background: #fff8cc;
-  border-color: #ffd60080;
+  background: #ffcccc;
+  border-color: #c0003080;
 }
 
 body.light .checkbox-item input[type="checkbox"] {
   background: #fff;
-  border: 2px solid #ffd600;
+  border: 2px solid #c00030;
 }
 
 body.light .checkbox-item input[type="checkbox"]:checked {
-  background: #ffd600;
-  border-color: #ffd600;
+  background: #c00030;
+  border-color: #c00030;
 }
 
 body.light .checkbox-item input[type="checkbox"]:checked::after {
@@ -749,18 +749,18 @@ body.light .checkbox-label {
 }
 
 body.light .checkbox-item:has(input:checked) .checkbox-label {
-  color: #b38600;
+  color: #b30000;
   font-weight: 600;
 }
 
 body.light .selected-items {
-  background: #fff8cc;
-  border-left: 3px solid #ffd600;
-  color: #5a4700;
+  background: #ffd7cc;
+  border-left: 3px solid #c00030;
+  color: #5a0000;
 }
 
 body.light .selected-label {
-  color: #b38600;
+  color: #c00030;
 }
 
 /* Selection Controls */
@@ -771,7 +771,7 @@ body.light .selected-label {
 }
 
 .select-all-btn {
-  background: #FFD600;
+  background: #c00030;
   color: #181818;
   border: none;
   padding: 6px 12px;
@@ -783,7 +783,7 @@ body.light .selected-label {
 }
 
 .select-all-btn:hover {
-  background: #ffdd00;
+  background: #de0a3f;
   transform: translateY(-1px);
 }
 body.light .selection-controls {
@@ -793,8 +793,8 @@ body.light .selection-controls {
 }
 
 body.light .select-all-btn {
-  background: #ffd600;
-  color: #333;
+  background: #c00030;
+  color: white;
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
@@ -806,9 +806,9 @@ body.light .select-all-btn {
 }
 
 body.light .select-all-btn:hover {
-  background: #ffea33;
+  background: #c00030;
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(255, 214, 0, 0.5);
+  box-shadow: 0 4px 10px rgba(255, 8, 0, 0.5);
 }
 
 
@@ -863,7 +863,7 @@ body.light .select-all-btn:hover {
 
   .admin-tabs button.active {
     border-bottom: none;
-    border-left: 3px solid #FFD600;
+    border-left: 3px solid #c00030;
   }
 
   .form-actions {
