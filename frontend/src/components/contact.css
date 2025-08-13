@@ -3,9 +3,16 @@
   min-height: 100vh;
   background-color: var(--bg-dark);
   padding: 2rem 0;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 25%);
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 215, 0, 0.05) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 215, 0, 0.05) 0%,
+      transparent 25%
+    );
 }
 body.light .contact-page {
   background-color: var(--bg-dark); /* light mode var(--bg-dark) should be light, e.g. #fff or #f9f9f9 */
@@ -19,7 +26,11 @@ body.light .contact-page {
 .contact-hero {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(18, 18, 18, 0.95));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 30, 30, 0.9),
+    rgba(18, 18, 18, 0.95)
+  );
   color: var(--text-primary);
   margin-bottom: 3rem;
   border-bottom: 1px solid rgba(255, 215, 0, 0.2);
@@ -113,7 +124,7 @@ body.light .contact-hero p {
 }
 
 .contact-card a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -344,6 +355,11 @@ body.light .executive-contact p {
   border-color: rgba(255, 215, 0, 0.3);
   background: rgba(40, 40, 40, 0.8);
 }
+.photo-container-team {
+  display: flex;
+  width: 100%;
+  justify-items: center;
+}
 
 .team-photo {
   width: 100px;
@@ -374,6 +390,11 @@ body.light .executive-contact p {
   color: var(--accent-yellow);
   font-weight: 600;
   margin-bottom: 1rem;
+}
+.team-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .team-contact p {
@@ -428,6 +449,9 @@ body.light .team-contact p {
 }
 
 
+.team-contact a {
+  color: gray;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-hero h1 {
