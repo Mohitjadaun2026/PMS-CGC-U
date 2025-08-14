@@ -30,7 +30,7 @@
 
 /* Light mode: yellow background, black text */
 body.light .theme-toggle-btn {
-  background: #ffd600;
+  background: #ff0000;
   color: #121212;
 }
 
@@ -65,8 +65,8 @@ body.dark .theme-toggle-btn {
 }
 
 .logo-link:hover {
-  text-shadow: 0 0 8px #bfbaba;
-  color: rgb(204, 200, 200);
+  /* text-shadow: 0 0 8px #bfbaba; */
+  color: rgb(172, 167, 167);
 }
 
 .nav-links {
@@ -89,7 +89,7 @@ body.dark .theme-toggle-btn {
 
 .nav-links a:hover {
   color: var(--maroon-500);
-  background: rgba(255, 215, 0, 0.08);
+  background: rgba(255, 0, 0, 0.08);
 }
 
 .nav-links a::after {
@@ -149,7 +149,7 @@ body.light .logo-link {
 }
 
 body.light .logo-link:hover {
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  text-shadow: 0 0 8px rgba(212, 55, 55, 0.4);
 }
 
 /* body.light .nav-links a {
@@ -158,7 +158,7 @@ body.light .logo-link:hover {
 
 body.light .nav-links a:hover {
   color: var(--maroon-700);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(212, 55, 55, 0.1);
 }
 
 body.light .nav-links a::after {

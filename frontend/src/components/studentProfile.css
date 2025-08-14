@@ -165,7 +165,7 @@ body.light .notification-item:last-child {
 }
 .profile-section a:hover {
   margin-top: 0;
-  color: var(--text-secondary); 
+  color: var(--text-secondary);
   border-bottom: 1px solid #333;
   padding-bottom: 10px;
 }
@@ -292,6 +292,10 @@ body.light .withdraw-btn {
   border: 1px solid #333;
 }
 
+.drive-card:hover {
+  /* background: #700505; */
+  border: 1px solid #890404;
+}
 .drive-header h4 {
   color: #dc0d40; /* Yellow titles */
 }
@@ -321,7 +325,7 @@ body.light .drive-header h4 {
 }
 
 .progress-bar {
-  background-color: #ffd700; /* Yellow progress */
+  background-color: #ff0000; /* Yellow progress */
 }
 body.light .stats-card {
   background: #fff; /* Light background */
@@ -336,7 +340,7 @@ body.light .progress-bar {
 /* Hover Effects */
 button:hover,
 .drive-card:hover {
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Yellow glow */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); /* Yellow glow */
 }
 
 /* ===== EDIT MODE SPECIFIC STYLES ===== */

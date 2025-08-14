@@ -356,6 +356,10 @@ body.light .feature-title {
   color: var(--text-primary);
 }
 
+body.light .section-title {
+  color: var(--maroon-700);
+}
+
 body.light .feature-description {
   color: var(--text-secondary);
 }
@@ -762,75 +766,3 @@ body.light .cta-description {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-/* Cards (Features, Alumni, Partners)
-.feature-card,
-.alumni-card,
-.partner-card,
-.stat-item {
-  background: var(--card-bg-dark);
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(128, 0, 32, 0.15);
-  transition: all var(--transition-speed) ease;
-  backdrop-filter: blur(6px);
-}
-
-.feature-card:hover,
-.alumni-card:hover,
-.partner-card:hover,
-.stat-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-  border-color: rgba(128, 0, 32, 0.3);
-}
-
-.feature-title,
-.alumni-name,
-.stat-label {
-  color: var(--text-primary);
-}
-
-.feature-description,
-.alumni-company,
-.alumni-package {
-  color: var(--primary-maroon);
-}
-
-.partner-logo {
-  filter: brightness(0) invert(1);
-}
-
-.partner-card:hover .partner-logo {
-  filter: brightness(1) invert(0) drop-shadow(0 0 5px rgba(128, 0, 32, 0.5));
-}
-
-/* Stats Numbers */
-/* .stat-number {
-  color: var(--primary-maroon);
-} */
-
-/* Light Mode Overrides */
-/* body.light .home-main {
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-}
-
-body.light .feature-card,
-body.light .alumni-card,
-body.light .partner-card,
-body.light .stat-item {
-  background: var(--card-bg-light);
-  border-color: rgba(128, 0, 32, 0.1);
-  color: var(--text-primary);
-}
-
-body.light .feature-card:hover,
-body.light .alumni-card:hover,
-body.light .partner-card:hover,
-body.light .stat-item:hover {
-  border-color: rgba(128, 0, 32, 0.3);
-}
-
-body.light .partner-logo {
-  filter: brightness(1) invert(0);
-} */

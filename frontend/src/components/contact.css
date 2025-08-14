@@ -152,7 +152,7 @@ body.light .contact-hero p {
 
 body.light .contact-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 55, 55, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: none; /* optional: remove blur for clarity */
 }
