@@ -365,8 +365,8 @@ const AdminJobPosting = () => {
                       placeholder="Enter company name"
                     />
                   </div>
-                  <div className="form-group logo xyz">
-                    <label>
+                  <div className="form-group logo">
+                    <label className="xyz">
                       <FiUpload /> Company Logo
                     </label>
                     <div className="logo-upload-container">

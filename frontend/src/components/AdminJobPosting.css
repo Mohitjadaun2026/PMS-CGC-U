@@ -1188,3 +1188,66 @@ body.light .create-first-btn {
   background: linear-gradient(135deg, #b38600, #d4a000);
   color: #fff;
 }
+
+/* Add these media queries to your existing CSS */
+
+@media (max-width: 768px) {
+  /* Logo upload container adjustments */
+  .logo-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-preview-container,
+  .logo-upload-placeholder {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+
+  /* Form group adjustments for mobile */
+  .form-group {
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Special handling for the logo label */
+  .form-group.logo-upload-label {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Logo upload links */
+  .logo-upload-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust the logo section layout for very small screens */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.logo {
+    order: -1; /* Move logo to top on small screens */
+    margin-bottom: 1.5rem;
+  }
+
+  .xyz label {
+    padding-left: 0;
+    justify-content: center;
+  }
+
+  .logo-preview-container,
+  .logo-upload-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+}
