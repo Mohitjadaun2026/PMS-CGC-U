@@ -1,7 +1,12 @@
 import React ,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
+import { Moon, Sun } from "lucide-react";
 import "./header.css";
+<<<<<<< HEAD
 import collegeLogo from "../assets/cgc.png"; // Make sure to add the logo to your assets folder
+=======
+import collegeLogo from "../assets/cgc logo.png"; // Make sure to add the logo to your assets folder
+>>>>>>> f5441cc (modified navbar)
 
 function Header() { const [theme, setTheme] = useState('light');
 
@@ -43,28 +48,27 @@ function Header() { const [theme, setTheme] = useState('light');
         <Link to="/jobs">Jobs</Link>
         <Link to="/profile">Student Profile</Link>
         <Link to="/admin-job-posting">Admin Panel</Link>
-        <Link to="/signin" className="login-btn">Login</Link>
 
-        {/* Theme toggle button */}
+         {/* Theme toggle button */}
         <button 
           onClick={toggleTheme} 
           className="theme-toggle-btn"
           aria-label="Toggle light/dark theme"
-          style={{
-            marginLeft: '1rem',
-            padding: '0.3rem 0.7rem',
-            cursor: 'pointer',
-            borderRadius: '4px',
-            border: 'none',
-            background: theme === 'light' ? '#333' : '#eee',
-            color: theme === 'light' ? '#fff' : '#333',
-          }}
         >
-          {theme === 'light' ? '🌞 Light' : '🌙 Dark'}
+          {theme === 'light' ? (
+    <Moon size={20} /> 
+  ) : (
+    <Sun size={20} />
+  )}
         </button>
+
+        <Link to="/signin" className="login-btn">Login</Link>
+
       </nav>
     </header>
   );
 }
 
 export default Header;
+
+
