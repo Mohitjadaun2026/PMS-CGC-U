@@ -2,15 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 10, 10, 0.95); /* Slightly darker for better contrast */
+  background: rgba(10, 10, 10, 0.95);
   color: var(--text-primary);
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 1.2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 215, 0, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  animation: headerScroll 0.5s ease-out forwards;
+}
+
+body.light .pms-header {
+  background: rgba(245, 245, 245, 0.95);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none;
 }
 
 .logo {
@@ -19,33 +27,16 @@
   gap: 1rem;
   transition: all var(--transition-speed) ease;
 }
-.theme-toggle-btn {
-  margin-left: 1rem;
-  padding: 0.3rem 0.7rem;
-  cursor: pointer;
-  border-radius: 4px;
-  border: none;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Light mode: yellow background, black text */
-body.light .theme-toggle-btn {
-  background: #FFD600;
-  color: #121212;
-}
-
-/* Dark mode: black background, yellow text */
-body.dark .theme-toggle-btn {
-  background: #121212;
-  color: #FFD600;
-}
-
 
 .logo-image {
   height: 42px;
   width: auto;
-  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3));
+  filter: drop-shadow(0 0 4px rgba(208, 197, 133, 0.929));
   transition: transform 0.3s ease;
+}
+
+body.light .logo-image {
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
 }
 
 .logo:hover .logo-image {
@@ -64,91 +55,57 @@ body.dark .theme-toggle-btn {
   transition: all 0.3s ease;
 }
 
+body.light .logo-link {
+  text-shadow: none;
+}
+
 .logo-link:hover {
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  text-shadow: 0 0 8px rgba(201, 191, 81, 0.947);
+}
+
+body.light .logo-link:hover {
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
 .nav-links {
   display: flex;
-  gap: 1.25rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
 .nav-links a {
-  color: var(--text-secondary);
+  position: relative;
+  color: #6b7280;
   text-decoration: none;
   font-weight: 500;
-  transition: all var(--transition-speed) ease;
-  padding: 0.6rem 1rem;
-  border-radius: var(--border-radius);
-  position: relative;
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
+  color: #3b82f6;
+}
+
+.dark .nav-links a {
+  color: #d1d5db;
+}
+
+.dark .nav-links a:hover {
   color: var(--accent-yellow);
-  background: rgba(255, 215, 0, 0.08);
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  bottom: -4px;
+  left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent-yellow);
-  transition: all var(--transition-speed) ease;
-  transform: translateX(-50%);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
-  width: 80%;
-}
-
-.login-btn {
-  background: var(--accent-yellow);
-  color: var(--bg-dark);
-  font-weight: 600;
-  border-radius: 20px;
-  padding: 0.6rem 1.6rem;
-  transition: all var(--transition-speed) ease;
-  border: 2px solid transparent;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
-}
-
-.login-btn:hover {
-  background: transparent;
-  color: var(--accent-yellow);
-  border-color: var(--accent-yellow);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
-}
-
-body.light .pms-header {
-  background: rgba(245, 245, 245, 0.95); /* light translucent bg */
-  color: var(--text-primary);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: none; /* Optional: remove blur for clarity on light bg */
-}
-
-body.light .logo-image {
-  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3)); /* softer gold shadow */
-}
-
-body.light .logo-link {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: none; /* Remove dark shadow on light background */
-}
-
-body.light .logo-link:hover {
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  width: 100%;
 }
 
 body.light .nav-links a {
@@ -157,69 +114,196 @@ body.light .nav-links a {
 
 body.light .nav-links a:hover {
   color: var(--accent-yellow);
-  background: rgba(212, 175, 55, 0.1);
 }
 
 body.light .nav-links a::after {
   background: var(--accent-yellow);
 }
 
-body.light .login-btn {
+.dark .nav-links a::after {
+  background: var(--accent-yellow);
+}
+
+/* Consolidated Theme Toggle Button */
+.theme-toggle-btn {
+  margin-left: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  background: rgba(231, 205, 117, 0.858);
+  color: #333;
+  box-shadow: 0 1px 3px rgba(231, 205, 117, 0.858);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  display: block;
+  color: inherit;
+  fill: none;
+  background: transparent;
+}
+
+.theme-toggle-btn:hover svg {
+  transform: scale(1.1);
+}
+
+body.dark .theme-toggle-btn {
+  background: rgba(238, 201, 80, 0.858);
+  color: #fefefe;
+}
+
+/* Consolidated Login Button */
+.login-btn {
+  font-weight: 600;
+  border-radius: 1px;
+  padding: 0.1rem 1rem;
+  transition: all var(--transition-speed) ease;
+  border: 2px solid transparent;
+  letter-spacing: 0.5px;
   background: var(--accent-yellow);
   color: var(--bg-dark);
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
 }
 
 body.light .login-btn:hover {
   background: transparent;
   color: var(--accent-yellow);
   border-color: var(--accent-yellow);
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
-  transform: translateY(-2px);
+}
+
+body.dark .login-btn {
+  color: #0e0101ea;
+  text-shadow: 0 1px 3px rgba(222, 216, 216, 0.5); 
+}
+
+body.dark .login-btn:hover {
+  border-color: var(--accent-yellow);
+}
+body.dark .login-btn:hover {
+  color: #333; 
 }
 
 
-/* Mobile responsiveness */
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .pms-header {
+    padding: 0.7rem 1rem;
+  }
+  .nav-links {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .pms-header {
+    padding: 0.6rem 0.9rem;
+  }
+  .nav-links {
+    gap: 1.5rem;
+  }
+  .logo-link {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet view */
 @media (max-width: 768px) {
   .pms-header {
     flex-direction: column;
     padding: 0.8rem 1rem;
     gap: 0.8rem;
     backdrop-filter: blur(8px);
+    text-align: center;
   }
-  
+
   .logo {
+    width: 100%;
+    justify-content: center;
     gap: 0.8rem;
   }
-  
+
   .logo-image {
     height: 36px;
   }
-  
+
   .logo-link {
     font-size: 1.1rem;
   }
-  
+
   .nav-links {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 1.5rem;
+    transform: translateX(-10px);
   }
-  
-  .nav-links a {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-  }
-  
+
+  .theme-toggle-btn,
   .login-btn {
-    padding: 0.4rem 1.2rem;
-    font-size: 0.85rem;
+    margin: 0.5rem 0;
   }
 }
 
-/* Animation for header on scroll */
+/* Mobile view */
+@media (max-width: 576px) {
+  .pms-header {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links a,
+  .login-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .logo-image {
+    height: 32px;
+  }
+
+  .logo-link {
+    font-size: 1rem;
+  }
+
+  .theme-toggle-btn {
+    padding: 0.4rem;
+    margin: 0.3rem 0;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+  .pms-header {
+    padding: 0.5rem;
+  }
+  .nav-links {
+    gap: 0.7rem;
+  }
+  .login-btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+
 @keyframes headerScroll {
   from {
     transform: translateY(-10px);
@@ -229,8 +313,4 @@ body.light .login-btn:hover {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.pms-header {
-  animation: headerScroll 0.5s ease-out forwards;
 }
