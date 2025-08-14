@@ -157,7 +157,7 @@ body.light .nav-links a::after {
 
 body.dark .theme-toggle-btn {
   background: rgba(238, 201, 80, 0.858);
-  color: #fefefe;
+  color: #fdfdfd;
 }
 
 /* Consolidated Login Button */
