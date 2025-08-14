@@ -1398,8 +1398,6 @@ body.light .select-all-btn:hover {
   background: rgba(180, 150, 0, 0.1); /* subtle golden hover in light mode */
 }
 
-}
-
 body.light .cancel-btn {
   color: #b38600;
   border: 1px solid rgba(180, 150, 0, 0.3);

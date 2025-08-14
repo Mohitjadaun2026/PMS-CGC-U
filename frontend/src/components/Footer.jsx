@@ -17,7 +17,7 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <h3 className="footer-logo">
-              Placement<span> System</span>
+              Campus<span>Recruitment</span>
             </h3>
             <p className="footer-tagline">Bridging talent with opportunity</p>
             <div className="footer-social">
@@ -99,7 +99,8 @@ function Footer() {
         {/* Bottom Section */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} Placement Manegement System. All rights reserved.
+            &copy; {new Date().getFullYear()} Placement Management System. All
+            rights reserved.
           </div>
           <div className="footer-cta">
             <a href="/signin" className="footer-cta-button">
