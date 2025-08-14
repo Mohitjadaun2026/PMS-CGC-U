@@ -142,10 +142,10 @@ body.light .hero-overlay {
   );
 }
 
+
 body.light .hero-title {
   color: var(--primary-maroon-dark);
 }
-
 body.light .hero-subtitle {
   color: var(--primary-maroon);
 }
@@ -202,9 +202,11 @@ body.light .hero-description {
 }
 
 .btn-outline:hover {
-  background: var(--primary-maroon);
-  color: var(--text-primary);
+  background: var(--primary-maroon); /* maroon theme */
+  color: var(--text-primary);        /* matching text color */
+  transform: scale(1.05);            /* subtle scale effect from master */
 }
+
 
 body.light .btn-primary {
   background-color: #800020;
@@ -636,7 +638,7 @@ body.light .stat-label {
 
 .cta-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
   justify-content: center;
 }
@@ -678,6 +680,13 @@ body.light .cta-title {
 
 body.light .cta-description {
   color: var(--text-secondary);
+}
+
+/* Light Mode CTA Buttons Layout */
+body.light .cta-buttons {
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
 }
 
 /* Responsive Design */

@@ -102,7 +102,7 @@ function Home() {
         
         <div className="hero-content">
           <h1 className="hero-title">
-            CGC Jhanjeri
+            CGC UNIVERSITY 
             <span className="hero-subtitle">
               Placement Management System
             </span>

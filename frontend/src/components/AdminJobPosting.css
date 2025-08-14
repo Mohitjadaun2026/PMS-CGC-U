@@ -1,23 +1,31 @@
-/* Main Container */
+/* Main Container - Futuristic Glass Morphism */
 .admin-job-posting-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 28px 18px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
-  background: #111;
+  background: #111; /* Dark maroon-friendly background */
   min-height: 100vh;
 }
 
 .admin-job-posting-container h1 {
-  color: #c00030;
+  color: #c00030; /* Maroon heading */
   margin-bottom: 30px;
   text-align: center;
-  letter-spacing: 1px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(192, 0, 48, 0.3); /* Soft maroon glow */
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
+
+
 body.light .admin-job-posting-container {
-  color: var(--text-primary);
-  background: #f9f9f9; /* light background, you can adjust */
+  color: #fff; /* Keep text visible on light background */
+  background: #f9f9f9; /* Light background */
   min-height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
@@ -26,49 +34,73 @@ body.light .admin-job-posting-container {
 }
 
 body.light .admin-job-posting-container h1 {
-  color: var(--maroon-700);
+  color: #c00030; /* Maroon heading */
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 1px;
+  position: relative;
 }
 
-/* Tabs */
+
+/* Futuristic Tabs */
 .admin-tabs {
   display: flex;
   margin-bottom: 30px;
-  border-bottom: 2px solid #c00030;
-  background: #181818;
+  border-bottom: 2px solid #c00030; /* Maroon underline */
+  background: #181818; /* Dark background, keep consistent with maroon theme */
   border-radius: 12px 12px 0 0;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid #c0003033; /* Subtle maroon border */
 }
 
+
 .admin-tabs button {
-  padding: 14px 32px;
-  background: none;
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  background: transparent;
   border: none;
   cursor: pointer;
   font-size: 17px;
-  color: #c00030;
+  color: #c00030; /* Maroon base text color */
   border-bottom: 3px solid transparent;
-  transition: all 0.3s;
   font-weight: 500;
-  background: #181818;
+  letter-spacing: 0.2px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.admin-tabs button svg {
+  transition: transform 0.3s ease;
 }
 
 .admin-tabs button:hover {
   background: #de0a3f;
-  color: #181818;
+  color: #fff;
+}
+
+.admin-tabs button:hover svg {
+  transform: translateY(-2px);
 }
 
 .admin-tabs button.active {
-  color: #181818;
-  background: #de0a3f;
-  border-bottom: 3px solid #c00030;
+  color: #fff;
+  background: #c00030;
+  border-bottom: 3px solid #de0a3f;
   font-weight: 600;
+  box-shadow: 0 4px 15px rgba(192, 0, 48, 0.3);
 }
+
+  
 body.light .admin-tabs {
-  background: #f0f0f0; /* light background */
-  border-bottom: 2px solid var(--maroon-700);
+  background: #f9f9f9; /* light background */
+  border-bottom: 2px solid #c00030;
   border-radius: 12px 12px 0 0;
   overflow: hidden;
   margin-bottom: 30px;
@@ -76,8 +108,8 @@ body.light .admin-tabs {
 }
 
 body.light .admin-tabs button {
-  background: #f0f0f0;
-  color: var(--maroon-700);
+  background: #f9f9f9;
+  color: #c00030;
   border: none;
   border-bottom: 3px solid transparent;
   cursor: pointer;
@@ -88,14 +120,14 @@ body.light .admin-tabs button {
 }
 
 body.light .admin-tabs button:hover {
-  background: var(--maroon-500);
-  color: var(--bg-dark);
+  background: #de0a3f;
+  color: #fff;
 }
 
 body.light .admin-tabs button.active {
-  color: var(--bg-dark);
-  background: var(--maroon-800);
-  border-bottom: 3px solid var(--maroon-700);
+  color: #fff;
+  background: #c00030;
+  border-bottom: 3px solid #de0a3f;
   font-weight: 600;
 }
 
@@ -104,7 +136,7 @@ body.light .admin-tabs button.active {
   background: #181818;
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.1);
+  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.1);
   color: #fff;
 }
 
@@ -122,24 +154,55 @@ body.light .admin-tabs button.active {
   letter-spacing: 0.5px;
 }
 
+.section-content {
+  padding: 1.5rem 1rem 0;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Grid Layout */
 .form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group logo label{
+  margin-bottom: 1.2rem;
+  position: relative;
   display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
+  align-items: center;
+  gap: 10px;
+  
+}
+
+.xyz label{
+    padding-left: 5rem;
 }
 
 .form-group {
-  flex: 1;
-  margin-bottom: 15px;
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-left: 2rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
   font-weight: 500;
   color: #c00030;
 }
 
+.form-group label svg {
+  font-size: 1.1rem;
+}
+
+/* Modern Input Fields */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="date"],
@@ -153,7 +216,8 @@ body.light .admin-tabs button.active {
   font-size: 15px;
   background: #222;
   color: #fff;
-  transition: border 0.2s, background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group input[type="text"]:focus,
@@ -167,16 +231,19 @@ body.light .admin-tabs button.active {
 }
 
 .form-group textarea {
-  min-height: 80px;
+  min-height: 120px;
   resize: vertical;
+  line-height: 1.6;
 }
 
+/* File input styling */
 .form-group input[type="file"] {
   padding: 5px;
   background: #222;
   color: #c00030;
 }
 
+/* Light mode job posting form */
 body.light .job-posting-form {
   background: #f9f9f9; /* Light background */
   color: var(--text-primary);
@@ -199,24 +266,74 @@ body.light .form-section h2 {
   letter-spacing: 0.5px;
 }
 
-body.light .form-row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
+/* Logo Upload - Interactive Zone */
+.logo-upload-container {
+  position: relative;
+  margin-top: 0.5rem;
 }
 
-body.light .form-group {
-  flex: 1;
-  margin-bottom: 15px;
-}
-
-body.light .form-group label {
+.logo-upload-label {
   display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo-preview-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px dashed rgba(255, 214, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.logo-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(40, 40, 50, 0.7);
+}
+
+
+.logo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 30, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #FFD600;
+}
+
+.logo-upload-placeholder {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40, 40, 50, 0.7);
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 214, 0, 0.4);
+  color: rgba(255, 214, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.logo-upload-placeholder svg {
+  font-size: 1.8rem;
   margin-bottom: 8px;
   font-weight: 500;
   color: var(--maroon-700);
 }
 
+/* Light mode form inputs */
 body.light .form-group input[type="text"],
 body.light .form-group input[type="email"],
 body.light .form-group input[type="date"],
@@ -243,11 +360,21 @@ body.light .form-group textarea:focus {
   outline: none;
 }
 
-body.light .form-group textarea {
-  min-height: 80px;
-  resize: vertical;
+/* Master branch enhancements */
+.logo-upload-input {
+  display: none;
 }
 
+.logo-upload-label:hover .logo-preview-container {
+  border-color: #FFD600;
+}
+
+
+.logo-upload-label:hover .logo-overlay {
+  opacity: 1;
+}
+
+/* File Input - Light Mode */
 body.light .form-group input[type="file"] {
   padding: 5px;
   background: #fff;
@@ -255,7 +382,7 @@ body.light .form-group input[type="file"] {
   border: 1.5px solid rgba(212, 55, 55, 0.33);
 }
 
-/* Enhanced Multi-Select Styles */
+/* Multi-Select Styles - Maroon Theme */
 .multi-select {
   height: auto;
   min-height: 100px;
@@ -291,6 +418,7 @@ body.light .form-group input[type="file"] {
   font-weight: bold;
 }
 
+/* Multi-Select - Light Mode */
 body.light .multi-select {
   background: #fff;
   color: var(--bg-dark);
@@ -314,22 +442,117 @@ body.light .multi-select option {
   transition: background 0.2s;
 }
 
-body.light .multi-select option:hover {
-  background: var(--maroon-700);
-  color: var(--bg-dark);
-}
-
+body.light .multi-select option:hover,
 body.light .multi-select option:checked {
   background: var(--maroon-700);
   color: var(--bg-dark);
   font-weight: bold;
 }
 
-/* Multi-select container for better styling */
-.multi-select-container {
-  position: relative;
+/* Checkbox Grid - Master Enhancements */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(40, 40, 50, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 214, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: rgba(50, 50, 60, 0.5);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.checkbox-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #FFD600;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.checkbox-item:hover {
+  background: rgba(255, 214, 0, 0.1);
+  border-color: rgba(255, 214, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-item:hover::before {
+  transform: scaleY(1);
+}
+
+.checkbox-item input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 214, 0, 0.6);
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+  background: #FFD600;
+  border-color: #FFD600;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #111;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.checkbox-label {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.checkbox-item:has(input:checked) .checkbox-label {
+  color: #FFD600;
+  font-weight: 600;
+}
+
+/* Selected Items Display */
+.selected-items {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 214, 0, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #FFD600;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Multi-Select Container Arrow - Maroon Theme */
 .multi-select-container::after {
   content: "⌄";
   position: absolute;
@@ -339,6 +562,7 @@ body.light .multi-select option:checked {
   color: #c00030;
   pointer-events: none;
 }
+
 body.light .multi-select-container::after {
   color: var(--maroon-700);
 }
@@ -347,9 +571,36 @@ body.light .multi-select-container::after {
 .logo-upload {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 6px;
 }
 
+/* Selection Controls and Labels - Master */
+.selected-label {
+  color: #FFD600;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.selection-controls {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.select-all-btn {
+  background: rgba(255, 214, 0, 0.1);
+  color: #FFD600;
+  border: 1px solid rgba(255, 214, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+/* Logo Preview - Maroon Theme */
 .logo-preview {
   width: 60px;
   height: 60px;
@@ -358,58 +609,102 @@ body.light .multi-select-container::after {
   border-radius: 8px;
   background: #222;
 }
+
 body.light .logo-preview {
   background: #fff;
   border: 2px solid var(--maroon-700);
   filter: drop-shadow(0 0 3px rgba(212, 55, 55, 0.5));
 }
 
-/* Form Actions */
+/* Select All Button Hover - Master */
+.select-all-btn:hover {
+  background: rgba(255, 214, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 214, 0, 0.1);
+}
+
+
+/* Form Actions - Floating Buttons */
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 15px;
-  margin-top: 30px;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  position: sticky;
+  bottom: 20px;
+  z-index: 10;
 }
 
 .submit-btn {
   background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
   color: white;
   border: none;
-  padding: 12px 32px;
-  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(192, 0, 48, 0.1); /* maroon shadow */
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
 }
 
 .submit-btn:hover {
   background: #64021b;
   color: white;
+  transform: translateY(-3px);
   box-shadow: 0 4px 24px rgba(255, 0, 0, 0.18);
 }
 
+.submit-btn:hover::after {
+  transform: translateX(0);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Cancel button */
 .cancel-btn {
   background: #181818;
   color: #c00030;
   border: 2px solid #c00030;
   padding: 12px 32px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .cancel-btn:hover {
   background: #c00030;
-  color: #181818;
-  border: 2px solid #c00030;
+  color: white;
+  box-shadow: 0 4px 20px rgba(192, 0, 48, 0.2);
 }
 
+
+/* Light Mode Overrides */
 body.light .submit-btn {
   background: linear-gradient(90deg, #c00030 0%, #b30000 100%);
   color: white; /* darker text for light bg */
@@ -432,73 +727,172 @@ body.light .cancel-btn:hover {
   background: #c00030;
   color: #fff;
   border: 2px solid #c00030;
+  transform: translateY(-2px);
 }
 
-/* Job Postings List */
+/* Job Postings List - Card Style */
 .job-postings-list {
   background: #181818;
-  padding: 32px;
+  padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.1);
+  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.1);
   color: #fff;
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
 .job-postings-list h2 {
   margin-top: 0;
   color: #c00030;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
+/* Empty State Design */
 .no-postings {
   text-align: center;
-  padding: 40px;
-  color: #c0003099;
-  font-style: italic;
+  padding: 3rem;
+  color: rgba(192, 0, 48, 0.5);
 }
+
+.empty-state {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: rgba(192, 0, 48, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.empty-state h3 {
+  color: #c00030;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.empty-state p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.create-first-btn {
+  background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.create-first-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(192, 0, 48, 0.3);
+}
+
+/* Modern Table Design */
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  background: rgba(25, 25, 35, 0.7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(192, 0, 48, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
 
 table {
   width: 100%;
-  border-collapse: collapse;
-  background: #181818;
-  color: #fff;
-}
-
-table th,
-table td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #c0003033;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 800px;
 }
 
 table th {
-  background-color: #222;
+  position: sticky;
+  top: 0;
+  background-color: #222; /* maroon theme base */
+  color: #c00030;         /* maroon text */
   font-weight: 600;
-  color: #c00030;
+  padding: 1rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #c0003033; /* subtle maroon border */
+  z-index: 2;
 }
 
-table tr:hover {
-  background-color: #222;
+table th:hover {
+  background: rgba(60, 60, 70, 0.9); /* hover effect retained */
 }
 
+
+.th-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+table td {
+  padding: 1.2rem;
+  border-bottom: 1px solid rgba(255, 214, 0, 0.05);
+  vertical-align: middle;
+  position: relative;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:hover td {
+  background: rgba(255, 214, 0, 0.03);
+}
+
+/* Company Cell with Logo */
 .company-cell {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .company-logo-small {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
-  border-radius: 50%;
+  border-radius: 50%; /* keep maroon theme rounded style */
   background: #222;
-  border: 1.5px solid #c00030;
+  border: 1.5px solid #c00030; /* maroon border */
+  padding: 4px; /* keep padding from master */
 }
 
+.company-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-weight: 500;
+  color: #fff; /* readable on dark maroon background */
+}
+
+.company-location {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* Light mode overrides */
 body.light .job-postings-list {
   background: #fff;
   color: #222;
-  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.15);
+  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.15);
 }
 
 body.light .job-postings-list h2 {
@@ -510,34 +904,47 @@ body.light .no-postings {
   font-style: italic;
 }
 
-body.light table {
-  background: #fff;
-  color: #222;
+
+/* Position Cell */
+.position-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-body.light table th,
-body.light table td {
-  border-bottom: 1px solid #ffecb3;
-  padding: 12px 15px;
-  text-align: left;
+.position-title {
+  font-weight: 500;
+  color: #fff;
 }
 
 body.light table th {
   background-color: #fff5cc;
   color: #b30000;
   font-weight: 600;
+  width: fit-content;
+  border: 1px solid rgba(192, 0, 48, 0.2); /* subtle maroon border */
 }
 
-body.light table tr:hover {
-  background-color: #fff2b8;
+/* Job Type Badge */
+.job-type-badge {
+  background: rgba(192, 0, 48, 0.1); /* maroon-themed background */
+  color: #c00030;                     /* maroon text */
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
-body.light .company-cell {
+
+/* Deadline Cell */
+.deadline-cell {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 
+/* Light mode company logo */
 body.light .company-logo-small {
   background: #fff5cc;
   border: 1.5px solid #b30000;
@@ -554,49 +961,75 @@ body.light .company-logo-small {
   margin: 2px;
   border: 1px solid #c0003033;
 }
+
 body.light .eligibility-badge {
   background: #ffcccc;
   color: #b30000;
   border: 1px solid #b3000040;
 }
 
-/* Action Buttons */
-.edit-btn {
-  background: #c00030;
-  color: #181818;
-  border: none;
-  padding: 7px 16px;
-  border-radius: 5px;
+/* Deadline indicator */
+.deadline-passed {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Action Buttons - Floating Icons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn, .delete-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  margin-right: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Edit Button - Maroon Theme */
+.edit-btn {
+  background: rgba(192, 0, 48, 0.1); /* subtle maroon bg */
+  color: #c00030;
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
 .edit-btn:hover {
-  background: #181818;
-  color: #c00030;
-  border: 1.5px solid #c00030;
-}
-
-.delete-btn {
   background: #c00030;
-  color: #fff;
-  border: none;
-  padding: 7px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  color: #181818;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(192, 0, 48, 0.2);
 }
 
+/* Delete Button - Maroon Theme */
+.delete-btn {
+  background: rgba(231, 76, 60, 0.1); /* keep red for delete */
+  color: rgba(231, 76, 60, 0.8);
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.delete-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+}
+
+
+/* Delete Button Hover - Maroon Theme */
 .delete-btn:hover {
   background: #c00030;
   color: #c00030;
   border: 1.5px solid #c00030;
 }
+
+/* Light Mode Edit Button */
 body.light .edit-btn {
   background: #ffb8b8;
   color: #5a0000;
@@ -610,17 +1043,102 @@ body.light .edit-btn:hover {
   border: 1.5px solid #5a0000;
 }
 
-body.light .delete-btn {
-  background: #f9d6d5; /* light red/pink */
-  color: #7a1f1f; /* dark red */
-  border: none;
-  transition: background 0.2s, color 0.2s;
+/* Sort Indicators */
+.sort-icon {
+  margin-left: 4px;
+  transition: transform 0.3s ease;
 }
 
-body.light .delete-btn:hover {
-  background: #7a1f1f; /* dark red */
-  color: #f9d6d5; /* light red/pink */
-  border: 1.5px solid #7a1f1f;
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .admin-job-posting-container {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .job-posting-form,
+  .job-postings-list {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .checkbox-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .form-actions {
+    position: static;
+    margin-top: 1.5rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .admin-tabs {
+    flex-direction: column;
+  }
+  
+  .admin-tabs button {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 214, 0, 0.1);
+  }
+  
+  .admin-tabs button.active {
+    border-bottom: 1px solid #FFD600;
+  }
+  
+  .search-bar {
+    max-width: 100%;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .submit-btn, .cancel-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-job-posting-container {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .admin-job-posting-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .job-posting-form,
+  .job-postings-list {
+    padding: 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+  }
+  
+  .logo-preview-container,
+  .logo-upload-placeholder {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 /* Checkbox Grid Styles */
@@ -630,145 +1148,237 @@ body.light .delete-btn:hover {
   gap: 12px;
   margin-bottom: 15px;
   padding: 15px;
-  background: #222;
+  background: #222; /* dark maroon theme */
   border-radius: 8px;
-  border: 1.5px solid #c0003055;
+  border: 1.5px solid #c0003055; /* subtle maroon border */
 }
 
-.checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  background: #2a2a2a;
-  border: 1px solid transparent;
+/* Animation for section toggle */
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+  }
 }
 
+@keyframes slideUp {
+  from {
+    max-height: 1000px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+
+/* Light Mode Styles */
+body.light .admin-job-posting-container {
+  background: rgba(245, 245, 250, 0.95);
+  color: #333;
+  border: 1px solid rgba(180, 150, 0, 0.15);
+}
+
+/* Checkbox Item Hover */
 .checkbox-item:hover {
   background: #c0003020;
   border-color: #c0003050;
 }
 
+/* Checkbox Input */
 .checkbox-item input[type="checkbox"] {
   appearance: none;
   width: 18px;
   height: 18px;
   border: 2px solid #c00030;
   border-radius: 3px;
-  background: #222;
+  background: #222; /* dark maroon background */
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
 }
 
+/* Checkbox Checked State */
 .checkbox-item input[type="checkbox"]:checked {
   background: #c00030;
   border-color: #c00030;
 }
 
-.checkbox-item input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #181818;
-  font-weight: bold;
-  font-size: 12px;
+/* Light Mode - Admin Posting Container Headers */
+body.light .admin-job-posting-container h1 {
+  color: #b38600;
+  text-shadow: 0 2px 8px rgba(180, 150, 0, 0.2);
 }
 
-.checkbox-label {
+body.light .admin-job-posting-container h1::after {
+  background: linear-gradient(90deg, #b38600, #d4a000);
+}
+
+body.light .admin-header::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(180, 150, 0, 0.3) 30%, 
+    rgba(180, 150, 0, 0.3) 70%, 
+    transparent 100%);
+}
+
+
+body.light .admin-tabs {
+  background: rgba(240, 240, 245, 0.9);
+  border: 1px solid rgba(180, 150, 0, 0.1);
+}
+
+body.light .admin-tabs button {
+  color: rgba(180, 150, 0, 0.7);
+}
+
+body.light .admin-tabs button:hover {
+  color: #b38600;
+  background: rgba(180, 150, 0, 0.05);
+}
+
+body.light .admin-tabs button.active {
   color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  user-select: none;
+  background: linear-gradient(135deg, #b38600, #d4a000);
 }
 
+/* Checkbox Label for Checked Items */
 .checkbox-item:has(input:checked) .checkbox-label {
   color: #c00030;
   font-weight: 600;
 }
 
+/* Selected Items Container */
 .selected-items {
   margin-top: 10px;
   padding: 10px;
-  background: #c0003010;
+  background: #c0003010; /* subtle maroon background */
   border-radius: 6px;
   border-left: 3px solid #c00030;
 }
 
+/* Selected Label */
 .selected-label {
   color: #c00030;
   font-weight: 600;
   margin-right: 8px;
 }
 
-.selected-items {
-  color: #fff;
-  font-size: 14px;
-}
-
-body.light .checkbox-grid {
-  background: #f5f5f5;
-  border: 1.5px solid #c0003055;
-}
-
-body.light .checkbox-item {
-  background: #fff;
-  border: 1px solid transparent;
-}
-
-body.light .checkbox-item:hover {
-  background: #ffcccc;
-  border-color: #c0003080;
-}
-
-body.light .checkbox-item input[type="checkbox"] {
-  background: #fff;
-  border: 2px solid #c00030;
-}
-
-body.light .checkbox-item input[type="checkbox"]:checked {
-  background: #c00030;
-  border-color: #c00030;
-}
-
-body.light .checkbox-item input[type="checkbox"]:checked::after {
+/* Light Mode Search Bar */
+body.light .search-bar input {
+  background: rgba(230, 230, 240, 0.9);
   color: #333;
 }
 
-body.light .checkbox-label {
-  color: #222;
+body.light .search-bar input:focus {
+  background: rgba(240, 240, 250, 0.9);
+  box-shadow: 0 0 0 2px rgba(180, 150, 0, 0.2);
 }
 
+/* Light Mode Form & Job Postings List */
+body.light .job-posting-form,
+body.light .job-postings-list {
+  background: rgba(240, 240, 250, 0.9);
+  border: 1px solid rgba(180, 150, 0, 0.1);
+}
+
+
+body.light .section-header h2,
+body.light .form-group label {
+  color: #b38600;
+}
+
+body.light .form-group input[type="text"],
+body.light .form-group input[type="email"],
+body.light .form-group input[type="date"],
+body.light .form-group input[type="file"],
+body.light .form-group select,
+body.light .form-group textarea {
+  background: rgba(230, 230, 240, 0.9);
+  color: #333;
+  border: 1px solid rgba(180, 150, 0, 0.2);
+}
+
+body.light .form-group input[type="text"]:focus,
+body.light .form-group input[type="email"]:focus,
+body.light .form-group input[type="date"]:focus,
+body.light .form-group select:focus,
+body.light .form-group textarea:focus {
+  border-color: #b38600;
+  background: rgba(240, 240, 250, 0.9);
+  box-shadow: 0 0 0 3px rgba(180, 150, 0, 0.1);
+}
+
+body.light .checkbox-grid {
+  background: #f5f5f5; /* light neutral background for maroon theme */
+  border: 1.5px solid #c0003055; /* subtle maroon border */
+}
+
+
+body.light .checkbox-item {
+  background: rgba(220, 220, 230, 0.7);
+}
+
+/* Light Mode Checkbox Hover */
+body.light .checkbox-item:hover {
+  background: #ffcccc;          /* subtle maroon hover */
+  border-color: #c0003080;      /* maroon border on hover */
+}
+
+/* Light Mode Checkbox Input */
+body.light .checkbox-item input[type="checkbox"] {
+  background: #fff;              /* white background for light mode */
+  border: 2px solid #c00030;    /* maroon border */
+}
+
+/* Light Mode Checked Checkbox */
+body.light .checkbox-item input[type="checkbox"]:checked {
+  background: #c00030;           /* maroon fill when checked */
+  border-color: #c00030;         /* maroon border when checked */
+}
+
+/* Optional: add checkmark color */
+body.light .checkbox-item input[type="checkbox"]:checked::after {
+  color: #333;                   /* dark checkmark for contrast */
+}
+
+body.light .checkbox-label {
+  color: #444;
+}
+
+/* Light Mode Checkbox Label for Checked Items */
 body.light .checkbox-item:has(input:checked) .checkbox-label {
-  color: #b30000;
+  color: #b30000;       /* maroon text for checked label */
   font-weight: 600;
 }
 
+/* Light Mode Selected Items Container */
 body.light .selected-items {
-  background: #ffd7cc;
-  border-left: 3px solid #c00030;
-  color: #5a0000;
+  background: #ffd7cc;       /* subtle maroon background */
+  border-left: 3px solid #c00030; /* maroon left border */
+  color: #5a0000;            /* darker maroon text */
 }
+
 
 body.light .selected-label {
   color: #c00030;
 }
 
-/* Selection Controls */
-.selection-controls {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: flex-end;
+body.light .select-all-btn {
+  background: rgba(180, 150, 0, 0.05);
+  color: #b38600;
+  border: 1px solid rgba(180, 150, 0, 0.2);
 }
 
+/* Select All Button - Maroon Theme */
 .select-all-btn {
-  background: #c00030;
-  color: #181818;
+  background: #c00030;       /* maroon background */
+  color: #181818;            /* dark text */
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
@@ -779,18 +1389,26 @@ body.light .selected-label {
 }
 
 .select-all-btn:hover {
-  background: #de0a3f;
+  background: #de0a3f;       /* brighter maroon on hover */
   transform: translateY(-1px);
 }
-body.light .selection-controls {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: flex-end;
+
+/* Light Mode Hover for Select All Button */
+body.light .select-all-btn:hover {
+  background: rgba(180, 150, 0, 0.1); /* subtle golden hover in light mode */
 }
 
+}
+
+body.light .cancel-btn {
+  color: #b38600;
+  border: 1px solid rgba(180, 150, 0, 0.3);
+}
+
+/* Light Mode Select All Button - Maroon Theme */
 body.light .select-all-btn {
-  background: #c00030;
-  color: white;
+  background: #c00030;       /* maroon background */
+  color: white;              /* white text */
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
@@ -802,9 +1420,65 @@ body.light .select-all-btn {
 }
 
 body.light .select-all-btn:hover {
-  background: #c00030;
+  background: #c00030;       /* maintain maroon on hover */
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(255, 8, 0, 0.5);
+}
+
+/* Master branch light-mode overrides preserved */
+body.light .cancel-btn:hover {
+  background: rgba(180, 150, 0, 0.1);
+  border-color: #b38600;
+}
+
+body.light .table-container {
+  background: rgba(230, 230, 240, 0.9);
+  border: 1px solid rgba(180, 150, 0, 0.1);
+}
+
+body.light table th {
+  background: rgba(220, 220, 230, 0.9);
+  color: #b38600;
+  border-bottom: 1px solid rgba(180, 150, 0, 0.1);
+}
+
+body.light table tr:hover td {
+  background: rgba(180, 150, 0, 0.03);
+}
+
+body.light .company-name {
+  color: #333;
+}
+
+body.light .company-location {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body.light .position-title {
+  color: #333;
+}
+
+body.light .job-type-badge {
+  background: rgba(180, 150, 0, 0.1);
+  color: #b38600;
+  border: 1px solid rgba(180, 150, 0, 0.2);
+}
+
+body.light .edit-btn {
+  background: rgba(180, 150, 0, 0.1);
+  color: #b38600;
+  border: 1px solid rgba(180, 150, 0, 0.2);
+}
+
+body.light .edit-btn:hover {
+  background: #b38600;
+  color: #fff;
+}
+
+body.light .delete-btn {
+  background: rgba(231, 76, 60, 0.1);
+  color: rgba(231, 76, 60, 0.8);
+  border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
 /* Responsive Styles */
@@ -823,56 +1497,116 @@ body.light .select-all-btn:hover {
   }
 }
 
+
+body.light .delete-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+body.light .empty-icon {
+  color: rgba(180, 150, 0, 0.2);
+}
+
+body.light .empty-state h3 {
+  color: #b38600;
+}
+
+body.light .empty-state p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body.light .create-first-btn {
+  background: linear-gradient(135deg, #b38600, #d4a000);
+  color: #fff;
+}
+
+/* Add these media queries to your existing CSS */
+
 @media (max-width: 768px) {
-  .form-row {
+  /* Logo upload container adjustments */
+  .logo-upload-container {
+    display: flex;
     flex-direction: column;
-    gap: 0;
+    align-items: center;
+    margin-bottom: 1.5rem;
   }
 
-  .form-actions {
-    justify-content: center;
+  .logo-preview-container,
+  .logo-upload-placeholder {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
   }
 
-  table {
-    display: block;
-    overflow-x: auto;
+  /* Form group adjustments for mobile */
+  .form-group {
+    padding-left: 0;
+    margin-bottom: 1.5rem;
   }
 
-  /* Adjust multi-select on mobile */
-  .multi-select {
-    min-height: 80px;
+/* Adjust multi-select on mobile */
+.multi-select {
+  min-height: 80px;
+}
+
+/* Special handling for the logo label */
+.form-group.logo-upload-label {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+
+  /* Logo upload links */
+  .logo-upload-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .admin-tabs {
-    flex-direction: column;
+  /* Adjust the logo section layout for very small screens */
+  .form-row {
+    grid-template-columns: 1fr;
   }
 
-  .admin-tabs button {
-    width: 100%;
-    text-align: left;
-    border-bottom: none;
-    border-left: 3px solid transparent;
+/* Admin Tabs - Active State */
+.admin-tabs button.active {
+  border-bottom: none;
+  border-left: 3px solid #c00030; /* maroon left border for active tab */
+}
+
+/* Form Group Logo Adjustments for Small Screens */
+.form-group.logo {
+  order: -1; /* Move logo to top on small screens */
+  margin-bottom: 1.5rem;
+}
+
+
+  .xyz label {
+    padding-left: 0;
+    justify-content: center;
   }
 
-  .admin-tabs button.active {
-    border-bottom: none;
-    border-left: 3px solid #c00030;
-  }
+/* Full-width buttons for small screens */
+.submit-btn,
+.cancel-btn {
+  width: 100%;
+}
 
-  .form-actions {
-    flex-direction: column;
-  }
+/* Stack eligibility badges on small screens */
+.eligibility-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .submit-btn,
-  .cancel-btn {
-    width: 100%;
-  }
+/* Logo preview and upload placeholders */
+.logo-preview-container,
+.logo-upload-placeholder {
+  width: 100px;
+  height: 100px;
+}
 
-  /* Stack eligibility badges on small screens */
-  .eligibility-badges-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
 }
