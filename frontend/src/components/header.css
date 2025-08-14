@@ -9,7 +9,7 @@
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -37,7 +37,7 @@ body.light .theme-toggle-btn {
 /* Dark mode: black background, yellow text */
 body.dark .theme-toggle-btn {
   background: #121212;
-  color: #ffd600;
+  color: #a00028;
 }
 
 .logo-image {
@@ -152,10 +152,6 @@ body.light .logo-link:hover {
   text-shadow: 0 0 8px rgba(212, 55, 55, 0.4);
 }
 
-/* body.light .nav-links a {
-  color: var(--text-secondary);
-} */
-
 body.light .nav-links a:hover {
   color: var(--maroon-700);
   background: rgba(212, 55, 55, 0.1);
@@ -174,7 +170,6 @@ body.light .login-btn {
 
 body.light .login-btn:hover {
   background: transparent;
-  /* color: var(--maroon-700); */
   border-color: var(--maroon-800);
   box-shadow: 0 6px 16px #5e0118;
   transform: translateY(-2px);

@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 28px 18px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
   background: #111;
   min-height: 100vh;
@@ -22,7 +22,7 @@ body.light .admin-job-posting-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 28px 18px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body.light .admin-job-posting-container h1 {
@@ -99,13 +99,12 @@ body.light .admin-tabs button.active {
   font-weight: 600;
 }
 
-
 /* Form Styles */
 .job-posting-form {
   background: #181818;
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.10);
+  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.1);
   color: #fff;
 }
 
@@ -183,7 +182,7 @@ body.light .job-posting-form {
   color: var(--text-primary);
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.1); /* softer yellow shadow */
+  box-shadow: 0 4px 24px rgba(212, 55, 55, 0.1);
 }
 
 body.light .form-section {
@@ -253,7 +252,7 @@ body.light .form-group input[type="file"] {
   padding: 5px;
   background: #fff;
   color: var(--maroon-700);
-  border: 1.5px solid rgba(212, 175, 55, 0.33);
+  border: 1.5px solid rgba(212, 55, 55, 0.33);
 }
 
 /* Enhanced Multi-Select Styles */
@@ -295,7 +294,7 @@ body.light .form-group input[type="file"] {
 body.light .multi-select {
   background: #fff;
   color: var(--bg-dark);
-  border: 1.5px solid rgba(212, 175, 55, 0.33);
+  border: 1.5px solid rgba(212, 55, 55, 0.33);
   min-height: 100px;
   padding: 5px;
   border-radius: 6px;
@@ -311,7 +310,7 @@ body.light .multi-select option {
   padding: 8px 12px;
   background: #fff;
   color: var(--bg-dark);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
   transition: background 0.2s;
 }
 
@@ -344,7 +343,6 @@ body.light .multi-select-container::after {
   color: var(--maroon-700);
 }
 
-
 /* Logo Upload */
 .logo-upload {
   display: flex;
@@ -363,7 +361,7 @@ body.light .multi-select-container::after {
 body.light .logo-preview {
   background: #fff;
   border: 2px solid var(--maroon-700);
-  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
+  filter: drop-shadow(0 0 3px rgba(212, 55, 55, 0.5));
 }
 
 /* Form Actions */
@@ -384,14 +382,14 @@ body.light .logo-preview {
   font-size: 16px;
   font-weight: 600;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.10);
+  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.1);
   letter-spacing: 0.5px;
 }
 
 .submit-btn:hover {
   background: #64021b;
   color: white;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.18);
+  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.18);
 }
 
 .cancel-btn {
@@ -441,7 +439,7 @@ body.light .cancel-btn:hover {
   background: #181818;
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.10);
+  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.1);
   color: #fff;
 }
 
@@ -500,15 +498,15 @@ table tr:hover {
 body.light .job-postings-list {
   background: #fff;
   color: #222;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.15);
+  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.15);
 }
 
 body.light .job-postings-list h2 {
-  color: #b38600; /* darker yellow */
+  color: #b30000;
 }
 
 body.light .no-postings {
-  color: #b3860040; /* lighter yellow with opacity */
+  color: #b3000040;
   font-style: italic;
 }
 
@@ -542,7 +540,7 @@ body.light .company-cell {
 
 body.light .company-logo-small {
   background: #fff5cc;
-  border: 1.5px solid #b38600;
+  border: 1.5px solid #b30000;
 }
 
 /* Badge styles for eligibility tags */
@@ -557,11 +555,10 @@ body.light .company-logo-small {
   border: 1px solid #c0003033;
 }
 body.light .eligibility-badge {
-  background: #fff8cc; /* very light yellow */
-  color: #b38600; /* darker yellow */
-  border: 1px solid #b3860040; /* slightly transparent darker yellow */
+  background: #ffcccc;
+  color: #b30000;
+  border: 1px solid #b3000040;
 }
-
 
 /* Action Buttons */
 .edit-btn {
@@ -601,16 +598,16 @@ body.light .eligibility-badge {
   border: 1.5px solid #c00030;
 }
 body.light .edit-btn {
-  background: #fff1b8; /* light yellow */
-  color: #5a4700; /* dark mustard */
+  background: #ffb8b8;
+  color: #5a0000;
   border: none;
   transition: background 0.2s, color 0.2s;
 }
 
 body.light .edit-btn:hover {
-  background: #5a4700; /* dark mustard */
-  color: #fff1b8; /* light yellow */
-  border: 1.5px solid #5a4700;
+  background: #5a0000;
+  color: #ffb8b8;
+  border: 1.5px solid #5a0000;
 }
 
 body.light .delete-btn {
@@ -625,7 +622,6 @@ body.light .delete-btn:hover {
   color: #f9d6d5; /* light red/pink */
   border: 1.5px solid #7a1f1f;
 }
-
 
 /* Checkbox Grid Styles */
 .checkbox-grid {
@@ -802,7 +798,7 @@ body.light .select-all-btn {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(255, 214, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.3);
 }
 
 body.light .select-all-btn:hover {
@@ -811,18 +807,17 @@ body.light .select-all-btn:hover {
   box-shadow: 0 4px 10px rgba(255, 8, 0, 0.5);
 }
 
-
 /* Responsive Styles */
 @media (max-width: 900px) {
   .job-posting-form,
   .job-postings-list {
     padding: 18px;
   }
-  
+
   .form-row {
     flex-wrap: wrap;
   }
-  
+
   .form-group {
     min-width: 100%;
   }
@@ -842,7 +837,7 @@ body.light .select-all-btn:hover {
     display: block;
     overflow-x: auto;
   }
-  
+
   /* Adjust multi-select on mobile */
   .multi-select {
     min-height: 80px;
@@ -870,10 +865,11 @@ body.light .select-all-btn:hover {
     flex-direction: column;
   }
 
-  .submit-btn, .cancel-btn {
+  .submit-btn,
+  .cancel-btn {
     width: 100%;
   }
-  
+
   /* Stack eligibility badges on small screens */
   .eligibility-badges-container {
     display: flex;

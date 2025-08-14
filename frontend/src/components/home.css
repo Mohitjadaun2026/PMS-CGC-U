@@ -7,7 +7,7 @@
   --primary-maroon: #800020;
   --primary-maroon-dark: #32010d;
   --primary-maroon-light: #a00028;
-  --accent-gold: #d4af37;
+  --accent-gold: #a00028;
   --card-bg-dark: rgba(30, 30, 30, 0.85);
   --card-bg-light: rgba(255, 255, 255, 0.85);
   --border-radius: 8px;
@@ -36,7 +36,7 @@ body.light {
   --primary-maroon: #a10028;
   --primary-maroon-dark: #600018;
   --primary-maroon-light: #a00028;
-  --accent-gold: #d4af37;
+  --accent-gold: #a00028;
   --card-bg-dark: rgba(245, 245, 245, 0.85);
   --card-bg-light: rgba(255, 255, 255, 0.85);
 }
@@ -101,11 +101,6 @@ body.light .container {
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  /* background: linear-gradient(
-    90deg,
-    var(--text-primary),
-    var(--primary-maroon)
-  ); */
   background-color: white;
   -webkit-background-clip: text;
   background-clip: text;
@@ -147,13 +142,6 @@ body.light .hero-overlay {
   );
 }
 
-/* body.light .hero-title {
-  background: linear-gradient(
-    90deg,
-    var(--text-primary),
-    var(--primary-maroon)
-  );
-} */
 body.light .hero-title {
   color: var(--primary-maroon-dark);
 }
@@ -267,11 +255,6 @@ body.light .btn-outline:hover {
   font-weight: 800;
   margin-bottom: 1rem;
   background-color: white;
-  /* background: linear-gradient(
-    90deg,
-    var(--text-primary),
-    var(--primary-maroon)
-  ); */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -527,11 +510,6 @@ body.light .partner-card:hover .partner-logo {
 .stats-section {
   padding: 5rem 0;
   background-color: var(--primary-maroon-dark);
-  /* background: linear-gradient(
-    to right,
-    rgba(128, 0, 32, 0.2),
-    rgba(96, 0, 24, 0.1)
-  ); */
   position: relative;
   overflow: hidden;
 }

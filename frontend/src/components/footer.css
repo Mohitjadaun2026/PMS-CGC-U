@@ -7,7 +7,7 @@
   bottom: 0;
   width: 100%;
   font-size: 1rem;
-  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  border-top: 1px solid rgba(212, 55, 55, 0.2);
   backdrop-filter: blur(8px);
   z-index: 100;
 }
@@ -63,7 +63,7 @@
 body.light .pms-footer {
   background: rgba(245, 245, 245, 0.95); /* light translucent bg */
   color: var(--text-primary);
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-top: 1px solid rgba(212, 55, 55, 0.2);
   backdrop-filter: none; /* optional: remove blur on light bg */
 }
 

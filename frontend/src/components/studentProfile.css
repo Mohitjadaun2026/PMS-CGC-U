@@ -87,9 +87,9 @@ body.light .profile-title {
   border-bottom: none;
 }
 body.light .notification-badge span {
-  background-color: var(--maroon-700); /* keep yellow */
-  color: #fff; /* white text for better contrast on yellow */
-  border: 1.5px solid #b8860b; /* subtle border to distinguish badge */
+  background-color: var(--maroon-700);
+  color: #fff;
+  border: 1.5px solid #890404;
 }
 
 body.light .notification-dropdown {
@@ -152,14 +152,14 @@ body.light .notification-item:last-child {
 
 .profile-section h3 {
   margin-top: 0;
-  color: var(--maroon-500); /* Yellow headers */
+  color: var(--maroon-500); 
   border-bottom: 1px solid #333;
   padding-bottom: 10px;
 }
 
 .profile-section a {
   margin-top: 0;
-  color: var(--text-secondary); /* Yellow headers */
+  color: var(--text-secondary); 
   border-bottom: 1px solid #333;
   padding-bottom: 10px;
 }
@@ -176,7 +176,7 @@ body.light .notification-item:last-child {
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid #1e1e1e;
-  box-shadow: 0 0 0 2px #c0392b; /* Yellow outline */
+  box-shadow: 0 0 0 2px #c0392b; 
 }
 body.light .profile-tabs {
   border-bottom: 1px solid #ccc;
@@ -189,11 +189,11 @@ body.light .profile-tabs button {
 }
 
 body.light .profile-tabs button:hover {
-  color: var(--maroon-700); /* darker yellow hover */
+  color: var(--maroon-700);
 }
 
 body.light .profile-tabs button.active {
-  color: var(--maroon-800); /* active tab dark yellow */
+  color: var(--maroon-800);
   border-bottom: 3px solid var(--maroon-800);
   font-weight: 600;
 }
@@ -239,12 +239,12 @@ body.light .student-photo {
 }
 
 .profile-save-btn:hover {
-  background-color: #ffc107; /* Brighter yellow */
+  background-color: #890404; 
   transform: translateY(-2px);
 }
 
 .download-btn {
-  background-color: #dc0d40; /* Green (kept for clarity) */
+  background-color: #dc0d40; 
   color: white;
 }
 
@@ -252,7 +252,7 @@ body.light .student-photo {
   background-color: #e74c3c; /* Red (kept for warnings) */
 }
 body.light .profile-save-btn {
-  background-color: #b8860b; /* Muted darker yellow */
+  background-color: #b80b0b; 
   color: #fff; /* White text for contrast */
   border: none;
   padding: 10px 20px;
@@ -263,12 +263,12 @@ body.light .profile-save-btn {
 }
 
 body.light .profile-save-btn:hover {
-  background-color: #d4af37; /* Brighter yellow */
+  background-color: #950000; 
   transform: translateY(-2px);
 }
 
 body.light .download-btn {
-  background-color: var(--maroon-700); /* Slightly darker green */
+  background-color: var(--maroon-700); 
   color: white;
 }
 
@@ -280,7 +280,7 @@ body.light .withdraw-btn {
 /* Tables & Cards */
 .applications-list th {
   background-color: #1e1e1e;
-  color: #dc0d40; /* Yellow headers */
+  color: #dc0d40; 
 }
 
 .applications-list tr:hover {
@@ -334,13 +334,13 @@ body.light .stats-card {
 }
 
 body.light .progress-bar {
-  background-color: #b8860b; /* Muted yellow for light mode */
+  background-color: #b80b0b; 
 }
 
 /* Hover Effects */
 button:hover,
 .drive-card:hover {
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); /* Yellow glow */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
 }
 
 /* ===== EDIT MODE SPECIFIC STYLES ===== */
@@ -354,7 +354,7 @@ button:hover,
 }
 body.light button:hover,
 body.light .drive-card:hover {
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.15); /* Softer yellow glow */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.15); 
 }
 
 body.light .student-profile-form {
@@ -399,22 +399,22 @@ body.light .student-profile-form input[type="text"]:focus,
 body.light .student-profile-form input[type="email"]:focus,
 body.light .student-profile-form textarea:focus,
 body.light .student-profile-form select:focus {
-  border-color: #ffd700; /* Yellow focus */
+  border-color: #890404; 
   outline: none;
 }
 
 /* Focus State */
 .student-profile-form input:focus,
 .student-profile-form textarea:focus {
-  border-color: #ffd700; /* Yellow accent */
+  border-color: #890404; 
   outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
 }
 body.light .student-profile-form input:focus,
 body.light .student-profile-form textarea:focus {
-  border-color: #ffd700; /* Yellow accent */
+  border-color: #890404; 
   outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
 }
 
 /* Labels */
@@ -444,18 +444,18 @@ body.light .student-profile-form label {
 }
 
 .upload-btn:hover {
-  border-color: #ffd700;
+  border-color: #890404;
   background: #2a2a2a;
 }
 body.light .upload-btn {
-  background: var(--maroon-500); /* bright yellow */
+  background: var(--maroon-500); 
   color: white; /* dark text */
   border: 1.5px solid transparent;
   transition: background 0.3s, border-color 0.3s;
 }
 
 body.light .upload-btn:hover {
-  background: #c0392b; /* lighter yellow */
+  background: #c0392b; 
   border-color: white;
   color: #121212;
 }
