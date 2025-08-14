@@ -12,6 +12,7 @@
   border-bottom: 1px solid rgba(255, 215, 0, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   animation: headerScroll 0.5s ease-out forwards;
+  flex-wrap: wrap; /* ✅ allow wrapping for small screens */
 }
 
 body.light .pms-header {
@@ -71,6 +72,8 @@ body.light .logo-link:hover {
   display: flex;
   gap: 2.5rem;
   align-items: center;
+  flex-wrap: wrap; /* ✅ allow wrapping for narrow widths */
+  justify-content: center;
 }
 
 .nav-links a {
@@ -81,9 +84,6 @@ body.light .logo-link:hover {
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #3b82f6;
-}
 
 .dark .nav-links a {
   color: #d1d5db;
@@ -100,7 +100,6 @@ body.light .logo-link:hover {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
   transition: width 0.3s ease;
 }
 
@@ -169,7 +168,7 @@ body.dark .theme-toggle-btn {
   border: 2px solid transparent;
   letter-spacing: 0.5px;
   background: var(--accent-yellow);
-  color: var(--bg-dark);
+  color: var(--bg-dark); 
   box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
@@ -185,18 +184,14 @@ body.light .login-btn:hover {
 }
 
 body.dark .login-btn {
-  color: #0e0101ea;
+  color: #4d4b4b;
   text-shadow: 0 1px 3px rgba(222, 216, 216, 0.5); 
 }
 
 body.dark .login-btn:hover {
   border-color: var(--accent-yellow);
-}
-body.dark .login-btn:hover {
   color: #333; 
 }
-
-
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
@@ -223,15 +218,12 @@ body.dark .login-btn:hover {
 /* Tablet view */
 @media (max-width: 768px) {
   .pms-header {
-    flex-direction: column;
-    padding: 0.8rem 1rem;
+    justify-content: center;
     gap: 0.8rem;
-    backdrop-filter: blur(8px);
     text-align: center;
   }
 
   .logo {
-    width: 100%;
     justify-content: center;
     gap: 0.8rem;
   }
@@ -240,21 +232,20 @@ body.dark .login-btn:hover {
     height: 36px;
   }
 
-  .logo-link {
-    font-size: 1.1rem;
-  }
-
   .nav-links {
-    width: 100%;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    transform: translateX(-10px);
+    gap: 1.2rem;
   }
 
   .theme-toggle-btn,
   .login-btn {
     margin: 0.5rem 0;
+  }
+  .logo {
+    display: none !important; /* removes it entirely */
+  }
+  .nav-links{
+    gap: 0.5rem;
   }
 }
 
@@ -265,9 +256,7 @@ body.dark .login-btn:hover {
   }
 
   .nav-links {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: center;
+    gap: 0.5rem;
   }
 
   .nav-links a,
@@ -280,13 +269,12 @@ body.dark .login-btn:hover {
     height: 32px;
   }
 
-  .logo-link {
-    font-size: 1rem;
-  }
-
   .theme-toggle-btn {
     padding: 0.4rem;
     margin: 0.3rem 0;
+  }
+  .logo {
+    display: none;
   }
 }
 
@@ -296,11 +284,14 @@ body.dark .login-btn:hover {
     padding: 0.5rem;
   }
   .nav-links {
-    gap: 0.7rem;
+    gap: 0.5rem;
   }
   .login-btn {
     padding: 0.3rem 0.8rem;
     font-size: 0.75rem;
+  }
+  .logo{
+    display: none; 
   }
 }
 
