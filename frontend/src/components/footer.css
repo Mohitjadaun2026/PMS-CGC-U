@@ -7,7 +7,7 @@
   bottom: 0;
   width: 100%;
   font-size: 1rem;
-  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  border-top: 1px solid rgba(212, 55, 55, 0.2);
   backdrop-filter: blur(8px);
   z-index: 100;
 }
@@ -33,7 +33,7 @@
 }
 
 .footer-links a {
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   text-decoration: none;
   font-size: 0.95rem;
   transition: all var(--transition-speed) ease;
@@ -48,7 +48,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent-yellow);
+  background: var(--maroon-600);
   transition: width var(--transition-speed) ease;
 }
 
@@ -63,7 +63,7 @@
 body.light .pms-footer {
   background: rgba(245, 245, 245, 0.95); /* light translucent bg */
   color: var(--text-primary);
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-top: 1px solid rgba(212, 55, 55, 0.2);
   backdrop-filter: none; /* optional: remove blur on light bg */
 }
 
@@ -72,7 +72,7 @@ body.light .copyright {
 }
 
 body.light .footer-links a {
-  color: var(--accent-yellow);
+  color: var(--maroon-800);
   font-size: 0.95rem;
   position: relative;
   padding: 0.3rem 0;
@@ -80,7 +80,7 @@ body.light .footer-links a {
 }
 
 body.light .footer-links a::after {
-  background: var(--accent-yellow);
+  background: var(--maroon-600);
 }
 
 body.light .footer-links a:hover {
