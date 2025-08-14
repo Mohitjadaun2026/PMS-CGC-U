@@ -15,13 +15,15 @@ This document records **all contributions** to the project and assigns points ba
 > ✅ **Approval:** Points updated **only** by the Mentor or Project Admin (PA) at the end of the day.
 
 
-  📋 Contributor Records     
-| #️⃣ S.No | 👤 GitHub Profile | 🎯 Points | 🔗 PR No. | 📌 Task Description                                    |
-| -------- | ----------------- | --------- | --------- | ------------------------------------------------------ |
-| 1        | hemanth5055       | 3         | #19       | Enhanced contact links appearance                      |
-| 2        | Jai-76            | 3         | #1        | License Missing from Repository                        |
-| 3        | Sangeeta-20-stack | 3         | #2        | Add Dark/Light Mode Toggle for Theme Switching         |
-| 4        | khizar-hayath     | 3         | #26       | Added favicon, navbar logo and website title           |
-| 5        | khizar-hayath     | 3         | #37       | Fix title visibility and inconsistent button behaviour |
-|
+Contributors:
+
+| #️⃣ S.No | 👤 GitHub Profile | 🎯 Points | 🔗 PR No. | 📌 Task Description                                      |
+| -------- | ----------------- | --------- | --------- | -------------------------------------------------------- |
+| 1        | hemanth5055       | 3         | #19       | Enhanced contact links appearance                        |
+| 2        | Jai-76            | 3         | #1        | License Missing from Repository                          |
+| 3        | Sangeeta-20-stack | 3         | #2        | Add Dark/Light Mode Toggle for Theme Switching           |
+| 4        | khizar-hayath     | 3         | #26       | Added favicon, navbar logo and website title             |
+| 5        | khizar-hayath     | 3         | #37       | Fix title visibility and inconsistent button behaviour   |
+| 6        | akofficial10add   | 5         | #36       | Enhance Job Posting Management UI & Fix Alignment Issues |
+
 
