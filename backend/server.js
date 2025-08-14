@@ -1,14 +1,17 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
-require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 
 // Enable CORS for all origins (you can restrict this later)
 const corsOptions = {
-  origin: 'https://pms-cgc-u.vercel.app',
+  origin: [
+    'https://pms-cgc-u.vercel.app',
+    'http://localhost:3000'
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
@@ -33,8 +36,9 @@ app.use('/api/jobs', jobRoutes);
 // Connect to MongoDB (use environment variable for production)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
 mongoose.connect(MONGODB_URI)
+
   .then(() => {
-    console.log('Connected to MongoDB Atlas');
+    console.log(`✅ Connected to MongoDB Atlas [Env: ${process.env.NODE_ENV || 'development'}]`);
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err);

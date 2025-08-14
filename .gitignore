@@ -11,6 +11,8 @@ node_modules/
 # Environment files
 .env
 .env.*
+backend/.env
+
 
 # OS files
 .DS_Store
