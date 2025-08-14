@@ -129,11 +129,6 @@ body.light .hero-overlay {
   background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
 }
 
-body.light .hero-title {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
-  /* Make sure --text-primary and --accent-yellow are set for light mode */
-}
-
 body.light .hero-subtitle {
   color: var(--accent-yellow);
 }
@@ -185,6 +180,7 @@ body.light .hero-description {
 }
 
 .btn-outline:hover {
+  transform: scale(1.05);
   background: var(--accent-yellow);
   color: var(--bg-dark);
 }
@@ -605,7 +601,7 @@ body.light .stat-label {
 
 .cta-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
   justify-content: center;
 }
@@ -630,12 +626,8 @@ body.light .cta-description {
   color: var(--text-secondary);
 }
 
-body.light .cta-container {
-  /* same styling applies; text color controlled by children */
-}
-
 body.light .cta-buttons {
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
   justify-content: center;
 }
