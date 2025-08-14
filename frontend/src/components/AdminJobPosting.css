@@ -2,82 +2,58 @@
 .admin-job-posting-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #e0e0e0;
-  background: rgba(15, 15, 20, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.36);
-  border: 1px solid rgba(255, 214, 0, 0.12);
-  min-height: 90vh;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  padding: 28px 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  background: #111; /* Dark maroon-friendly background */
+  min-height: 100vh;
 }
 
 .admin-job-posting-container h1 {
-  color: #FFD600;
-  margin-bottom: 2rem;
+  color: #c00030; /* Maroon heading */
+  margin-bottom: 30px;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(255, 214, 0, 0.3);
+  text-shadow: 0 2px 8px rgba(192, 0, 48, 0.3); /* Soft maroon glow */
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-.admin-job-posting-container h1::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 4px;
-  background: linear-gradient(90deg, #FFD600, #FFA000);
-  border-radius: 2px;
+
+body.light .admin-job-posting-container {
+  color: #fff; /* Keep text visible on light background */
+  background: #f9f9f9; /* Light background */
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Header with animated gradient */
-.admin-header {
+body.light .admin-job-posting-container h1 {
+  color: #c00030; /* Maroon heading */
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 1px;
   position: relative;
-  padding-bottom: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-.admin-header::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 214, 0, 0.5) 30%, 
-    rgba(255, 214, 0, 0.5) 70%, 
-    transparent 100%);
-}
-
-.header-icon {
-  vertical-align: middle;
-  margin-right: 12px;
-  filter: drop-shadow(0 2px 4px rgba(255, 214, 0, 0.4));
-}
 
 /* Futuristic Tabs */
 .admin-tabs {
   display: flex;
-  margin-bottom: 2.5rem;
-  background: rgba(30, 30, 40, 0.7);
-  border-radius: 16px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #c00030; /* Maroon underline */
+  background: #181818; /* Dark background, keep consistent with maroon theme */
+  border-radius: 12px 12px 0 0;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 214, 0, 0.1);
+  border: 1px solid #c0003033; /* Subtle maroon border */
 }
+
 
 .admin-tabs button {
   flex: 1;
@@ -85,11 +61,12 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.05rem;
-  color: rgba(255, 214, 0, 0.7);
+  font-size: 17px;
+  color: #c00030; /* Maroon base text color */
+  border-bottom: 3px solid transparent;
   font-weight: 500;
   letter-spacing: 0.2px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -98,13 +75,14 @@
   gap: 10px;
 }
 
+
 .admin-tabs button svg {
   transition: transform 0.3s ease;
 }
 
 .admin-tabs button:hover {
-  color: #FFD600;
-  background: rgba(255, 214, 0, 0.08);
+  background: #de0a3f;
+  color: #fff;
 }
 
 .admin-tabs button:hover svg {
@@ -112,113 +90,68 @@
 }
 
 .admin-tabs button.active {
-  color: #111;
-  background: linear-gradient(135deg, #FFD600, #FFC000);
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3);
-}
-
-.admin-tabs button.active::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 3px;
-  background: #111;
-  border-radius: 3px 3px 0 0;
-}
-
-/* Search Bar with Glow Effect */
-.search-bar {
-  position: relative;
-  max-width: 400px;
-  margin-left: auto;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 0.8rem 1.2rem 0.8rem 3rem;
-  border-radius: 50px;
-  border: none;
-  background: rgba(40, 40, 50, 0.8);
   color: #fff;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #c00030;
+  border-bottom: 3px solid #de0a3f;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(192, 0, 48, 0.3);
 }
 
-.search-bar input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 214, 0, 0.3), 
-              0 4px 20px rgba(255, 214, 0, 0.2);
-  background: rgba(50, 50, 60, 0.9);
+  
+body.light .admin-tabs {
+  background: #f9f9f9; /* light background */
+  border-bottom: 2px solid #c00030;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  margin-bottom: 30px;
+  display: flex;
 }
 
-.search-bar::before {
-  content: '🔍';
-  position: absolute;
-  left: 1.2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.7;
+body.light .admin-tabs button {
+  background: #f9f9f9;
+  color: #c00030;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 14px 32px;
+  transition: all 0.3s;
+  font-weight: 500;
 }
 
-/* Form Styles - Glass Panel */
+body.light .admin-tabs button:hover {
+  background: #de0a3f;
+  color: #fff;
+}
+
+body.light .admin-tabs button.active {
+  color: #fff;
+  background: #c00030;
+  border-bottom: 3px solid #de0a3f;
+  font-weight: 600;
+}
+
+/* Form Styles */
 .job-posting-form {
-  background: rgba(25, 25, 35, 0.7);
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 214, 0, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #181818;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.1);
+  color: #fff;
 }
 
 .form-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 214, 0, 0.1);
-  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c0003033;
 }
 
-.form-section:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.section-header:hover {
-  background: rgba(255, 214, 0, 0.05);
-}
-
-.section-header h2 {
-  color: #FFD600;
-  margin: 0;
-  font-size: 1.3rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-header svg {
-  transition: transform 0.3s ease;
-}
-
-.section-header:hover svg {
-  color: #FFD600;
+.form-section h2 {
+  color: #c00030;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 
 .section-content {
@@ -262,11 +195,7 @@
   display: block;
   margin-bottom: 0.8rem;
   font-weight: 500;
-  color: #FFD600;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #c00030;
 }
 
 .form-group label svg {
@@ -281,11 +210,11 @@
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.9rem 1.2rem;
-  border: 1px solid rgba(255, 214, 0, 0.3);
-  border-radius: 10px;
-  font-size: 0.95rem;
-  background: rgba(40, 40, 50, 0.7);
+  padding: 10px;
+  border: 1.5px solid #c0003055;
+  border-radius: 6px;
+  font-size: 15px;
+  background: #222;
   color: #fff;
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -296,9 +225,8 @@
 .form-group input[type="date"]:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #FFD600;
-  background: rgba(50, 50, 60, 0.9);
-  box-shadow: 0 0 0 3px rgba(255, 214, 0, 0.2);
+  border: 1.5px solid #c00030;
+  background: #181818;
   outline: none;
 }
 
@@ -306,6 +234,36 @@
   min-height: 120px;
   resize: vertical;
   line-height: 1.6;
+}
+
+/* File input styling */
+.form-group input[type="file"] {
+  padding: 5px;
+  background: #222;
+  color: #c00030;
+}
+
+/* Light mode job posting form */
+body.light .job-posting-form {
+  background: #f9f9f9; /* Light background */
+  color: var(--text-primary);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(212, 55, 55, 0.1);
+}
+
+body.light .form-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
+}
+
+body.light .form-section h2 {
+  color: var(--maroon-700);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 
 /* Logo Upload - Interactive Zone */
@@ -336,6 +294,7 @@
   object-fit: contain;
   background: rgba(40, 40, 50, 0.7);
 }
+
 
 .logo-overlay {
   position: absolute;
@@ -370,8 +329,38 @@
 .logo-upload-placeholder svg {
   font-size: 1.8rem;
   margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--maroon-700);
 }
 
+/* Light mode form inputs */
+body.light .form-group input[type="text"],
+body.light .form-group input[type="email"],
+body.light .form-group input[type="date"],
+body.light .form-group input[type="file"],
+body.light .form-group select,
+body.light .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid rgba(128, 3, 3, 0.279);
+  border-radius: 6px;
+  font-size: 15px;
+  background: #fff;
+  color: var(--bg-dark);
+  transition: border 0.2s, background 0.2s;
+}
+
+body.light .form-group input[type="text"]:focus,
+body.light .form-group input[type="email"]:focus,
+body.light .form-group input[type="date"]:focus,
+body.light .form-group select:focus,
+body.light .form-group textarea:focus {
+  border: 1.5px solid var(--maroon-700);
+  background: #fff;
+  outline: none;
+}
+
+/* Master branch enhancements */
 .logo-upload-input {
   display: none;
 }
@@ -380,17 +369,87 @@
   border-color: #FFD600;
 }
 
+
 .logo-upload-label:hover .logo-overlay {
   opacity: 1;
 }
 
-.logo-upload-label:hover .logo-upload-placeholder {
-  border-color: #FFD600;
-  color: #FFD600;
-  background: rgba(40, 40, 50, 0.9);
+/* File Input - Light Mode */
+body.light .form-group input[type="file"] {
+  padding: 5px;
+  background: #fff;
+  color: var(--maroon-700);
+  border: 1.5px solid rgba(212, 55, 55, 0.33);
 }
 
-/* Checkbox Grid - Interactive Tiles */
+/* Multi-Select Styles - Maroon Theme */
+.multi-select {
+  height: auto;
+  min-height: 100px;
+  padding: 5px;
+  background: #222;
+  color: #fff;
+  border: 1.5px solid #c0003055;
+  border-radius: 6px;
+  transition: border 0.2s;
+}
+
+.multi-select:focus {
+  border: 1.5px solid #c00030;
+  outline: none;
+}
+
+.multi-select option {
+  padding: 8px 12px;
+  background: #222;
+  color: #fff;
+  border-bottom: 1px solid #c0003033;
+  transition: background 0.2s;
+}
+
+.multi-select option:hover {
+  background: #c00030;
+  color: #181818;
+}
+
+.multi-select option:checked {
+  background: #c00030;
+  color: #181818;
+  font-weight: bold;
+}
+
+/* Multi-Select - Light Mode */
+body.light .multi-select {
+  background: #fff;
+  color: var(--bg-dark);
+  border: 1.5px solid rgba(212, 55, 55, 0.33);
+  min-height: 100px;
+  padding: 5px;
+  border-radius: 6px;
+  transition: border 0.2s;
+}
+
+body.light .multi-select:focus {
+  border: 1.5px solid var(--maroon-700);
+  outline: none;
+}
+
+body.light .multi-select option {
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--bg-dark);
+  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
+  transition: background 0.2s;
+}
+
+body.light .multi-select option:hover,
+body.light .multi-select option:checked {
+  background: var(--maroon-700);
+  color: var(--bg-dark);
+  font-weight: bold;
+}
+
+/* Checkbox Grid - Master Enhancements */
 .checkbox-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -493,13 +552,35 @@
   animation: fadeIn 0.3s ease;
 }
 
+/* Multi-Select Container Arrow - Maroon Theme */
+.multi-select-container::after {
+  content: "⌄";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #c00030;
+  pointer-events: none;
+}
+
+body.light .multi-select-container::after {
+  color: var(--maroon-700);
+}
+
+/* Logo Upload */
+.logo-upload {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Selection Controls and Labels - Master */
 .selected-label {
   color: #FFD600;
   font-weight: 600;
   margin-right: 0.5rem;
 }
 
-/* Selection Controls */
 .selection-controls {
   margin-bottom: 1rem;
   display: flex;
@@ -516,16 +597,32 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
+
+/* Logo Preview - Maroon Theme */
+.logo-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border: 2px solid #c00030;
+  border-radius: 8px;
+  background: #222;
+}
+
+body.light .logo-preview {
+  background: #fff;
+  border: 2px solid var(--maroon-700);
+  filter: drop-shadow(0 0 3px rgba(212, 55, 55, 0.5));
+}
+
+/* Select All Button Hover - Master */
 .select-all-btn:hover {
   background: rgba(255, 214, 0, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 214, 0, 0.1);
 }
+
 
 /* Form Actions - Floating Buttons */
 .form-actions {
@@ -539,16 +636,17 @@
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #FFD600, #FFA000);
-  color: #111;
+  background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
+  color: white;
   border: none;
   padding: 1rem 2.5rem;
   border-radius: 12px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(192, 0, 48, 0.1); /* maroon shadow */
+  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -569,8 +667,10 @@
 }
 
 .submit-btn:hover {
+  background: #64021b;
+  color: white;
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 200, 0, 0.4);
+  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.18);
 }
 
 .submit-btn:hover::after {
@@ -581,59 +681,76 @@
   transform: translateY(0);
 }
 
+/* Cancel button */
 .cancel-btn {
-  background: transparent;
-  color: #FFD600;
-  border: 1px solid rgba(255, 214, 0, 0.4);
-  padding: 1rem 2rem;
+  background: #181818;
+  color: #c00030;
+  border: 2px solid #c00030;
+  padding: 12px 32px;
   border-radius: 12px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .cancel-btn:hover {
-  background: rgba(255, 214, 0, 0.1);
-  border-color: #FFD600;
+  background: #c00030;
+  color: white;
+  box-shadow: 0 4px 20px rgba(192, 0, 48, 0.2);
+}
+
+
+/* Light Mode Overrides */
+body.light .submit-btn {
+  background: linear-gradient(90deg, #c00030 0%, #b30000 100%);
+  color: white; /* darker text for light bg */
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
+}
+
+body.light .submit-btn:hover {
+  background: #de0a3f;
+  color: white;
+  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.4);
+}
+
+body.light .cancel-btn {
+  background: #fff;
+  color: #c00030;
+  border: 2px solid #c00030;
+}
+
+body.light .cancel-btn:hover {
+  background: #c00030;
+  color: #fff;
+  border: 2px solid #c00030;
   transform: translateY(-2px);
 }
 
 /* Job Postings List - Card Style */
 .job-postings-list {
-  background: rgba(25, 25, 35, 0.7);
+  background: #181818;
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 214, 0, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.1);
+  color: #fff;
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
-.list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.job-postings-list h2 {
+  margin-top: 0;
+  color: #c00030;
   margin-bottom: 1.5rem;
-}
-
-.list-header h2 {
-  color: #FFD600;
-  margin: 0;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 /* Empty State Design */
 .no-postings {
   text-align: center;
   padding: 3rem;
-  color: rgba(255, 214, 0, 0.5);
+  color: rgba(192, 0, 48, 0.5);
 }
 
 .empty-state {
@@ -643,12 +760,12 @@
 
 .empty-icon {
   font-size: 4rem;
-  color: rgba(255, 214, 0, 0.3);
+  color: rgba(192, 0, 48, 0.3);
   margin-bottom: 1.5rem;
 }
 
 .empty-state h3 {
-  color: #FFD600;
+  color: #c00030;
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
@@ -659,8 +776,8 @@
 }
 
 .create-first-btn {
-  background: linear-gradient(135deg, #FFD600, #FFA000);
-  color: #111;
+  background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
+  color: #fff;
   border: none;
   padding: 0.8rem 1.8rem;
   border-radius: 8px;
@@ -675,17 +792,20 @@
 
 .create-first-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(192, 0, 48, 0.3);
 }
 
 /* Modern Table Design */
 .table-container {
   overflow-x: auto;
   border-radius: 12px;
-  background: rgba(40, 40, 50, 0.7);
+  background: rgba(25, 25, 35, 0.7);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 214, 0, 0.1);
+  border: 1px solid rgba(192, 0, 48, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
+
 
 table {
   width: 100%;
@@ -697,18 +817,19 @@ table {
 table th {
   position: sticky;
   top: 0;
-  background: rgba(50, 50, 60, 0.9);
-  color: #FFD600;
+  background-color: #222; /* maroon theme base */
+  color: #c00030;         /* maroon text */
   font-weight: 600;
   padding: 1rem 1.2rem;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 214, 0, 0.2);
+  border-bottom: 1px solid #c0003033; /* subtle maroon border */
   z-index: 2;
 }
 
 table th:hover {
-  background: rgba(60, 60, 70, 0.9);
+  background: rgba(60, 60, 70, 0.9); /* hover effect retained */
 }
+
 
 .th-content {
   display: flex;
@@ -742,10 +863,10 @@ table tr:hover td {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  border-radius: 8px;
-  background: rgba(60, 60, 70, 0.8);
-  border: 1px solid rgba(255, 214, 0, 0.2);
-  padding: 4px;
+  border-radius: 50%; /* keep maroon theme rounded style */
+  background: #222;
+  border: 1.5px solid #c00030; /* maroon border */
+  padding: 4px; /* keep padding from master */
 }
 
 .company-info {
@@ -755,7 +876,7 @@ table tr:hover td {
 
 .company-name {
   font-weight: 500;
-  color: #fff;
+  color: #fff; /* readable on dark maroon background */
 }
 
 .company-location {
@@ -766,6 +887,23 @@ table tr:hover td {
   gap: 4px;
   margin-top: 4px;
 }
+
+/* Light mode overrides */
+body.light .job-postings-list {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.15);
+}
+
+body.light .job-postings-list h2 {
+  color: #b30000;
+}
+
+body.light .no-postings {
+  color: #b3000040;
+  font-style: italic;
+}
+
 
 /* Position Cell */
 .position-cell {
@@ -779,16 +917,25 @@ table tr:hover td {
   color: #fff;
 }
 
+body.light table th {
+  background-color: #fff5cc;
+  color: #b30000;
+  font-weight: 600;
+  width: fit-content;
+  border: 1px solid rgba(192, 0, 48, 0.2); /* subtle maroon border */
+}
+
+/* Job Type Badge */
 .job-type-badge {
-  background: rgba(255, 214, 0, 0.1);
-  color: #FFD600;
+  background: rgba(192, 0, 48, 0.1); /* maroon-themed background */
+  color: #c00030;                     /* maroon text */
   padding: 0.2rem 0.6rem;
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 600;
-  width: fit-content;
-  border: 1px solid rgba(255, 214, 0, 0.2);
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
+
 
 /* Deadline Cell */
 .deadline-cell {
@@ -797,6 +944,31 @@ table tr:hover td {
   gap: 6px;
 }
 
+/* Light mode company logo */
+body.light .company-logo-small {
+  background: #fff5cc;
+  border: 1.5px solid #b30000;
+}
+
+/* Badge styles for eligibility tags */
+.eligibility-badge {
+  display: inline-block;
+  background: #c0003022;
+  color: #c00030;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px;
+  border: 1px solid #c0003033;
+}
+
+body.light .eligibility-badge {
+  background: #ffcccc;
+  color: #b30000;
+  border: 1px solid #b3000040;
+}
+
+/* Deadline indicator */
 .deadline-passed {
   color: #ff6b6b;
   font-size: 0.85rem;
@@ -821,21 +993,23 @@ table tr:hover td {
   border: none;
 }
 
+/* Edit Button - Maroon Theme */
 .edit-btn {
-  background: rgba(255, 214, 0, 0.1);
-  color: #FFD600;
-  border: 1px solid rgba(255, 214, 0, 0.2);
+  background: rgba(192, 0, 48, 0.1); /* subtle maroon bg */
+  color: #c00030;
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
 .edit-btn:hover {
-  background: #FFD600;
-  color: #111;
+  background: #c00030;
+  color: #181818;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 214, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(192, 0, 48, 0.2);
 }
 
+/* Delete Button - Maroon Theme */
 .delete-btn {
-  background: rgba(231, 76, 60, 0.1);
+  background: rgba(231, 76, 60, 0.1); /* keep red for delete */
   color: rgba(231, 76, 60, 0.8);
   border: 1px solid rgba(231, 76, 60, 0.2);
 }
@@ -845,6 +1019,28 @@ table tr:hover td {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+}
+
+
+/* Delete Button Hover - Maroon Theme */
+.delete-btn:hover {
+  background: #c00030;
+  color: #c00030;
+  border: 1.5px solid #c00030;
+}
+
+/* Light Mode Edit Button */
+body.light .edit-btn {
+  background: #ffb8b8;
+  color: #5a0000;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+body.light .edit-btn:hover {
+  background: #5a0000;
+  color: #ffb8b8;
+  border: 1.5px solid #5a0000;
 }
 
 /* Sort Indicators */
@@ -881,6 +1077,7 @@ table tr:hover td {
     margin-top: 1.5rem;
   }
 }
+
 
 @media (max-width: 768px) {
   .admin-tabs {
@@ -944,6 +1141,18 @@ table tr:hover td {
   }
 }
 
+/* Checkbox Grid Styles */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #222; /* dark maroon theme */
+  border-radius: 8px;
+  border: 1.5px solid #c0003055; /* subtle maroon border */
+}
+
 /* Animation for section toggle */
 @keyframes slideDown {
   from {
@@ -967,6 +1176,7 @@ table tr:hover td {
   }
 }
 
+
 /* Light Mode Styles */
 body.light .admin-job-posting-container {
   background: rgba(245, 245, 250, 0.95);
@@ -974,6 +1184,32 @@ body.light .admin-job-posting-container {
   border: 1px solid rgba(180, 150, 0, 0.15);
 }
 
+/* Checkbox Item Hover */
+.checkbox-item:hover {
+  background: #c0003020;
+  border-color: #c0003050;
+}
+
+/* Checkbox Input */
+.checkbox-item input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #c00030;
+  border-radius: 3px;
+  background: #222; /* dark maroon background */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Checkbox Checked State */
+.checkbox-item input[type="checkbox"]:checked {
+  background: #c00030;
+  border-color: #c00030;
+}
+
+/* Light Mode - Admin Posting Container Headers */
 body.light .admin-job-posting-container h1 {
   color: #b38600;
   text-shadow: 0 2px 8px rgba(180, 150, 0, 0.2);
@@ -990,6 +1226,7 @@ body.light .admin-header::before {
     rgba(180, 150, 0, 0.3) 70%, 
     transparent 100%);
 }
+
 
 body.light .admin-tabs {
   background: rgba(240, 240, 245, 0.9);
@@ -1010,6 +1247,29 @@ body.light .admin-tabs button.active {
   background: linear-gradient(135deg, #b38600, #d4a000);
 }
 
+/* Checkbox Label for Checked Items */
+.checkbox-item:has(input:checked) .checkbox-label {
+  color: #c00030;
+  font-weight: 600;
+}
+
+/* Selected Items Container */
+.selected-items {
+  margin-top: 10px;
+  padding: 10px;
+  background: #c0003010; /* subtle maroon background */
+  border-radius: 6px;
+  border-left: 3px solid #c00030;
+}
+
+/* Selected Label */
+.selected-label {
+  color: #c00030;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* Light Mode Search Bar */
 body.light .search-bar input {
   background: rgba(230, 230, 240, 0.9);
   color: #333;
@@ -1020,11 +1280,13 @@ body.light .search-bar input:focus {
   box-shadow: 0 0 0 2px rgba(180, 150, 0, 0.2);
 }
 
+/* Light Mode Form & Job Postings List */
 body.light .job-posting-form,
 body.light .job-postings-list {
   background: rgba(240, 240, 250, 0.9);
   border: 1px solid rgba(180, 150, 0, 0.1);
 }
+
 
 body.light .section-header h2,
 body.light .form-group label {
@@ -1053,43 +1315,58 @@ body.light .form-group textarea:focus {
 }
 
 body.light .checkbox-grid {
-  background: rgba(230, 230, 240, 0.9);
-  border: 1px solid rgba(180, 150, 0, 0.1);
+  background: #f5f5f5; /* light neutral background for maroon theme */
+  border: 1.5px solid #c0003055; /* subtle maroon border */
 }
+
 
 body.light .checkbox-item {
   background: rgba(220, 220, 230, 0.7);
 }
 
+/* Light Mode Checkbox Hover */
 body.light .checkbox-item:hover {
-  background: rgba(180, 150, 0, 0.08);
-  border-color: rgba(180, 150, 0, 0.2);
+  background: #ffcccc;          /* subtle maroon hover */
+  border-color: #c0003080;      /* maroon border on hover */
 }
 
+/* Light Mode Checkbox Input */
 body.light .checkbox-item input[type="checkbox"] {
-  border: 2px solid rgba(180, 150, 0, 0.5);
+  background: #fff;              /* white background for light mode */
+  border: 2px solid #c00030;    /* maroon border */
 }
 
+/* Light Mode Checked Checkbox */
 body.light .checkbox-item input[type="checkbox"]:checked {
-  background: #b38600;
-  border-color: #b38600;
+  background: #c00030;           /* maroon fill when checked */
+  border-color: #c00030;         /* maroon border when checked */
+}
+
+/* Optional: add checkmark color */
+body.light .checkbox-item input[type="checkbox"]:checked::after {
+  color: #333;                   /* dark checkmark for contrast */
 }
 
 body.light .checkbox-label {
   color: #444;
 }
 
+/* Light Mode Checkbox Label for Checked Items */
 body.light .checkbox-item:has(input:checked) .checkbox-label {
-  color: #b38600;
+  color: #b30000;       /* maroon text for checked label */
+  font-weight: 600;
 }
 
+/* Light Mode Selected Items Container */
 body.light .selected-items {
-  background: rgba(180, 150, 0, 0.05);
-  border-left: 3px solid #b38600;
+  background: #ffd7cc;       /* subtle maroon background */
+  border-left: 3px solid #c00030; /* maroon left border */
+  color: #5a0000;            /* darker maroon text */
 }
+
 
 body.light .selected-label {
-  color: #b38600;
+  color: #c00030;
 }
 
 body.light .select-all-btn {
@@ -1098,13 +1375,29 @@ body.light .select-all-btn {
   border: 1px solid rgba(180, 150, 0, 0.2);
 }
 
-body.light .select-all-btn:hover {
-  background: rgba(180, 150, 0, 0.1);
+/* Select All Button - Maroon Theme */
+.select-all-btn {
+  background: #c00030;       /* maroon background */
+  color: #181818;            /* dark text */
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-body.light .submit-btn {
-  background: linear-gradient(135deg, #b38600, #d4a000);
-  color: #fff;
+.select-all-btn:hover {
+  background: #de0a3f;       /* brighter maroon on hover */
+  transform: translateY(-1px);
+}
+
+/* Light Mode Hover for Select All Button */
+body.light .select-all-btn:hover {
+  background: rgba(180, 150, 0, 0.1); /* subtle golden hover in light mode */
+}
+
 }
 
 body.light .cancel-btn {
@@ -1112,6 +1405,27 @@ body.light .cancel-btn {
   border: 1px solid rgba(180, 150, 0, 0.3);
 }
 
+/* Light Mode Select All Button - Maroon Theme */
+body.light .select-all-btn {
+  background: #c00030;       /* maroon background */
+  color: white;              /* white text */
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.3);
+}
+
+body.light .select-all-btn:hover {
+  background: #c00030;       /* maintain maroon on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 8, 0, 0.5);
+}
+
+/* Master branch light-mode overrides preserved */
 body.light .cancel-btn:hover {
   background: rgba(180, 150, 0, 0.1);
   border-color: #b38600;
@@ -1167,6 +1481,23 @@ body.light .delete-btn {
   border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .job-posting-form,
+  .job-postings-list {
+    padding: 18px;
+  }
+
+  .form-row {
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+}
+
+
 body.light .delete-btn:hover {
   background: #e74c3c;
   color: #fff;
@@ -1213,11 +1544,17 @@ body.light .create-first-btn {
     margin-bottom: 1.5rem;
   }
 
-  /* Special handling for the logo label */
-  .form-group.logo-upload-label {
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
+/* Adjust multi-select on mobile */
+.multi-select {
+  min-height: 80px;
+}
+
+/* Special handling for the logo label */
+.form-group.logo-upload-label {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
 
   /* Logo upload links */
   .logo-upload-links {
@@ -1235,19 +1572,41 @@ body.light .create-first-btn {
     grid-template-columns: 1fr;
   }
 
-  .form-group.logo {
-    order: -1; /* Move logo to top on small screens */
-    margin-bottom: 1.5rem;
-  }
+/* Admin Tabs - Active State */
+.admin-tabs button.active {
+  border-bottom: none;
+  border-left: 3px solid #c00030; /* maroon left border for active tab */
+}
+
+/* Form Group Logo Adjustments for Small Screens */
+.form-group.logo {
+  order: -1; /* Move logo to top on small screens */
+  margin-bottom: 1.5rem;
+}
+
 
   .xyz label {
     padding-left: 0;
     justify-content: center;
   }
 
-  .logo-preview-container,
-  .logo-upload-placeholder {
-    width: 100px;
-    height: 100px;
-  }
+/* Full-width buttons for small screens */
+.submit-btn,
+.cancel-btn {
+  width: 100%;
+}
+
+/* Stack eligibility badges on small screens */
+.eligibility-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Logo preview and upload placeholders */
+.logo-preview-container,
+.logo-upload-placeholder {
+  width: 100px;
+  height: 100px;
+}
+
 }
