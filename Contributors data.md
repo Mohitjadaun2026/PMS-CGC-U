@@ -16,7 +16,6 @@ This document records **all contributions** to the project and assigns points ba
 
 
 Contributors:
-
 | #️⃣ S.No | 👤 GitHub Profile | 🎯 Points | 🔗 PR No. | 📌 Task Description                                      |
 | -------- | ----------------- | --------- | --------- | -------------------------------------------------------- |
 | 1        | hemanth5055       | 3         | #19       | Enhanced contact links appearance                        |
@@ -25,5 +24,8 @@ Contributors:
 | 4        | khizar-hayath     | 3         | #26       | Added favicon, navbar logo and website title             |
 | 5        | khizar-hayath     | 3         | #37       | Fix title visibility and inconsistent button behaviour   |
 | 6        | akofficial10add   | 5         | #36       | Enhance Job Posting Management UI & Fix Alignment Issues |
+| 7        | akofficial10add   | 3         | #42       | Enhanced Footer Component with Link Features             |
+| 8        | HetviThakkar-025  | 5         | #38       | Updated PMS-CGC-U Website to Maroon Primary Theme        |
+
 
 

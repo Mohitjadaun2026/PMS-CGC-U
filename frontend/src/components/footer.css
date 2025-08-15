@@ -54,7 +54,9 @@
 
 .footer-logo span {
   color: var(--accent-color);
+    margin-left: 4px;
 }
+
 
 .footer-tagline {
   color: var(--text-secondary);
