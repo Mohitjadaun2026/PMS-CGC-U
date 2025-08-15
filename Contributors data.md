@@ -27,6 +27,6 @@ Contributors:
 | 7        | akofficial10add   | 3         | #42       | Enhanced Footer Component with Link Features             |
 | 8        | HetviThakkar-025  | 5         | #38       | Updated PMS-CGC-U Website to Maroon Primary Theme        |
 | 9        | Prerna799         | 3         | #49       | Updated PMS-CGC-U Website Name                           |
-
+| 10       | Salusha           | 7         | #46       | Modified PMS-CGC-U Navbar                                |
 
 
