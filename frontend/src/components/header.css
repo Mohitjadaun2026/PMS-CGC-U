@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 10, 10, 0.95); /* Slightly darker for better contrast */
+  background: rgba(10, 10, 10, 0.95);
   color: var(--text-primary);
   padding: 0.8rem 2rem;
   position: sticky;
@@ -11,6 +11,7 @@
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(212, 55, 55, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  animation: headerScroll 0.5s ease-out forwards;
 }
 
 .logo {
@@ -19,6 +20,7 @@
   gap: 1rem;
   transition: all var(--transition-speed) ease;
 }
+
 .theme-toggle-btn {
   margin-left: 1rem;
   padding: 0.3rem 0.7rem;
@@ -28,13 +30,13 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Light mode: yellow background, black text */
+/* Light mode */
 body.light .theme-toggle-btn {
   background: #ff0000;
   color: #121212;
 }
 
-/* Dark mode: black background, yellow text */
+/* Dark mode */
 body.dark .theme-toggle-btn {
   background: #121212;
   color: #a00028;
@@ -54,7 +56,6 @@ body.dark .theme-toggle-btn {
 .logo-link {
   font-size: 1.3rem;
   background-color: white;
-  /* background: linear-gradient(90deg, var(--maroon-800), var(--accent-yellow)); */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -65,7 +66,6 @@ body.dark .theme-toggle-btn {
 }
 
 .logo-link:hover {
-  /* text-shadow: 0 0 8px #bfbaba; */
   color: rgb(172, 167, 167);
 }
 
@@ -75,9 +75,14 @@ body.dark .theme-toggle-btn {
   align-items: center;
 }
 
-.nav-links a {
+/* Fix added by Dharmin Joshi: Remove underline on all link states */
+.nav-links a,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a:active {
   color: var(--text-secondary);
-  text-decoration: none;
+  text-decoration: none !important; /* Force no underline */
   font-weight: 500;
   transition: all var(--transition-speed) ease;
   padding: 0.6rem 1rem;
@@ -87,26 +92,14 @@ body.dark .theme-toggle-btn {
   letter-spacing: 0.3px;
 }
 
+/* Clean hover effect without underline */
 .nav-links a:hover {
   color: var(--maroon-500);
   background: rgba(255, 0, 0, 0.08);
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--maroon-600);
-  transition: all var(--transition-speed) ease;
-  transform: translateX(-50%);
-}
-
-.nav-links a:hover::after {
-  width: 80%;
-}
+/* Removed underline animation */
+/* No ::after pseudo-elements */
 
 .login-btn {
   background: var(--maroon-500);
@@ -129,15 +122,15 @@ body.dark .theme-toggle-btn {
 }
 
 body.light .pms-header {
-  background: rgba(245, 245, 245, 0.95); /* light translucent bg */
+  background: rgba(245, 245, 245, 0.95);
   color: var(--text-primary);
   border-bottom: 1px solid rgba(212, 175, 55, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: none; /* Optional: remove blur for clarity on light bg */
+  backdrop-filter: none;
 }
 
 body.light .logo-image {
-  filter: drop-shadow(0 0 2px #e0033a); /* softer gold shadow */
+  filter: drop-shadow(0 0 2px #e0033a);
 }
 
 body.light .logo-link {
@@ -145,7 +138,7 @@ body.light .logo-link {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: none; /* Remove dark shadow on light background */
+  text-shadow: none;
 }
 
 body.light .logo-link:hover {
@@ -157,8 +150,13 @@ body.light .nav-links a:hover {
   background: rgba(212, 55, 55, 0.1);
 }
 
-body.light .nav-links a::after {
-  background: var(--maroon-800);
+/* No underline on light mode too */
+body.light .nav-links a,
+body.light .nav-links a:visited,
+body.light .nav-links a:hover,
+body.light .nav-links a:focus,
+body.light .nav-links a:active {
+  text-decoration: none !important;
 }
 
 body.light .login-btn {
@@ -214,7 +212,7 @@ body.light .login-btn:hover {
   }
 }
 
-/* Animation for header on scroll */
+/* Header entrance animation */
 @keyframes headerScroll {
   from {
     transform: translateY(-10px);
@@ -224,8 +222,4 @@ body.light .login-btn:hover {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.pms-header {
-  animation: headerScroll 0.5s ease-out forwards;
 }
