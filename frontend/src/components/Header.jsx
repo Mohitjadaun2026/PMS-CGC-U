@@ -35,7 +35,10 @@ function Header() { const [theme, setTheme] = useState('light');
           alt="College Logo" 
           className="logo-image"
         />
-        <Link to="/" className="logo-link">Placement Management System</Link>
+        <Link to="/" className="logo-link">
+          <span className="line1">Campus Recruitment</span>
+          <span className="line2">Portal</span>
+        </Link>
       </div>
       <nav className="nav-links">
         <Link to="/about">About</Link>
