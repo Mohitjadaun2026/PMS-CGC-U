@@ -26,6 +26,7 @@ Contributors:
 | 6        | akofficial10add   | 5         | #36       | Enhance Job Posting Management UI & Fix Alignment Issues |
 | 7        | akofficial10add   | 3         | #42       | Enhanced Footer Component with Link Features             |
 | 8        | HetviThakkar-025  | 5         | #38       | Updated PMS-CGC-U Website to Maroon Primary Theme        |
+| 9        | Prerna799         | 3         | #49       | Updated PMS-CGC-U Website Name                           |
 
 
 
