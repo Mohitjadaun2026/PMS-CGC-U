@@ -3,7 +3,9 @@
   justify-content: space-between;
   align-items: center;
   background: rgba(10, 10, 10, 0.95);
+  background: rgba(10, 10, 10, 0.95);
   color: var(--text-primary);
+  padding: 0.8rem 1.2rem;
   padding: 0.8rem 1.2rem;
   position: sticky;
   top: 0;
@@ -65,7 +67,7 @@ body.light .logo-image {
   color: transparent;
   font-weight: 700;
   letter-spacing: 0.5px;
-  text-shadow: 0 2px 4px rgba(159, 159, 159, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -99,6 +101,7 @@ body.dark .logo-link:hover {
 .nav-links {
   display: flex;
   gap: 2.5rem;
+  gap: 2.5rem;
   align-items: center;
 <<<<<<< HEAD
   flex-wrap: wrap; /* ✅ allow wrapping for narrow widths */
@@ -109,6 +112,8 @@ body.dark .logo-link:hover {
 }
 
 .nav-links a {
+  position: relative;
+  color: #6b7280;
   position: relative;
   color: #6b7280;
   text-decoration: none;
@@ -125,8 +130,10 @@ body.dark .logo-link:hover {
 }
 
 .nav-links a::after {
-  content: "";
+  content: '';
   position: absolute;
+  bottom: -4px;
+  left: 0;
   bottom: -4px;
   left: 0;
   width: 0;
@@ -139,6 +146,7 @@ body.dark .logo-link:hover {
 }
 
 .nav-links a:hover::after {
+  width: 100%;
   width: 100%;
 }
 
@@ -201,6 +209,8 @@ body.dark .theme-toggle-btn {
 /* Login Button */
 .login-btn {
   font-weight: 600;
+  border-radius: 1px;
+  padding: 0.1rem 1rem;
   border-radius: 1px;
   padding: 0.1rem 1rem;
   transition: all var(--transition-speed) ease;
@@ -278,6 +288,7 @@ body.dark .login-btn:hover {
   
 >>>>>>> 48f1c33 (updated navbar)
   .logo {
+    justify-content: center;
     gap: 0.8rem;
   }
 <<<<<<< HEAD

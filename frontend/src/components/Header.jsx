@@ -1,6 +1,7 @@
 import React ,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import "./header.css";
 <<<<<<< HEAD
 import collegeLogo from "../assets/cgc.png"; // Make sure to add the logo to your assets folder
@@ -50,6 +51,7 @@ function Header() { const [theme, setTheme] = useState('light');
         <Link to="/admin-job-posting">Admin Panel</Link>
 
          {/* Theme toggle button */}
+         {/* Theme toggle button */}
         <button 
           onClick={toggleTheme} 
           className="theme-toggle-btn"
@@ -60,7 +62,15 @@ function Header() { const [theme, setTheme] = useState('light');
   ) : (
     <Sun size={20} />
   )}
+          {theme === 'light' ? (
+    <Moon size={20} /> 
+  ) : (
+    <Sun size={20} />
+  )}
         </button>
+
+        <Link to="/signin" className="login-btn">Login</Link>
+
 
         <Link to="/signin" className="login-btn">Login</Link>
 
@@ -70,5 +80,8 @@ function Header() { const [theme, setTheme] = useState('light');
 }
 
 export default Header;
+
+
+
 
 
