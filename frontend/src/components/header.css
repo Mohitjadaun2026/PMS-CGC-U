@@ -188,9 +188,8 @@ body.dark .theme-toggle-btn {
 /* Login Button */
 .login-btn {
   font-weight: 600;
-  border-radius: 1px;
+  border-radius: 4px;
   padding: 0.1rem 1rem;
-  border-radius: 1px;
   padding: 0.1rem 1rem;
   transition: all var(--transition-speed) ease;
   border: 2px solid transparent;
