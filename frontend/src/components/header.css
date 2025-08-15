@@ -9,15 +9,23 @@
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(12px);
+<<<<<<< HEAD
   border-bottom: 1px solid rgba(212, 55, 55, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   animation: headerScroll 0.5s ease-out forwards;
   flex-wrap: wrap; /* ✅ allow wrapping for small screens */
+=======
+  border-bottom: 1px solid rgba(128, 0, 0, 0.15); /* maroon tone */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  animation: headerScroll 0.5s ease-out forwards;
+  flex-wrap: wrap;
+  min-height: 60px;
+>>>>>>> 48f1c33 (updated navbar)
 }
 
 body.light .pms-header {
   background: rgba(245, 245, 245, 0.95);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  border-bottom: 1px solid rgba(128, 0, 0, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: none;
 }
@@ -32,12 +40,12 @@ body.light .pms-header {
 .logo-image {
   height: 42px;
   width: auto;
-  filter: drop-shadow(0 0 4px rgba(208, 197, 133, 0.929));
+  filter: drop-shadow(0 0 4px rgba(128, 0, 0, 0.9));
   transition: transform 0.3s ease;
 }
 
 body.light .logo-image {
-  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+  filter: drop-shadow(0 0 4px rgba(128, 0, 0, 0.3));
 }
 
 .logo:hover .logo-image {
@@ -46,8 +54,12 @@ body.light .logo-image {
 
 .logo-link {
   font-size: 1.3rem;
+<<<<<<< HEAD
   background-color: white;
   /* background: linear-gradient(90deg, var(--maroon-800), var(--accent-yellow)); */
+=======
+  background: linear-gradient(90deg, var(--text-primary), #800000);
+>>>>>>> 48f1c33 (updated navbar)
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -55,6 +67,7 @@ body.light .logo-image {
   letter-spacing: 0.5px;
   text-shadow: 0 2px 4px rgba(159, 159, 159, 0.3);
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 body.light .logo-link {
@@ -62,18 +75,36 @@ body.light .logo-link {
 }
 
 .logo-link:hover {
-  text-shadow: 0 0 8px rgba(201, 191, 81, 0.947);
+  text-shadow: 0 0 8px rgba(128, 0, 0, 0.9);
+  text-decoration: none;
 }
 
 body.light .logo-link:hover {
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  text-shadow: 0 0 8px rgba(128, 0, 0, 0.4);
+}
+
+body.dark .logo-link {
+  background: linear-gradient(90deg, var(--text-primary), #800000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none; 
+  font-weight: 700; 
+  transition: all 0.3s ease;
+}
+
+body.dark .logo-link:hover {
+  text-shadow: 0 0 8px rgba(128, 0, 0, 0.45), 0 0 16px rgba(128, 0, 0, 0.35);
 }
 
 .nav-links {
   display: flex;
   gap: 2.5rem;
   align-items: center;
+<<<<<<< HEAD
   flex-wrap: wrap; /* ✅ allow wrapping for narrow widths */
+=======
+  flex-wrap: wrap;
+>>>>>>> 48f1c33 (updated navbar)
   justify-content: center;
 }
 
@@ -85,13 +116,12 @@ body.light .logo-link:hover {
   transition: color 0.3s ease;
 }
 
-
 .dark .nav-links a {
   color: #d1d5db;
 }
 
 .dark .nav-links a:hover {
-  color: var(--accent-yellow);
+  color: #800000;
 }
 
 .nav-links a::after {
@@ -104,6 +134,10 @@ body.light .logo-link:hover {
   transition: width 0.3s ease;
 }
 
+.nav-links a:hover {
+  text-decoration: none; /* prevent underline on hover */
+}
+
 .nav-links a:hover::after {
   width: 100%;
 }
@@ -113,18 +147,22 @@ body.light .nav-links a {
 }
 
 body.light .nav-links a:hover {
-  color: var(--accent-yellow);
+  color: #800000;
 }
 
 body.light .nav-links a::after {
+<<<<<<< HEAD
   background: var(--maroon-800);
+=======
+  background: #800000;
+>>>>>>> 48f1c33 (updated navbar)
 }
 
 .dark .nav-links a::after {
-  background: var(--accent-yellow);
+  background: #800000;
 }
 
-/* Consolidated Theme Toggle Button */
+/* Theme Toggle */
 .theme-toggle-btn {
   margin-left: 1rem;
   padding: 0.5rem;
@@ -136,9 +174,9 @@ body.light .nav-links a::after {
   transition: all 0.3s ease;
   border-radius: 20px;
   backdrop-filter: blur(4px);
-  background: rgba(231, 205, 117, 0.858);
-  color: #333;
-  box-shadow: 0 1px 3px rgba(231, 205, 117, 0.858);
+  background: rgba(128, 0, 0, 0.85);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(128, 0, 0, 0.85);
 }
 
 .theme-toggle-btn svg {
@@ -156,11 +194,11 @@ body.light .nav-links a::after {
 }
 
 body.dark .theme-toggle-btn {
-  background: rgba(238, 201, 80, 0.858);
+  background: rgba(128, 0, 0, 0.85);
   color: #fdfdfd;
 }
 
-/* Consolidated Login Button */
+/* Login Button */
 .login-btn {
   font-weight: 600;
   border-radius: 1px;
@@ -168,67 +206,81 @@ body.dark .theme-toggle-btn {
   transition: all var(--transition-speed) ease;
   border: 2px solid transparent;
   letter-spacing: 0.5px;
-  background: var(--accent-yellow);
-  color: var(--bg-dark); 
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  background: #800000;
+  color: whitesmoke !important; 
+  box-shadow: 0 2px 8px rgba(128, 0, 0, 0.3);
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
-}
+  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
+} 
 
 body.light .login-btn:hover {
   background: transparent;
-  color: var(--accent-yellow);
-  border-color: var(--accent-yellow);
+  color: #800000 !important;
+  border-color: #800000;
 }
 
 body.dark .login-btn {
-  color: #4d4b4b;
+  color: #fdfdfd;
   text-shadow: 0 1px 3px rgba(222, 216, 216, 0.5); 
 }
 
 body.dark .login-btn:hover {
-  border-color: var(--accent-yellow);
-  color: #333; 
+  border-color: #800000;
+  color: #fff; 
 }
 
-/* Responsive Styles */
-@media (max-width: 1200px) {
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Large tablets and small laptops (1024px and down) */
+@media (max-width: 1024px) {
   .pms-header {
     padding: 0.7rem 1rem;
   }
+  
   .nav-links {
     gap: 2rem;
   }
-}
-
-@media (max-width: 992px) {
-  .pms-header {
-    padding: 0.6rem 0.9rem;
-  }
-  .nav-links {
-    gap: 1.5rem;
-  }
+  
   .logo-link {
     font-size: 1.2rem;
   }
+  
+  .logo-image {
+    height: 38px;
+  }
 }
 
-/* Tablet view */
+/* Tablets (768px and down) */
 @media (max-width: 768px) {
   .pms-header {
-    justify-content: center;
-    gap: 0.8rem;
-    text-align: center;
+    padding: 0.6rem 0.8rem;
+    gap: 1rem;
   }
+<<<<<<< HEAD
 
 
+=======
+  
+  .nav-links {
+    gap: 1.5rem;
+    order: 2;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+  
+>>>>>>> 48f1c33 (updated navbar)
   .logo {
-    justify-content: center;
     gap: 0.8rem;
   }
+<<<<<<< HEAD
 
 
   .logo-image {
@@ -247,73 +299,191 @@ body.dark .login-btn:hover {
   .nav-links {
     justify-content: center;
     gap: 1.2rem;
+=======
+  
+  .logo-link {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
   }
-
-  .theme-toggle-btn,
+  
+  .logo-image {
+    height: 36px;
+  }
+  
+  .theme-toggle-btn {
+    margin-left: 0.5rem;
+    padding: 0.4rem;
+>>>>>>> 48f1c33 (updated navbar)
+  }
+  
+  .theme-toggle-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  
   .login-btn {
-    margin: 0.5rem 0;
-  }
-  .logo {
-    display: none !important; /* removes it entirely */
-  }
-  .nav-links{
-    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
   }
 }
 
-/* Mobile view */
-@media (max-width: 576px) {
+/* Small tablets and large phones (640px and down) */
+@media (max-width: 640px) {
   .pms-header {
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem 0.6rem;
   }
-
+  
   .nav-links {
-    gap: 0.5rem;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
-
-  .nav-links a,
-  .login-btn {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
+  
+  .nav-links a {
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
-
-  .logo-image {
-    height: 32px;
-  }
-
-  .theme-toggle-btn {
-    padding: 0.4rem;
-    margin: 0.3rem 0;
-  }
+  
   .logo {
     display: none;
   }
+  
+  .logo-image {
+    height: 32px;
+  }
+  
+  .theme-toggle-btn {
+    padding: 0.35rem;
+  }
+  
+  .theme-toggle-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .login-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
 }
 
-/* Extra small devices */
-@media (max-width: 400px) {
+/* Mobile phones (480px and down) - Hide logo */
+@media (max-width: 480px) {
+  .logo {
+    display: none;
+  }
+  
   .pms-header {
+    justify-content: center;
     padding: 0.5rem;
+    flex-direction: column;
+    gap: 0.8rem;
   }
+  
   .nav-links {
-    gap: 0.5rem;
+    order: 1;
+    margin-top: 0;
+    gap: 1rem;
+    justify-content: space-around;
+    width: 100%;
   }
+  
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .theme-toggle-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 4rem;
+    margin: 0;
+  }
+  
   .login-btn {
-    padding: 0.3rem 0.8rem;
-    font-size: 0.75rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Very small phones (360px and down) */
+@media (max-width: 360px) {
+  .pms-header {
+    padding: 0.4rem;
   }
   .logo{
-    display: none; 
+    display: none;
+  }
+  .nav-links {
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .nav-links a {
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem;
+  }
+  
+  .theme-toggle-btn {
+    right: 3.5rem;
+    padding: 0.25rem;
+  }
+  
+  .theme-toggle-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .login-btn {
+    right: 0.3rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
   }
 }
 
-@keyframes headerScroll {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .pms-header {
+    padding: 0.3rem 0.5rem;
+    min-height: 50px;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  
+  .nav-links {
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+  
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+  
+  .theme-toggle-btn,
+  .login-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+}
+
+/* Ultra-wide screens (1440px and up) */
+@media (min-width: 1440px) {
+  .pms-header {
+    padding: 1rem 2rem;
+  }
+  
+  .nav-links {
+    gap: 3rem;
+  }
+  
+  .logo-link {
+    font-size: 1.4rem;
+  }
+  
+  .logo-image {
+    height: 48px;
   }
 }
