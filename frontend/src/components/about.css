@@ -1,8 +1,15 @@
 .about-bg {
   min-height: 100vh;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 25%),
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 215, 0, 0.05) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 215, 0, 0.05) 0%,
+      transparent 25%
+    ),
     var(--bg-dark);
   padding: 2rem 0;
 }
@@ -13,29 +20,32 @@
   margin: 2rem auto;
   background: rgba(30, 30, 30, 0.8);
   border-radius: var(--border-radius);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px #a3032b;
   padding: 3rem;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.1);
   animation: fadeIn 0.8s ease-out;
 }
 
 body.light .about-bg {
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(212, 175, 55, 0.05) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(212, 175, 55, 0.05) 0%,
+      transparent 25%
+    ),
     var(--bg-dark); /* should be light bg var */
   padding: 2rem 0;
 }
 
 body.light .about-container {
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px #a3032b;
+  border: 1px solid #71011d;
   backdrop-filter: none; /* optional */
   padding: 3rem;
   border-radius: var(--border-radius);
@@ -59,11 +69,9 @@ body.light .about-container {
   height: 120px;
   object-fit: contain;
   border-radius: 50%;
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(212, 86, 55, 0.1);
   padding: 8px;
-  box-shadow: 
-    0 0 0 2px rgba(255, 215, 0, 0.3),
-    0 4px 20px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 0 2px #71011d, 0 4px 12px #a3032b;
   transition: transform 0.3s ease;
 }
 
@@ -72,10 +80,8 @@ body.light .about-container {
 }
 
 body.light .about-logo {
-  background: rgba(212, 175, 55, 0.1); /* softer gold for light mode */
-  box-shadow: 
-    0 0 0 2px rgba(212, 175, 55, 0.3),
-    0 4px 20px rgba(212, 175, 55, 0.1);
+  background: rgba(212, 86, 55, 0.1); /* softer gold for light mode */
+  box-shadow: 0 0 0 2px #71011d, 0 4px 12px #a3032b;
   transition: transform 0.3s ease;
 }
 
@@ -84,11 +90,11 @@ body.light .about-logo:hover {
 }
 
 .about-header h1 {
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   font-size: 2.8rem;
   margin: 0;
-  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  text-shadow: 0 2px 8px rgba(255, 0, 0, 0.2);
+  background: linear-gradient(90deg, var(--maroon-500), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -98,7 +104,7 @@ body.light .about-logo:hover {
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
-  border-left: 4px solid var(--accent-yellow);
+  border-left: 4px solid var(--maroon-500);
   padding-left: 1rem;
 }
 
@@ -110,7 +116,7 @@ body.light .about-logo:hover {
 }
 
 .about-content p strong {
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
 }
 
 .about-content ul {
@@ -128,7 +134,7 @@ body.light .about-logo:hover {
 
 .about-content ul li::before {
   content: "•";
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   font-size: 1.5rem;
   position: absolute;
   left: 0;
@@ -136,22 +142,28 @@ body.light .about-logo:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 body.light .about-header h1 {
   /* Gradient and transparent text remain, using light mode colors */
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  background: linear-gradient(90deg, var(--maroon-800), var(--maroon-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.2); /* softer shadow */
+  text-shadow: 0 2px 8px rgba(212, 55, 55, 0.2); /* softer shadow */
 }
 
 body.light .about-content h2 {
-  color: var(--text-primary);
-  border-left: 4px solid var(--accent-yellow);
+  color: var(--maroon-800);
+  border-left: 4px solid var(--maroon-500);
   padding-left: 1rem;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
@@ -165,7 +177,7 @@ body.light .about-content p {
 }
 
 body.light .about-content p strong {
-  color: var(--accent-yellow);
+  color: var(--maroon-900);
 }
 
 body.light .about-content ul {
@@ -183,13 +195,12 @@ body.light .about-content ul li {
 
 body.light .about-content ul li::before {
   content: "•";
-  color: var(--accent-yellow);
+  color: var(--maroon-500);
   font-size: 1.5rem;
   position: absolute;
   left: 0;
   top: -2px;
 }
-
 
 @media (max-width: 768px) {
   .about-container {
@@ -197,35 +208,35 @@ body.light .about-content ul li::before {
     margin: 1rem auto;
     min-height: 90vh;
   }
-  
+
   .about-header {
     flex-direction: column;
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .about-logo {
     width: 80px;
     height: 80px;
-  border-radius: 50%;
-  padding: 6px;
-  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3);
   }
-  
+
   .about-header h1 {
     font-size: 2rem;
     text-align: center;
   }
-  
+
   .about-content h2 {
     font-size: 1.5rem;
   }
-  
+
   .about-content p,
   .about-content ul {
     font-size: 1rem;
   }
-  
+
   .about-content ul {
     margin-left: 1rem;
   }
