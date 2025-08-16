@@ -9,10 +9,7 @@ const app = express();
 // ✅ Allowed origins (production + local dev)
 const allowedOrigins = [
   'https://pms-cgc-u.vercel.app',
-  'http://localhost:3000',
-  'http://localhost:5173',
-  'http://localhost:5178',
-  'http://localhost:5179'
+  'http://localhost:5180'
 ];
 
 // ✅ Dynamic CORS setup
@@ -54,14 +51,28 @@ app.use('/api/jobs', jobRoutes);
 
 // Connect to MongoDB (use environment variable for production)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
+
+console.log('🔍 Attempting MongoDB connection...');
+console.log('📊 Environment check:', {
+  hasMongoURI: !!process.env.MONGODB_URI,
+  nodeEnv: process.env.NODE_ENV,
+  port: process.env.PORT
+});
+
 mongoose.connect(MONGODB_URI)
   .then(() => {
-    console.log('✅ Connected to MongoDB Atlas');
+    console.log('✅ Connected to MongoDB Atlas successfully');
+    console.log('🎯 Database:', MONGODB_URI.split('/')[3]?.split('?')[0] || 'default');
   })
   .catch((err) => {
-    console.error('❌ MongoDB connection error:', err);
-    console.error('URI attempting to use:', process.env.MONGODB_URI);
-    process.exit(1);
+    console.error('❌ MongoDB connection error:', err.message);
+    console.error('🔗 URI being used:', MONGODB_URI.replace(/:[^:@]*@/, ':***@')); // Hide password in logs
+    console.error('💡 Check: 1) MongoDB Atlas credentials 2) Network access 3) Database name');
+    
+    // Don't exit in production to allow for retries
+    if (process.env.NODE_ENV !== 'production') {
+      process.exit(1);
+    }
   });
 
 // Use environment port or default to 5000
