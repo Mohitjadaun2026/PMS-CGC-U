@@ -1,10 +1,12 @@
 import React ,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun,Menu, X  } from "lucide-react";
 import "./header.css";
 import collegeLogo from "../assets/cgc logo.png"; // Make sure to add the logo to your assets folder
 
 function Header() { const [theme, setTheme] = useState('light');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+
 
   // On mount, load saved theme or system preference
   useEffect(() => {
@@ -31,6 +33,12 @@ function Header() { const [theme, setTheme] = useState('light');
   return (
     <header className="pms-header">
       <div className="logo">
+        <button
+  className="menu-toggle-btn"
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
+>
+  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+</button>
         <img 
           src={collegeLogo} 
           alt="College Logo" 
@@ -41,29 +49,30 @@ function Header() { const [theme, setTheme] = useState('light');
           <span className="line2">Portal</span>
         </Link>
       </div>
-      <nav className="nav-links">
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/jobs">Jobs</Link>
-        <Link to="/profile">Student Profile</Link>
-        <Link to="/admin-job-posting">Admin Panel</Link>
+      <nav className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+  <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+  <Link to="/jobs" onClick={() => setIsMenuOpen(false)}>Jobs</Link>
+  <Link to="/profile" onClick={() => setIsMenuOpen(false)}>Student Profile</Link>
+  <Link to="/admin-job-posting" onClick={() => setIsMenuOpen(false)}>Admin Panel</Link>
 
-         {/* Theme toggle button */}
-        <button 
-          onClick={toggleTheme} 
-          className="theme-toggle-btn"
-          aria-label="Toggle light/dark theme"
-        >
-          {theme === 'light' ? (
-    <Moon size={20} /> 
-  ) : (
-    <Sun size={20} />
-  )}
-        </button>
+  {/* Theme toggle button */}
+  <button
+    onClick={() => {
+    toggleTheme();      // ✅ theme toggle karega
+    setIsMenuOpen(false); // ✅ menu bhi close hoga
+  }}
+    className="theme-toggle-btn"
+    aria-label="Toggle light/dark theme"
+  >
+    {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+  </button>
 
-        <Link to="/signin" className="login-btn">Login</Link>
+  <Link to="/signin" className="login-btn" onClick={() => setIsMenuOpen(false)}>
+    Login
+  </Link>
+</nav>
 
-      </nav>
     </header>
   );
 }

@@ -312,6 +312,7 @@ body.dark .login-btn:hover {
   }
 }
 
+
 /* Small tablets and large phones (640px and down) */
 @media (max-width: 640px) {
   .pms-header {
@@ -482,5 +483,51 @@ body.dark .login-btn:hover {
   
   .logo-image {
     height: 48px;
+  }
+}
+/* ✅ Hamburger Button */
+.menu-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+/* ✅ Show hamburger on small screens */
+@media (max-width: 768px) {
+  .menu-toggle-btn {
+    display: block;
+    z-index: 1100;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(10, 10, 10, 0.95);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 220px;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .nav-links.active {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
