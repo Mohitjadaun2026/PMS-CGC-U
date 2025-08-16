@@ -1,115 +1,104 @@
 import React from "react";
-import {
-  FaLinkedin,
-  FaTwitter,
-  FaGithub,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhone,
-} from "react-icons/fa";
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="pms-footer">
-      <div className="footer-container">
-        {/* Top Section */}
-        <div className="footer-top">
-          <div className="footer-brand">
-            <h3 className="footer-logo">
-              Campus<span>Recruitment</span>
-            </h3>
-            <p className="footer-tagline">Bridging talent with opportunity</p>
-            <div className="footer-social">
-              <a href="#" aria-label="LinkedIn">
-                <FaLinkedin />
-              </a>
-              <a href="#" aria-label="Twitter">
-                <FaTwitter />
-              </a>
-              <a href="#" aria-label="GitHub">
-                <FaGithub />
-              </a>
-              <a href="#" aria-label="Email">
-                <FaEnvelope />
-              </a>
+    <footer className="py-16 bg-gray-950 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          <div className="col-span-2">
+            <div className="text-2xl font-bold bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent mb-4">
+              CGC Jhanjeri
             </div>
+            <p className="text-gray-400 max-w-md">
+              Empowering students with cutting-edge placement solutions and
+              industry connections for a successful career launch.
+            </p>
           </div>
 
-          <div className="footer-sections">
-            <div className="footer-section">
-              <h4 className="footer-heading">Navigation</h4>
-              <ul className="footer-nav">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                  <a href="/about">About Us</a>
-                </li>
-                <li>
-                  <a href="/jobs">Job Listings</a>
-                </li>
-                <li>
-                  <a href="/profile">My Profile</a>
-                </li>
-                <li>
-                  <a href="/admin-job-posting">Post Jobs</a>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-yellow-400">Quick Links</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Alumni
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Partners
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            <div className="footer-section">
-              <h4 className="footer-heading">Legal</h4>
-              <ul className="footer-nav">
-                <li>
-                  <a href="#privacy">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#terms">Terms of Service</a>
-                </li>
-                <li>
-                  <a href="#cookies">Cookie Policy</a>
-                </li>
-                <li>
-                  <a href="#gdpr">GDPR Compliance</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="footer-section">
-              <h4 className="footer-heading">Contact</h4>
-              <ul className="footer-contact">
-                <li>
-                  <FaMapMarkerAlt className="contact-icon" />
-                  <span>CGC University, Mohali</span>
-                </li>
-                <li>
-                  <FaEnvelope className="contact-icon" />
-                  <span>contact@placementsystem.com</span>
-                </li>
-                <li>
-                  <FaPhone className="contact-icon" />
-                  <span>(555) 123-4567</span>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-yellow-400">Support</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Help Center
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Documentation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Training
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="#"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Community
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="footer-bottom">
-          <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} Campus Recruitment Portal. All
+        <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+          <p>
+            &copy; {new Date().getFullYear()} Placement Management System. All
             rights reserved.
-          </div>
-          <div className="footer-cta">
-            <a href="/signin" className="footer-cta-button">
-              Sign In
-            </a>
-            <a href="/contact" className="footer-cta-button outline">
-              Contact Us
-            </a>
-          </div>
+          </p>
         </div>
       </div>
     </footer>

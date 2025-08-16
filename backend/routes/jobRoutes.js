@@ -3,24 +3,17 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const jobController = require('../controllers/jobControllers');
-// Temporarily disable Cloudinary to fix deployment
-// const { storage } = require('../config/cloudinary');
 
 const router = express.Router();
 
-// Temporarily use only local storage to fix deployment issue
-const useCloudinary = false; // process.env.NODE_ENV === 'production' || process.env.USE_CLOUDINARY === 'true';
-
-let uploadStorage;
-
-// Use local storage only for now to fix deployment
+// Local storage configuration
 const uploadsDir = path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
   console.log('📁 Created uploads directory');
 }
 
-uploadStorage = multer.diskStorage({
+const uploadStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, uploadsDir);
   },

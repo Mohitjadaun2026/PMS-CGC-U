@@ -28,5 +28,10 @@ Thumbs.db
 *.swp
 *.swo
 
-# Uploads
-backend/uploads/
+# Uploads (allow uploads folder structure but ignore image files)
+backend/uploads/*.png
+backend/uploads/*.jpg
+backend/uploads/*.jpeg
+backend/uploads/*.gif
+backend/uploads/*.webp
+backend/uploads/*.svg

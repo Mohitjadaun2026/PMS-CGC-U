@@ -2,31 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark Mode Defaults */
-  --bg-dark: #27000a;
-  --bg-darker: #220009;
+  --bg-dark: #121212;
+  --bg-darker: #0a0a0a;
   --text-primary: #ffffff;
   --text-secondary: #e0e0e0;
-
-  /* Maroon Color Palette */
-  --maroon-900: #400010;
-  --maroon-800: #600018;
-  --maroon-700: #800020;
-  --maroon-600: #a00028;
-  --maroon-500: #c00030;
-
+  --accent-yellow: #ffd700;
+  --accent-yellow-dark: #ffc000;
   --border-radius: 8px;
   --transition-speed: 0.3s;
   --header-height: 70px;
   --footer-height: 60px;
-}
-
-/* Light Mode Overrides */
-[data-theme="light"] {
-  --bg-dark: #f8f9fa;
-  --bg-darker: #e9ecef;
-  --text-primary: #212529;
-  --text-secondary: #495057;
 }
 
 /* Base Styles */
@@ -35,28 +20,21 @@ html {
   font-size: 16px;
 }
 
-body,
-#root {
+body, #root {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   height: 100%;
   background-color: var(--bg-dark);
   color: var(--text-primary);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   margin: 0 0 1rem 0;
   line-height: 1.25;
@@ -65,17 +43,21 @@ h6 {
 
 h1 {
   font-size: 2.5rem;
-  color: var(--maroon-700);
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
-/* Layout */
+/* Layout Improvements */
 #root {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-/* Scrollbar */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -86,98 +68,43 @@ h1 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--maroon-700);
+  background: var(--accent-yellow);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--maroon-800);
+  background: var(--accent-yellow-dark);
 }
 
-/* Selection */
+/* Selection Colors */
 ::selection {
-  background: var(--maroon-700);
-  color: white;
+  background: var(--accent-yellow);
+  color: var(--bg-dark);
 }
 
-/* Focus Styles */
+/* Focus Styles for Accessibility */
 :focus-visible {
-  outline: 2px solid var(--maroon-700);
+  outline: 2px solid var(--accent-yellow);
   outline-offset: 2px;
 }
 
-/* Animations */
+/* Animation Classes */
 .fade-in {
   animation: fadeIn var(--transition-speed) ease-in forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Buttons & Links */
-button {
-  background-color: var(--maroon-700);
-  color: white;
-  border-radius: var(--border-radius);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: all var(--transition-speed);
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-button:hover {
-  background-color: var(--maroon-800);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--maroon-700);
-  color: var(--maroon-700);
-}
-
-.btn-outline:hover {
-  background: var(--maroon-700);
-  color: white;
-}
-
-a {
-  color: var(--maroon-700);
-  transition: color var(--transition-speed);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--maroon-800);
-  text-decoration: underline;
-}
-
-.highlight {
-  color: var(--maroon-700);
-  font-weight: 600;
-}
-
-/* Responsive */
+/* Responsive Base */
 @media (max-width: 768px) {
   html {
     font-size: 14px;
   }
-
+  
   h1 {
     font-size: 2rem;
-  }
-
-  button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
   }
 }
