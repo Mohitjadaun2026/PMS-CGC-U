@@ -11,10 +11,10 @@ services:
 			- key: NODE_ENV
 				value: production
 			- key: CLOUDINARY_CLOUD_NAME
-				value: your_cloud_name_here
+				value: dis7j0adr
 			- key: CLOUDINARY_API_KEY
-				value: your_api_key_here
+				value: 243752853447896
 			- key: CLOUDINARY_API_SECRET
-				value: your_api_secret_here
+				value: RvV0XNSMt6If88r7grAg9yFUuFU
 		autoDeploy: true
 		rootDir: backend
