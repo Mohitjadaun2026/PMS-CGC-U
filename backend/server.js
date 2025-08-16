@@ -3,6 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const multer = require('multer');
 
 const app = express();
 
@@ -48,6 +49,36 @@ app.use('/uploads', imageRoutes);
 // Job routes
 const jobRoutes = require('./routes/jobRoutes');
 app.use('/api/jobs', jobRoutes);
+
+// Error handling middleware for multer and other errors
+app.use((error, req, res, next) => {
+  console.error('Server error:', error);
+  
+  if (error instanceof multer.MulterError) {
+    if (error.code === 'LIMIT_FILE_SIZE') {
+      return res.status(400).json({ error: 'File too large. Maximum size is 5MB.' });
+    }
+    if (error.code === 'LIMIT_UNEXPECTED_FILE') {
+      return res.status(400).json({ error: 'Unexpected file field.' });
+    }
+    return res.status(400).json({ error: `Upload error: ${error.message}` });
+  }
+  
+  if (error.message && error.message.includes('Only image files are allowed')) {
+    return res.status(400).json({ error: error.message });
+  }
+  
+  // Generic error response
+  res.status(500).json({ 
+    error: 'Internal server error', 
+    details: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong'
+  });
+});
+
+// 404 handler for unmatched routes
+app.use('*', (req, res) => {
+  res.status(404).json({ error: 'Route not found' });
+});
 
 // Connect to MongoDB (use environment variable for production)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';

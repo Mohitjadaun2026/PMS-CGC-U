@@ -14,7 +14,10 @@ exports.getAllJobs = async (req, res) => {
 
 exports.createJob = async (req, res) => {
   try {
-    console.log('Request body:', req.body); // Debug log
+    console.log('📝 Creating new job...');
+    console.log('Request body:', req.body);
+    console.log('Uploaded file:', req.file ? req.file.filename : 'No file uploaded');
+    
     const jobData = { ...req.body };
     
     // Handle array fields that come as individual form fields (from FormData)
@@ -44,18 +47,22 @@ exports.createJob = async (req, res) => {
     if (!jobData.eligibleBranches) jobData.eligibleBranches = [];
     if (!jobData.eligibleYears) jobData.eligibleYears = [];
     
+    // Handle file upload
     if (req.file) {
       jobData.companyLogo = `/uploads/${req.file.filename}`;
+      console.log('✅ Logo uploaded:', jobData.companyLogo);
+    } else {
+      console.log('ℹ️ No logo uploaded for this job');
     }
     
-    console.log('Processed job data:', jobData); // Debug log
+    console.log('Processed job data:', jobData);
     
     const job = new Job(jobData);
     await job.save();
-    console.log('Job created successfully:', job._id); // Debug log
+    console.log('✅ Job created successfully:', job._id);
     res.status(201).json(job);
   } catch (err) {
-    console.error('Error creating job:', err);
+    console.error('❌ Error creating job:', err);
     res.status(500).json({ error: 'Failed to create job', details: err.message });
   }
 };

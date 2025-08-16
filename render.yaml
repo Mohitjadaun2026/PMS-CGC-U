@@ -7,6 +7,6 @@ services:
 		startCommand: node server.js
 		envVars:
 			- key: MONGODB_URI
-				value: mongodb+srv://jadaunmohit0:Mohitjadaun@123@pms-cgcu.gkrai7w.mongodb.net/
+				value: mongodb+srv://jadaunmohit0:Mohit%40123@pms-cgcu.gkrai7w.mongodb.net/placement?retryWrites=true&w=majority&appName=PMS-CGCU
 		autoDeploy: true
 		rootDir: backend
