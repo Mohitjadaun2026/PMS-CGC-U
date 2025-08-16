@@ -102,9 +102,9 @@ function Home() {
         
         <div className="hero-content">
           <h1 className="hero-title">
-            CGC Jhanjeri
+            CGC UNIVERSITY 
             <span className="hero-subtitle">
-              Placement Management System
+              Campus Recruitment Portal
             </span>
           </h1>
           <p className="hero-description">
@@ -129,7 +129,7 @@ function Home() {
               Comprehensive Features
             </h2>
             <p className="section-description">
-              Our advanced placement management system offers everything you need for successful campus placements
+              Our advanced Campus Recruitment Portal offers everything you need for successful campus placements
             </p>
           </div>
           

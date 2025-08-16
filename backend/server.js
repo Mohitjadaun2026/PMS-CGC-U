@@ -6,17 +6,14 @@ const cors = require('cors');
 
 const app = express();
 
-// Enable CORS for all origins (you can restrict this later)
 const corsOptions = {
-  origin: [
-    'https://pms-cgc-u.vercel.app',
-    'http://localhost:3000'
-  ],
+  origin: 'https://pms-cgc-u.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
 };
 app.use(cors(corsOptions));
+
 
 // Friendly message for root route
 app.get('/', (req, res) => {
