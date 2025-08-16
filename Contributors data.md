@@ -15,7 +15,6 @@ This document records **all contributions** to the project and assigns points ba
 > ✅ **Approval:** Points updated **only** by the Mentor or Project Admin (PA) at the end of the day.
 
 
-Contributors:
 | #️⃣ S.No | 👤 GitHub Profile | 🎯 Points | 🔗 PR No. | 📌 Task Description                                      |
 | -------- | ----------------- | --------- | --------- | -------------------------------------------------------- |
 | 1        | hemanth5055       | 3         | #19       | Enhanced contact links appearance                        |
@@ -28,5 +27,6 @@ Contributors:
 | 8        | HetviThakkar-025  | 5         | #38       | Updated PMS-CGC-U Website to Maroon Primary Theme        |
 | 9        | Prerna799         | 3         | #49       | Updated PMS-CGC-U Website Name                           |
 | 10       | Salusha           | 7         | #46       | Modified PMS-CGC-U Navbar                                |
+| 11       | arundhativaishnav | 5         | #54       | Added Toastify feature instead of windows alerts         |
 
 
