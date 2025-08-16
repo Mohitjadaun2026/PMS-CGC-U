@@ -14,7 +14,6 @@ This document records **all contributions** to the project and assigns points ba
 > 🛠 **Evaluation Criteria:** Complexity, quality, and significance of the work.  
 > ✅ **Approval:** Points updated **only** by the Mentor or Project Admin (PA) at the end of the day.
 
-
 | #️⃣ S.No | 👤 GitHub Profile | 🎯 Points | 🔗 PR No. | 📌 Task Description                                      |
 | -------- | ----------------- | --------- | --------- | -------------------------------------------------------- |
 | 1        | hemanth5055       | 3         | #19       | Enhanced contact links appearance                        |
@@ -28,5 +27,6 @@ This document records **all contributions** to the project and assigns points ba
 | 9        | Prerna799         | 3         | #49       | Updated PMS-CGC-U Website Name                           |
 | 10       | Salusha           | 7         | #46       | Modified PMS-CGC-U Navbar                                |
 | 11       | arundhativaishnav | 5         | #54       | Added Toastify feature instead of windows alerts         |
+| 12       | RoshniRautela     | 3         | #48       | Applied dark mode to login page                          |
 
 
