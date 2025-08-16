@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, MapPin, DollarSign, Clock, Building, User, Award } from 'lucide-react';
 import './jobs.css';
 import { API_ENDPOINTS } from '../config/api';
+import { showSuccessToast } from '../utils/toastConfig';
 
 // JobCard Component
 const JobCard = ({ job, onClick }) => {

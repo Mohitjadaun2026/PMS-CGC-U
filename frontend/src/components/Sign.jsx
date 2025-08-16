@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { showErrorToast, showSuccessToast } from "../utils/toastConfig";
 import "./sign.css";
 
 function Sign() {
@@ -18,10 +19,10 @@ function Sign() {
     e.preventDefault();
     // Registration logic here (e.g., API call)
     if (form.password !== form.confirmPassword) {
-      alert("Passwords do not match!");
+      showErrorToast("Passwords do not match!");
       return;
     }
-    alert("Registered successfully! Please sign in.");
+    showSuccessToast("Registered successfully! Please sign in.");
     setIsRegister(false);
     setForm({ name: "", email: "", password: "", confirmPassword: "" });
   };
@@ -29,7 +30,7 @@ function Sign() {
   const handleSignIn = (e) => {
     e.preventDefault();
     // Sign-in logic here (e.g., API call)
-    alert("Signed in as " + form.email);
+    showSuccessToast("Signed in as " + form.email);
     setForm({ name: "", email: "", password: "", confirmPassword: "" });
   };
 
