@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, MapPin, DollarSign, Clock, Building, User, Award } from 'lucide-react';
 import './jobs.css';
 import { API_ENDPOINTS } from '../config/api';
-import { showSuccessToast } from '../utils/toastConfig';
 
 // JobCard Component
 const JobCard = ({ job, onClick }) => {
   console.log('Job data in JobCard:', job); // Debug log
   
+  // Always use full backend uploads path for logo
   const logoUrl = job.companyLogo
-    ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}`
+    ? job.companyLogo.startsWith('/uploads/')
+      ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}`
+      : `${API_ENDPOINTS.UPLOADS}/uploads/${job.companyLogo}`
     : '/default-logo.png';
 
   const skills = job.skillsRequired ? job.skillsRequired.split(',').map(s => s.trim()) : [];
