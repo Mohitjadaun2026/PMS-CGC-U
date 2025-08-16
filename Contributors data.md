@@ -17,16 +17,17 @@ This document records **all contributions** to the project and assigns points ba
 | #️⃣ S.No | 👤 GitHub Profile | 🎯 Points | 🔗 PR No. | 📌 Task Description                                      |
 | -------- | ----------------- | --------- | --------- | -------------------------------------------------------- |
 | 1        | hemanth5055       | 3         | #19       | Enhanced contact links appearance                        |
-| 2        | Jai-76            | 3         | #1        | License Missing from Repository                          |
-| 3        | Sangeeta-20-stack | 3         | #2        | Add Dark/Light Mode Toggle for Theme Switching           |
+| 2        | Jai-76            | 3         | #12       | License Missing from Repository                          |
+| 3        | Sangeeta-20-stack | 3         | #17       | Add Dark/Light Mode Toggle for Theme Switching           |
 | 4        | khizar-hayath     | 3         | #26       | Added favicon, navbar logo and website title             |
 | 5        | khizar-hayath     | 3         | #37       | Fix title visibility and inconsistent button behaviour   |
 | 6        | akofficial10add   | 5         | #36       | Enhance Job Posting Management UI & Fix Alignment Issues |
 | 7        | akofficial10add   | 3         | #42       | Enhanced Footer Component with Link Features             |
 | 8        | HetviThakkar-025  | 5         | #38       | Updated PMS-CGC-U Website to Maroon Primary Theme        |
 | 9        | Prerna799         | 3         | #49       | Updated PMS-CGC-U Website Name                           |
-| 10       | Salusha           | 7         | #46       | Modified PMS-CGC-U Navbar                                |
-| 11       | arundhativaishnav | 5         | #54       | Added Toastify feature instead of windows alerts         |
-| 12       | RoshniRautela     | 3         | #48       | Applied dark mode to login page                          |
+| 10       | akofficial10add   | 3         | #45       | Fix issue in Footer                                      |
+| 11       | Salusha           | 7         | #46       | Modified PMS-CGC-U Navbar                                |
+| 12       | arundhativaishnav | 5         | #54       | Added Toastify feature instead of windows alerts         |
+| 13       | RoshniRautela     | 3         | #48       | Applied dark mode to login page                          |
 
 
