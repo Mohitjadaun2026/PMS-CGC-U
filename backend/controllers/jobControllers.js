@@ -49,8 +49,15 @@ exports.createJob = async (req, res) => {
     
     // Handle file upload
     if (req.file) {
-      jobData.companyLogo = `/uploads/${req.file.filename}`;
-      console.log('✅ Logo uploaded:', jobData.companyLogo);
+      if (req.file.path) {
+        // Cloudinary upload - use the secure URL
+        jobData.companyLogo = req.file.path;
+        console.log('✅ Logo uploaded to Cloudinary:', jobData.companyLogo);
+      } else {
+        // Local upload - use local path
+        jobData.companyLogo = `/uploads/${req.file.filename}`;
+        console.log('✅ Logo uploaded locally:', jobData.companyLogo);
+      }
     } else {
       console.log('ℹ️ No logo uploaded for this job');
     }
@@ -100,7 +107,15 @@ exports.updateJob = async (req, res) => {
     if (!jobData.eligibleYears) jobData.eligibleYears = [];
     
     if (req.file) {
-      jobData.companyLogo = `/uploads/${req.file.filename}`;
+      if (req.file.path) {
+        // Cloudinary upload - use the secure URL
+        jobData.companyLogo = req.file.path;
+        console.log('✅ Logo updated to Cloudinary:', jobData.companyLogo);
+      } else {
+        // Local upload - use local path
+        jobData.companyLogo = `/uploads/${req.file.filename}`;
+        console.log('✅ Logo updated locally:', jobData.companyLogo);
+      }
     }
     
     console.log('Processed update data:', jobData); // Debug log

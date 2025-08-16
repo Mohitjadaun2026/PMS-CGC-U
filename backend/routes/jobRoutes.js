@@ -3,31 +3,42 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const jobController = require('../controllers/jobControllers');
+const { storage } = require('../config/cloudinary');
 
 const router = express.Router();
 
-// Ensure uploads directory exists
-const uploadsDir = path.join(__dirname, '..', 'uploads');
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
-  console.log('📁 Created uploads directory');
+// Use Cloudinary storage for production, local storage for development
+const useCloudinary = process.env.NODE_ENV === 'production' || process.env.USE_CLOUDINARY === 'true';
+
+let uploadStorage;
+
+if (useCloudinary) {
+  // Use Cloudinary for production
+  uploadStorage = storage;
+  console.log('📸 Using Cloudinary for image storage');
+} else {
+  // Use local storage for development
+  const uploadsDir = path.join(__dirname, '..', 'uploads');
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+    console.log('📁 Created uploads directory');
+  }
+
+  uploadStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, uploadsDir);
+    },
+    filename: function (req, file, cb) {
+      const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
+      cb(null, uniqueName);
+    }
+  });
+  console.log('📁 Using local storage for image uploads');
 }
 
-// Multer setup for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadsDir);
-  },
-  filename: function (req, file, cb) {
-    // Generate unique filename
-    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
-    cb(null, uniqueName);
-  }
-});
-
-// Add file filtering and size limits
+// Configure multer with the selected storage
 const upload = multer({ 
-  storage,
+  storage: uploadStorage,
   limits: {
     fileSize: 5 * 1024 * 1024 // 5MB limit
   },

@@ -8,5 +8,13 @@ services:
 		envVars:
 			- key: MONGODB_URI
 				value: mongodb+srv://jadaunmohit0:Mohit%40123@pms-cgcu.gkrai7w.mongodb.net/placement?retryWrites=true&w=majority&appName=PMS-CGCU
+			- key: NODE_ENV
+				value: production
+			- key: CLOUDINARY_CLOUD_NAME
+				value: your_cloud_name_here
+			- key: CLOUDINARY_API_KEY
+				value: your_api_key_here
+			- key: CLOUDINARY_API_SECRET
+				value: your_api_secret_here
 		autoDeploy: true
 		rootDir: backend

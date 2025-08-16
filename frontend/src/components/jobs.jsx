@@ -7,14 +7,14 @@ import { API_ENDPOINTS } from '../config/api';
 const JobCard = ({ job, onClick }) => {
   console.log('Job data in JobCard:', job); // Debug log
   
-  // Handle logo URL properly
+  // Handle logo URL properly - support both Cloudinary and local storage
   const logoUrl = job.companyLogo
     ? job.companyLogo.startsWith('http')
-      ? job.companyLogo
+      ? job.companyLogo // Cloudinary URL (starts with https://)
       : job.companyLogo.startsWith('/uploads/')
-        ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}`
-        : `${API_ENDPOINTS.UPLOADS}/uploads/${job.companyLogo}`
-    : '/default-logo.png';
+        ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}` // Local storage URL
+        : `${API_ENDPOINTS.UPLOADS}/uploads/${job.companyLogo}` // Fallback for local
+    : '/default-logo.png'; // Default logo fallback
 
   const skills = job.skillsRequired ? job.skillsRequired.split(',').map(s => s.trim()) : [];
 
@@ -122,14 +122,14 @@ const JobDetails = ({ job, onBack, onApply }) => {
   const skills = job.skillsRequired ? job.skillsRequired.split(',').map(s => s.trim()) : [];
   const benefits = job.benefits ? job.benefits.split(',').map(s => s.trim()) : [];
 
-  // Build the correct logo URL
+  // Build the correct logo URL - support both Cloudinary and local storage
   const logoUrl = job.companyLogo
     ? job.companyLogo.startsWith('http')
-      ? job.companyLogo
+      ? job.companyLogo // Cloudinary URL (starts with https://)
       : job.companyLogo.startsWith('/uploads/')
-        ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}`
-        : `${API_ENDPOINTS.UPLOADS}/uploads/${job.companyLogo}`
-    : '/default-logo.png';
+        ? `${API_ENDPOINTS.UPLOADS}${job.companyLogo}` // Local storage URL
+        : `${API_ENDPOINTS.UPLOADS}/uploads/${job.companyLogo}` // Fallback for local
+    : '/default-logo.png'; // Default logo fallback
 
   return (
     <div className="job-details-container">
