@@ -1,8 +1,15 @@
 const Job = require('../models/Job');
 
 exports.getAllJobs = async (req, res) => {
-  const jobs = await Job.find();
-  res.json(jobs);
+  try {
+    console.log('Fetching all jobs...'); // Debug log
+    const jobs = await Job.find();
+    console.log(`Found ${jobs.length} jobs`); // Debug log
+    res.json(jobs);
+  } catch (err) {
+    console.error('Error fetching jobs:', err);
+    res.status(500).json({ error: 'Failed to fetch jobs', details: err.message });
+  }
 };
 
 exports.createJob = async (req, res) => {
@@ -45,10 +52,11 @@ exports.createJob = async (req, res) => {
     
     const job = new Job(jobData);
     await job.save();
-    res.json(job);
+    console.log('Job created successfully:', job._id); // Debug log
+    res.status(201).json(job);
   } catch (err) {
     console.error('Error creating job:', err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: 'Failed to create job', details: err.message });
   }
 };
 
@@ -91,15 +99,28 @@ exports.updateJob = async (req, res) => {
     console.log('Processed update data:', jobData); // Debug log
     
     const job = await Job.findByIdAndUpdate(req.params.id, jobData, { new: true });
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
     console.log('Updated job:', job); // Debug log
     res.json(job);
   } catch (err) {
     console.error('Error updating job:', err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: 'Failed to update job', details: err.message });
   }
 };
 
 exports.deleteJob = async (req, res) => {
-  await Job.findByIdAndDelete(req.params.id);
-  res.json({ success: true });
+  try {
+    console.log('Deleting job:', req.params.id); // Debug log
+    const job = await Job.findByIdAndDelete(req.params.id);
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+    console.log('Job deleted successfully'); // Debug log
+    res.json({ success: true, message: 'Job deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting job:', err);
+    res.status(500).json({ error: 'Failed to delete job', details: err.message });
+  }
 };

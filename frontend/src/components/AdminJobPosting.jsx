@@ -158,7 +158,13 @@ const AdminJobPosting = () => {
         method: editId ? "PUT" : "POST",
         body: form,
       })
-        .then((res) => res.json())
+        .then(async (res) => {
+          if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`HTTP ${res.status}: ${errorText}`);
+          }
+          return res.json();
+        })
         .then(handleSuccess)
         .catch(handleError);
     } else {
@@ -173,7 +179,13 @@ const AdminJobPosting = () => {
         },
         body: JSON.stringify(formData),
       })
-        .then((res) => res.json())
+        .then(async (res) => {
+          if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`HTTP ${res.status}: ${errorText}`);
+          }
+          return res.json();
+        })
         .then(handleSuccess)
         .catch(handleError);
     }
@@ -197,7 +209,7 @@ const AdminJobPosting = () => {
 
   const handleError = (err) => {
     console.error("Error saving job:", err);
-    alert("Error saving job. Please try again.");
+    alert(`Error saving job: ${err.message || err}`);
   };
 
   const handleEdit = (job) => {
