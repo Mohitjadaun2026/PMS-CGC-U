@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./AdminJobPosting.css";
 import { API_ENDPOINTS } from "../config/api";
-import { showSuccessToast, showErrorToast } from "../utils/toastConfig";
 import {
   FiEdit2,
   FiTrash2,
@@ -128,11 +127,11 @@ const AdminJobPosting = () => {
     e.preventDefault();
 
     if (formData.eligibleCourses.length === 0) {
-      showErrorToast("Please select at least one eligible course.");
+      alert("Please select at least one eligible course.");
       return;
     }
     if (formData.eligibleYears.length === 0) {
-      showErrorToast("Please select at least one eligible year.");
+      alert("Please select at least one eligible year.");
       return;
     }
 
@@ -183,11 +182,11 @@ const AdminJobPosting = () => {
   const handleSuccess = (job) => {
     if (editId) {
       setJobPostings(jobPostings.map((j) => (j._id === editId ? job : j)));
-      showSuccessToast("Job updated successfully!");
+      alert("Job updated successfully!");
       setActiveTab("manage");
     } else {
       setJobPostings([...jobPostings, job]);
-      showSuccessToast("Job created successfully!");
+      alert("Job created successfully!");
     }
 
     setEditId(null);
@@ -198,7 +197,7 @@ const AdminJobPosting = () => {
 
   const handleError = (err) => {
     console.error("Error saving job:", err);
-    showErrorToast("Error saving job. Please try again.");
+    alert("Error saving job. Please try again.");
   };
 
   const handleEdit = (job) => {
@@ -229,7 +228,7 @@ const AdminJobPosting = () => {
     if (window.confirm("Are you sure you want to delete this job posting?")) {
       fetch(`${API_ENDPOINTS.JOBS}/${jobId}`, { method: "DELETE" }).then(() => {
         setJobPostings(jobPostings.filter((job) => job._id !== jobId));
-        showSuccessToast("Job deleted successfully!");
+        alert("Job deleted successfully!");
       });
     }
   };
