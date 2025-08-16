@@ -1,233 +1,319 @@
-/* Main Container - Futuristic Glass Morphism */
+/* ===================================================================
+   ADMIN JOB POSTING - ENHANCED UI/UX STYLES (DARK & LIGHT MODE)
+   ================================================================== */
+
+/* DARK MODE STYLES (Default) */
+/* ===================================================================
+   MAIN CONTAINER - DARK MODE
+   ================================================================== */
+
 .admin-job-posting-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 28px 18px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-  background: #111; /* Dark maroon-friendly background */
+  padding: 2rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
   min-height: 100vh;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Background pattern overlay */
+.admin-job-posting-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(192, 0, 48, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(192, 0, 48, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* All content above background */
+.admin-job-posting-container > * {
+  position: relative;
+  z-index: 1;
 }
 
 .admin-job-posting-container h1 {
-  color: #c00030; /* Maroon heading */
-  margin-bottom: 30px;
+  color: #c00030;
+  margin-bottom: 2rem;
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(192, 0, 48, 0.3); /* Soft maroon glow */
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-shadow: 0 4px 20px rgba(192, 0, 48, 0.4);
   position: relative;
-  display: inline-block;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
-
-body.light .admin-job-posting-container {
-  color: #fff; /* Keep text visible on light background */
-  background: #f9f9f9; /* Light background */
-  min-height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 28px 18px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* Enhanced header with gradient underline */
+.admin-job-posting-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #c00030, transparent);
+  border-radius: 2px;
 }
 
-body.light .admin-job-posting-container h1 {
-  color: #c00030; /* Maroon heading */
-  margin-bottom: 30px;
-  text-align: center;
-  letter-spacing: 1px;
-  position: relative;
+.header-icon {
+  font-size: 1.2em;
+  color: #c00030;
 }
 
+/* ===================================================================
+   TAB NAVIGATION - DARK MODE
+   ================================================================== */
 
-/* Futuristic Tabs */
 .admin-tabs {
   display: flex;
-  margin-bottom: 30px;
-  border-bottom: 2px solid #c00030; /* Maroon underline */
-  background: #181818; /* Dark background, keep consistent with maroon theme */
-  border-radius: 12px 12px 0 0;
+  margin-bottom: 2rem;
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid #c0003033; /* Subtle maroon border */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(192, 0, 48, 0.1);
+  position: relative;
 }
 
+.admin-tabs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(192, 0, 48, 0.3), transparent);
+}
 
 .admin-tabs button {
   flex: 1;
-  padding: 1.2rem 1.5rem;
+  padding: 1.25rem 2rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 17px;
-  color: #c00030; /* Maroon base text color */
-  border-bottom: 3px solid transparent;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  transition: all 0.3s;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.5rem;
 }
 
+.admin-tabs button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.1), rgba(222, 10, 63, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.admin-tabs button:hover::before {
+  opacity: 1;
+}
 
 .admin-tabs button svg {
-  transition: transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 1.1em;
+  height: 1.1em;
 }
 
 .admin-tabs button:hover {
-  background: #de0a3f;
-  color: #fff;
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .admin-tabs button:hover svg {
-  transform: translateY(-2px);
+  transform: scale(1.1);
+  color: #c00030;
 }
 
 .admin-tabs button.active {
-  color: #fff;
-  background: #c00030;
-  border-bottom: 3px solid #de0a3f;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(192, 0, 48, 0.3);
+  color: #ffffff;
+  background: linear-gradient(135deg, #c00030, #de0a3f);
+  box-shadow: 
+    0 4px 20px rgba(192, 0, 48, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-  
-body.light .admin-tabs {
-  background: #f9f9f9; /* light background */
-  border-bottom: 2px solid #c00030;
-  border-radius: 12px 12px 0 0;
-  overflow: hidden;
-  margin-bottom: 30px;
-  display: flex;
+.admin-tabs button.active::before {
+  opacity: 0;
 }
 
-body.light .admin-tabs button {
-  background: #f9f9f9;
-  color: #c00030;
-  border: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  font-size: 17px;
-  padding: 14px 32px;
-  transition: all 0.3s;
-  font-weight: 500;
-}
+/* ===================================================================
+   FORM STYLES - DARK MODE
+   ================================================================== */
 
-body.light .admin-tabs button:hover {
-  background: #de0a3f;
-  color: #fff;
-}
-
-body.light .admin-tabs button.active {
-  color: #fff;
-  background: #c00030;
-  border-bottom: 3px solid #de0a3f;
-  font-weight: 600;
-}
-
-/* Form Styles */
 .job-posting-form {
-  background: #181818;
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.1);
-  color: #fff;
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(192, 0, 48, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .form-section {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #c0003033;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(192, 0, 48, 0.1);
+  position: relative;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.section-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(192, 0, 48, 0.02);
+  border: 1px solid rgba(192, 0, 48, 0.1);
+}
+
+.section-header:hover {
+  background: rgba(192, 0, 48, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 0, 48, 0.1);
 }
 
 .form-section h2 {
   color: #c00030;
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 20px;
-  letter-spacing: 0.5px;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-section h2 svg {
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .section-content {
-  padding: 1.5rem 1rem 0;
-  animation: fadeIn 0.4s ease-out;
+  padding: 2rem 0 0 0;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes slideDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+    max-height: 1000px;
+  }
 }
 
-/* Form Grid Layout */
 .form-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.form-group logo label{
-  margin-bottom: 1.2rem;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  
-}
-
-.xyz label{
-    padding-left: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   position: relative;
-  padding-left: 2rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.8rem;
-  font-weight: 500;
-  color: #c00030;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
 }
 
 .form-group label svg {
-  font-size: 1.1rem;
+  color: #c00030;
+  width: 1.1em;
+  height: 1.1em;
 }
 
-/* Modern Input Fields */
+/* Input Fields - Dark Mode */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="date"],
+.form-group input[type="url"],
 .form-group input[type="file"],
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 1.5px solid #c0003055;
-  border-radius: 6px;
-  font-size: 15px;
-  background: #222;
-  color: #fff;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.875rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group input[type="date"]:focus,
+.form-group input[type="url"]:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border: 1.5px solid #c00030;
-  background: #181818;
+  border-color: #c00030;
+  background: rgba(255, 255, 255, 0.08);
   outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(192, 0, 48, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .form-group textarea {
@@ -236,37 +322,20 @@ body.light .admin-tabs button.active {
   line-height: 1.6;
 }
 
-/* File input styling */
 .form-group input[type="file"] {
-  padding: 5px;
-  background: #222;
-  color: #c00030;
+  padding: 0.75rem;
+  background: rgba(192, 0, 48, 0.05);
+  border: 2px dashed rgba(192, 0, 48, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 
-/* Light mode job posting form */
-body.light .job-posting-form {
-  background: #f9f9f9; /* Light background */
-  color: var(--text-primary);
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(212, 55, 55, 0.1);
+.form-group input[type="file"]:hover {
+  background: rgba(192, 0, 48, 0.1);
+  border-color: rgba(192, 0, 48, 0.5);
 }
 
-body.light .form-section {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
-}
-
-body.light .form-section h2 {
-  color: var(--maroon-700);
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 20px;
-  letter-spacing: 0.5px;
-}
-
-/* Logo Upload - Interactive Zone */
+/* Logo Upload - Dark Mode */
 .logo-upload-container {
   position: relative;
   margin-top: 0.5rem;
@@ -275,26 +344,62 @@ body.light .form-section h2 {
 .logo-upload-label {
   display: block;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-preview-container,
+.logo-upload-placeholder {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px dashed rgba(192, 0, 48, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.logo-upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.logo-upload-placeholder svg {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #c00030;
   transition: all 0.3s ease;
 }
 
-.logo-preview-container {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px dashed rgba(255, 214, 0, 0.4);
-  transition: all 0.3s ease;
+.logo-upload-placeholder span {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.logo-upload-label:hover .logo-preview-container,
+.logo-upload-label:hover .logo-upload-placeholder {
+  border-color: #c00030;
+  background: rgba(192, 0, 48, 0.05);
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(192, 0, 48, 0.2);
+}
+
+.logo-upload-label:hover .logo-upload-placeholder svg {
+  transform: scale(1.1);
+  color: #de0a3f;
 }
 
 .logo-preview {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: rgba(40, 40, 50, 0.7);
+  background: rgba(255, 255, 255, 0.02);
 }
-
 
 .logo-overlay {
   position: absolute;
@@ -302,176 +407,50 @@ body.light .form-section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(20, 20, 30, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: all 0.3s ease;
-  color: #FFD600;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
-
-.logo-upload-placeholder {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(40, 40, 50, 0.7);
-  border-radius: 12px;
-  border: 2px dashed rgba(255, 214, 0, 0.4);
-  color: rgba(255, 214, 0, 0.6);
-  transition: all 0.3s ease;
-}
-
-.logo-upload-placeholder svg {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: var(--maroon-700);
-}
-
-/* Light mode form inputs */
-body.light .form-group input[type="text"],
-body.light .form-group input[type="email"],
-body.light .form-group input[type="date"],
-body.light .form-group input[type="file"],
-body.light .form-group select,
-body.light .form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1.5px solid rgba(128, 3, 3, 0.279);
-  border-radius: 6px;
-  font-size: 15px;
-  background: #fff;
-  color: var(--bg-dark);
-  transition: border 0.2s, background 0.2s;
-}
-
-body.light .form-group input[type="text"]:focus,
-body.light .form-group input[type="email"]:focus,
-body.light .form-group input[type="date"]:focus,
-body.light .form-group select:focus,
-body.light .form-group textarea:focus {
-  border: 1.5px solid var(--maroon-700);
-  background: #fff;
-  outline: none;
-}
-
-/* Master branch enhancements */
-.logo-upload-input {
-  display: none;
-}
-
-.logo-upload-label:hover .logo-preview-container {
-  border-color: #FFD600;
-}
-
 
 .logo-upload-label:hover .logo-overlay {
   opacity: 1;
 }
 
-/* File Input - Light Mode */
-body.light .form-group input[type="file"] {
-  padding: 5px;
-  background: #fff;
-  color: var(--maroon-700);
-  border: 1.5px solid rgba(212, 55, 55, 0.33);
+.logo-upload-input {
+  display: none;
 }
 
-/* Multi-Select Styles - Maroon Theme */
-.multi-select {
-  height: auto;
-  min-height: 100px;
-  padding: 5px;
-  background: #222;
-  color: #fff;
-  border: 1.5px solid #c0003055;
-  border-radius: 6px;
-  transition: border 0.2s;
-}
-
-.multi-select:focus {
-  border: 1.5px solid #c00030;
-  outline: none;
-}
-
-.multi-select option {
-  padding: 8px 12px;
-  background: #222;
-  color: #fff;
-  border-bottom: 1px solid #c0003033;
-  transition: background 0.2s;
-}
-
-.multi-select option:hover {
-  background: #c00030;
-  color: #181818;
-}
-
-.multi-select option:checked {
-  background: #c00030;
-  color: #181818;
-  font-weight: bold;
-}
-
-/* Multi-Select - Light Mode */
-body.light .multi-select {
-  background: #fff;
-  color: var(--bg-dark);
-  border: 1.5px solid rgba(212, 55, 55, 0.33);
-  min-height: 100px;
-  padding: 5px;
-  border-radius: 6px;
-  transition: border 0.2s;
-}
-
-body.light .multi-select:focus {
-  border: 1.5px solid var(--maroon-700);
-  outline: none;
-}
-
-body.light .multi-select option {
-  padding: 8px 12px;
-  background: #fff;
-  color: var(--bg-dark);
-  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
-  transition: background 0.2s;
-}
-
-body.light .multi-select option:hover,
-body.light .multi-select option:checked {
-  background: var(--maroon-700);
-  color: var(--bg-dark);
-  font-weight: bold;
-}
-
-/* Checkbox Grid - Master Enhancements */
+/* Checkbox Grid - Dark Mode */
 .checkbox-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
-  background: rgba(40, 40, 50, 0.7);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 214, 0, 0.2);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(192, 0, 48, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .checkbox-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.75rem;
   cursor: pointer;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  background: rgba(50, 50, 60, 0.5);
-  border: 1px solid transparent;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -483,17 +462,17 @@ body.light .multi-select option:checked {
   left: 0;
   width: 3px;
   height: 100%;
-  background: #FFD600;
+  background: linear-gradient(180deg, #c00030, #de0a3f);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .checkbox-item:hover {
-  background: rgba(255, 214, 0, 0.1);
-  border-color: rgba(255, 214, 0, 0.3);
+  background: rgba(192, 0, 48, 0.08);
+  border-color: rgba(192, 0, 48, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .checkbox-item:hover::before {
@@ -502,20 +481,21 @@ body.light .multi-select option:checked {
 
 .checkbox-item input[type="checkbox"] {
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(255, 214, 0, 0.6);
-  border-radius: 5px;
-  background: transparent;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
 }
 
 .checkbox-item input[type="checkbox"]:checked {
-  background: #FFD600;
-  border-color: #FFD600;
+  background: linear-gradient(135deg, #c00030, #de0a3f);
+  border-color: #c00030;
+  box-shadow: 0 0 0 2px rgba(192, 0, 48, 0.2);
 }
 
 .checkbox-item input[type="checkbox"]:checked::after {
@@ -524,59 +504,48 @@ body.light .multi-select option:checked {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #111;
+  color: #ffffff;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .checkbox-label {
-  color: #e0e0e0;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.9rem;
   font-weight: 500;
   user-select: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 .checkbox-item:has(input:checked) .checkbox-label {
-  color: #FFD600;
+  color: #ffffff;
   font-weight: 600;
 }
 
-/* Selected Items Display */
 .selected-items {
   margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(255, 214, 0, 0.05);
-  border-radius: 8px;
-  border-left: 3px solid #FFD600;
-  animation: fadeIn 0.3s ease;
+  padding: 1rem 1.25rem;
+  background: rgba(192, 0, 48, 0.08);
+  border-radius: 12px;
+  border-left: 4px solid #c00030;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Multi-Select Container Arrow - Maroon Theme */
-.multi-select-container::after {
-  content: "⌄";
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  color: #c00030;
-  pointer-events: none;
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-10px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+  }
 }
 
-body.light .multi-select-container::after {
-  color: var(--maroon-700);
-}
-
-/* Logo Upload */
-.logo-upload {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Selection Controls and Labels - Master */
 .selected-label {
-  color: #FFD600;
+  color: #c00030;
   font-weight: 600;
   margin-right: 0.5rem;
 }
@@ -588,55 +557,41 @@ body.light .multi-select-container::after {
 }
 
 .select-all-btn {
-  background: rgba(255, 214, 0, 0.1);
-  color: #FFD600;
-  border: 1px solid rgba(255, 214, 0, 0.3);
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.1), rgba(192, 0, 48, 0.2));
+  color: #c00030;
+  border: 1px solid rgba(192, 0, 48, 0.3);
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-
-/* Logo Preview - Maroon Theme */
-.logo-preview {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border: 2px solid #c00030;
-  border-radius: 8px;
-  background: #222;
-}
-
-body.light .logo-preview {
-  background: #fff;
-  border: 2px solid var(--maroon-700);
-  filter: drop-shadow(0 0 3px rgba(212, 55, 55, 0.5));
-}
-
-/* Select All Button Hover - Master */
 .select-all-btn:hover {
-  background: rgba(255, 214, 0, 0.2);
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.2), rgba(192, 0, 48, 0.3));
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 214, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(192, 0, 48, 0.2);
 }
 
-
-/* Form Actions - Floating Buttons */
+/* Form Actions - Dark Mode */
 .form-actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   position: sticky;
   bottom: 20px;
   z-index: 10;
 }
 
 .submit-btn {
-  background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
+  background: linear-gradient(135deg, #c00030 0%, #de0a3f 100%);
   color: white;
   border: none;
   padding: 1rem 2.5rem;
@@ -644,168 +599,161 @@ body.light .logo-preview {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(192, 0, 48, 0.1); /* maroon shadow */
-  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 20px rgba(192, 0, 48, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.01em;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.submit-btn::after {
+.submit-btn::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .submit-btn:hover {
-  background: #64021b;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.18);
+  background: linear-gradient(135deg, #a8002a 0%, #c40b44 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(192, 0, 48, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
-.submit-btn:hover::after {
-  transform: translateX(0);
+.submit-btn:hover::before {
+  left: 100%;
 }
 
 .submit-btn:active {
   transform: translateY(0);
 }
 
-/* Cancel button */
 .cancel-btn {
-  background: #181818;
-  color: #c00030;
-  border: 2px solid #c00030;
-  padding: 12px 32px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 0.875rem 2rem;
   border-radius: 12px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .cancel-btn:hover {
-  background: #c00030;
-  color: white;
-  box-shadow: 0 4px 20px rgba(192, 0, 48, 0.2);
-}
-
-
-/* Light Mode Overrides */
-body.light .submit-btn {
-  background: linear-gradient(90deg, #c00030 0%, #b30000 100%);
-  color: white; /* darker text for light bg */
-  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
-}
-
-body.light .submit-btn:hover {
-  background: #de0a3f;
-  color: white;
-  box-shadow: 0 4px 24px rgba(255, 0, 0, 0.4);
-}
-
-body.light .cancel-btn {
-  background: #fff;
-  color: #c00030;
-  border: 2px solid #c00030;
-}
-
-body.light .cancel-btn:hover {
-  background: #c00030;
-  color: #fff;
-  border: 2px solid #c00030;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Job Postings List - Card Style */
+/* Job Postings List - Dark Mode */
 .job-postings-list {
-  background: #181818;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.1);
-  color: #fff;
-  border: 1px solid rgba(192, 0, 48, 0.2);
+  background: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(192, 0, 48, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .job-postings-list h2 {
   margin-top: 0;
   color: #c00030;
-  margin-bottom: 1.5rem;
-}
-
-/* Empty State Design */
-.no-postings {
-  text-align: center;
-  padding: 3rem;
-  color: rgba(192, 0, 48, 0.5);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .empty-state {
-  max-width: 400px;
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .empty-icon {
-  font-size: 4rem;
+  font-size: 5rem;
   color: rgba(192, 0, 48, 0.3);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 .empty-state h3 {
   color: #c00030;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .empty-state p {
   color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .create-first-btn {
-  background: linear-gradient(90deg, #de0a3f 0%, #d20a3c 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #c00030 0%, #de0a3f 100%);
+  color: #ffffff;
   border: none;
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
+  box-shadow: 0 4px 20px rgba(192, 0, 48, 0.3);
 }
 
 .create-first-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(192, 0, 48, 0.3);
+  box-shadow: 0 8px 30px rgba(192, 0, 48, 0.4);
 }
 
-/* Modern Table Design */
+/* Table - Dark Mode */
 .table-container {
   overflow-x: auto;
-  border-radius: 12px;
-  background: rgba(25, 25, 35, 0.7);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(192, 0, 48, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
-
 
 table {
   width: 100%;
@@ -817,29 +765,34 @@ table {
 table th {
   position: sticky;
   top: 0;
-  background-color: #222; /* maroon theme base */
-  color: #c00030;         /* maroon text */
-  font-weight: 600;
-  padding: 1rem 1.2rem;
+  background: rgba(192, 0, 48, 0.1);
+  color: #c00030;
+  font-weight: 700;
+  padding: 1.25rem 1.5rem;
   text-align: left;
-  border-bottom: 1px solid #c0003033; /* subtle maroon border */
+  border-bottom: 2px solid rgba(192, 0, 48, 0.2);
   z-index: 2;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 table th:hover {
-  background: rgba(60, 60, 70, 0.9); /* hover effect retained */
+  background: rgba(192, 0, 48, 0.15);
 }
-
 
 .th-content {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
 }
 
 table td {
-  padding: 1.2rem;
-  border-bottom: 1px solid rgba(255, 214, 0, 0.05);
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   vertical-align: middle;
   position: relative;
 }
@@ -848,35 +801,46 @@ table tr:last-child td {
   border-bottom: none;
 }
 
-table tr:hover td {
-  background: rgba(255, 214, 0, 0.03);
+table tr {
+  transition: all 0.3s ease;
 }
 
-/* Company Cell with Logo */
+table tr:hover td {
+  background: rgba(192, 0, 48, 0.05);
+}
+
 .company-cell {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
 }
 
 .company-logo-small {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  border-radius: 50%; /* keep maroon theme rounded style */
-  background: #222;
-  border: 1.5px solid #c00030; /* maroon border */
-  padding: 4px; /* keep padding from master */
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(192, 0, 48, 0.2);
+  padding: 4px;
+  transition: all 0.3s ease;
+}
+
+.company-logo-small:hover {
+  transform: scale(1.05);
+  border-color: rgba(192, 0, 48, 0.4);
 }
 
 .company-info {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 }
 
 .company-name {
-  font-weight: 500;
-  color: #fff; /* readable on dark maroon background */
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1rem;
 }
 
 .company-location {
@@ -884,220 +848,514 @@ table tr:hover td {
   color: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 4px;
+  gap: 0.25rem;
 }
 
-/* Light mode overrides */
-body.light .job-postings-list {
-  background: #fff;
-  color: #222;
-  box-shadow: 0 4px 24px rgba(192, 0, 48, 0.15);
-}
-
-body.light .job-postings-list h2 {
-  color: #b30000;
-}
-
-body.light .no-postings {
-  color: #b3000040;
-  font-style: italic;
-}
-
-
-/* Position Cell */
 .position-cell {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.5rem;
 }
 
 .position-title {
-  font-weight: 500;
-  color: #fff;
-}
-
-body.light table th {
-  background-color: #fff5cc;
-  color: #b30000;
   font-weight: 600;
-  width: fit-content;
-  border: 1px solid rgba(192, 0, 48, 0.2); /* subtle maroon border */
+  color: #ffffff;
+  font-size: 1rem;
 }
 
-/* Job Type Badge */
 .job-type-badge {
-  background: rgba(192, 0, 48, 0.1); /* maroon-themed background */
-  color: #c00030;                     /* maroon text */
-  padding: 0.2rem 0.6rem;
-  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.1), rgba(192, 0, 48, 0.2));
+  color: #c00030;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
-  border: 1px solid rgba(192, 0, 48, 0.2);
-}
-
-
-/* Deadline Cell */
-.deadline-cell {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Light mode company logo */
-body.light .company-logo-small {
-  background: #fff5cc;
-  border: 1.5px solid #b30000;
-}
-
-/* Badge styles for eligibility tags */
-.eligibility-badge {
+  border: 1px solid rgba(192, 0, 48, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: inline-block;
-  background: #c0003022;
-  color: #c00030;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  margin: 2px;
-  border: 1px solid #c0003033;
 }
 
-body.light .eligibility-badge {
-  background: #ffcccc;
-  color: #b30000;
-  border: 1px solid #b3000040;
-}
-
-/* Deadline indicator */
 .deadline-passed {
-  color: #ff6b6b;
+  color: #ef4444;
   font-size: 0.85rem;
   font-weight: 500;
 }
 
-/* Action Buttons - Floating Icons */
 .action-buttons {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .edit-btn, .delete-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Edit Button - Maroon Theme */
 .edit-btn {
-  background: rgba(192, 0, 48, 0.1); /* subtle maroon bg */
+  background: rgba(192, 0, 48, 0.1);
   color: #c00030;
   border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
 .edit-btn:hover {
-  background: #c00030;
-  color: #181818;
+  background: linear-gradient(135deg, #c00030, #de0a3f);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(192, 0, 48, 0.2);
+  box-shadow: 0 8px 25px rgba(192, 0, 48, 0.3);
 }
 
-/* Delete Button - Maroon Theme */
 .delete-btn {
-  background: rgba(231, 76, 60, 0.1); /* keep red for delete */
-  color: rgba(231, 76, 60, 0.8);
-  border: 1px solid rgba(231, 76, 60, 0.2);
+  background: rgba(239, 68, 68, 0.1);
+  color: rgba(239, 68, 68, 0.8);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .delete-btn:hover {
-  background: #e74c3c;
-  color: #fff;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
 }
 
+/* Search Bar - Dark Mode */
+.search-bar {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin-left: auto;
+}
 
-/* Delete Button Hover - Maroon Theme */
-.delete-btn:hover {
-  background: #c00030;
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.search-bar input:focus {
+  border-color: #c00030;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(192, 0, 48, 0.1);
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===================================================================
+   LIGHT MODE STYLES (body.light overrides)
+   ================================================================== */
+
+body.light .admin-job-posting-container {
+  color: #1e293b;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+body.light .admin-job-posting-container::before {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(192, 0, 48, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(192, 0, 48, 0.02) 0%, transparent 50%);
+}
+
+body.light .admin-job-posting-container h1 {
   color: #c00030;
-  border: 1.5px solid #c00030;
+  text-shadow: 0 2px 10px rgba(192, 0, 48, 0.2);
 }
 
-/* Light Mode Edit Button */
+body.light .admin-tabs {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(192, 0, 48, 0.1);
+}
+
+body.light .admin-tabs button {
+  color: #64748b;
+}
+
+body.light .admin-tabs button:hover {
+  color: #1e293b;
+}
+
+body.light .admin-tabs button.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #c00030, #de0a3f);
+  box-shadow: 
+    0 4px 20px rgba(192, 0, 48, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+body.light .job-posting-form {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(192, 0, 48, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light .form-section {
+  border-bottom: 1px solid rgba(192, 0, 48, 0.1);
+}
+
+body.light .section-header {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(192, 0, 48, 0.1);
+}
+
+body.light .section-header:hover {
+  background: rgba(192, 0, 48, 0.05);
+  box-shadow: 0 4px 12px rgba(192, 0, 48, 0.1);
+}
+
+body.light .form-section h2 {
+  color: #c00030;
+}
+
+body.light .form-group label {
+  color: #334155;
+}
+
+body.light .form-group input[type="text"],
+body.light .form-group input[type="email"],
+body.light .form-group input[type="date"],
+body.light .form-group input[type="url"],
+body.light .form-group input[type="file"],
+body.light .form-group select,
+body.light .form-group textarea {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
+  color: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+body.light .form-group input[type="text"]:focus,
+body.light .form-group input[type="email"]:focus,
+body.light .form-group input[type="date"]:focus,
+body.light .form-group input[type="url"]:focus,
+body.light .form-group select:focus,
+body.light .form-group textarea:focus {
+  border-color: #c00030;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 0 0 3px rgba(192, 0, 48, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light .form-group input::placeholder,
+body.light .form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+body.light .form-group input[type="file"] {
+  background: rgba(192, 0, 48, 0.05);
+  border: 2px dashed rgba(192, 0, 48, 0.3);
+  color: #334155;
+}
+
+body.light .form-group input[type="file"]:hover {
+  background: rgba(192, 0, 48, 0.1);
+  border-color: #c00030;
+}
+
+body.light .logo-preview-container,
+body.light .logo-upload-placeholder {
+  background: rgba(0, 0, 0, 0.02);
+  border: 2px dashed rgba(192, 0, 48, 0.3);
+}
+
+body.light .logo-upload-placeholder {
+  color: #64748b;
+}
+
+body.light .logo-upload-label:hover .logo-preview-container,
+body.light .logo-upload-label:hover .logo-upload-placeholder {
+  border-color: #c00030;
+  background: rgba(192, 0, 48, 0.05);
+  box-shadow: 0 8px 25px rgba(192, 0, 48, 0.15);
+}
+
+body.light .logo-overlay {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+}
+
+body.light .checkbox-grid {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(192, 0, 48, 0.1);
+}
+
+body.light .checkbox-item {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light .checkbox-item:hover {
+  background: rgba(192, 0, 48, 0.05);
+  border-color: rgba(192, 0, 48, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .checkbox-item input[type="checkbox"] {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+body.light .checkbox-item input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #c00030, #de0a3f);
+  border-color: #c00030;
+}
+
+body.light .checkbox-label {
+  color: #334155;
+}
+
+body.light .checkbox-item:has(input:checked) .checkbox-label {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+body.light .selected-items {
+  background: rgba(192, 0, 48, 0.05);
+  border-left: 4px solid #c00030;
+}
+
+body.light .selected-label {
+  color: #c00030;
+}
+
+body.light .select-all-btn {
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.05), rgba(192, 0, 48, 0.1));
+  color: #c00030;
+  border: 1px solid rgba(192, 0, 48, 0.2);
+}
+
+body.light .select-all-btn:hover {
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.1), rgba(192, 0, 48, 0.2));
+  box-shadow: 0 8px 25px rgba(192, 0, 48, 0.15);
+}
+
+body.light .submit-btn {
+  background: linear-gradient(135deg, #c00030 0%, #de0a3f 100%);
+  color: white;
+  box-shadow: 
+    0 4px 20px rgba(192, 0, 48, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+body.light .submit-btn:hover {
+  background: linear-gradient(135deg, #a8002a 0%, #c40b44 100%);
+  box-shadow: 
+    0 8px 30px rgba(192, 0, 48, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+body.light .cancel-btn {
+  background: rgba(0, 0, 0, 0.02);
+  color: #64748b;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light .cancel-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1e293b;
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .job-postings-list {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(192, 0, 48, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light .job-postings-list h2 {
+  color: #c00030;
+}
+
+body.light .empty-state h3 {
+  color: #c00030;
+}
+
+body.light .empty-state p {
+  color: #64748b;
+}
+
+body.light .create-first-btn {
+  background: linear-gradient(135deg, #c00030 0%, #de0a3f 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(192, 0, 48, 0.3);
+}
+
+body.light .create-first-btn:hover {
+  box-shadow: 0 8px 30px rgba(192, 0, 48, 0.4);
+}
+
+body.light .table-container {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(192, 0, 48, 0.1);
+}
+
+body.light table th {
+  background: rgba(192, 0, 48, 0.05);
+  color: #c00030;
+}
+
+body.light table th:hover {
+  background: rgba(192, 0, 48, 0.1);
+}
+
+body.light table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light table tr:hover td {
+  background: rgba(192, 0, 48, 0.03);
+}
+
+body.light .company-logo-small {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(192, 0, 48, 0.2);
+}
+
+body.light .company-logo-small:hover {
+  border-color: rgba(192, 0, 48, 0.4);
+}
+
+body.light .company-name {
+  color: #1e293b;
+}
+
+body.light .company-location {
+  color: #64748b;
+}
+
+body.light .position-title {
+  color: #1e293b;
+}
+
+body.light .job-type-badge {
+  background: linear-gradient(135deg, rgba(192, 0, 48, 0.05), rgba(192, 0, 48, 0.1));
+  color: #c00030;
+  border: 1px solid rgba(192, 0, 48, 0.2);
+}
+
 body.light .edit-btn {
-  background: #ffb8b8;
-  color: #5a0000;
-  border: none;
-  transition: background 0.2s, color 0.2s;
+  background: rgba(192, 0, 48, 0.05);
+  color: #c00030;
+  border: 1px solid rgba(192, 0, 48, 0.2);
 }
 
 body.light .edit-btn:hover {
-  background: #5a0000;
-  color: #ffb8b8;
-  border: 1.5px solid #5a0000;
+  background: linear-gradient(135deg, #c00030, #de0a3f);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(192, 0, 48, 0.3);
 }
 
-/* Sort Indicators */
-.sort-icon {
-  margin-left: 4px;
-  transition: transform 0.3s ease;
+body.light .delete-btn {
+  background: rgba(239, 68, 68, 0.05);
+  color: rgba(239, 68, 68, 0.8);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
-/* Responsive Adjustments */
+body.light .delete-btn:hover {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+body.light .search-bar input {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
+  color: #1e293b;
+}
+
+body.light .search-bar input:focus {
+  border-color: #c00030;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(192, 0, 48, 0.1);
+}
+
+body.light .search-bar input::placeholder {
+  color: #94a3b8;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   ================================================================== */
+
 @media (max-width: 1200px) {
   .admin-job-posting-container {
     padding: 1.5rem;
-    border-radius: 16px;
   }
   
   .job-posting-form,
   .job-postings-list {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 }
 
 @media (max-width: 900px) {
   .form-row {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .checkbox-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
   
   .form-actions {
     position: static;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
   }
 }
-
 
 @media (max-width: 768px) {
   .admin-tabs {
     flex-direction: column;
+    border-radius: 12px;
   }
   
   .admin-tabs button {
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 214, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
   }
   
-  .admin-tabs button.active {
-    border-bottom: 1px solid #FFD600;
+  body.light .admin-tabs button {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
   
-  .search-bar {
-    max-width: 100%;
-    margin-top: 1rem;
-    margin-left: 0;
+  .admin-tabs button:first-child {
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .admin-tabs button:last-child {
+    border-radius: 0 0 12px 12px;
+    border-bottom: none;
   }
   
   .form-actions {
@@ -1108,503 +1366,122 @@ body.light .edit-btn:hover {
     width: 100%;
     justify-content: center;
   }
+  
+  .search-bar {
+    max-width: 100%;
+    margin: 1rem 0 0 0;
+  }
+  
+  .admin-header {
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
   .admin-job-posting-container {
     padding: 1rem;
-    border-radius: 12px;
   }
   
   .admin-job-posting-container h1 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
   }
   
   .job-posting-form,
   .job-postings-list {
-    padding: 1rem;
-  }
-  
-  .section-header h2 {
-    font-size: 1.1rem;
+    padding: 1.5rem;
+    border-radius: 16px;
   }
   
   .checkbox-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     padding: 1rem;
   }
   
   .logo-preview-container,
   .logo-upload-placeholder {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .table-container {
+    border-radius: 12px;
   }
 }
 
-/* Checkbox Grid Styles */
-.checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-  margin-bottom: 15px;
-  padding: 15px;
-  background: #222; /* dark maroon theme */
-  border-radius: 8px;
-  border: 1.5px solid #c0003055; /* subtle maroon border */
+/* ===================================================================
+   ACCESSIBILITY & UTILITIES
+   ================================================================== */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #c00030;
+  outline-offset: 2px;
 }
 
-/* Animation for section toggle */
-@keyframes slideDown {
-  from {
-    max-height: 0;
-    opacity: 0;
+@media (prefers-contrast: high) {
+  .admin-job-posting-container {
+    background: #000000;
   }
-  to {
-    max-height: 1000px;
-    opacity: 1;
+  
+  body.light .admin-job-posting-container {
+    background: #ffffff;
   }
-}
-
-@keyframes slideUp {
-  from {
-    max-height: 1000px;
-    opacity: 1;
-  }
-  to {
-    max-height: 0;
-    opacity: 0;
-  }
-}
-
-
-/* Light Mode Styles */
-body.light .admin-job-posting-container {
-  background: rgba(245, 245, 250, 0.95);
-  color: #333;
-  border: 1px solid rgba(180, 150, 0, 0.15);
-}
-
-/* Checkbox Item Hover */
-.checkbox-item:hover {
-  background: #c0003020;
-  border-color: #c0003050;
-}
-
-/* Checkbox Input */
-.checkbox-item input[type="checkbox"] {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #c00030;
-  border-radius: 3px;
-  background: #222; /* dark maroon background */
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-/* Checkbox Checked State */
-.checkbox-item input[type="checkbox"]:checked {
-  background: #c00030;
-  border-color: #c00030;
-}
-
-/* Light Mode - Admin Posting Container Headers */
-body.light .admin-job-posting-container h1 {
-  color: #b38600;
-  text-shadow: 0 2px 8px rgba(180, 150, 0, 0.2);
-}
-
-body.light .admin-job-posting-container h1::after {
-  background: linear-gradient(90deg, #b38600, #d4a000);
-}
-
-body.light .admin-header::before {
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(180, 150, 0, 0.3) 30%, 
-    rgba(180, 150, 0, 0.3) 70%, 
-    transparent 100%);
-}
-
-
-body.light .admin-tabs {
-  background: rgba(240, 240, 245, 0.9);
-  border: 1px solid rgba(180, 150, 0, 0.1);
-}
-
-body.light .admin-tabs button {
-  color: rgba(180, 150, 0, 0.7);
-}
-
-body.light .admin-tabs button:hover {
-  color: #b38600;
-  background: rgba(180, 150, 0, 0.05);
-}
-
-body.light .admin-tabs button.active {
-  color: #fff;
-  background: linear-gradient(135deg, #b38600, #d4a000);
-}
-
-/* Checkbox Label for Checked Items */
-.checkbox-item:has(input:checked) .checkbox-label {
-  color: #c00030;
-  font-weight: 600;
-}
-
-/* Selected Items Container */
-.selected-items {
-  margin-top: 10px;
-  padding: 10px;
-  background: #c0003010; /* subtle maroon background */
-  border-radius: 6px;
-  border-left: 3px solid #c00030;
-}
-
-/* Selected Label */
-.selected-label {
-  color: #c00030;
-  font-weight: 600;
-  margin-right: 8px;
-}
-
-/* Light Mode Search Bar */
-body.light .search-bar input {
-  background: rgba(230, 230, 240, 0.9);
-  color: #333;
-}
-
-body.light .search-bar input:focus {
-  background: rgba(240, 240, 250, 0.9);
-  box-shadow: 0 0 0 2px rgba(180, 150, 0, 0.2);
-}
-
-/* Light Mode Form & Job Postings List */
-body.light .job-posting-form,
-body.light .job-postings-list {
-  background: rgba(240, 240, 250, 0.9);
-  border: 1px solid rgba(180, 150, 0, 0.1);
-}
-
-
-body.light .section-header h2,
-body.light .form-group label {
-  color: #b38600;
-}
-
-body.light .form-group input[type="text"],
-body.light .form-group input[type="email"],
-body.light .form-group input[type="date"],
-body.light .form-group input[type="file"],
-body.light .form-group select,
-body.light .form-group textarea {
-  background: rgba(230, 230, 240, 0.9);
-  color: #333;
-  border: 1px solid rgba(180, 150, 0, 0.2);
-}
-
-body.light .form-group input[type="text"]:focus,
-body.light .form-group input[type="email"]:focus,
-body.light .form-group input[type="date"]:focus,
-body.light .form-group select:focus,
-body.light .form-group textarea:focus {
-  border-color: #b38600;
-  background: rgba(240, 240, 250, 0.9);
-  box-shadow: 0 0 0 3px rgba(180, 150, 0, 0.1);
-}
-
-body.light .checkbox-grid {
-  background: #f5f5f5; /* light neutral background for maroon theme */
-  border: 1.5px solid #c0003055; /* subtle maroon border */
-}
-
-
-body.light .checkbox-item {
-  background: rgba(220, 220, 230, 0.7);
-}
-
-/* Light Mode Checkbox Hover */
-body.light .checkbox-item:hover {
-  background: #ffcccc;          /* subtle maroon hover */
-  border-color: #c0003080;      /* maroon border on hover */
-}
-
-/* Light Mode Checkbox Input */
-body.light .checkbox-item input[type="checkbox"] {
-  background: #fff;              /* white background for light mode */
-  border: 2px solid #c00030;    /* maroon border */
-}
-
-/* Light Mode Checked Checkbox */
-body.light .checkbox-item input[type="checkbox"]:checked {
-  background: #c00030;           /* maroon fill when checked */
-  border-color: #c00030;         /* maroon border when checked */
-}
-
-/* Optional: add checkmark color */
-body.light .checkbox-item input[type="checkbox"]:checked::after {
-  color: #333;                   /* dark checkmark for contrast */
-}
-
-body.light .checkbox-label {
-  color: #444;
-}
-
-/* Light Mode Checkbox Label for Checked Items */
-body.light .checkbox-item:has(input:checked) .checkbox-label {
-  color: #b30000;       /* maroon text for checked label */
-  font-weight: 600;
-}
-
-/* Light Mode Selected Items Container */
-body.light .selected-items {
-  background: #ffd7cc;       /* subtle maroon background */
-  border-left: 3px solid #c00030; /* maroon left border */
-  color: #5a0000;            /* darker maroon text */
-}
-
-
-body.light .selected-label {
-  color: #c00030;
-}
-
-body.light .select-all-btn {
-  background: rgba(180, 150, 0, 0.05);
-  color: #b38600;
-  border: 1px solid rgba(180, 150, 0, 0.2);
-}
-
-/* Select All Button - Maroon Theme */
-.select-all-btn {
-  background: #c00030;       /* maroon background */
-  color: #181818;            /* dark text */
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.select-all-btn:hover {
-  background: #de0a3f;       /* brighter maroon on hover */
-  transform: translateY(-1px);
-}
-
-/* Light Mode Hover for Select All Button */
-body.light .select-all-btn:hover {
-  background: rgba(180, 150, 0, 0.1); /* subtle golden hover in light mode */
-}
-
-body.light .cancel-btn {
-  color: #b38600;
-  border: 1px solid rgba(180, 150, 0, 0.3);
-}
-
-/* Light Mode Select All Button - Maroon Theme */
-body.light .select-all-btn {
-  background: #c00030;       /* maroon background */
-  color: white;              /* white text */
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.3);
-}
-
-body.light .select-all-btn:hover {
-  background: #c00030;       /* maintain maroon on hover */
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(255, 8, 0, 0.5);
-}
-
-/* Master branch light-mode overrides preserved */
-body.light .cancel-btn:hover {
-  background: rgba(180, 150, 0, 0.1);
-  border-color: #b38600;
-}
-
-body.light .table-container {
-  background: rgba(230, 230, 240, 0.9);
-  border: 1px solid rgba(180, 150, 0, 0.1);
-}
-
-body.light table th {
-  background: rgba(220, 220, 230, 0.9);
-  color: #b38600;
-  border-bottom: 1px solid rgba(180, 150, 0, 0.1);
-}
-
-body.light table tr:hover td {
-  background: rgba(180, 150, 0, 0.03);
-}
-
-body.light .company-name {
-  color: #333;
-}
-
-body.light .company-location {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-body.light .position-title {
-  color: #333;
-}
-
-body.light .job-type-badge {
-  background: rgba(180, 150, 0, 0.1);
-  color: #b38600;
-  border: 1px solid rgba(180, 150, 0, 0.2);
-}
-
-body.light .edit-btn {
-  background: rgba(180, 150, 0, 0.1);
-  color: #b38600;
-  border: 1px solid rgba(180, 150, 0, 0.2);
-}
-
-body.light .edit-btn:hover {
-  background: #b38600;
-  color: #fff;
-}
-
-body.light .delete-btn {
-  background: rgba(231, 76, 60, 0.1);
-  color: rgba(231, 76, 60, 0.8);
-  border: 1px solid rgba(231, 76, 60, 0.2);
-}
-
-/* Responsive Styles */
-@media (max-width: 900px) {
+  
   .job-posting-form,
   .job-postings-list {
-    padding: 18px;
+    border: 2px solid #c00030;
   }
-
-  .form-row {
-    flex-wrap: wrap;
-  }
-
-  .form-group {
-    min-width: 100%;
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    border-width: 2px;
   }
 }
 
-
-body.light .delete-btn:hover {
-  background: #e74c3c;
-  color: #fff;
-}
-
-body.light .empty-icon {
-  color: rgba(180, 150, 0, 0.2);
-}
-
-body.light .empty-state h3 {
-  color: #b38600;
-}
-
-body.light .empty-state p {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-body.light .create-first-btn {
-  background: linear-gradient(135deg, #b38600, #d4a000);
-  color: #fff;
-}
-
-/* Add these media queries to your existing CSS */
-
-@media (max-width: 768px) {
-  /* Logo upload container adjustments */
-  .logo-upload-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .logo-preview-container,
-  .logo-upload-placeholder {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1rem;
-  }
-
-  /* Form group adjustments for mobile */
-  .form-group {
-    padding-left: 0;
-    margin-bottom: 1.5rem;
-  }
-
-/* Adjust multi-select on mobile */
-.multi-select {
-  min-height: 80px;
-}
-
-/* Special handling for the logo label */
-.form-group.logo-upload-label {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-
-  /* Logo upload links */
-  .logo-upload-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-@media (max-width: 480px) {
-  /* Adjust the logo section layout for very small screens */
-  .form-row {
-    grid-template-columns: 1fr;
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.error {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+}
+
+.success {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.05) !important;
+}
+
+@media print {
+  .admin-job-posting-container {
+    background: white !important;
+    color: black !important;
   }
-
-/* Admin Tabs - Active State */
-.admin-tabs button.active {
-  border-bottom: none;
-  border-left: 3px solid #c00030; /* maroon left border for active tab */
-}
-
-/* Form Group Logo Adjustments for Small Screens */
-.form-group.logo {
-  order: -1; /* Move logo to top on small screens */
-  margin-bottom: 1.5rem;
-}
-
-
-  .xyz label {
-    padding-left: 0;
-    justify-content: center;
+  
+  .admin-tabs,
+  .form-actions,
+  .search-bar,
+  .action-buttons {
+    display: none !important;
   }
-
-/* Full-width buttons for small screens */
-.submit-btn,
-.cancel-btn {
-  width: 100%;
-}
-
-/* Stack eligibility badges on small screens */
-.eligibility-badges-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Logo preview and upload placeholders */
-.logo-preview-container,
-.logo-upload-placeholder {
-  width: 100px;
-  height: 100px;
-}
-
+  
+  .job-posting-form,
+  .job-postings-list {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
 }
