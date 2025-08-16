@@ -17,7 +17,7 @@ function About() {
         <div className="about-content">
           <h2>Department of Career Planning & Development (DCPD), CGC Jhanjeri</h2>
           <p>
-            <strong>DCPD at CGC Jhanjeri</strong> is dedicated to empowering students with the skills, guidance, and opportunities needed for successful careers. Our Placement Management System is a specialized platform designed for the DCPD department to streamline campus placements.
+            <strong>DCPD at CGC Jhanjeri</strong> is dedicated to empowering students with the skills, guidance, and opportunities needed for successful careers. Our Campus Recruitment Portal is a specialized platform designed for the DCPD department to streamline campus placements.
           </p>
           <ul>
             <li>Personalized student profile management and career tracking</li>

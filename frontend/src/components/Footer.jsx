@@ -99,7 +99,7 @@ function Footer() {
         {/* Bottom Section */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} Placement Management System. All
+            &copy; {new Date().getFullYear()} Campus Recruitment Portal. All
             rights reserved.
           </div>
           <div className="footer-cta">
