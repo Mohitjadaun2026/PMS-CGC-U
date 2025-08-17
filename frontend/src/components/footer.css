@@ -188,6 +188,9 @@
   gap: 1rem;
 }
 
+.phone {
+  transform: rotateZ(90deg);
+}
 .footer-cta-button {
   padding: 0.6rem 1.25rem;
   border-radius: 0.375rem;
@@ -203,23 +206,36 @@
   color: white;
   border: 1px solid var(--primary-color);
 }
-
-.footer-cta-button.outline {
-  background: transparent;
-  color: var(--primary-color);
+.outline {
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-speed) ease;
+  color: white;
+  outline-color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
 
-.footer-cta-button:hover {
+
+.footer-cta .outline {
+  background: transparent;
+  color: white;
+  outline-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.outline:hover, .footer-cta-button:hover {
   background: var(--primary-hover);
   border-color: var(--primary-hover);
   transform: translateY(-2px);
   color: white;
+  text-decoration: none;
 }
 
-.footer-cta-button.outline:hover {
+.footer-cta-button .outline:hover {
   background: rgba(128, 0, 0, 0.1);
-  color: var(--primary-hover);
+  background-color: var(--primary-hover);
 }
 
 /* Light Mode Styles */

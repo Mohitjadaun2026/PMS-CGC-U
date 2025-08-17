@@ -61,6 +61,7 @@ body.light .logo-image {
 
 body.light .logo-link {
   text-shadow: none;
+  color: rgba(128, 0, 0, 0.9);
 }
 
 .logo-link:hover {
@@ -238,6 +239,7 @@ body.light .login-btn:hover {
 .line2{
    margin-left: -32px; 
 }
+
 
 body.dark .login-btn {
   color: #fdfdfd;
