@@ -55,14 +55,14 @@
 
 .sign-card input:focus {
   border: 1.5px solid #2563eb;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 /* ---------- Button ---------- */
 .sign-card button[type="submit"] {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   padding: 0.9rem 0;
@@ -101,4 +101,48 @@
 .toggle-link button:hover {
   color: #1e40af;
   text-decoration: underline;
+}
+
+/* ---------- Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+  .sign-container {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  .sign-card {
+    background: #1e293b;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .sign-card h2 {
+    color: #93c5fd;
+  }
+
+  .sign-card input {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #f1f5f9;
+  }
+
+  .sign-card input:focus {
+    background: #1e293b;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+  }
+
+  .sign-card button[type="submit"] {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+  }
+
+  .toggle-link {
+    color: #cbd5e1;
+  }
+
+  .toggle-link button {
+    color: #60a5fa;
+  }
+
+  .toggle-link button:hover {
+    color: #3b82f6;
+  }
 }
