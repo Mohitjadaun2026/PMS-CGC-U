@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserDataContext } from "../context/UserContext.jsx";
 import "./sign.css";
+const API = process.env.REACT_APP_API_URL;
 
 function Register() {
   const [form, setForm] = useState({
@@ -22,7 +23,7 @@ function Register() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/users/register`,
+        `${API}/users/register`,
         {
           username: form.name,
           email: form.email,

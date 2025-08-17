@@ -11,6 +11,7 @@ const app = express();
 // ✅ Allowed origins (production + local dev)
 const allowedOrigins = [
   'https://pms-cgc-u.vercel.app',
+  'https://pms-cgc-2mdwgp6u3-mohit-jadauns-projects.vercel.app',
   'http://localhost:5173'
 ];
 

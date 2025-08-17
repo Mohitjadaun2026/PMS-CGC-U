@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserDataContext } from "../context/UserContext.jsx";
 import "./sign.css";
+const API = process.env.REACT_APP_API_URL;
 
 function Login() {
   const [form, setForm] = useState({
@@ -21,7 +22,7 @@ function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/users/login`,
+        `${API}/users/login`,
         {
           email: form.email,
           password: form.password,
