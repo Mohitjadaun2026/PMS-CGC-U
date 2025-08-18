@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { UserDataContext } from "../context/UserContext.jsx";
+import { UserDataContext } from "../context/UserContext";
 import "./sign.css";
 const API = import.meta.env.VITE_API_URL;
 
