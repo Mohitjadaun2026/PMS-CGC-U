@@ -4,13 +4,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const multer = require('multer');
+const userRoutes = require('./routes/user.routes');
 
 const app = express();
 
 // ✅ Allowed origins (production + local dev)
 const allowedOrigins = [
   'https://pms-cgc-u.vercel.app',
-  'http://localhost:5180',
+  'http://localhost:5173',
   'https://pms-cgc-g2s51des5-mohit-jadauns-projects.vercel.app'
 ];
 
@@ -50,6 +51,8 @@ app.use('/uploads', imageRoutes);
 // Job routes
 const jobRoutes = require('./routes/jobRoutes');
 app.use('/api/jobs', jobRoutes);
+
+app.use("/users", userRoutes);
 
 // Error handling middleware for multer and other errors
 app.use((error, req, res, next) => {
