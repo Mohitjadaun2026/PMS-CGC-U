@@ -31,6 +31,6 @@ This document records **all contributions** to the project and assigns points ba
 | 11       | Salusha           | 7         | #61       | Modified-Admin Panel                                     |
 | 12       | RoshniRautela     | 3         | #65       | Applied dark mode to login page                          |
 | 13       | Sathish1708127    | 3         | #66, #67  | Fixed hover underline & phone icon in Contact Us         |
-| 14       | Shreyaraut1       | 3         | #84       | Replaced twitter icon with x                             |
+| 14       | Shreyaraut1       | 3         | #86       | Replaced twitter icon with x                             |
 
 
