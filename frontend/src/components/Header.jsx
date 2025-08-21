@@ -4,7 +4,9 @@ import { Moon, Sun } from "lucide-react";
 import "./header.css";
 import collegeLogo from "../assets/cgc logo.png"; // Make sure to add the logo to your assets folder
 
-function Header() { const [theme, setTheme] = useState('light');
+function Header() {
+  const [theme, setTheme] = useState('light');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // On mount, load saved theme or system preference
   useEffect(() => {
@@ -18,6 +20,11 @@ function Header() { const [theme, setTheme] = useState('light');
       setTheme(defaultTheme);
       document.body.className = defaultTheme;
     }
+
+    // Check login status
+    const userToken = localStorage.getItem('userToken');
+    const adminToken = localStorage.getItem('adminToken');
+    setIsLoggedIn(!!userToken || !!adminToken);
   }, []);
 
   // Toggle theme
@@ -26,6 +33,15 @@ function Header() { const [theme, setTheme] = useState('light');
     setTheme(newTheme);
     document.body.className = newTheme;
     localStorage.setItem('theme', newTheme);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('user');
+    localStorage.removeItem('adminUser');
+    setIsLoggedIn(false);
+    window.location.href = '/signin'; // Redirect to login page
   };
 
   return (
@@ -45,24 +61,31 @@ function Header() { const [theme, setTheme] = useState('light');
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/jobs">Jobs</Link>
-        <Link to="/profile">Student Profile</Link>
-        <Link to="/admin-job-posting">Admin Panel</Link>
-
-         {/* Theme toggle button */}
+        {isLoggedIn && (
+          <>
+            <Link to="/profile">Student Profile</Link>
+            <Link to="/admin-job-posting">Admin Panel</Link>
+          </>
+        )}
+        {/* Theme toggle button */}
         <button 
           onClick={toggleTheme} 
           className="theme-toggle-btn"
           aria-label="Toggle light/dark theme"
         >
           {theme === 'light' ? (
-    <Moon size={20} /> 
-  ) : (
-    <Sun size={20} />
-  )}
+            <Moon size={20} /> 
+          ) : (
+            <Sun size={20} />
+          )}
         </button>
-
-        <Link to="/signin" className="login-btn">Login</Link>
-
+        {isLoggedIn ? (
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
+        ) : (
+          <Link to="/signin" className="login-btn">Login</Link>
+        )}
       </nav>
     </header>
   );

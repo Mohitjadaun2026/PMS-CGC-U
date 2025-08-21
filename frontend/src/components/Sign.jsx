@@ -97,13 +97,26 @@ function Sign() {
 
     if (!validateAll()) return;
     // Sign-in logic here (e.g., API call)
-    const res = signin(form);
+    const res = await signin(form); // <-- Make sure to await the API call
     console.log("Sign-in response:", res);
     if (res.error) {
       alert("Sign-in failed: " + res.error);
       return;
     }
-    alert("Signed in as " + form.email);
+
+    // Store token and user info in localStorage
+    if (res.token && res.user) {
+      if (res.user.role === "admin" || res.user.role === "super_admin") {
+        localStorage.setItem("adminToken", res.token);
+        localStorage.setItem("adminUser", JSON.stringify(res.user));
+        window.location.href = "/admin-job-posting"; // Redirect to admin dashboard
+      } else {
+        localStorage.setItem("userToken", res.token);
+        localStorage.setItem("user", JSON.stringify(res.user));
+        window.location.href = "/profile"; // Redirect to student dashboard
+      }
+    }
+
     setForm({ name: "", email: "", password: "", confirmPassword: "" });
     setErrors({});
     setTouched({});
