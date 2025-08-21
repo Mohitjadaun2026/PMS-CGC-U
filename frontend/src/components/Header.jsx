@@ -68,6 +68,12 @@ function Header() {
           </>
         )}
         {/* Theme toggle button */}
+
+        <Link to="/profile">Student Profile</Link>
+        <Link to="/admin-job-posting">Admin Panel</Link>
+        <Link to="/interview-experience">Interview Experience</Link>
+
+         {/* Theme toggle button */}
         <button 
           onClick={toggleTheme} 
           className="theme-toggle-btn"

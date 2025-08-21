@@ -1,3 +1,4 @@
+
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -5,6 +6,10 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
+
+// Interview Experience routes
+const interviewExperienceRoutes = require('./routes/interviewExperienceRoutes');
+app.use('/api/interview-experiences', interviewExperienceRoutes);
 
 // Enable CORS for local dev and production
 const allowedOrigins = [

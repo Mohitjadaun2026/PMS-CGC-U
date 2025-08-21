@@ -13,12 +13,23 @@ import AdminLogin from "./components/AdminLogin";
 import AdminManagement from "./components/AdminManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JobsPage from "./components/jobs";
+import InterviewExperience from "./components/InterviewExperience";
+
 
 function App() {
   return (
     <Router>
       <div className="app-container">
         <Routes>
+          <Route path="/interview-experience" element={
+            <>
+              <Header />
+              <main className="main-content">
+                <InterviewExperience />
+              </main>
+              <Footer />
+            </>
+          } />
           {/* Public routes */}
           <Route path="/" element={
             <>
