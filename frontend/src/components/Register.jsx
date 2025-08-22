@@ -78,7 +78,7 @@ function Register() {
         </form>
         <div className="toggle-link">
           Already have an account?{" "}
-          <button onClick={() => navigate("/login")}>Sign In</button>
+          <button onClick={() => navigate("/login")}>Login</button>
         </div>
       </div>
     </div>
