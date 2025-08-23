@@ -1,12 +1,12 @@
 import { api } from './index';
 
 export const signup = async (userData) => {
-  const res = await api.post('/api/auth/signup', userData);
+  const res = await api.post('/api/auth/register', userData); // <-- changed
   return res.data;
 };
 
 export const signin = async (credentials) => {
-  const res = await api.post('/api/auth/signin', credentials);
+  const res = await api.post('/api/auth/login', credentials); // <-- changed
   // Store token and user info based on role
   if (res.data.token && res.data.user) {
     if (res.data.user.role === 'admin' || res.data.user.role === 'super_admin') {
