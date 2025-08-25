@@ -42,7 +42,7 @@ This document records **all contributions** to the project and assigns points ba
 | 22       | akofficial10      | 7         | #94       | Fix: Page Scroll Position on Navigation                                              |
 | 23       | dev-prachi        | 3         | #95       | Add contact button enhancement                                                       |
 | 24       | Varma-2005        | 7         | #98       | Fixed navigation bar and improved authentication (restricted access + email checks)  |
-
-
+| 25       | akofficial10      | 10        | #100      | Implement Full Newsletter Functionality with Subscription, Confirmation Email, and Frontend Integration. |
+| 26       | SainiAdi-04       | 7         | #103      | Fix Infinite Loading & Deloitte Logo Placeholder                                     |
 
 
