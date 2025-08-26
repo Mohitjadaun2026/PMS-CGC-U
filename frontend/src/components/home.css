@@ -565,12 +565,10 @@ body.light .partner-card:hover .partner-logo {
   opacity: 0.9;
 }
 
+/* CORRECTED LIGHT MODE STYLES */
 body.light .stats-section {
-  background: linear-gradient(
-    to right,
-    rgba(128, 0, 32, 0.1),
-    rgba(96, 0, 24, 0.05)
-  );
+  /* This change removes the patchy linear-gradient background */
+  background: transparent; 
   position: relative;
   overflow: hidden;
 }
@@ -581,6 +579,7 @@ body.light .stats-section::before {
 }
 
 body.light .stat-item {
+  /* Using a solid white background with transparency for the cards */
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(128, 0, 32, 0.1);
   backdrop-filter: none;
