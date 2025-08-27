@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import "../src/index.css";
 import AdminJobPosting from "./components/AdminJobPosting";
 import JobsPage from "./components/jobs";
+import AlumniDetail from "./components/AlumniDetail";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/profile" element={<StudentProfile />} />
+            <Route path="/alumni/:id" element={<AlumniDetail />} />
             <Route path="/admin-job-posting" element={<AdminJobPosting />} />
             <Route path="/jobs" element={<JobsPage />} />
           </Routes>
