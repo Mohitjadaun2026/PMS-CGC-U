@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Build output
+/dist/
+/build/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+backend/.env
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel/Render/Deployment
+.vercel/
+.render/
+
+# IDE files
+.vscode/
+.idea/
+
+# Misc
+*.swp
+*.swo
+
+# Uploads
+backend/uploads/

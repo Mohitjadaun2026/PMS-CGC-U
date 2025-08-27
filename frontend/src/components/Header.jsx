@@ -58,6 +58,7 @@ function Header() {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/jobs">Jobs</Link>
+        <Link to="/profile">Student Profile</Link>
         {isLoggedIn && (
           <>
             <Link to="/profile">Student Profile</Link>

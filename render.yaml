@@ -5,5 +5,8 @@ services:
 		plan: free
 		buildCommand: rm -rf node_modules package-lock.json && npm install
 		startCommand: node server.js
+		envVars:
+			- key: MONGODB_URI
+				value: mongodb+srv://jadaunmohit0:Mohitjadaun%40123@pms-cgcu.gkrai7w.mongodb.net/placement?retryWrites=true&w=majority
 		autoDeploy: true
 		rootDir: backend
