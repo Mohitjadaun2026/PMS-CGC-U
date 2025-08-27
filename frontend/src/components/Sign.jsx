@@ -74,36 +74,40 @@ function Sign() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    // final validation
     if (!validateAll()) return;
-    // Registration logic here (e.g., API call)
-    const res = await signup(form);
-    if (res.error) {
-      alert("Registration failed: " + res.error);
-      return;
+    try {
+      const res = await signup(form);
+      if (res.error) {
+        setErrors({ general: res.error });
+        return;
+      }
+      localStorage.setItem('isLoggedIn', 'true');
+      window.location.href = '/';
+    } catch (err) {
+      if (err.response && err.response.status === 409) {
+        setErrors({ general: "User already exists with this email." });
+      } else {
+        setErrors({ general: "Registration failed. Please try again." });
+      }
     }
-    console.log("Registration response:", res);
-    alert("Registered successfully! Please sign in.");
-    setIsRegister(false);
-    setForm({ name: "", email: "", password: "", confirmPassword: "" });
-    setErrors({});
-    setTouched({});
-    setValid({});
   };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
 
     if (!validateAll()) return;
-    // Sign-in logic here (e.g., API call)
-    const res = signin(form);
+    // Await the API call
+    const res = await signin(form);
     console.log("Sign-in response:", res);
     if (res.error) {
       alert("Sign-in failed: " + res.error);
       return;
     }
+    // Set login state
+    localStorage.setItem('isLoggedIn', 'true');
     alert("Signed in as " + form.email);
+    // Redirect to home or dashboard
+    window.location.href = '/';
     setForm({ name: "", email: "", password: "", confirmPassword: "" });
     setErrors({});
     setTouched({});
@@ -206,6 +210,8 @@ function Sign() {
 
           <button type="submit">{isRegister ? "Register" : "Sign In"}</button>
         </form>
+
+        {errors.general && <div className="error">{errors.general}</div>}
 
         <div className="toggle-link">
           {isRegister ? (

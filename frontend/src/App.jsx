@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -9,6 +11,7 @@ import StudentProfile from "./components/StudentProfile";
 import Contact from "./components/Contact";
 import BackToTop from "./components/BackToTop";
 import "../src/index.css";
+
 import AdminJobPosting from "./components/AdminJobPosting";
 
 import JobsPage from "./components/Jobs";
@@ -19,12 +22,14 @@ import JobsPage from "./components/jobs";
 import InterviewExperience from "./components/InterviewExperience";
 import ScrollToTop from "./components/ScrollToTop";
 
+import "../src/index.css";
 
 
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* Always keep this inside Router */}
+      <ScrollToTop /> {/* Always inside Router */}
+      <Toaster position="top-right" /> {/* Toast notifications */}
       <div className="app-container">
 
         <Header />
@@ -43,6 +48,22 @@ function App() {
         <BackToTop />
 
         <Routes>
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <Home />
+                </main>
+
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Other Public Routes */}
           <Route
             path="/interview-experience"
             element={
@@ -55,19 +76,7 @@ function App() {
               </>
             }
           />
-          {/* Public routes */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <Home />
-                </main>
-                <Footer />
-              </>
-            }
-          />
+
           <Route
             path="/signin"
             element={
@@ -80,6 +89,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/about"
             element={
@@ -92,6 +102,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/contact"
             element={
@@ -104,6 +115,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/profile"
             element={
@@ -116,6 +128,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/jobs"
             element={
@@ -129,7 +142,7 @@ function App() {
             }
           />
 
-          {/* Admin routes */}
+          {/* Admin Routes */}
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route
             path="/admin-job-posting"

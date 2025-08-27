@@ -3,8 +3,8 @@ const router = express.Router();
 const { register, login } = require('../controllers/authController');
 const { requireAuth } = require('../middleware/auth');
 
-router.post('/signup', register);
-router.post('/signin', login);
+router.post('/register', register);
+router.post('/login', login);
 
 // Example protected route to check current user
 router.get('/me', requireAuth, (req, res) => {
