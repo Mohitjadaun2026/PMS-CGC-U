@@ -542,6 +542,14 @@ body.light .partner-card:hover .partner-logo {
   border-radius: var(--border-radius);
   border: 1px solid rgba(128, 0, 32, 0.2);
   backdrop-filter: blur(8px);
+
+  /* Add smooth animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-10px); /* Moves upward */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Adds depth */
 }
 
 .stat-number {

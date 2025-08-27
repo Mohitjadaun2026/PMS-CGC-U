@@ -1,642 +1,816 @@
-/* Student Profile Container - DARK THEME */
-.student-profile-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #e0e0e0; /* Light text for dark BG */
-  background-color: #121212; /* Dark background */
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+/* Student Profile CSS - Full Screen Dark Maroon Theme */
+
+/* CSS Variables */
+:root {
+  --primary-color: #650b22;
+  --primary-light: #51061a;
+  --primary-dark: #600018;
+  --secondary-color: #f5f5f5;
+  --accent-color: #ff6b6b;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --danger-color: #f44336;
+  --info-color: #2196f3;
+  
+  /* Dark Mode Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Dark Mode Background colors - Dark Maroon */
+  --bg-primary: #2d0a11;
+  --bg-secondary: #400513;
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-hover: rgba(255, 255, 255, 0.12);
+  --bg-input: rgba(255, 255, 255, 0.1);
+  
+  /* Border colors */
+  --border-color: rgba(255, 255, 255, 0.15);
+  --border-light: rgba(255, 255, 255, 0.1);
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+/* Light Theme Variables - White Background with Dark Maroon Text */
+.light-theme {
+  --text-primary: #2d0a11;
+  --text-secondary: #400513;
+  --text-muted: #666;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-hover: #f5f5f5;
+  --bg-input: #ffffff;
+  
+  --border-color: #e0e0e0;
+  --border-light: #f0f0f0;
+  
+  --shadow-sm: 0 2px 4px rgba(45, 10, 17, 0.1);
+  --shadow-md: 0 4px 12px rgba(45, 10, 17, 0.15);
+  --shadow-lg: 0 8px 24px rgba(45, 10, 17, 0.2);
 }
 
-.profile-title {
-  color: #dc0d40; /* Yellow accent for titles */
-  margin: 0;
+/* Base Styles - Full Screen */
+* {
+  margin: "";
+  padding:"" ;
+  box-sizing: border-box;
 }
 
-body.light .student-profile-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #121212; /* Dark text for light BG */
-  background-color: #fff; /* Light background */
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  width: 100vw;
+  transition: all 0.3s ease;
 }
 
-body.light .profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.student-dashboard {
+  width: 100%;
 }
 
-body.light .profile-title {
-  color: var(--maroon-700); /* A darker golden yellow for light background */
-  margin: 0;
-}
-
-/* Notification Styles */
-.notification-badge {
-  position: relative;
-  cursor: pointer;
-}
-
-.notification-badge span {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: #dc0d40; /* Yellow accent */
-  color: white; /* Dark text for contrast */
-  border-radius: 50%;
-  padding: 5px 8px;
-  font-size: 12px;
-}
-
-.notification-dropdown {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  width: 300px;
-  background: #1e1e1e; /* Darker gray */
-  border: 1px solid #333;
-  border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+/* Header */
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
   z-index: 100;
-  display: none;
-  max-height: 400px;
-  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  width: 100%;
 }
 
-.notification-item {
-  padding: 10px;
-  border-bottom: 1px solid #333;
-  font-size: 14px;
-}
-
-.notification-item:last-child {
-  border-bottom: none;
-}
-body.light .notification-badge span {
-  background-color: var(--maroon-700);
-  color: #fff;
-  border: 1.5px solid #890404;
-}
-
-body.light .notification-dropdown {
-  background: #fff; /* light background */
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  color: #121212; /* dark text */
-}
-
-body.light .notification-item {
-  border-bottom: 1px solid #eee;
-  color: #333;
-}
-
-body.light .notification-item:last-child {
-  border-bottom: none;
-}
-
-/* Tab Styles */
-.profile-tabs {
+.header-content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #333;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.profile-tabs button {
-  padding: 10px 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: #aaa; /* Inactive tab color */
-  border-bottom: 3px solid transparent;
-  transition: all 0.3s;
-}
-
-.profile-tabs button:hover {
-  color: white; /* Yellow hover */
-}
-
-.profile-tabs button.active {
-  color: white; /* Active tab = yellow */
-  border-bottom: 3px solid #dc0d40;
-  font-weight: 600;
-}
-
-/* Profile View */
-.profile-view {
+.header-logo {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 1rem;
 }
 
-.profile-section {
-  margin-bottom: 25px;
-  background: #1e1e1e; /* Dark card */
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+.header-logo .logo-icon {
+  background: #760d0d;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
 }
 
-.profile-section h3 {
-  margin-top: 0;
-  color: var(--maroon-500); 
-  border-bottom: 1px solid #333;
-  padding-bottom: 10px;
+.header-logo h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
 }
 
-.profile-section a {
-  margin-top: 0;
-  color: var(--text-secondary); 
-  border-bottom: 1px solid #333;
-  padding-bottom: 10px;
-}
-.profile-section a:hover {
-  margin-top: 0;
+.header-logo p {
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  border-bottom: 1px solid #333;
-  padding-bottom: 10px;
 }
-/* Photo Section */
-.student-photo {
-  width: 200px;
-  height: 200px;
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-nav a {
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: var(--primary-color);
+}
+
+.btn-login {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background: var(--primary-dark);
+}
+
+/* Main Content */
+.main-content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 150px);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.welcome-card {
+  background: linear-gradient(90deg, #dc2626, #7c2d12);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.welcome-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Profile Overview */
+.profile-overview-card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.profile-overview-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-photo-container {
+  flex-shrink: 0;
+}
+
+.profile-photo {
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid #1e1e1e;
-  box-shadow: 0 0 0 2px #c0392b; 
-}
-body.light .profile-tabs {
-  border-bottom: 1px solid #ccc;
+  border: 4px solid var(--border-light);
 }
 
-body.light .profile-tabs button {
-  color: #555; /* inactive tab dark gray */
-  border-bottom: 3px solid transparent;
-  background: none;
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-body.light .profile-tabs button:hover {
-  color: var(--maroon-700);
+.profile-department {
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
-body.light .profile-tabs button.active {
-  color: var(--maroon-800);
-  border-bottom: 3px solid var(--maroon-800);
-  font-weight: 600;
+.profile-meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
-/* Profile View */
-body.light .profile-view {
-  gap: 30px;
-  color: #333;
+.profile-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-body.light .profile-section {
-  background: #fff; /* white card */
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 25px;
+.stat-item {
+  text-align: center;
 }
 
-body.light .profile-section h3 {
-  color: var(--maroon-700); /* muted yellow */
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-top: 0;
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
-/* Photo Section */
-body.light .student-photo {
-  border: 5px solid #fff; /* white border */
-  box-shadow: 0 0 0 2px #b80b0b; /* muted yellow outline */
-  background: #fff;
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
-/* Buttons */
-.profile-save-btn {
-  background-color: #ff0000; /* Yellow */
-  color: #121212; /* Dark text */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
+.progress-bar-container {
+  margin-bottom: 1.5rem;
 }
 
-.profile-save-btn:hover {
-  background-color: #890404; 
-  transform: translateY(-2px);
+.progress-bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
-.download-btn {
-  background-color: #dc0d40; 
-  color: white;
+.progress-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
-.withdraw-btn {
-  background-color: #e74c3c; /* Red (kept for warnings) */
-}
-body.light .profile-save-btn {
-  background-color: #b80b0b; 
-  color: #fff; /* White text for contrast */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-body.light .profile-save-btn:hover {
-  background-color: #950000; 
-  transform: translateY(-2px);
-}
-
-body.light .download-btn {
-  background-color: var(--maroon-700); 
-  color: white;
-}
-
-body.light .withdraw-btn {
-  background-color: #c0392b; /* Darker red */
-  color: white;
-}
-
-/* Tables & Cards */
-.applications-list th {
-  background-color: #1e1e1e;
-  color: #dc0d40; 
-}
-
-.applications-list tr:hover {
-  background-color: #252525; /* Slightly lighter dark */
-}
-
-.drive-card {
-  background: #1e1e1e;
-  border: 1px solid #333;
-}
-
-.drive-card:hover {
-  /* background: #700505; */
-  border: 1px solid #890404;
-}
-.drive-header h4 {
-  color: #dc0d40; /* Yellow titles */
-}
-
-body.light .applications-list th {
-  background-color: #f0f0f0; /* Light gray background */
-  color: var(--maroon-800); /* Muted yellow for headers */
-}
-
-body.light .applications-list tr:hover {
-  background-color: #e0e0e0; /* Slightly darker gray on hover */
-}
-
-body.light .drive-card {
-  background: #fff; /* White background */
-  border: 1px solid #ccc; /* Light border */
-}
-
-body.light .drive-header h4 {
-  color: var(--maroon-700); /* Muted yellow for titles */
-}
-
-/* Stats Cards */
-.stats-card {
-  background: #1e1e1e;
-  border: 1px solid #333;
+.progress-percentage {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
 .progress-bar {
-  background-color: #ff0000; /* Yellow progress */
-}
-body.light .stats-card {
-  background: #fff; /* Light background */
-  border: 1px solid #ccc; /* Light border */
-  color: #333; /* Dark text for readability */
-}
-
-body.light .progress-bar {
-  background-color: #b80b0b; 
-}
-
-/* Hover Effects */
-button:hover,
-.drive-card:hover {
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
-}
-
-/* ===== EDIT MODE SPECIFIC STYLES ===== */
-.student-profile-form {
-  display: flex;
-  gap: 30px;
-  background: #1e1e1e; /* Dark card background */
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-}
-body.light button:hover,
-body.light .drive-card:hover {
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.15); 
-}
-
-body.light .student-profile-form {
-  background: #f9f9f9; /* Light card background */
-  color: #333; /* Dark text */
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  gap: 30px;
-  display: flex;
-}
-
-/* Input Fields */
-.student-profile-form input[type="text"],
-.student-profile-form input[type="email"],
-.student-profile-form textarea,
-.student-profile-form select {
   width: 100%;
-  padding: 10px;
-  background: #252525; /* Darker input BG */
-  border: 1px solid #444;
-  border-radius: 4px;
-  color: #e0e0e0; /* Light text */
-  margin-top: 5px;
-  transition: border 0.3s;
-}
-body.light .student-profile-form input[type="text"],
-body.light .student-profile-form input[type="email"],
-body.light .student-profile-form textarea,
-body.light .student-profile-form select {
-  width: 100%;
-  padding: 10px;
-  background: #fff; /* Light input BG */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #333; /* Dark text */
-  margin-top: 5px;
-  transition: border 0.3s;
+  background: var(--border-light);
+  border-radius: 9999px;
+  height: 0.5rem;
 }
 
-body.light .student-profile-form input[type="text"]:focus,
-body.light .student-profile-form input[type="email"]:focus,
-body.light .student-profile-form textarea:focus,
-body.light .student-profile-form select:focus {
-  border-color: #890404; 
-  outline: none;
+.progress-fill {
+  background: var(--primary-color);
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease-in-out;
 }
 
-/* Focus State */
-.student-profile-form input:focus,
-.student-profile-form textarea:focus {
-  border-color: #890404; 
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
-}
-body.light .student-profile-form input:focus,
-body.light .student-profile-form textarea:focus {
-  border-color: #890404; 
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+.skills-section {
+  margin-bottom: 1.5rem;
 }
 
-/* Labels */
-.student-profile-form label {
-  display: block;
-  margin-bottom: 15px;
-  color: #aaa; /* Lighter label text */
-  font-size: 14px;
-}
-body.light .student-profile-form label {
-  display: block;
-  margin-bottom: 15px;
-  color: #555; /* Darker text for light background */
-  font-size: 14px;
-}
-
-/* File Upload */
-.student-profile-form input[type="file"] {
-  display: none; /* Hide default input */
-}
-
-/* Upload Button */
-.upload-btn {
-  padding: 6px 10px;
-  font-size: 12px;
-  height: 32px;
-}
-
-.upload-btn:hover {
-  border-color: #890404;
-  background: #2a2a2a;
-}
-body.light .upload-btn {
-  background: var(--maroon-500); 
-  color: white; /* dark text */
-  border: 1.5px solid transparent;
-  transition: background 0.3s, border-color 0.3s;
-}
-
-body.light .upload-btn:hover {
-  background: #c0392b; 
-  border-color: white;
-  color: #121212;
-}
-
-/* Save/Cancel Buttons */
-.form-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-  justify-content: flex-end;
-}
-
-.save-btn,
-.cancel-btn {
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 12px;
+.section-title {
+  font-size: 1.125rem;
   font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Quick Actions Section */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.quick-action-card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quick-action-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.icon-wrapper {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specific icon colors */
+.icon-red { color: #dc2626; }
+.icon-blue { color: #2563eb; }
+.icon-yellow { color: #d97706; }
+.icon-green { color: #16a34a; }
+.icon-white { color: #ffffff; }
+
+.quick-action-card .card-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.quick-action-card .card-subtitle {
+  font-size: 0.875rem;
+}
+
+.quick-action-card .card-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
   cursor: pointer;
-  transition: all 0.2s ease;
-  height: 32px;
-  line-height: 1;
-  min-width: 80px;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
   text-align: center;
 }
 
-.save-btn:hover {
-  background: #a04545;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
-  transform: translateY(-1px);
+.btn-primary:hover {
+  background: var(--primary-dark);
 }
 
-.cancel-btn {
-  background: transparent;
-  color: #e0e0e0;
-  border: 1px solid #950000;
-  padding: 8px 18px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.cancel-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #777;
-  transform: translateY(-1px);
-}
-
-/* Edit Profile Button */
-.edit-profile-btn {
-  background: transparent;
-  color: #c0392b;
-  border: 1px solid #c0392b;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  height: 32px;
-  line-height: 1;
-}
-
-.edit-profile-btn:hover,
-.save-btn:hover,
-.cancel-btn:hover {
-  transform: translateY(-1px);
-}
-
-/* Resume Upload Section */
-.resume-upload {
-  background: #252525;
-  padding: 15px;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-
-.resume-file {
-  color: #dc0d40;
-  font-weight: 500;
-  margin-left: 10px;
-}
-
-body.light .form-actions {
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-body.light .save-btn,
-body.light .cancel-btn {
-  min-width: 80px;
-  height: 32px;
-  line-height: 1;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.btn-secondary {
+  background: var(--bg-hover);
+  color: var(--text-primary);
   text-align: center;
 }
 
-/* Save button - light mode */
-body.light .save-btn {
-  background: var(--maroon-700); /* green */
-  color: #fff;
-  border: none;
+.btn-secondary:hover {
+  background: var(--border-color);
 }
 
-body.light .save-btn:hover {
-  background: var(--maroon-500);
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
-  transform: translateY(-1px);
+.btn-disabled {
+  background: var(--border-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
 }
 
-/* Cancel button - light mode */
-body.light .cancel-btn {
-  background: transparent;
-  color: #555;
-  border: 1px solid #950000;
-  padding: 8px 18px;
-  font-size: 13px;
+.card-stats {
+  margin-bottom: 1rem;
 }
 
-body.light .cancel-btn:hover {
-  background-color: var(--maroon-500);
-  border-color: #999;
-  transform: translateY(-1px);
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
-/* Edit Profile Button - light mode */
-body.light .edit-profile-btn {
-  background: transparent;
-  color: #b80b0b; /* darker goldenrod */
-  border: 1px solid #950000;
-  padding: 6px 12px;
-  font-size: 12px;
-  height: 32px;
-  line-height: 1;
+.stat-row .stat-value {
+  font-weight: 600;
 }
 
-body.light .edit-profile-btn:hover {
-  color: #950000;
-  border-color: #b80b0b;
-  transform: translateY(-1px);
+/* Analytics & Charts */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
-/* Resume Upload Section - light mode */
-body.light .resume-upload {
-  background: #f5f5f5;
-  padding: 15px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.chart-card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
 }
 
-body.light .resume-file {
-  color: #b80b0b;
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.chart-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.chart-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.chart-select {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.chart-container {
+  width: 100%;
+  height: 20rem;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.legend-color-box {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.125rem;
+}
+
+.bg-red-300 { background-color: #fca5a5; }
+.bg-red-600 { background-color: #dc2626; }
+.bg-red-800 { background-color: #7c2d12; }
+.bg-green-500 { background-color: #22c55e; }
+.bg-red-400 { background-color: #f87171; }
+
+/* Applications and Jobs Sections */
+.applications-grid,
+.jobs-grid,
+.schedule-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.application-card,
+.job-card,
+.schedule-card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.application-card .card-header,
+.job-card .job-card-header,
+.schedule-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.company-info .company-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.company-info .job-title {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.application-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
   font-weight: 500;
-  margin-left: 10px;
 }
 
-/* Responsive Adjustments */
+/* Status colors */
+.status-applied { background-color: #fef3c7; color: #d97706; }
+.status-shortlisted { background-color: #d1fae5; color: #065f46; }
+.status-interview-scheduled { background-color: #dbeafe; color: #1e40af; }
+.status-rejected { background-color: #fee2e2; color: #991b1b; }
+
+.progress-bar-container {
+  margin-bottom: 1rem;
+}
+
+.progress-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.progress-label {
+  color: var(--text-secondary);
+}
+
+.progress-percentage {
+  color: var(--text-muted);
+}
+
+.progress-bar {
+  width: 100%;
+  background: var(--border-light);
+  border-radius: 9999px;
+  height: 0.25rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.card-actions-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.rounds-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.round-tag {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  background: var(--border-light);
+  color: var(--text-muted);
+}
+
+.round-tag-active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.job-card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.job-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.job-company-logo {
+  background: var(--primary-color);
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.job-company-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.job-position {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.job-eligibility {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.job-eligibility.eligible { color: #16a34a; }
+.job-eligibility.not-eligible { color: #dc2626; }
+
+.job-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.job-details .detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.detail-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.job-requirements {
+  margin-bottom: 1.5rem;
+}
+
+.requirements-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.requirement-tag {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.job-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-disabled {
+  background: var(--border-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schedule-card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card-icon-wrapper {
+  background: var(--bg-hover);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.schedule-details {
+  flex: 1;
+}
+
+.schedule-header-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.schedule-tag {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tag-urgent { background-color: #fecaca; color: #dc2626; }
+.tag-scheduled { background-color: #dbeafe; color: #1e40af; }
+
+.schedule-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.schedule-info {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.schedule-meta-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content {
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .form-actions {
+  .main-content {
+    padding: 1rem;
+  }
+  .header-content {
+    padding: 0 1rem;
+  }
+  .welcome-card, .profile-overview-card, .quick-action-card, .chart-card, .application-card, .job-card, .schedule-card {
+    padding: 1rem;
+  }
+  .profile-overview-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-stats {
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
   }
-
-  .form-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-    justify-content: flex-end;
+  .quick-actions-grid, .charts-grid, .stats-grid, .applications-grid, .jobs-grid, .schedule-list {
+    grid-template-columns: 1fr;
   }
-
-  .edit-profile-btn,
-  .save-btn,
-  .cancel-btn {
-    padding: 6px 10px;
-    min-width: 70px;
+  .schedule-card, .application-card .card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .card-actions-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .rounds-list {
+    justify-content: center;
   }
 }
