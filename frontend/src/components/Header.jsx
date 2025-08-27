@@ -4,7 +4,9 @@ import { Moon, Sun } from "lucide-react";
 import "./header.css";
 import collegeLogo from "../assets/cgc logo.png"; // Make sure to add the logo to your assets folder
 
-function Header() { const [theme, setTheme] = useState('light');
+function Header() {
+  const [theme, setTheme] = useState('light');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // On mount, load saved theme or system preference
   useEffect(() => {
@@ -18,7 +20,18 @@ function Header() { const [theme, setTheme] = useState('light');
       setTheme(defaultTheme);
       document.body.className = defaultTheme;
     }
+
+    // Example: Check login status from localStorage or your auth provider
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loggedIn);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.setItem('isLoggedIn', 'false');
+    setIsLoggedIn(false);
+    // Optionally redirect to home or login page
+    window.location.href = '/';
+  };
 
   // Toggle theme
   const toggleTheme = () => {
@@ -45,29 +58,50 @@ function Header() { const [theme, setTheme] = useState('light');
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/jobs">Jobs</Link>
-        <Link to="/profile">Student Profile</Link>
-        <Link to="/admin-job-posting">Admin Panel</Link>
+        {isLoggedIn && (
+          <>
+            <Link to="/profile">Student Profile</Link>
+            <Link to="/admin-job-posting">Admin Panel</Link>
+            <Link to="/interview-experience">Interview Experience</Link>
+            <button 
+              onClick={handleLogout} 
+              className="logout-btn"
+              style={{ marginLeft: "10px" }}
+            >
+              Logout
+            </button>
+          </>
+        )}
 
-         {/* Theme toggle button */}
+        {/* Theme toggle button */}
         <button 
           onClick={toggleTheme} 
           className="theme-toggle-btn"
           aria-label="Toggle light/dark theme"
         >
           {theme === 'light' ? (
-    <Moon size={20} /> 
-  ) : (
-    <Sun size={20} />
-  )}
+            <Moon size={20} /> 
+          ) : (
+            <Sun size={20} />
+          )}
         </button>
-
-        <Link to="/signin" className="login-btn">Login</Link>
-
+        {!isLoggedIn && (
+          <Link to="/signin" className="login-btn">Login</Link>
+        )}
       </nav>
     </header>
   );
 }
 
 export default Header;
+
+// In your SignIn component (example)
+const handleLogin = async (e) => {
+  e.preventDefault();
+  // ...login logic...
+  // On successful login:
+  localStorage.setItem('isLoggedIn', 'true');
+  window.location.href = '/'; // or use navigate('/')
+};
 
 

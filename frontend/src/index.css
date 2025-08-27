@@ -1,5 +1,16 @@
-/* Modern Theme with Maroon Accents - index.css */
 @import "tailwindcss";
+
+/* Main Content Wrapper */
+.main-content {
+  min-height: 70vh;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* Modern Theme with Maroon Accents - index.css */
+
 
 :root {
   /* Dark Mode Defaults */

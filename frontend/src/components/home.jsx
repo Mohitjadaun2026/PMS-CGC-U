@@ -258,7 +258,6 @@ function Home() {
       name: "Deloitte",
       logo: "https://upload.wikimedia.org/wikipedia/commons/1/15/Deloitte_Logo.png",
     },
-
     {
       name: "Wipro",
       logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg",
@@ -377,6 +376,7 @@ function Home() {
                     e.target.onerror = null;
                     e.target.src = `https://via.placeholder.com/150x60/121212/FFFFFF?text=${company.name}`;
                   }}
+
                 />
               </div>
             ))}

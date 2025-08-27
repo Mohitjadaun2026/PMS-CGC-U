@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const jobController = require('../controllers/jobControllers');
+const { requireAuth, requireAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -43,10 +44,12 @@ const upload = multer({
   }
 });
 
-// Job routes
+// Public routes (read-only)
 router.get('/', jobController.getAllJobs);
-router.post('/', upload.single('companyLogo'), jobController.createJob);
-router.put('/:id', upload.single('companyLogo'), jobController.updateJob);
-router.delete('/:id', jobController.deleteJob);
+
+// Protected routes (admin only)
+router.post('/', requireAuth, requireAdmin, upload.single('companyLogo'), jobController.createJob);
+router.put('/:id', requireAuth, requireAdmin, upload.single('companyLogo'), jobController.updateJob);
+router.delete('/:id', requireAuth, requireAdmin, jobController.deleteJob);
 
 module.exports = router;
