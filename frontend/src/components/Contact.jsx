@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./contact.css";
@@ -188,8 +188,11 @@ function Contact() {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(true);
   const [isFormExpanded, setIsFormExpanded] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const messageRef = useRef(null);
 
   useEffect(() => {
     if (isFormOpen) {
@@ -202,6 +205,14 @@ function Contact() {
     }
   }, [isFormOpen]);
 
+  useEffect(() => {
+    // Auto-expand textarea based on content
+    if (messageRef.current) {
+      messageRef.current.style.height = "auto";
+      messageRef.current.style.height = messageRef.current.scrollHeight + "px";
+    }
+  }, [formData.message]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -209,51 +220,70 @@ function Contact() {
       [name]: value,
     });
 
-    // Clear error when user types
+    // Real-time validation
     if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: "",
-      });
+      validateField(name, value);
     }
+  };
+
+  const validateField = (name, value) => {
+    let error = "";
+
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = "Name is required";
+        else if (value.trim().length < 2)
+          error = "Name must be at least 2 characters";
+        break;
+      case "email":
+        if (!value.trim()) error = "Email is required";
+        else if (!/\S+@\S+\.\S+/.test(value)) error = "Email is invalid";
+        break;
+      case "phone":
+        if (!value.trim()) error = "Phone number is required";
+        else if (!/^[0-9+\-\s()]{10,}$/.test(value))
+          error = "Phone number is invalid";
+        break;
+      case "subject":
+        if (!value.trim()) error = "Subject is required";
+        else if (value.trim().length < 5)
+          error = "Subject must be at least 5 characters";
+        break;
+      case "message":
+        if (!value.trim()) error = "Message is required";
+        else if (value.trim().length < 10)
+          error = "Message must be at least 10 characters";
+        break;
+      default:
+        break;
+    }
+
+    setErrors({
+      ...errors,
+      [name]: error,
+    });
+
+    return !error;
   };
 
   const validateForm = () => {
     let formErrors = {};
+    let isValid = true;
 
-    if (!formData.name.trim()) {
-      formErrors.name = "Name is required";
-    }
+    if (!validateField("name", formData.name)) isValid = false;
+    if (!validateField("email", formData.email)) isValid = false;
+    if (!validateField("phone", formData.phone)) isValid = false;
+    if (!validateField("subject", formData.subject)) isValid = false;
+    if (!validateField("message", formData.message)) isValid = false;
 
-    if (!formData.email.trim()) {
-      formErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      formErrors.email = "Email is invalid";
-    }
-
-    if (!formData.phone.trim()) {
-      formErrors.phone = "Phone number is required";
-    } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone)) {
-      formErrors.phone = "Phone number is invalid";
-    }
-
-    if (!formData.subject.trim()) {
-      formErrors.subject = "Subject is required";
-    }
-
-    if (!formData.message.trim()) {
-      formErrors.message = "Message is required";
-    }
-
-    return formErrors;
+    return { isValid, formErrors: errors };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
+    const { isValid } = validateForm();
+    if (!isValid) {
       toast.error("Please fix the errors in the form");
       return;
     }
@@ -264,21 +294,28 @@ function Contact() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
+      // Show success state
+      setIsSuccess(true);
+
       // Show success notification
       toast.success(
         "Your message has been sent successfully! We will get back to you soon."
       );
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-      setErrors({});
-      setIsFormOpen(false);
+      // Reset form after delay
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+        setErrors({});
+        setIsFormOpen(false);
+        setIsSuccess(false);
+        setCurrentStep(1);
+      }, 3000);
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
     } finally {
@@ -287,10 +324,23 @@ function Contact() {
   };
 
   const toggleForm = () => {
+    if (isSuccess) return; // Don't allow closing during success animation
+
     setIsFormOpen(!isFormOpen);
     if (isFormOpen) {
       setIsFormExpanded(false);
     }
+  };
+
+  const handleFocus = (e) => {
+    e.target.parentElement.classList.add("focused");
+  };
+
+  const handleBlur = (e) => {
+    if (!e.target.value) {
+      e.target.parentElement.classList.remove("focused");
+    }
+    validateField(e.target.name, e.target.value);
   };
 
   return (
@@ -420,104 +470,155 @@ function Contact() {
       <div
         className={`floating-contact-form ${isFormOpen ? "open" : ""} ${
           isFormExpanded ? "expanded" : ""
-        }`}
+        } ${isSuccess ? "success" : ""}`}
       >
         <div className="floating-form-header" onClick={toggleForm}>
           <span className="form-title">Contact Us</span>
-          <span className="form-toggle-icon">{isFormOpen ? "✕" : "✉️"}</span>
+          <span className="form-toggle-icon">
+            {isSuccess ? "🎉" : isFormOpen ? "✕" : "✉️"}
+          </span>
         </div>
 
         <div className="floating-form-content">
-          <h3>Send Us a Message</h3>
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Full Name *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={errors.name ? "error" : ""}
-                placeholder="Enter your full name"
-              />
-              {errors.name && (
-                <span className="error-message">{errors.name}</span>
-              )}
+          {isSuccess ? (
+            <div className="success-animation">
+              <div className="success-checkmark">
+                <div className="check-icon"></div>
+              </div>
+              <h3>Message Sent Successfully!</h3>
+              <p>We'll get back to you shortly.</p>
+              <div className="confetti">
+                {[...Array(50)].map((_, i) => (
+                  <div key={i} className="confetti-piece"></div>
+                ))}
+              </div>
             </div>
+          ) : (
+            <>
+              <div className="form-progress">
+                <div className="progress-steps">
+                  {[1, 2, 3].map((step) => (
+                    <div
+                      key={step}
+                      className={`progress-step ${
+                        currentStep >= step ? "active" : ""
+                      }`}
+                    ></div>
+                  ))}
+                </div>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="email">Email Address *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={errors.email ? "error" : ""}
-                placeholder="Enter your email address"
-              />
-              {errors.email && (
-                <span className="error-message">{errors.email}</span>
-              )}
-            </div>
+              <h3>Send Us a Message</h3>
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-group floating">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={errors.name ? "error" : ""}
+                    autoComplete="name"
+                  />
+                  <label htmlFor="name">Full Name *</label>
+                  {errors.name && (
+                    <span className="error-message">{errors.name}</span>
+                  )}
+                </div>
 
-            <div className="form-group">
-              <label htmlFor="phone">Phone Number *</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={errors.phone ? "error" : ""}
-                placeholder="Enter your phone number"
-              />
-              {errors.phone && (
-                <span className="error-message">{errors.phone}</span>
-              )}
-            </div>
+                <div className="form-group floating">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={errors.email ? "error" : ""}
+                    autoComplete="email"
+                  />
+                  <label htmlFor="email">Email Address *</label>
+                  {errors.email && (
+                    <span className="error-message">{errors.email}</span>
+                  )}
+                </div>
 
-            <div className="form-group">
-              <label htmlFor="subject">Subject *</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className={errors.subject ? "error" : ""}
-                placeholder="What is this regarding?"
-              />
-              {errors.subject && (
-                <span className="error-message">{errors.subject}</span>
-              )}
-            </div>
+                <div className="form-group floating">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={errors.phone ? "error" : ""}
+                    autoComplete="tel"
+                  />
+                  <label htmlFor="phone">Phone Number *</label>
+                  {errors.phone && (
+                    <span className="error-message">{errors.phone}</span>
+                  )}
+                </div>
 
-            <div className="form-group">
-              <label htmlFor="message">Message *</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className={errors.message ? "error" : ""}
-                rows="4"
-                placeholder="Type your message here..."
-              ></textarea>
-              {errors.message && (
-                <span className="error-message">{errors.message}</span>
-              )}
-            </div>
+                <div className="form-group floating">
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={errors.subject ? "error" : ""}
+                  />
+                  <label htmlFor="subject">Subject *</label>
+                  {errors.subject && (
+                    <span className="error-message">{errors.subject}</span>
+                  )}
+                </div>
 
-            <button
-              type="submit"
-              className="submit-bttn"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+                <div className="form-group floating">
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={errors.message ? "error" : ""}
+                    ref={messageRef}
+                    rows="3"
+                  ></textarea>
+                  <label htmlFor="message">Message *</label>
+                  <div className="character-count">
+                    {formData.message.length}/500
+                  </div>
+                  {errors.message && (
+                    <span className="error-message">{errors.message}</span>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="submit-bttn"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="spinner"></span>
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
+                </button>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>

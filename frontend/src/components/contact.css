@@ -485,10 +485,10 @@ body.light .team-contact p {
   color: var(--text-primary);
 }
 
-/* Floating Contact Form */
+/* Enhanced Floating Contact Form */
 .floating-contact-form {
   position: fixed;
-  top: 15%;
+  top: 20%;
   bottom: 30px;
   right: 30px;
   width: 60px;
@@ -496,45 +496,33 @@ body.light .team-contact p {
   border-radius: 10%;
   background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
   color: white;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   z-index: 1000;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Watermark text */
-.floating-contact-form::before {
-  content: "CU"; /* ✨ change this text */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
-  font-size: 3rem;
-  color: rgba(255, 255, 255, 0.15); /* light transparent text */
-  font-weight: bold;
-  white-space: nowrap;
-  pointer-events: none; /* doesn’t block clicks */
-  z-index: 0;
-}
-
-/* Make sure form content stays above watermark */
-.floating-contact-form .floating-form-content,
-.floating-contact-form .floating-form-header {
-  position: relative;
-  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .floating-contact-form.open {
-  border-radius: 12px;
-  width: 400px;
+  border-radius: 16px;
+  width: 320px;
   height: auto;
-  max-height: 80vh;
+  max-height: 75vh;
   overflow-y: auto;
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(212, 55, 55, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .floating-contact-form.expanded {
   height: auto;
+}
+
+.floating-contact-form.success {
+  background: rgba(30, 66, 41, 0.95);
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .floating-form-header {
@@ -544,6 +532,8 @@ body.light .team-contact p {
   padding: 20px;
   font-weight: 600;
   font-size: 1.1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .floating-form-content {
@@ -553,7 +543,7 @@ body.light .team-contact p {
 
 .floating-contact-form.open .floating-form-content {
   display: block;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .form-title {
@@ -567,10 +557,40 @@ body.light .team-contact p {
 
 .form-toggle-icon {
   font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 .floating-contact-form.open .form-toggle-icon {
   font-size: 1.2rem;
+}
+
+.floating-contact-form:hover .form-toggle-icon {
+  transform: scale(1.1);
+}
+
+/* Form Progress */
+.form-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.progress-step {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.progress-step.active {
+  background: var(--maroon-500);
+  transform: scale(1.2);
 }
 
 .floating-form-content h3 {
@@ -579,107 +599,406 @@ body.light .team-contact p {
   color: var(--text-primary);
   text-align: center;
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
-.floating-form-content .form-group {
-  margin-bottom: 1rem;
+/* Enhanced Form Styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-.floating-form-content label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.form-group {
+  position: relative;
+  margin-bottom: 0;
 }
 
-.floating-form-content input,
-.floating-form-content textarea {
+.form-group.floating label {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-group.floating.focused label,
+.form-group.floating input:focus + label,
+.form-group.floating textarea:focus + label,
+.form-group.floating input:not(:placeholder-shown) + label,
+.form-group.floating textarea:not(:placeholder-shown) + label {
+  top: -12px;
+  left: 8px;
+  font-size: 0.8rem;
+  color: var(--maroon-400);
+  background: rgba(30, 30, 30, 0.9);
+  padding: 0 8px;
+  border-radius: 4px;
+}
+
+.form-group.floating input,
+.form-group.floating textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--border-radius);
+  padding: 1rem 0.75rem 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
   background: rgba(20, 20, 20, 0.6);
   color: var(--text-primary);
   font-size: 1rem;
-  transition: all var(--transition-speed) ease;
+  transition: all 0.3s ease;
 }
 
-.floating-form-content input:focus,
-.floating-form-content textarea:focus {
+.form-group.floating input:focus,
+.form-group.floating textarea:focus {
   outline: none;
   border-color: var(--maroon-500);
-  box-shadow: 0 0 0 2px rgba(212, 55, 55, 0.3);
+  box-shadow: 0 0 0 3px rgba(212, 55, 55, 0.2);
+  background: rgba(30, 30, 30, 0.8);
 }
 
-.floating-form-content input.error,
-.floating-form-content textarea.error {
+.form-group.floating input.error,
+.form-group.floating textarea.error {
   border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
 }
 
-.floating-form-content .error-message {
+.form-group.floating .error-message {
   color: #e53e3e;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   margin-top: 0.25rem;
   display: block;
+  padding-left: 0.5rem;
 }
 
-.floating-form-content .submit-bttn {
+.character-count {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group.floating textarea {
+  resize: none;
+  min-height: 100px;
+  transition: height 0.2s ease;
+}
+
+/* Submit Button */
+.submit-bttn {
   width: 100%;
   background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
   color: white;
   border: none;
   padding: 1rem;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  transition: all 0.3s ease;
   margin-top: 0.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.floating-form-content .submit-bttn:hover:not(:disabled) {
+.submit-bttn:hover:not(:disabled) {
   background: linear-gradient(135deg, var(--maroon-700), var(--maroon-800));
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 55, 55, 0.3);
+  box-shadow: 0 6px 15px rgba(212, 55, 55, 0.4);
 }
 
-.floating-form-content .submit-bttn:disabled {
+.submit-bttn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-bttn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+  transform: none;
 }
 
+.submit-bttn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.submit-bttn:hover::before {
+  left: 100%;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success Animation */
+.success-animation {
+  text-align: center;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.success-checkmark {
+  margin: 0 auto 1.5rem;
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.check-icon {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  border-radius: 50%;
+  box-sizing: content-box;
+  border: 4px solid #4CAF50;
+}
+
+.check-icon::before {
+  top: 3px;
+  left: -2px;
+  transform: rotate(45deg);
+  transform-origin: 100% 50%;
+  border-radius: 0 0 0 100px;
+}
+
+.check-icon::after {
+  top: 0;
+  left: 30px;
+  transform: rotate(-45deg);
+  transform-origin: 0 50%;
+  border-radius: 100px 0 0 0;
+  animation: rotate-circle 1s ease-in-out forwards;
+}
+
+.check-icon::before, .check-icon::after {
+  content: '';
+  height: 4px;
+  background: #4CAF50;
+  display: block;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.check-icon::before {
+  width: 17px;
+  animation: check-icon-before 0.8s ease-in-out forwards;
+}
+
+.check-icon::after {
+  width: 30px;
+  animation: check-icon-after 0.8s ease-in-out forwards;
+}
+
+.success-animation h3 {
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.success-animation p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 16px;
+  background: #ffd300;
+  top: 0;
+  opacity: 0;
+  animation: confetti 1s ease-in-out forwards;
+}
+
+.confetti-piece:nth-child(1) {
+  left: 7%;
+  transform: rotate(-140deg);
+  background: #ffd300;
+  animation-delay: 0.1s;
+}
+
+.confetti-piece:nth-child(2) {
+  left: 14%;
+  transform: rotate(40deg);
+  background: #e91e63;
+  animation-delay: 0.2s;
+}
+
+.confetti-piece:nth-child(3) {
+  left: 21%;
+  transform: rotate(-170deg);
+  background: #4CAF50;
+  animation-delay: 0.3s;
+}
+
+.confetti-piece:nth-child(4) {
+  left: 28%;
+  transform: rotate(100deg);
+  background: #ffd300;
+  animation-delay: 0.4s;
+}
+
+.confetti-piece:nth-child(5) {
+  left: 35%;
+  transform: rotate(-50deg);
+  background: #e91e63;
+  animation-delay: 0.5s;
+}
+
+.confetti-piece:nth-child(6) {
+  left: 42%;
+  transform: rotate(140deg);
+  background: #4CAF50;
+  animation-delay: 0.6s;
+}
+
+.confetti-piece:nth-child(7) {
+  left: 49%;
+  transform: rotate(-20deg);
+  background: #ffd300;
+  animation-delay: 0.7s;
+}
+
+.confetti-piece:nth-child(8) {
+  left: 56%;
+  transform: rotate(70deg);
+  background: #e91e63;
+  animation-delay: 0.8s;
+}
+
+.confetti-piece:nth-child(9) {
+  left: 63%;
+  transform: rotate(-100deg);
+  background: #4CAF50;
+  animation-delay: 0.9s;
+}
+
+.confetti-piece:nth-child(10) {
+  left: 70%;
+  transform: rotate(10deg);
+  background: #ffd300;
+  animation-delay: 1s;
+}
+
+/* Light theme adjustments */
 body.light .floating-contact-form {
   background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-body.light .floating-form-content input,
-body.light .floating-form-content textarea {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+body.light .floating-contact-form.open {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(212, 55, 55, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+body.light .floating-contact-form.success {
+  background: rgba(237, 247, 237, 0.95);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+body.light .floating-form-header {
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light .form-group.floating label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+body.light .form-group.floating.focused label,
+body.light .form-group.floating input:focus + label,
+body.light .form-group.floating textarea:focus + label,
+body.light .form-group.floating input:not(:placeholder-shown) + label,
+body.light .form-group.floating textarea:not(:placeholder-shown) + label {
+  color: var(--maroon-600);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.light .form-group.floating input,
+body.light .form-group.floating textarea {
+  border: 2px solid rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.8);
   color: var(--text-secondary);
 }
 
-body.light .floating-form-content input:focus,
-body.light .floating-form-content textarea:focus {
+body.light .form-group.floating input:focus,
+body.light .form-group.floating textarea:focus {
   border-color: var(--maroon-500);
-  box-shadow: 0 0 0 2px rgba(212, 55, 55, 0.2);
+  box-shadow: 0 0 0 3px rgba(212, 55, 55, 0.2);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-body.light .floating-form-content .submit-bttn {
-  background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
+body.light .character-count {
+  color: rgba(0, 0, 0, 0.5);
 }
 
-body.light .floating-form-content .submit-bttn:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--maroon-700), var(--maroon-800));
+body.light .success-animation p {
+  color: rgba(0, 0, 0, 0.7);
 }
 
-/* Override default success toast */
-.custom-toast {
-  background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700)) !important;
-  color: #fff !important;
-  font-weight: 600;
-  border-radius: 8px;
+/* Animations */
+@keyframes check-icon-before {
+  0% { width: 0; }
+  50% { width: 0; }
+  100% { width: 17px; }
+}
+
+@keyframes check-icon-after {
+  0% { width: 0; }
+  50% { width: 0; }
+  100% { width: 30px; }
+}
+
+@keyframes rotate-circle {
+  0% { transform: rotate(-45deg); }
+  5% { transform: rotate(-45deg); }
+  12% { transform: rotate(-405deg); }
+  100% { transform: rotate(-405deg); }
+}
+
+@keyframes confetti {
+  0% {
+    opacity: 0;
+    top: 50%;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 100%;
+  }
 }
 
 /* Responsive Design */
@@ -718,6 +1037,7 @@ body.light .floating-form-content .submit-bttn:hover:not(:disabled) {
     right: 5%;
     left: 5%;
     bottom: 20px;
+    max-height: 80vh;
   }
 }
 
@@ -749,6 +1069,10 @@ body.light .floating-form-content .submit-bttn:hover:not(:disabled) {
     width: calc(100% - 40px);
     right: 20px;
     left: 20px;
+  }
+  
+  .form-group.floating label {
+    font-size: 0.9rem;
   }
 }
 
@@ -782,4 +1106,3 @@ body.light .floating-form-content .submit-bttn:hover:not(:disabled) {
 .team-card {
   animation-delay: calc(var(--index) * 0.1s);
 }
-
