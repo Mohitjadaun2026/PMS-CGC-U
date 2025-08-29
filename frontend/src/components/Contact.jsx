@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./contact.css";
@@ -188,6 +188,19 @@ function Contact() {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isFormExpanded, setIsFormExpanded] = useState(false);
+
+  useEffect(() => {
+    if (isFormOpen) {
+      // Small delay to allow the form to render before expanding
+      setTimeout(() => {
+        setIsFormExpanded(true);
+      }, 10);
+    } else {
+      setIsFormExpanded(false);
+    }
+  }, [isFormOpen]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -265,10 +278,18 @@ function Contact() {
         message: "",
       });
       setErrors({});
+      setIsFormOpen(false);
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const toggleForm = () => {
+    setIsFormOpen(!isFormOpen);
+    if (isFormOpen) {
+      setIsFormExpanded(false);
     }
   };
 
@@ -298,103 +319,179 @@ function Contact() {
         </p>
       </div>
 
-      <div className="contact-info">
-        <div className="contact-card">
-          <h2>General Contact</h2>
-          <p>
-            <span className="contact-label">Address:</span> Chandigarh Group of
-            Colleges, Jhanjeri, Mohali, Punjab, India
-          </p>
-          <p>
-            <span className="contact-label">Phone:</span>{" "}
-            <a href="tel:+911234567890">+91-12345-67890</a>
-          </p>
-          <p>
-            <span className="contact-label">Email:</span>{" "}
-            <a href="mailto:dcpd@cgc.ac.in">dcpd@cgc.ac.in</a>
-          </p>
-          <p>
-            <span className="contact-label">Website:</span>{" "}
-            <a
-              href="https://www.cgc.ac.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              www.cgc.ac.in
-            </a>
-          </p>
+      <div className="contact-content-wrapper">
+        <div className="contact-main-content">
+          {/* Contact Info Section */}
+          <div className="contact-info">
+            <div className="contact-card">
+              <h2>General Contact</h2>
+              <p>
+                <span className="contact-label">Address:</span> Chandigarh Group
+                of Colleges, Jhanjeri, Mohali, Punjab, India
+              </p>
+              <p>
+                <span className="contact-label">Phone:</span>{" "}
+                <a href="tel:+911234567890">+91-12345-67890</a>
+              </p>
+              <p>
+                <span className="contact-label">Email:</span>{" "}
+                <a href="mailto:dcpd@cgc.ac.in">dcpd@cgc.ac.in</a>
+              </p>
+              <p>
+                <span className="contact-label">Website:</span>{" "}
+                <a
+                  href="https://www.cgc.ac.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  www.cgc.ac.in
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Executive Director Section */}
+          <div className="executive-section">
+            <h2>Leadership</h2>
+            <div className="executive-card">
+              <div className="photo-container">
+                <img
+                  src={executiveDirector.photo}
+                  alt={executiveDirector.name}
+                  className="executive-photo"
+                />
+                <div className="photo-overlay"></div>
+              </div>
+              <div className="executive-info">
+                <h3>{executiveDirector.name}</h3>
+                <p className="executive-title">{executiveDirector.title}</p>
+                <div className="executive-contact">
+                  <p>
+                    <span className="contact-label">Phone:</span>{" "}
+                    <a href={`tel:${executiveDirector.phone}`}>
+                      {executiveDirector.phone}
+                    </a>
+                  </p>
+                  <p>
+                    <span className="contact-label">Email:</span>{" "}
+                    <a href={`mailto:${executiveDirector.email}`}>
+                      {executiveDirector.email}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* DCPD Team Section */}
+          <div className="team-section">
+            <h2>Meet Our DCPD Team</h2>
+            <div className="team-grid">
+              {dcpdTeam.map((member, idx) => (
+                <div className="team-card" key={idx}>
+                  <div className="photo-container photo-container-team">
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="team-photo"
+                    />
+                    <div className="photo-overlay"></div>
+                  </div>
+                  <h3>{member.name}</h3>
+                  <p className="team-title">{member.title}</p>
+                  <div className="team-contact">
+                    <p>
+                      <span className="contact-label">Phone:</span>{" "}
+                      <a href={`tel:${member.phone}`}>{member.phone}</a>
+                    </p>
+                    <p>
+                      <span className="contact-label">Email:</span>{" "}
+                      <a href={`mailto:${member.email}`}>{member.email}</a>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Contact Form Section */}
-      <div className="contact-form-section">
-        <div className="contact-form-container">
-          <h2>Send Us a Message</h2>
+      {/* Floating Contact Form */}
+      <div
+        className={`floating-contact-form ${isFormOpen ? "open" : ""} ${
+          isFormExpanded ? "expanded" : ""
+        }`}
+      >
+        <div className="floating-form-header" onClick={toggleForm}>
+          <span className="form-title">Contact Us</span>
+          <span className="form-toggle-icon">{isFormOpen ? "✕" : "✉️"}</span>
+        </div>
+
+        <div className="floating-form-content">
+          <h3>Send Us a Message</h3>
           <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">Full Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={errors.name ? "error" : ""}
-                  placeholder="Enter your full name"
-                />
-                {errors.name && (
-                  <span className="error-message">{errors.name}</span>
-                )}
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={errors.email ? "error" : ""}
-                  placeholder="Enter your email address"
-                />
-                {errors.email && (
-                  <span className="error-message">{errors.email}</span>
-                )}
-              </div>
+            <div className="form-group">
+              <label htmlFor="name">Full Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={errors.name ? "error" : ""}
+                placeholder="Enter your full name"
+              />
+              {errors.name && (
+                <span className="error-message">{errors.name}</span>
+              )}
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number *</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={errors.phone ? "error" : ""}
-                  placeholder="Enter your phone number"
-                />
-                {errors.phone && (
-                  <span className="error-message">{errors.phone}</span>
-                )}
-              </div>
-              <div className="form-group">
-                <label htmlFor="subject">Subject *</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className={errors.subject ? "error" : ""}
-                  placeholder="What is this regarding?"
-                />
-                {errors.subject && (
-                  <span className="error-message">{errors.subject}</span>
-                )}
-              </div>
+            <div className="form-group">
+              <label htmlFor="email">Email Address *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={errors.email ? "error" : ""}
+                placeholder="Enter your email address"
+              />
+              {errors.email && (
+                <span className="error-message">{errors.email}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="phone">Phone Number *</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className={errors.phone ? "error" : ""}
+                placeholder="Enter your phone number"
+              />
+              {errors.phone && (
+                <span className="error-message">{errors.phone}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="subject">Subject *</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className={errors.subject ? "error" : ""}
+                placeholder="What is this regarding?"
+              />
+              {errors.subject && (
+                <span className="error-message">{errors.subject}</span>
+              )}
             </div>
 
             <div className="form-group">
@@ -405,7 +502,7 @@ function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 className={errors.message ? "error" : ""}
-                rows="5"
+                rows="4"
                 placeholder="Type your message here..."
               ></textarea>
               {errors.message && (
@@ -421,70 +518,6 @@ function Contact() {
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
-        </div>
-      </div>
-
-      {/* Executive Director Section */}
-      <div className="executive-section">
-        <h2>Leadership</h2>
-        <div className="executive-card">
-          <div className="photo-container">
-            <img
-              src={executiveDirector.photo}
-              alt={executiveDirector.name}
-              className="executive-photo"
-            />
-            <div className="photo-overlay"></div>
-          </div>
-          <div className="executive-info">
-            <h3>{executiveDirector.name}</h3>
-            <p className="executive-title">{executiveDirector.title}</p>
-            <div className="executive-contact">
-              <p>
-                <span className="contact-label">Phone:</span>{" "}
-                <a href={`tel:${executiveDirector.phone}`}>
-                  {executiveDirector.phone}
-                </a>
-              </p>
-              <p>
-                <span className="contact-label">Email:</span>{" "}
-                <a href={`mailto:${executiveDirector.email}`}>
-                  {executiveDirector.email}
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* DCPD Team Section */}
-      <div className="team-section">
-        <h2>Meet Our DCPD Team</h2>
-        <div className="team-grid">
-          {dcpdTeam.map((member, idx) => (
-            <div className="team-card" key={idx}>
-              <div className="photo-container photo-container-team">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className="team-photo"
-                />
-                <div className="photo-overlay"></div>
-              </div>
-              <h3>{member.name}</h3>
-              <p className="team-title">{member.title}</p>
-              <div className="team-contact">
-                <p>
-                  <span className="contact-label">Phone:</span>{" "}
-                  <a href={`tel:${member.phone}`}>{member.phone}</a>
-                </p>
-                <p>
-                  <span className="contact-label">Email:</span>{" "}
-                  <a href={`mailto:${member.email}`}>{member.email}</a>
-                </p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
