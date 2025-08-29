@@ -256,12 +256,12 @@ function Home() {
             Join thousands of successful alumni who started their journey at CGC Jhanjeri
           </p>
           <div className="cta-buttons">
-            <button className="btn btn-primary">
+            <a href="/signin" className="btn btn-primary">
               Register Now
-            </button>
-            <button className="btn btn-outline">
+            </a>
+            <a href="/Contact" className="btn btn-outline">
               Contact Us
-            </button>
+            </a>
           </div>
         </div>
       </section>
