@@ -1,7 +1,11 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signin } from '../../api/auth';
 import './AdminLogin.css';
+import Header from './Header';
+import Footer from './Footer';
+import Newsletter from './Newsletter';
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +21,7 @@ const AdminLogin = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setError(''); // Clear error when user types
+  setError(''); // Clear error when user types
   };
 
   const handleSubmit = async (e) => {
@@ -37,7 +41,6 @@ const AdminLogin = () => {
         // Token and user info are already stored in auth.js
         // Redirect to admin dashboard
         navigate('/admin-job-posting');
-        
         // Fallback navigation if React Router doesn't work
         setTimeout(() => {
           if (window.location.pathname !== '/admin-job-posting') {
@@ -59,59 +62,61 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="admin-login-container">
-      <div className="admin-login-card">
-        <div className="admin-login-header">
-          <h1>🔐 Admin Login</h1>
-          <p>Access the Placement Management System</p>
-        </div>
-        
-        <form onSubmit={handleSubmit} className="admin-login-form">
-          {error && (
-            <div className="error-message">
-              {error}
+  <div style={{ minHeight: '100vh', background: '#220009', width: '100vw', margin: 0, padding: 0 }}>
+      <Header />
+      <div className="admin-login-container">
+        <div className="admin-login-card">
+          <div className="admin-login-header">
+            <h1>🔐 Admin Login</h1>
+            <p>Access the Placement Management System</p>
+          </div>
+          <form onSubmit={handleSubmit} className="admin-login-form">
+            {error && (
+              <div className="error-message">
+                {error}
+              </div>
+            )}
+            <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="admin@cgcu.edu"
+                style={{ background: 'white', color: '#800000', border: '1.5px solid #800000', borderRadius: '6px', padding: '10px', fontSize: '16px', width: '100%' }}
+              />
             </div>
-          )}
-          
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="admin@cgcu.edu"
-            />
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                placeholder="Enter your password"
+                style={{ background: 'white', color: '#800000', border: '1.5px solid #800000', borderRadius: '6px', padding: '10px', fontSize: '16px', width: '100%' }}
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="admin-login-btn"
+              disabled={loading}
+            >
+              {loading ? 'Signing In...' : 'Sign In'}
+            </button>
+          </form>
+          <div className="admin-login-footer">
+            <p>🔒 Secure access for authorized personnel only</p>
           </div>
-          
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              placeholder="Enter your password"
-            />
-          </div>
-          
-          <button 
-            type="submit" 
-            className="admin-login-btn"
-            disabled={loading}
-          >
-            {loading ? 'Signing In...' : 'Sign In'}
-          </button>
-        </form>
-        
-        <div className="admin-login-footer">
-          <p>🔒 Secure access for authorized personnel only</p>
         </div>
       </div>
+  {/* Newsletter section is now only in Footer for consistency with homepage */}
+      <Footer />
     </div>
   );
 };

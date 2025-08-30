@@ -8,6 +8,15 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placem
 async function createSuperAdmin() {
   try {
     // Check for required environment variables
+<<<<<<< HEAD
+    const adminEmail = 'superadmin@gmail.com';
+    const adminPassword = 'Super@123';
+    const adminName = 'Super Admin';
+
+
+    // Connect to MongoDB
+  await mongoose.connect('mongodb+srv://jadaunmohit0:Mohit%40123@pms-cgcu.gkrai7w.mongodb.net/PMS-CGC-U?retryWrites=true&w=majority');
+=======
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminPassword = process.env.ADMIN_PASSWORD;
     const adminName = process.env.ADMIN_NAME || 'System Administrator';
@@ -23,6 +32,7 @@ async function createSuperAdmin() {
 
     // Connect to MongoDB
     await mongoose.connect(MONGODB_URI);
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
     console.log('✅ Connected to MongoDB');
 
     // Check if super admin already exists

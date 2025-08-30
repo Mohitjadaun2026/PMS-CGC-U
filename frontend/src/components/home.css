@@ -22,9 +22,16 @@
 }
 
 .container {
+<<<<<<< HEAD
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+=======
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 /* Light Theme Variables */
@@ -94,6 +101,11 @@ body.light .container {
   max-width: 64rem;
   margin: 0 auto;
   padding: 0 1.5rem;
+<<<<<<< HEAD
+  width: 100vw;
+  max-width: 100vw;
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 .hero-title {
@@ -142,6 +154,13 @@ body.light .hero-overlay {
   );
 }
 
+<<<<<<< HEAD
+body.light .hero-content {
+  width: 100vw;
+  max-width: 100vw;
+}
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 
 body.light .hero-title {
   color: var(--primary-maroon-dark);
@@ -565,12 +584,10 @@ body.light .partner-card:hover .partner-logo {
   opacity: 0.9;
 }
 
+/* CORRECTED LIGHT MODE STYLES */
 body.light .stats-section {
-  background: linear-gradient(
-    to right,
-    rgba(128, 0, 32, 0.1),
-    rgba(96, 0, 24, 0.05)
-  );
+  /* This change removes the patchy linear-gradient background */
+  background: transparent; 
   position: relative;
   overflow: hidden;
 }
@@ -581,6 +598,7 @@ body.light .stats-section::before {
 }
 
 body.light .stat-item {
+  /* Using a solid white background with transparency for the cards */
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(128, 0, 32, 0.1);
   backdrop-filter: none;
@@ -625,6 +643,11 @@ body.light .stat-label {
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+<<<<<<< HEAD
+  width: 100vw;
+  max-width: 100vw;
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 .cta-title {

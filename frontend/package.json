@@ -14,11 +14,13 @@
     "axios": "^1.11.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.514.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
+    "react-toastify": "^11.0.5",
+    "recharts": "^3.1.2",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
@@ -32,4 +34,8 @@
     "globals": "^16.0.0",
     "vite": "^6.3.5"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc

@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ApplicationManagement.css';
@@ -60,6 +62,7 @@ const ApplicationManagement = ({ jobId }) => {
         </tbody>
       </table>
 =======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 import React, { useState, useEffect } from 'react';
 import AdminHeader from './AdminHeader';
 import './ApplicationManagement.css';
@@ -76,6 +79,15 @@ const ApplicationManagement = () => {
     statusBreakdown: []
   });
 
+<<<<<<< HEAD
+  // Fetch all applications
+  const fetchApplications = async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem('token');
+      const url = selectedJob === 'all' 
+        ? '/api/applications' 
+=======
   useEffect(() => {
     fetchApplications();
     fetchJobs();
@@ -86,10 +98,28 @@ const ApplicationManagement = () => {
     try {
       const url = selectedJob === 'all' 
         ? '/api/applications/all' 
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
         : `/api/applications/job/${selectedJob}`;
       
       const response = await fetch(url, {
         headers: {
+<<<<<<< HEAD
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setApplications(data);
+        setError('');
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || 'Failed to fetch applications');
+      }
+    } catch (err) {
+      setError('Error fetching applications');
+      console.error('Fetch applications error:', err);
+=======
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
@@ -102,23 +132,62 @@ const ApplicationManagement = () => {
       setApplications(data);
     } catch (err) {
       setError(err.message);
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
     } finally {
       setLoading(false);
     }
   };
 
+<<<<<<< HEAD
+  // Fetch jobs for filter dropdown
+  const fetchJobs = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('/api/jobs', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setJobs(data);
+      } else {
+        console.error('Failed to fetch jobs');
+=======
   const fetchJobs = async () => {
     try {
       const response = await fetch('/api/jobs');
       if (response.ok) {
         const jobsData = await response.json();
         setJobs(jobsData);
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
       }
     } catch (err) {
       console.error('Error fetching jobs:', err);
     }
   };
 
+<<<<<<< HEAD
+  // Fetch statistics
+  const fetchStats = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('/api/applications/stats', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setStats({
+          totalApplications: data.totalApplications || 0,
+          statusBreakdown: data.statusBreakdown || []
+        });
+      } else {
+        console.error('Failed to fetch stats');
+=======
   const fetchStats = async () => {
     try {
       const response = await fetch('/api/applications/stats', {
@@ -130,12 +199,17 @@ const ApplicationManagement = () => {
       if (response.ok) {
         const statsData = await response.json();
         setStats(statsData);
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
       }
     } catch (err) {
       console.error('Error fetching stats:', err);
     }
   };
 
+<<<<<<< HEAD
+  // Update application status
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
   const updateApplicationStatus = async (applicationId, status, adminNotes) => {
     try {
       const response = await fetch(`/api/applications/${applicationId}/status`, {
@@ -149,6 +223,11 @@ const ApplicationManagement = () => {
 
       if (response.ok) {
         setSuccess('Application status updated successfully!');
+<<<<<<< HEAD
+        // Clear success message after 3 seconds
+        setTimeout(() => setSuccess(''), 3000);
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
         fetchApplications();
         fetchStats();
       } else {
@@ -157,9 +236,17 @@ const ApplicationManagement = () => {
       }
     } catch (err) {
       setError('Error updating application status');
+<<<<<<< HEAD
+      console.error('Update status error:', err);
     }
   };
 
+  // Get status color
+=======
+    }
+  };
+
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
   const getStatusColor = (status) => {
     const colors = {
       pending: '#f39c12',
@@ -168,9 +255,16 @@ const ApplicationManagement = () => {
       selected: '#27ae60',
       rejected: '#e74c3c'
     };
+<<<<<<< HEAD
+    return colors[status?.toLowerCase()] || '#95a5a6';
+  };
+
+  // Get status icon
+=======
     return colors[status] || '#95a5a6';
   };
 
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
   const getStatusIcon = (status) => {
     const icons = {
       pending: '⏳',
@@ -179,10 +273,19 @@ const ApplicationManagement = () => {
       selected: '✅',
       rejected: '❌'
     };
+<<<<<<< HEAD
+    return icons[status?.toLowerCase()] || '❓';
+  };
+
+  // Format date
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+=======
     return icons[status] || '❓';
   };
 
   const formatDate = (dateString) => {
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
@@ -192,6 +295,44 @@ const ApplicationManagement = () => {
     });
   };
 
+<<<<<<< HEAD
+  // Handle admin notes change
+  const handleAdminNotesChange = (applicationId, notes) => {
+    const updatedApplications = applications.map(app => 
+      app._id === applicationId 
+        ? { ...app, adminNotes: notes }
+        : app
+    );
+    setApplications(updatedApplications);
+  };
+
+  // Clear messages
+  const clearMessages = () => {
+    setError('');
+    setSuccess('');
+  };
+
+  // Initial data fetch
+  useEffect(() => {
+    fetchJobs();
+    fetchStats();
+  }, []);
+
+  // Fetch applications when selectedJob changes
+  useEffect(() => {
+    fetchApplications();
+  }, [selectedJob]);
+
+  // Clear messages when they exist
+  useEffect(() => {
+    if (error || success) {
+      const timer = setTimeout(clearMessages, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error, success]);
+
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
   if (loading) {
     return (
       <div className="application-management-container">
@@ -212,7 +353,11 @@ const ApplicationManagement = () => {
             <div className="stat-number">{stats.totalApplications}</div>
             <div className="stat-label">Total Applications</div>
           </div>
+<<<<<<< HEAD
+          {stats.statusBreakdown && stats.statusBreakdown.map((status) => (
+=======
           {stats.statusBreakdown.map((status) => (
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
             <div key={status._id} className="stat-card">
               <div className="stat-number">{status.count}</div>
               <div className="stat-label">{status._id}</div>
@@ -221,8 +366,23 @@ const ApplicationManagement = () => {
         </div>
       </div>
 
+<<<<<<< HEAD
+      {error && (
+        <div className="error-message">
+          {error}
+          <button onClick={clearMessages} className="close-btn">×</button>
+        </div>
+      )}
+      {success && (
+        <div className="success-message">
+          {success}
+          <button onClick={clearMessages} className="close-btn">×</button>
+        </div>
+      )}
+=======
       {error && <div className="error-message">{error}</div>}
       {success && <div className="success-message">{success}</div>}
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 
       <div className="filter-section">
         <label htmlFor="job-filter">Filter by Job:</label>
@@ -253,16 +413,26 @@ const ApplicationManagement = () => {
               <div key={application._id} className="application-card">
                 <div className="application-header">
                   <div className="applicant-info">
+<<<<<<< HEAD
+                    <h3>{application.applicantName || 'N/A'}</h3>
+                    <p className="applicant-email">{application.applicantEmail || 'N/A'}</p>
+                    <p className="applicant-phone">{application.applicantPhone || 'N/A'}</p>
+=======
                     <h3>{application.applicantName}</h3>
                     <p className="applicant-email">{application.applicantEmail}</p>
                     <p className="applicant-phone">{application.applicantPhone}</p>
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
                   </div>
                   <div className="application-status">
                     <span 
                       className="status-badge"
                       style={{ backgroundColor: getStatusColor(application.status) }}
                     >
+<<<<<<< HEAD
+                      {getStatusIcon(application.status)} {application.status || 'pending'}
+=======
                       {getStatusIcon(application.status)} {application.status}
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
                     </span>
                   </div>
                 </div>
@@ -270,6 +440,17 @@ const ApplicationManagement = () => {
                 <div className="application-details">
                   <div className="detail-row">
                     <span className="detail-label">Course:</span>
+<<<<<<< HEAD
+                    <span className="detail-value">{application.applicantCourse || 'N/A'}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span className="detail-label">Year:</span>
+                    <span className="detail-value">{application.applicantYear || 'N/A'}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span className="detail-label">Branch:</span>
+                    <span className="detail-value">{application.applicantBranch || 'N/A'}</span>
+=======
                     <span className="detail-value">{application.applicantCourse}</span>
                   </div>
                   <div className="detail-row">
@@ -279,6 +460,7 @@ const ApplicationManagement = () => {
                   <div className="detail-row">
                     <span className="detail-label">Branch:</span>
                     <span className="detail-value">{application.applicantBranch}</span>
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
                   </div>
                   <div className="detail-row">
                     <span className="detail-label">Applied:</span>
@@ -289,8 +471,13 @@ const ApplicationManagement = () => {
                 {application.jobId && (
                   <div className="job-info">
                     <h4>Job Details</h4>
+<<<<<<< HEAD
+                    <p><strong>Position:</strong> {application.jobId.position || 'N/A'}</p>
+                    <p><strong>Company:</strong> {application.jobId.companyName || 'N/A'}</p>
+=======
                     <p><strong>Position:</strong> {application.jobId.position}</p>
                     <p><strong>Company:</strong> {application.jobId.companyName}</p>
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
                     <p><strong>Type:</strong> {application.jobId.campusType || 'N/A'}</p>
                   </div>
                 )}
@@ -314,8 +501,17 @@ const ApplicationManagement = () => {
                 <div className="application-actions">
                   <div className="status-update">
                     <select
+<<<<<<< HEAD
+                      value={application.status || 'pending'}
+                      onChange={(e) => updateApplicationStatus(
+                        application._id, 
+                        e.target.value, 
+                        application.adminNotes || ''
+                      )}
+=======
                       value={application.status}
                       onChange={(e) => updateApplicationStatus(application._id, e.target.value, application.adminNotes || '')}
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
                       className="status-select"
                     >
                       <option value="pending">Pending</option>
@@ -330,6 +526,14 @@ const ApplicationManagement = () => {
                     <textarea
                       placeholder="Add admin notes..."
                       value={application.adminNotes || ''}
+<<<<<<< HEAD
+                      onChange={(e) => handleAdminNotesChange(application._id, e.target.value)}
+                      onBlur={() => updateApplicationStatus(
+                        application._id, 
+                        application.status || 'pending', 
+                        application.adminNotes || ''
+                      )}
+=======
                       onChange={(e) => {
                         const updatedApplications = applications.map(app => 
                           app._id === application._id 
@@ -339,6 +543,7 @@ const ApplicationManagement = () => {
                         setApplications(updatedApplications);
                       }}
                       onBlur={() => updateApplicationStatus(application._id, application.status, application.adminNotes || '')}
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
                       rows="2"
                     />
                   </div>
@@ -348,9 +553,16 @@ const ApplicationManagement = () => {
           </div>
         )}
       </div>
+<<<<<<< HEAD
+=======
 >>>>>>> origin/job-fetching-fix
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default ApplicationManagement;
+=======
+export default ApplicationManagement;
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc

@@ -98,16 +98,21 @@ function Footer() {
             </h3>
             <p className="footer-tagline">Bridging talent with opportunity</p>
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/mohit-jadaun/" aria-label="LinkedIn">
                 <FaLinkedin />
               </a>
-              <a href="#" aria-label="X">
+              <a href="https://x.com/" aria-label="X">
                 <FaXTwitter />
               </a>
-              <a href="#" aria-label="GitHub">
+              <a href="https://github.com/Mohitjadaun2026" aria-label="GitHub">
                 <FaGithub />
               </a>
-              <a href="#" aria-label="Email">
+              <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=jadaunmohit0@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Email"
+            >
                 <FaEnvelope />
               </a>
             </div>
