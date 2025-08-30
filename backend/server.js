@@ -1,13 +1,8 @@
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const express = require("express");
 const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const path = require("path");
 
 // Load environment variables
 dotenv.config();
@@ -18,13 +13,19 @@ const connectDB = require("./config/db.js");
 connectDB();
 
 // Routes
-const interviewExperienceRoutes = require("./routes/interviewExperienceRoutes");
-const newsletterRoutes = require("./routes/newsletter");
-const imageRoutes = require("./routes/imageRoutes");
-const jobRoutes = require("./routes/jobRoutes");
-const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes");
-const adminManagementRoutes = require("./routes/adminManagementRoutes");
+let interviewExperienceRoutes, newsletterRoutes, imageRoutes, jobRoutes, authRoutes, adminRoutes, adminManagementRoutes;
+
+try {
+  interviewExperienceRoutes = require("./routes/interviewExperienceRoutes");
+  newsletterRoutes = require("./routes/newsletter");
+  imageRoutes = require("./routes/imageRoutes");
+  jobRoutes = require("./routes/jobRoutes");
+  authRoutes = require("./routes/authRoutes");
+  adminRoutes = require("./routes/adminRoutes");
+  adminManagementRoutes = require("./routes/adminManagementRoutes");
+} catch (error) {
+  console.error('Error loading routes:', error.message);
+}
 
 const app = express();
 
@@ -58,9 +59,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to PMS-CGC-U Backend 🚀");
 });
 
-// Job routes
-const jobRoutes = require('./routes/jobRoutes');
-app.use('/api/jobs', jobRoutes);
+// Job routes are already defined above
 
 // Connect to MongoDB (use environment variable for production)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
@@ -77,17 +76,16 @@ mongoose.connect(MONGODB_URI)
 
 // Use environment port or default to 5000
 const PORT = process.env.PORT || 5000;
-// Use routes
-app.use("/api/interview-experiences", interviewExperienceRoutes);
-app.use("/api/newsletter", newsletterRoutes);
-app.use("/uploads", imageRoutes);
-app.use("/api/jobs", jobRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/admin-management", adminManagementRoutes);
+// Use routes (with error checking)
+if (interviewExperienceRoutes) app.use("/api/interview-experiences", interviewExperienceRoutes);
+if (newsletterRoutes) app.use("/api/newsletter", newsletterRoutes);
+if (imageRoutes) app.use("/uploads", imageRoutes);
+if (jobRoutes) app.use("/api/jobs", jobRoutes);
+if (authRoutes) app.use("/api/auth", authRoutes);
+if (adminRoutes) app.use("/api/admin", adminRoutes);
+if (adminManagementRoutes) app.use("/api/admin-management", adminManagementRoutes);
 
 // Start server
-const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
