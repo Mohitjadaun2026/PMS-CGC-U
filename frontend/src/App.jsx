@@ -14,10 +14,7 @@ import AdminLogin from "./components/AdminLogin";
 import AdminManagement from "./components/AdminManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JobsPage from "./components/jobs";
-import InterviewExperience from "./components/InterviewExperience";
-import ScrollToTop from "./components/ScrollToTop";
-
-import "../src/index.css";
+import AlumniDetail from "./components/AlumniDetail";
 
 function App() {
   return (
@@ -25,120 +22,20 @@ function App() {
       <ScrollToTop /> {/* Always inside Router */}
       <Toaster position="top-right" /> {/* Toast notifications */}
       <div className="app-container">
-        <Routes>
-          {/* Home Page */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <Home />
-                </main>
-
-                <Footer />
-              </>
-            }
-          />
-
-          {/* Other Public Routes */}
-          <Route
-            path="/interview-experience"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <InterviewExperience />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/signin"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <Sign />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/about"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <About />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/contact"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <Contact />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/profile"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <StudentProfile />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/jobs"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <JobsPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          {/* Admin Routes */}
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route
-            path="/admin-job-posting"
-            element={
-              <ProtectedRoute requireAdmin={true}>
-                <AdminJobPosting />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin-management"
-            element={
-              <ProtectedRoute requireAdmin={true}>
-                <AdminManagement />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signin" element={<Sign />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/profile" element={<StudentProfile />} />
+            <Route path="/alumni/:id" element={<AlumniDetail />} />
+            <Route path="/admin-job-posting" element={<AdminJobPosting />} />
+            <Route path="/jobs" element={<JobsPage />} />
+          </Routes>
+        </main>
+        <Footer />     
       </div>
     </Router>
   );
