@@ -1,0 +1,39 @@
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  color: white;
+  font-size: 34px; /* makes arrow large */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  z-index: 1000;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, #cc0000, #990000);
+  transform: scale(1.1);
+}
+
+.arrow {
+  font-size: 36px; /* ensure arrow is bold and large */
+  line-height: 1;
+}
