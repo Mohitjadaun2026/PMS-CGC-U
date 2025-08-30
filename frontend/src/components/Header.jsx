@@ -27,9 +27,11 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userToken');
     setIsLoggedIn(false);
-    // Optionally redirect to home or login page
+    // Redirect to home page
     window.location.href = '/';
   };
 
@@ -58,12 +60,11 @@ function Header() {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/jobs">Jobs</Link>
-        <Link to="/profile">Student Profile</Link>
+        <Link to="/interview-experience">Interview Experience</Link>
+        
         {isLoggedIn && (
           <>
             <Link to="/profile">Student Profile</Link>
-            <Link to="/admin-job-posting">Admin Panel</Link>
-            <Link to="/interview-experience">Interview Experience</Link>
             <button 
               onClick={handleLogout} 
               className="logout-btn"

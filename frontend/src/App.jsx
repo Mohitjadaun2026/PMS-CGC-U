@@ -13,11 +13,11 @@ import AdminJobPosting from "./components/AdminJobPosting";
 import AdminLogin from "./components/AdminLogin";
 import AdminManagement from "./components/AdminManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
+import StudentProtectedRoute from "./components/StudentProtectedRoute";
 import JobsPage from "./components/jobs";
 import InterviewExperience from "./components/InterviewExperience";
 import ScrollToTop from "./components/ScrollToTop";
 
-import "../src/index.css";
 
 function App() {
   return (
@@ -97,13 +97,13 @@ function App() {
           <Route
             path="/profile"
             element={
-              <>
+              <StudentProtectedRoute>
                 <Header />
                 <main className="main-content">
                   <StudentProfile />
                 </main>
                 <Footer />
-              </>
+              </StudentProtectedRoute>
             }
           />
 

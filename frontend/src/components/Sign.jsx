@@ -103,8 +103,9 @@ function Sign() {
       alert("Sign-in failed: " + res.error);
       return;
     }
-    // Set login state
+    // Set login state and store user data
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userEmail', form.email);
     alert("Signed in as " + form.email);
     // Redirect to home or dashboard
     window.location.href = '/';

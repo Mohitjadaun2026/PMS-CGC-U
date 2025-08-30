@@ -5,7 +5,8 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/placement';
+    await mongoose.connect(mongoUri, {
       dbName: "PMS-CGC-U",
       retryWrites: true,
       w: "majority",
@@ -13,6 +14,7 @@ const connectDB = async () => {
     console.log("✅ Connected to MongoDB");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
+    console.error("URI attempting to use:", process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/placement');
     process.exit(1);
   }
 };
