@@ -22,10 +22,16 @@
 }
 
 .container {
+<<<<<<< HEAD
   width: 100vw;
   max-width: 100vw;
   margin: 0;
   padding: 0;
+=======
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 /* Light Theme Variables */
@@ -95,8 +101,11 @@ body.light .container {
   max-width: 64rem;
   margin: 0 auto;
   padding: 0 1.5rem;
+<<<<<<< HEAD
   width: 100vw;
   max-width: 100vw;
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 .hero-title {
@@ -145,10 +154,13 @@ body.light .hero-overlay {
   );
 }
 
+<<<<<<< HEAD
 body.light .hero-content {
   width: 100vw;
   max-width: 100vw;
 }
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 
 body.light .hero-title {
   color: var(--primary-maroon-dark);
@@ -631,8 +643,11 @@ body.light .stat-label {
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+<<<<<<< HEAD
   width: 100vw;
   max-width: 100vw;
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 .cta-title {

@@ -45,13 +45,19 @@ This document records **all contributions** to the project and assigns points ba
 | 25       | akofficial10      | 10        | #100      | Implement Full Newsletter Functionality with Subscription, Confirmation Email, and Frontend Integration. |
 | 26       | SainiAdi-04       | 3         | #103      | Fix Infinite Loading & Deloitte Logo Placeholder                                     |
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 | 27       | Anvesha-24        | 3         | #108      | color mismatch in bg cards                                                           |
 | 28       | Umisalma848       | 10        | #110      | Improve student dashboard detailed tracking                                          |
 | 29       | vanshika147       | 3         | #115      | Added working social links in footer                                                 |
 | 30       | rahul12075        | 3         | #116      | Added navigation links to "Register Now" and "Contact Us" buttons on homepage CTA section                |
 | 31       | Soumyosish        | 7         | #119      | pr create automate message added                                                     |
 | 32       | arundhativaishnav | 7         | #54       | Added Toastify feature instead of using windows alerts                               |
+<<<<<<< HEAD
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
+=======
 >>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 
 

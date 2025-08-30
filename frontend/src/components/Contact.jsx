@@ -625,4 +625,8 @@ function Contact() {
   );
 }
 
+<<<<<<< HEAD
 export default Contact;
+=======
+export default Contact;
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc

@@ -15,10 +15,23 @@
 }
 
 .about-container {
+<<<<<<< HEAD
   width: 100vw;
   max-width: 100vw;
   margin: 0;
   padding: 0;
+=======
+  max-width: 900px;
+  min-height: 80vh;
+  margin: 2rem auto;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px #a3032b;
+  padding: 3rem;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-out;
+>>>>>>> 143d44905b53594edfd0b7ba6f526494a981cddc
 }
 
 body.light .about-bg {
