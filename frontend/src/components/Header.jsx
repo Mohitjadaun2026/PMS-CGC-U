@@ -55,15 +55,13 @@ function Header() {
         </Link>
       </div>
       <nav className="nav-links">
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/jobs">Jobs</Link>
-        <Link to="/profile">Student Profile</Link>
-        {isLoggedIn && (
-          <>
-            <Link to="/profile">Student Profile</Link>
-            <Link to="/admin-job-posting">Admin Panel</Link>
-            <Link to="/interview-experience">Interview Experience</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/jobs">Jobs</Link>
+          <Link to="/profile">Student Profile</Link>
+          <Link to="/admin-job-posting">Admin Panel</Link>
+          <Link to="/interview-experience">Interview Experience</Link>
+          {isLoggedIn && (
             <button 
               onClick={handleLogout} 
               className="logout-btn"
@@ -71,24 +69,23 @@ function Header() {
             >
               Logout
             </button>
-          </>
-        )}
-
-        {/* Theme toggle button */}
-        <button 
-          onClick={toggleTheme} 
-          className="theme-toggle-btn"
-          aria-label="Toggle light/dark theme"
-        >
-          {theme === 'light' ? (
-            <Moon size={20} /> 
-          ) : (
-            <Sun size={20} />
           )}
-        </button>
-        {!isLoggedIn && (
-          <Link to="/signin" className="login-btn">Login</Link>
-        )}
+
+          {/* Theme toggle button */}
+          <button 
+            onClick={toggleTheme} 
+            className="theme-toggle-btn"
+            aria-label="Toggle light/dark theme"
+          >
+            {theme === 'light' ? (
+              <Moon size={20} /> 
+            ) : (
+              <Sun size={20} />
+            )}
+          </button>
+          {!isLoggedIn && (
+            <Link to="/signin" className="login-btn">Login</Link>
+          )}
       </nav>
     </header>
   );
