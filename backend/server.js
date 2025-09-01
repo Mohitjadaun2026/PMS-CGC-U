@@ -49,7 +49,15 @@ app.get("/", (req, res) => {
   res.send("Welcome to PMS-CGC-U Backend 🚀");
 });
 
-// Routes
+
+// Job routes
+app.use('/api/jobs', jobRoutes);
+
+// Connect to MongoDB (use environment variable for production)
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/placement';
+// Removed duplicate mongoose.connect(MONGODB_URI) to prevent multiple connections
+
+// Connection handling is now managed in db.js
 app.use("/api/interview-experiences", interviewExperienceRoutes);
 app.use("/api/newsletter", newsletterRoutes);
 app.use("/uploads", imageRoutes);
