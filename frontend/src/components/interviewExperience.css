@@ -112,7 +112,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.ie-form-redesign button[type="submit"]:hover {
+.ie-form-redesign button[type="submit"]:hover{
   background: var(--maroon-800);
 }
 
@@ -125,7 +125,7 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.13);
   transform: translateY(-2px) scale(1.01);
 }
-.ie-view-btn {
+.ie-view-btn, .ie-edit-btn {
   background: var(--maroon-700);
   color: #fff;
   border: none;
@@ -142,7 +142,7 @@
   overflow: hidden;
   width: 0;
 }
-.ie-view-btn:hover {
+.ie-view-btn:hover, .ie-edit-btn:hover {
   background: var(--maroon-800);
 }
 .ie-empty {

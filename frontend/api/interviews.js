@@ -18,3 +18,12 @@ export const deleteInterviewExperience = async (id) => {
     const res = await api.delete(`/api/interview-experiences/${id}`);
     return res.data;
 };
+
+export const editInterviewExperience = async (id, data) => {
+    const res = await api.put(`/api/interview-experiences/${id}`, {
+        company: data.company,
+        role: data.role,
+        experience: data.experience
+    });
+    return res.data;
+}
