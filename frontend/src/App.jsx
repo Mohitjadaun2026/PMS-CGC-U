@@ -17,6 +17,7 @@ import JobsPage from "./components/jobs";
 import InterviewExperience from "./components/InterviewExperience";
 import ScrollToTop from "./components/ScrollToTop";
 import ResetPassword from "./components/ResetPassword";
+import PrivacyPolicy from "./components/PrivacyPolicy"; // ✅ Added
 
 import "../src/index.css";
 
@@ -36,7 +37,6 @@ function App() {
                 <main className="main-content">
                   <Home />
                 </main>
-
                 <Footer />
               </>
             }
@@ -121,6 +121,20 @@ function App() {
             }
           />
 
+          {/* Privacy Policy Route ✅ */}
+          <Route
+            path="/privacy"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <PrivacyPolicy />
+                </main>
+                <Footer />
+              </>
+            }
+          />
+
           {/* Admin Routes */}
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route
@@ -139,22 +153,22 @@ function App() {
               </ProtectedRoute>
             }
           />
-             
-        <Route
-          path="/reset-password"
-          element={
-            <>
-              <Header />
-              <main className="main-content">
-                <ResetPassword />
-              </main>
-              <Footer />
-            </>
-          }
-        />
+
+          <Route
+            path="/reset-password"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <ResetPassword />
+                </main>
+                <Footer />
+              </>
+            }
+          />
         </Routes>
       </div>
-    </Router>   
+    </Router>
   );
 }
 

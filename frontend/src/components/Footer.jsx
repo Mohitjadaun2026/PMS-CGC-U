@@ -7,7 +7,6 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaPhone,
-  FaPaperPlane,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import "./footer.css";
@@ -54,7 +53,7 @@ function Footer() {
 
   return (
     <footer className="pms-footer">
-      {/* Newsletter Section - Full Width */}
+      {/* Newsletter Section */}
       <div className="footer-newsletter-full">
         <div className="footer-container">
           <div className="footer-newsletter-content">
@@ -108,11 +107,11 @@ function Footer() {
                 <FaGithub />
               </a>
               <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=jadaunmohit0@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Email"
-            >
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=jadaunmohit0@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Email"
+              >
                 <FaEnvelope />
               </a>
             </div>
@@ -122,39 +121,21 @@ function Footer() {
             <div className="footer-section">
               <h4 className="footer-heading">Navigation</h4>
               <ul className="footer-nav">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                  <a href="/about">About Us</a>
-                </li>
-                <li>
-                  <a href="/jobs">Job Listings</a>
-                </li>
-                <li>
-                  <a href="/profile">My Profile</a>
-                </li>
-                <li>
-                  <a href="/admin-job-posting">Post Jobs</a>
-                </li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/jobs">Job Listings</a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/admin-job-posting">Post Jobs</a></li>
               </ul>
             </div>
 
             <div className="footer-section">
               <h4 className="footer-heading">Legal</h4>
               <ul className="footer-nav">
-                <li>
-                  <a href="#privacy">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#terms">Terms of Service</a>
-                </li>
-                <li>
-                  <a href="#cookies">Cookie Policy</a>
-                </li>
-                <li>
-                  <a href="#gdpr">GDPR Compliance</a>
-                </li>
+                <li><a href="/privacy">Privacy Policy</a></li> {/* ✅ Updated */}
+                <li><a href="/terms">Terms of Service</a></li> {/* placeholder */}
+                <li><a href="/cookies">Cookie Policy</a></li> {/* placeholder */}
+                <li><a href="/gdpr">GDPR Compliance</a></li> {/* placeholder */}
               </ul>
             </div>
 
@@ -188,12 +169,8 @@ function Footer() {
             rights reserved.
           </div>
           <div className="footer-cta">
-            <a href="/signin" className="footer-cta-button">
-              Sign In
-            </a>
-            <a href="/contact" className="outline">
-              Contact Us
-            </a>
+            <a href="/signin" className="footer-cta-button">Sign In</a>
+            <a href="/contact" className="outline">Contact Us</a>
           </div>
         </div>
       </div>
