@@ -597,7 +597,7 @@ body.light .team-contact p {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(134, 119, 119, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -1237,4 +1237,17 @@ body.light .contact-page .contact-main-content.contact-info {
 
 body.dark .executive-card {
   background: #1E1E1ECC;
+}
+
+body.light .form-title{
+  color:#000000;
+}
+body.dark .form-title{
+  color:white;
+}
+body.light .progress-step{
+  color:grey;
+}
+body.light .form-toggle-icon{
+  color:#000000;
 }
