@@ -10,6 +10,13 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import "./footer.css";
+import About from "./About";
+import Contact from "./Contact";
+import PrivacyPolicy from "./PrivacyPolicy";
+import CookiePolicy from "./CookiePolicy";
+import Home from "./home";
+
+
 
 function Footer() {
   const [email, setEmail] = useState("");
