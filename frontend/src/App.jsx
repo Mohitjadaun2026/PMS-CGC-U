@@ -19,6 +19,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ResetPassword from "./components/ResetPassword";
 import PrivacyPolicy from "./components/PrivacyPolicy"; // ✅ Added
 import CookiePolicy from "./components/CookiePolicy"; // ✅ Added
+import GdprCompliance from "./components/GdprCompliance"; // ✅ Added
 
 import "../src/index.css";
 
@@ -146,6 +147,20 @@ function App() {
                 <Header />
                 <main className="main-content">
                   <CookiePolicy />
+                </main>
+                <Footer />
+              </>
+            }
+          />
+
+          {/* GDPR Compliance Route ✅ */}
+          <Route
+            path="/gdpr"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <GdprCompliance />
                 </main>
                 <Footer />
               </>

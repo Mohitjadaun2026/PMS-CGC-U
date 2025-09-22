@@ -26,6 +26,10 @@
   --maroon-600: #a00028;
   --maroon-500: #c00030;
 
+  /* Border Colors */
+  --border-dark: #374151;
+  --border-light: #e5e7eb;
+
   --border-radius: 8px;
   --transition-speed: 0.3s;
   --header-height: 70px;
@@ -39,6 +43,9 @@ body.light {
   --bg-darker: #e9ecef;
   --text-primary: #212529;
   --text-secondary: #495057;
+  --bg-light: #f8f9fa;
+  --bg-lighter: #ffffff;
+  --border-light: #e5e7eb;
 }
 
 /* Base Styles */
