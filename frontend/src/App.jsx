@@ -20,6 +20,8 @@ import ResetPassword from "./components/ResetPassword";
 import PrivacyPolicy from "./components/PrivacyPolicy"; // ✅ Added
 import CookiePolicy from "./components/CookiePolicy"; // ✅ Added
 import TermsOfService from "./components/TermsOfService"; // ✅ Added
+import GdprCompliance from "./components/GdprCompliance"; // ✅ Added
+
 
 import "../src/index.css";
 
@@ -153,19 +155,34 @@ function App() {
             }
           />
 
-          {/* Terms of Service Route ✅ */}
-          <Route
-            path="/terms"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <TermsOfService />
-                </main>
-                <Footer />
-              </>
-            }
-          />
+
+{/* Terms of Service Route ✅ */}
+<Route
+  path="/terms"
+  element={
+    <>
+      <Header />
+      <main className="main-content">
+        <TermsOfService />
+      </main>
+      <Footer />
+    </>
+  }
+/>
+
+{/* GDPR Compliance Route ✅ */}
+<Route
+  path="/gdpr"
+  element={
+    <>
+      <Header />
+      <main className="main-content">
+        <GdprCompliance />
+      </main>
+      <Footer />
+    </>
+  }
+/>
 
           {/* Admin Routes */}
           <Route path="/admin-login" element={<AdminLogin />} />

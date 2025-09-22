@@ -868,3 +868,6 @@ body.light .cta-buttons {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+.dark .btn:hover {
+  color: white;   /* background also white → invisible */
+}
