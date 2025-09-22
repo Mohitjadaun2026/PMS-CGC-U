@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Sun, Moon, Users, Target, Award, Building, Calendar, BarChart3, ChevronDown } from "lucide-react";
+import collegeLogo from "../assets/cgc logo.png";
 
 function About() {
   const [isDark, setIsDark] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // Used to trigger entry animations
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or default to light
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setIsDark(savedTheme === 'dark');
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDark(true);
     }
-    setIsVisible(true); // Trigger fade-in on mount
+    setIsVisible(true);
   }, []);
 
   useEffect(() => {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    // Apply theme to document root
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
@@ -100,15 +99,19 @@ function About() {
       <div className="relative z-10 container mx-auto px-6 py-16 max-w-7xl">
         {/* Animated Header Section */}
         <div className={`text-center mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="mb-10 flex justify-center">
+          <div className="mb-10 flex justify-center mt-10"> {/* Added mt-10 to move the circle down */}
             <div className="relative group">
               <div 
-                className={`w-40 h-40 rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 hover:scale-110 ${isDark ? 'bg-gray-700' : 'bg-white'}`}
+                className={`w-40 h-40 rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 hover:scale-110 
+                          group-hover:ring-4 group-hover:ring-[#FF8C00]
+                          ${isDark ? 'bg-gray-700' : 'bg-white'}`}
               >
-                <div className={`w-32 h-32 rounded-full flex items-center justify-center shadow-inner ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
-                  <span className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    CGC
-                  </span>
+                <div className={`w-32 h-32 rounded-full overflow-hidden flex items-center justify-center shadow-inner ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
+                  <img
+                    src={collegeLogo}
+                    alt="College Logo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
               </div>
             </div>
