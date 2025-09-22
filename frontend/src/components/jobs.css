@@ -391,6 +391,7 @@ body.light {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  color: var(--text);
 }
 
 /* Sections */
@@ -495,8 +496,8 @@ body.light {
 }
 .eligibility-tag:hover { transform: translateY(-2px) }
 .course-tag { }
-.year-tag   { border-color: rgba(76, 175, 80, 0.3);  background: rgba(76, 175, 80, 0.14);  color: #a9e4b2; }
-.branch-tag { border-color: rgba(33,150,243,0.3);   background: rgba(33,150,243,0.14);   color: #b6dfff; }
+.year-tag   { border-color: rgba(76, 175, 80, 0.3);  background: rgba(76, 175, 80, 0.14);  color: #58b867; }
+.branch-tag { border-color: rgba(33,150,243,0.3);   background: rgba(33,150,243,0.14);   color: #508ec0 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1200px) {
