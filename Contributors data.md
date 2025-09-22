@@ -79,9 +79,9 @@ This document records **all contributions** to the project and assigns points ba
 | 59       | Tushar-sonawane06 | 3         | #176      | Unwanted Border Removed                                                              |
 | 60       | Tushar-sonawane06 | 3         | #181      | Border Removed                                                                       |
 | 61       | surajsingh9389    | 7         | #182      | Feat/add loader and disable effect                                                   |
-62	Adez017	10	#187	Added the GDPR Compliance page
-63	kalyaniugale	3	#186	fix: keep "Register Now" button text visible on hover in dark mode
-64	Tushar-sonawane06	3	#184	Text updated
+62	        | Adez017	         |10	       |#187	     |Added the GDPR Compliance page
+63         |	kalyaniugale	   |3	         |#186	     |fix: keep "Register Now" button text visible on hover in dark mode
+64	       |Tushar-sonawane06  |	  3	    |#184	     |Text updated
 
 
 
