@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import {
@@ -129,7 +130,7 @@ function Footer() {
               <h4 className="footer-heading">Navigation</h4>
               <ul className="footer-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/about">About Us</a></li>
+                <li><Link to="/about">About Us</Link></li>
                 <li><a href="/jobs">Job Listings</a></li>
                 <li><a href="/profile">My Profile</a></li>
                 <li><a href="/admin-job-posting">Post Jobs</a></li>
