@@ -205,7 +205,7 @@ function Sign() {
                 value={form.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={errors.password ? "input-error" : valid.password ? "input-success" : ""}
+                className={isRegister? errors.password ? "input-error" : valid.password ? "input-success" : "": ""}
                 aria-invalid={!!errors.password}
                 aria-describedby="password-error"
               />
@@ -214,12 +214,13 @@ function Sign() {
               </span>
             </div>
 
-            {((touched.password || errors.password) && errors.password) && (
+            {isRegister && ((touched.password || errors.password) && errors.password) && (
               <div id="password-error" className="error-text" role="alert">
                 <span className="error-icon" aria-hidden="true">⚠</span>
                 <span>{errors.password}</span>
               </div>
             )}
+            
           </div>
 
           {/* Forgot Password link (only on Sign In) */}
