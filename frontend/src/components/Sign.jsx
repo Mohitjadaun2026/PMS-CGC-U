@@ -48,7 +48,7 @@ function Sign() {
     } else if (name === "email") {
       // specific format validation
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Enter a valid email address";
-    } else if (name === "password") {
+    } else if (name === "password" && isRegister) {
       if (value.length < 8) error = "Password must be at least 8 characters";
     } else if (name === "confirmPassword") {
       if (value !== form.password) error = "Passwords do not match";
@@ -214,7 +214,7 @@ function Sign() {
               </span>
             </div>
 
-            {isRegister && ((touched.password || errors.password) && errors.password) && (
+            {((touched.password || errors.password) && errors.password) && (
               <div id="password-error" className="error-text" role="alert">
                 <span className="error-icon" aria-hidden="true">⚠</span>
                 <span>{errors.password}</span>
