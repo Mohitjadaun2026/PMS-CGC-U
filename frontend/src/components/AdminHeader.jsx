@@ -56,7 +56,7 @@ const AdminHeader = () => {
         <div className="admin-header-right">
           <div className="admin-user-info">
             <span className="admin-name">👤 {adminUser.name || 'Admin'}</span>
-            <span className="admin-role">
+            <span className="admin-role-info">
               {isSuperAdmin ? '👑 Super Admin' : '🔑 Admin'}
             </span>
           </div>

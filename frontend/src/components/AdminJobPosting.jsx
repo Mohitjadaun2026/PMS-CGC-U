@@ -544,7 +544,7 @@ const AdminJobPosting = () => {
 
 
           <div className="form-actions">
-    <button type="submit" className="submit-btn">
+    <button type="submit" className="submit-btn-job">
       {editId ? 'Update Job Posting' : 'Create Job Posting'}
     </button>
     {editId && (

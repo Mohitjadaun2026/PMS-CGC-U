@@ -1,8 +1,14 @@
 .admin-header {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: white;
-  padding: 15px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgb(255 255 255);
+  border-bottom: 1px solid rgba(128, 0, 0, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none;
+  color: black;
+  padding: 0.8rem 1.2rem;
+  z-index: 1000;
+  animation: headerScroll 0.5s ease-out forwards;
+  flex-wrap: wrap;
+  /* ✅ allow wrapping for small screens */
 }
 
 .admin-header-container {
@@ -45,20 +51,22 @@
   gap: 15px;
 }
 
+
 .nav-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background-color: var(--maroon-700);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 1rem
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
 }
 
 .admin-header-right {
@@ -69,9 +77,10 @@
 
 .admin-user-info {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
   gap: 4px;
+  justify-content: center;
 }
 
 .admin-name {
@@ -79,25 +88,29 @@
   font-size: 16px;
 }
 
-.admin-role {
-  font-size: 12px;
-  opacity: 0.8;
+.admin-role-info {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .admin-logout-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background-color: var(--maroon-700);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 1rem
 }
 
 .admin-logout-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -106,22 +119,22 @@
     gap: 15px;
     text-align: center;
   }
-  
+
   .admin-header-center {
     order: 3;
     width: 100%;
   }
-  
+
   .admin-nav {
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .admin-header-right {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .admin-user-info {
     align-items: center;
   }
