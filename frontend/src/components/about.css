@@ -44,25 +44,36 @@ body.light .about-bg {
 body.light .about-container {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px #a3032b;
-  border: 1px solid #71011d;
-  backdrop-filter: none; /* optional */
-  padding: 3rem;
-  border-radius: var(--border-radius);
-  margin: 2rem auto;
-  max-width: 900px;
-  min-height: 80vh;
-  animation: fadeIn 0.8s ease-out;
+  max-width: 1200px;     
+  margin: 0 auto;       
+  padding: 2rem;       
+  border-radius: 1.5rem; 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+  min-height: 80vh;      
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease;
+  margin-bottom:60px;
 }
 
 .about-header {
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;        
+  align-items: center;           
+  justify-content: center;       
+  text-align: center;            
+  gap: 1.5rem;                   
+  margin: 1.5rem auto 4rem auto;   
+  max-width: 800px; 
 }
-
+body.dark .about-header h1{
+  color: #af0404;
+}
+body.dark .about-header p{
+  color: white;
+}
+body.dark .about-header span{
+  color:black;
+}
 .about-logo {
   width: 120px;
   height: 120px;
@@ -239,4 +250,36 @@ body.light .about-content ul li::before {
   .about-content ul {
     margin-left: 1rem;
   }
+}
+
+body.dark .about-container {
+    background: rgba(30, 30, 30, 0.85); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--maroon-900);
+    max-width: 1200px;     
+    margin: 0 auto;        
+    padding: 2rem;         
+    border-radius: 1.5rem; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+    min-height: 80vh;      
+    backdrop-filter: blur(10px); 
+    transition: all 0.5s ease;
+    margin-bottom:60px;
+}
+body.dark .about-feature {
+  background-color:#1E1E1ECC;
+}
+body.dark .about-feature p{
+  color:white;
+}
+body.dark .about-placed{
+  background-color:#1E1E1ECC;
+}
+body.dark .about-placed p{
+  color:white;
+}
+body.dark .about-button{
+  background-color: #000;
+}
+body.dark .about-button span{
+  color:white;
 }

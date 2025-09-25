@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Sun, Moon, Users, Target, Award, Building, Calendar, BarChart3, ChevronDown } from "lucide-react";
 import collegeLogo from "../assets/cgc logo.png";
+import "./about.css";
 
 function About() {
   const [isDark, setIsDark] = useState(false);
@@ -19,9 +20,11 @@ function About() {
   useEffect(() => {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     if (isDark) {
-      document.documentElement.classList.add('dark');
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
     }
   }, [isDark]);
 
@@ -75,7 +78,7 @@ function About() {
   ];
 
   return (
-    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-900'}`}>
+    <div className={`about-bg ${isDark ? 'dark' : 'light'}`}>
       
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-10">
@@ -98,7 +101,7 @@ function About() {
 
       <div className="relative z-10 container mx-auto px-6 py-16 max-w-7xl">
         {/* Animated Header Section */}
-        <div className={`text-center mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`about-header ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div className="mb-10 flex justify-center mt-10"> {/* Added mt-10 to move the circle down */}
             <div className="relative group">
               <div 
@@ -110,7 +113,7 @@ function About() {
                   <img
                     src={collegeLogo}
                     alt="College Logo"
-                    className="w-full h-full object-cover rounded-full"
+                    className="about-logo"
                   />
                 </div>
               </div>
@@ -127,7 +130,7 @@ function About() {
             Empowering Future Leaders
           </p>
           
-          <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border transition-colors duration-500 ${isDark ? 'bg-gray-800 border-gray-700 text-gray-300' : 'bg-white/60 backdrop-blur-sm border-gray-200 text-gray-700'}`}>
+          <div className={`about-button inline-flex items-center gap-2 px-6 py-3 rounded-full border transition-colors duration-500 ${isDark ? 'bg-gray-800 border-gray-700 text-gray-300' : 'bg-white/60 backdrop-blur-sm border-gray-200 text-gray-700'}`}>
             <span>Scroll to explore</span>
             <ChevronDown className="w-4 h-4 animate-bounce" />
           </div>
@@ -135,9 +138,9 @@ function About() {
 
         {/* Main Content Card */}
         <div 
-          className={`rounded-3xl shadow-2xl p-8 md:p-16 mb-16 backdrop-blur-md transition-all duration-500 ${isDark ? 'bg-gray-900 border border-gray-700 text-gray-200' : 'bg-white border border-gray-200 text-gray-800'}`}
+          className={`about-container rounded-3xl shadow-2xl p-8 md:p-16 mb-16 backdrop-blur-md transition-all duration-500 ${isDark ? 'bg-gray-900 border border-gray-700 text-gray-200' : 'bg-white border border-gray-200 text-gray-800'}`}
         >
-          <div className="mb-12">
+          <div className="about-content">
             <h2 
               className={`text-3xl md:text-4xl font-bold mb-8 leading-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-900'}`}
             >
@@ -155,7 +158,7 @@ function About() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`group p-8 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}
+                className={`about-feature group p-8 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}
               >
                 <div 
                   className={`mb-6 p-4 rounded-xl w-fit bg-gradient-to-r ${feature.color} text-white shadow-lg transition-all duration-300`}
@@ -174,7 +177,7 @@ function About() {
 
           {/* Enhanced Commitment Section */}
           <div 
-            className={`p-10 rounded-2xl text-center shadow-lg transition-colors duration-500 ${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-200'}`}
+            className={`about-feature p-10 rounded-2xl text-center shadow-lg transition-colors duration-500 ${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-200'}`}
           >
             <p className={`text-xl font-medium leading-relaxed transition-colors duration-500 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
               At DCPD, CGC Jhanjeri, we are committed to{" "}
@@ -196,14 +199,14 @@ function About() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`text-center p-8 rounded-2xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl ${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'}`}
+              className={`about-placed text-center p-8 rounded-2xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl ${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'}`}
             >
               <div 
-                className={`text-5xl md:text-6xl font-black mb-4 transition-all duration-300 ${stat.color}`}
+                className={`about-placed text-5xl md:text-6xl font-black mb-4 transition-all duration-300 ${stat.color}`}
               >
                 {stat.number}
               </div>
-              <p className={`text-lg font-semibold transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              <p className={`about-placed text-lg font-semibold transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 {stat.label}
               </p>
             </div>
