@@ -131,9 +131,9 @@ function Footer() {
               <ul className="footer-nav">
                 <li><a href="/">Home</a></li>
                 <li><Link to="/about">About Us</Link></li>
-                <li><a href="/jobs">Job Listings</a></li>
-                <li><a href="/profile">My Profile</a></li>
-                <li><a href="/admin-job-posting">Post Jobs</a></li>
+                <li><Link to="/jobs">Job Listings</Link></li>
+                <li><Link to="/profile">My Profile</Link></li>
+                <li><Link to="/admin-job-posting">Post Jobs</Link></li>
               </ul>
             </div>
 
