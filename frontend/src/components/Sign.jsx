@@ -48,7 +48,7 @@ function Sign() {
     } else if (name === "email") {
       // specific format validation
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Enter a valid email address";
-    } else if (name === "password") {
+    } else if (name === "password" && isRegister) {
       if (value.length < 8) error = "Password must be at least 8 characters";
     } else if (name === "confirmPassword") {
       if (value !== form.password) error = "Passwords do not match";
@@ -205,7 +205,7 @@ function Sign() {
                 value={form.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={errors.password ? "input-error" : valid.password ? "input-success" : ""}
+                className={isRegister? errors.password ? "input-error" : valid.password ? "input-success" : "": ""}
                 aria-invalid={!!errors.password}
                 aria-describedby="password-error"
               />
@@ -220,6 +220,7 @@ function Sign() {
                 <span>{errors.password}</span>
               </div>
             )}
+            
           </div>
 
           {/* Forgot Password link (only on Sign In) */}
