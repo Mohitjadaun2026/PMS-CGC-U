@@ -81,7 +81,17 @@ This document records **all contributions** to the project and assigns points ba
 | 61       | surajsingh9389    | 7         | #182      | Feat/add loader and disable effect                                                   |
 62	        | Adez017	         |10	       |#187	     |Added the GDPR Compliance page
 63         |	kalyaniugale	   |3	         |#186	     |fix: keep "Register Now" button text visible on hover in dark mode
-64	       |Tushar-sonawane06  |	  3	    |#184	     |Text updated
+64	       |Tushar-sonawane06  |	  3	     |#184	     |Text updated
+| 65       | Tushar-sonawane06 | 7         | #199      | About Page Styling Changed                 |
+| 66       | Tushar-sonawane06 | 5         | #198      | Footer Links Fixed                         |
+| 67       | Tushar-sonawane06 | 7         | #195      | Link fixed                                 |
+| 68       | surajsingh9389    | 5         | #194      | [Fix]: Password validation on Sign in page |
+| 69       | divyagit21        | 3         | #193      | Interview experience card                  |
+| 70       | divyagit21        | 3         | #192      | Updated job card                           |
+| 71       | divyagit21        | 7         | #191      | job posting page updated                   |
+| 72       | Codeboy20         | 8         | #189      | Redesigned the About us page               |
+| 73       | Adez017           | 7         | #188      | Added Terms of service page                |
+
 
 
 
