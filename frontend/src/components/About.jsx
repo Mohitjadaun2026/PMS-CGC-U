@@ -88,7 +88,7 @@ function About() {
       </div>
 
       {/* Theme Toggle Button */}
-      <div className="fixed top-6 right-6 z-50">
+      {/* <div className="fixed top-6 right-6 z-50">
         <button
           onClick={toggleTheme}
           className={`relative p-3 md:p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 group ${isDark ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}
@@ -97,7 +97,7 @@ function About() {
             {isDark ? <Sun className="w-5 h-5 md:w-6 md:h-6" /> : <Moon className="w-5 h-5 md:w-6 md:h-6" />}
           </div>
         </button>
-      </div>
+      </div> */}
 
       <div className="relative z-10 container mx-auto px-6 py-16 max-w-7xl">
         {/* Animated Header Section */}
