@@ -1251,3 +1251,37 @@ body.light .progress-step{
 body.light .form-toggle-icon{
   color:#000000;
 }
+
+body.dark #name{
+  background-color: #14141499;
+  color:white;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+}
+body.dark #email{
+  background-color: #14141499;
+  color:white;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+}
+body.dark #subject{
+  background-color: #14141499;
+  color:white;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+}
+body.dark #phone{
+  background-color: #14141499;
+  color:white;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+}
+body.dark #message{
+  color:white;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+}
+body.dark .form-group.floating .error-message{
+  background: #14141499;
+  color:white;
+}
