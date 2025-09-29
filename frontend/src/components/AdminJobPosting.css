@@ -239,16 +239,16 @@
 
 /* Job Postings List */
 .job-postings-list {
-  background: #181818;
+  /* background: #181818; */
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(255, 214, 0, 0.10);
+  /* box-shadow: 0 4px 24px rgba(255, 214, 0, 0.10); */
   color: #fff;
 }
 
 .job-postings-list h2 {
   margin-top: 0;
-  color: #FFD600;
+  color: var(--maroon-800);
   margin-bottom: 20px;
 }
 
@@ -262,25 +262,27 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #181818;
-  color: #fff;
+  /* background: #181818; */
+  /* color: #fff; */
+  color:var(--maroon-700);
 }
 
 table th,
 table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #FFD60033;
+  /* border-bottom: 1px solid #FFD60033; */
+  border-bottom: 1px solid var(--maroon-800);
 }
 
 table th {
-  background-color: #222;
+  /* background-color: #222; */
   font-weight: 600;
-  color: #FFD600;
+  color: var(--maroon-800);
 }
 
 table tr:hover {
-  background-color: #222;
+  /* background-color: #222; */
 }
 
 .company-cell {
@@ -312,8 +314,8 @@ table tr:hover {
 
 /* Action Buttons */
 .edit-btn {
-  background: #FFD600;
-  color: #181818;
+  background: var(--maroon-700);
+  color: white;
   border: none;
   padding: 7px 16px;
   border-radius: 5px;
@@ -325,13 +327,11 @@ table tr:hover {
 }
 
 .edit-btn:hover {
-  background: #181818;
-  color: #FFD600;
-  border: 1.5px solid #FFD600;
+  background: var(--maroon-800);
 }
 
 .delete-btn {
-  background: #e74c3c;
+  background: var(--maroon-700);
   color: #fff;
   border: none;
   padding: 7px 16px;
@@ -343,9 +343,7 @@ table tr:hover {
 }
 
 .delete-btn:hover {
-  background: #FFD600;
-  color: #e74c3c;
-  border: 1.5px solid #e74c3c;
+  background: var(--maroon-800);
 }
 
 /* Checkbox Grid Styles */
