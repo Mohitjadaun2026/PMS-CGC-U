@@ -449,14 +449,15 @@ body.light {
   font-weight: 800;
   letter-spacing: 0.4px;
   color: #fff;
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-600) 100%);
+  background: var(--maroon-700);
   border-radius: var(--radius-md);
   border: 0;
   box-shadow: var(--elev-2);
   transition: transform var(--speed-fast), box-shadow var(--speed-fast), filter var(--speed-fast);
 }
 .apply-button:hover {
-  transform: translateY(-3px);
+  background-color: var(--maroon-800);
+  transform: translateY(-2px);
   box-shadow: var(--elev-3);
   filter: saturate(1.05);
 }
