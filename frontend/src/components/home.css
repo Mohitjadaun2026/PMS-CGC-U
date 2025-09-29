@@ -543,11 +543,7 @@ body.dark .section-header .section-title {
     font-size: 3rem;
     text-align: center;
     margin-left: 9rem;
-    background: linear-gradient(
-        135deg,
-        var(--primary-maroon-dark),
-        var(--primary-maroon)
-    );
+    background: linear-gradient(90deg, var(--text-primary), var(--maroon-500));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
