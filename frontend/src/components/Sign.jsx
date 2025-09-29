@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { signup, signin } from "../../api/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -11,6 +11,7 @@ function Sign() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false)
   // Form state -- added phone for registration (assumption: phone required on register)
+  const [progress, setProgress] = useState(0); 
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -22,6 +23,19 @@ function Sign() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [valid, setValid] = useState({});
+
+   useEffect(() => {
+    // Calculate progress only when in register mode
+    if (isRegister) {
+        const fields = ["name", "email", "password", "confirmPassword"];
+        const validFields = fields.filter(field => valid[field]).length;
+        const newProgress = (validFields / fields.length) * 100;
+        setProgress(newProgress);
+    } else {
+        // Reset progress when switching to sign-in
+        setProgress(0);
+    }
+  }, [valid, isRegister]);
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -141,6 +155,7 @@ function Sign() {
     setErrors({})
     setTouched({})
     setValid({})
+    setProgress(0);
     setShowPassword(false);
     setShowConfirmPassword(false);
   }
@@ -149,6 +164,22 @@ function Sign() {
     <div className="sign-container">
       <div className="sign-card">
         <h2>{isRegister ? "Register" : "Sign In"}</h2>
+            {isRegister && (
+           <div className="progress-bar-wrapper">
+              <div className="progress-labels">
+                  <span>Name</span>
+                  <span>Email</span>
+                  <span>Password</span>
+                  <span>Confirm</span>
+              </div>
+              <div className="progress-bar-dynamic-container" title={`Progress: ${progress}%`}>
+                  <div className="progress-bar-dynamic-filler" style={{ width: `${progress}%` }}></div>
+                  <div className="progress-segment"></div>
+                  <div className="progress-segment"></div>
+                  <div className="progress-segment"></div>
+              </div>
+          </div>
+        )}
         {/* disable browser native validation with noValidate */}
         <form onSubmit={isRegister ? handleRegister : handleSignIn} noValidate>
           {isRegister && (
