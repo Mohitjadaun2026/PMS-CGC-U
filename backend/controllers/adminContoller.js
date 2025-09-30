@@ -1,162 +1,177 @@
-const bcrypt = require('bcrypt');
-const { z } = require('zod');
-const User = require('../models/User');
+const bcrypt = require("bcrypt");
+const { z } = require("zod");
+const User = require("../models/User");
 
+// ========================
+// Validation Schemas
+// ========================
 const inviteAdminSchema = z.object({
   email: z.string().email().toLowerCase().trim(),
   name: z.string().min(2).max(100),
-  role: z.enum(['admin', 'super_admin']).default('admin')
+  role: z.enum(["admin", "super_admin"]).default("admin"),
 });
 
 const updateAdminSchema = z.object({
   name: z.string().min(2).max(100).optional(),
-  role: z.enum(['admin', 'super_admin']).optional(),
-  isActive: z.boolean().optional()
+  role: z.enum(["admin", "super_admin"]).optional(),
+  isActive: z.boolean().optional(),
 });
+
+// ========================
+// Helpers
+// ========================
+const sendError = (res, status, message, details = null) => {
+  const response = { error: message };
+  if (details) response.details = details;
+  return res.status(status).json(response);
+};
+
+// ========================
+// Controllers
+// ========================
 
 // Get all admins (super admin only)
 exports.getAllAdmins = async (req, res) => {
   try {
-    if (req.user.role !== 'super_admin') {
-      return res.status(403).json({ error: 'Super admin access required' });
+    if (req.user.role !== "super_admin") {
+      return sendError(res, 403, "Super admin access required");
     }
 
-    const admins = await User.find({ 
-      role: { $in: ['admin', 'super_admin'] } 
-    }).select('-passwordHash');
+    const admins = await User.find({
+      role: { $in: ["admin", "super_admin"] },
+    }).select("-passwordHash");
 
-    res.json(admins);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    return res.json(admins);
+  } catch {
+    return sendError(res, 500, "Internal server error");
   }
 };
 
 // Invite new admin (super admin only)
 exports.inviteAdmin = async (req, res) => {
   try {
-    if (req.user.role !== 'super_admin') {
-      return res.status(403).json({ error: 'Super admin access required' });
+    if (req.user.role !== "super_admin") {
+      return sendError(res, 403, "Super admin access required");
     }
 
     const payload = inviteAdminSchema.parse(req.body);
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email: payload.email });
     if (existingUser) {
-      return res.status(409).json({ error: 'User with this email already exists' });
+      return sendError(res, 409, "User with this email already exists");
     }
 
-    // Generate temporary password
-    const tempPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).toUpperCase().slice(-4) + '!1';
-    const saltRounds = 10;
-    const passwordHash = await bcrypt.hash(tempPassword, saltRounds);
+    const tempPassword =
+      Math.random().toString(36).slice(-8) +
+      Math.random().toString(36).toUpperCase().slice(-4) +
+      "!1";
 
-    // Create admin user
+    const passwordHash = await bcrypt.hash(tempPassword, 10);
+
     const adminUser = new User({
       name: payload.name,
       email: payload.email,
       passwordHash,
       role: payload.role,
-      isSuperAdmin: payload.role === 'super_admin',
+      isSuperAdmin: payload.role === "super_admin",
       createdBy: req.user.id,
-      forcePasswordChange: true
+      forcePasswordChange: true,
     });
 
     await adminUser.save();
 
-    // In production, send email with temp password
-    console.log(`New admin created: ${payload.email}, Temporary password: ${tempPassword}`);
+    // TODO: Replace console.log with email service in production
+    console.log(
+      `New admin created: ${payload.email}, Temporary password: ${tempPassword}`
+    );
 
-    res.status(201).json({
-      message: 'Admin invited successfully',
+    return res.status(201).json({
+      message: "Admin invited successfully",
       user: {
         id: adminUser._id,
         name: adminUser.name,
         email: adminUser.email,
         role: adminUser.role,
-        tempPassword // Remove this in production, send via email
-      }
+        tempPassword, // ⚠️ Only for development; should be sent via email in production
+      },
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({ error: 'Validation failed', details: error.flatten() });
+      return sendError(res, 400, "Validation failed", error.flatten());
     }
-    res.status(500).json({ error: 'Internal server error' });
+    return sendError(res, 500, "Internal server error");
   }
 };
 
 // Update admin (super admin only)
 exports.updateAdmin = async (req, res) => {
   try {
-    if (req.user.role !== 'super_admin') {
-      return res.status(403).json({ error: 'Super admin access required' });
+    if (req.user.role !== "super_admin") {
+      return sendError(res, 403, "Super admin access required");
     }
 
     const payload = updateAdminSchema.parse(req.body);
     const adminId = req.params.id;
 
-    // Prevent updating own role
     if (adminId === req.user.id) {
-      return res.status(400).json({ error: 'Cannot update your own admin privileges' });
+      return sendError(res, 400, "Cannot update your own admin privileges");
     }
 
     const admin = await User.findById(adminId);
-    if (!admin || !['admin', 'super_admin'].includes(admin.role)) {
-      return res.status(404).json({ error: 'Admin not found' });
+    if (!admin || !["admin", "super_admin"].includes(admin.role)) {
+      return sendError(res, 404, "Admin not found");
     }
 
-    // Update fields
     if (payload.name) admin.name = payload.name;
     if (payload.role) {
       admin.role = payload.role;
-      admin.isSuperAdmin = payload.role === 'super_admin';
+      admin.isSuperAdmin = payload.role === "super_admin";
     }
     if (payload.isActive !== undefined) admin.isActive = payload.isActive;
 
     await admin.save();
 
-    res.json({
-      message: 'Admin updated successfully',
+    return res.json({
+      message: "Admin updated successfully",
       user: {
         id: admin._id,
         name: admin.name,
         email: admin.email,
         role: admin.role,
-        isActive: admin.isActive
-      }
+        isActive: admin.isActive,
+      },
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({ error: 'Validation failed', details: error.flatten() });
+      return sendError(res, 400, "Validation failed", error.flatten());
     }
-    res.status(500).json({ error: 'Internal server error' });
+    return sendError(res, 500, "Internal server error");
   }
 };
 
 // Delete admin (super admin only)
 exports.deleteAdmin = async (req, res) => {
   try {
-    if (req.user.role !== 'super_admin') {
-      return res.status(403).json({ error: 'Super admin access required' });
+    if (req.user.role !== "super_admin") {
+      return sendError(res, 403, "Super admin access required");
     }
 
     const adminId = req.params.id;
 
-    // Prevent deleting self
     if (adminId === req.user.id) {
-      return res.status(400).json({ error: 'Cannot delete your own account' });
+      return sendError(res, 400, "Cannot delete your own account");
     }
 
     const admin = await User.findById(adminId);
-    if (!admin || !['admin', 'super_admin'].includes(admin.role)) {
-      return res.status(404).json({ error: 'Admin not found' });
+    if (!admin || !["admin", "super_admin"].includes(admin.role)) {
+      return sendError(res, 404, "Admin not found");
     }
 
     await User.findByIdAndDelete(adminId);
 
-    res.json({ message: 'Admin deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    return res.json({ message: "Admin deleted successfully" });
+  } catch {
+    return sendError(res, 500, "Internal server error");
   }
 };
 
@@ -166,37 +181,31 @@ exports.changePassword = async (req, res) => {
     const { currentPassword, newPassword } = req.body;
 
     if (!currentPassword || !newPassword) {
-      return res.status(400).json({ error: 'Current and new password required' });
+      return sendError(res, 400, "Current and new password required");
     }
 
     if (newPassword.length < 8) {
-      return res.status(400).json({ error: 'New password must be at least 8 characters' });
+      return sendError(res, 400, "New password must be at least 8 characters");
     }
 
     const user = await User.findById(req.user.id);
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return sendError(res, 404, "User not found");
     }
 
-    // Verify current password
     const isMatch = await bcrypt.compare(currentPassword, user.passwordHash);
     if (!isMatch) {
-      return res.status(401).json({ error: 'Current password is incorrect' });
+      return sendError(res, 401, "Current password is incorrect");
     }
 
-    // Hash new password
-    const saltRounds = 10;
-    const passwordHash = await bcrypt.hash(newPassword, saltRounds);
-
-    // Update password
-    user.passwordHash = passwordHash;
+    user.passwordHash = await bcrypt.hash(newPassword, 10);
     user.lastPasswordChange = new Date();
     user.forcePasswordChange = false;
+
     await user.save();
 
-    res.json({ message: 'Password changed successfully' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    return res.json({ message: "Password changed successfully" });
+  } catch {
+    return sendError(res, 500, "Internal server error");
   }
 };
-
