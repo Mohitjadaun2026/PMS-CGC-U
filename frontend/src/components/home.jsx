@@ -101,7 +101,7 @@ function Home() {
             <button className="btn btn-primary">
               Explore Opportunities
             </button>
-            <Link to="/About" className="btn btn-secondary">
+            <Link to="/About" className="btn btn-primary">
               Learn More
             </Link>
           </div>
