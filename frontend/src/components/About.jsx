@@ -37,44 +37,38 @@ function About() {
       icon: <Users className="w-7 h-7" />,
       title: "Personalized Student Profiles",
       description: "Comprehensive profile management and career tracking for every student",
-      color: "from-blue-500 to-cyan-500"
     },
     {
       icon: <Target className="w-7 h-7" />,
       title: "Centralized Job Management",
       description: "Streamlined job postings and application management system",
-      color: "from-purple-500 to-pink-500"
     },
     {
       icon: <Calendar className="w-7 h-7" />,
       title: "Automated Scheduling",
       description: "Smart interview and test scheduling with automated notifications",
-      color: "from-green-500 to-emerald-500"
     },
     {
       icon: <BarChart3 className="w-7 h-7" />,
       title: "Real-time Analytics",
       description: "Comprehensive placement insights and performance tracking",
-      color: "from-orange-500 to-red-500"
     },
     {
       icon: <Award className="w-7 h-7" />,
       title: "Dedicated Support Team",
       description: "Professional DCPD trainers and placement support specialists",
-      color: "from-indigo-500 to-blue-500"
     },
     {
       icon: <Building className="w-7 h-7" />,
       title: "Industry Connections",
       description: "Strong partnerships with leading companies and recruiters",
-      color: "from-yellow-500 to-orange-500"
     }
   ];
 
   const stats = [
-    { number: "1000+", label: "Students Placed", color: "text-blue-600 dark:text-blue-400" },
-    { number: "200+", label: "Partner Companies", color: "text-purple-600 dark:text-purple-400" },
-    { number: "95%", label: "Placement Rate", color: "text-green-600 dark:text-green-400" }
+    { number: "1000+", label: "Students Placed" },
+    { number: "200+", label: "Partner Companies" },
+    { number: "95%", label: "Placement Rate" }
   ];
 
   return (
@@ -161,7 +155,8 @@ function About() {
                 className={`about-feature group p-8 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}
               >
                 <div 
-                  className={`mb-6 p-4 rounded-xl w-fit bg-gradient-to-r ${feature.color} text-white shadow-lg transition-all duration-300`}
+                  className='mb-6 p-4 rounded-xl w-fit bg-gradient-to-r text-white shadow-lg transition-all duration-300'
+                  style={{background:"var(--maroon-700)"}}                
                 >
                   {feature.icon}
                 </div>
@@ -181,13 +176,13 @@ function About() {
           >
             <p className={`text-xl font-medium leading-relaxed transition-colors duration-500 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
               At DCPD, CGC Jhanjeri, we are committed to{" "}
-              <span className={`font-bold transition-colors duration-500 ${isDark ? 'text-blue-300' : 'text-indigo-600'}`}>
+              <span className='font-bold transition-colors duration-500 text-[var(--maroon-500)]'>
                 nurturing talent
               </span>,{" "}
-              <span className={`font-bold transition-colors duration-500 ${isDark ? 'text-purple-300' : 'text-purple-600'}`}>
+              <span className='font-bold transition-colors duration-500 text-[var(--maroon-500)]'>
                 fostering industry partnerships
               </span>, and ensuring every student is{" "}
-              <span className={`font-bold transition-colors duration-500 ${isDark ? 'text-green-300' : 'text-green-600'}`}>
+              <span className='font-bold transition-colors duration-500 text-[var(--maroon-500)]'>
                 prepared for the professional world
               </span>.
             </p>
@@ -202,7 +197,8 @@ function About() {
               className={`about-placed text-center p-8 rounded-2xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl ${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'}`}
             >
               <div 
-                className={`about-placed text-5xl md:text-6xl font-black mb-4 transition-all duration-300 ${stat.color}`}
+                className='about-placed text-5xl md:text-6xl font-black mb-4 transition-all duration-300'
+                style={{color:"var(--maroon-600)"}}                
               >
                 {stat.number}
               </div>
