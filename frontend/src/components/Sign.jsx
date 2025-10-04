@@ -23,6 +23,7 @@ function Sign() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [cardAnimation, setCardAnimation] = useState("fadeIn");
   const [fieldAnimations, setFieldAnimations] = useState({});
   const [passwordRuleStatus, setPasswordRuleStatus] = useState({
@@ -43,6 +44,17 @@ function Sign() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [valid, setValid] = useState({});
+
+  useEffect(() => {
+    if (isRegister) {
+      const fields = ["name", "email", "password", "confirmPassword"];
+      const validFields = fields.filter((field) => valid[field]).length;
+      const newProgress = (validFields / fields.length) * 100;
+      setProgress(newProgress);
+    } else {
+      setProgress(0);
+    }
+  }, [valid, isRegister]);
 
   // Animate field when it becomes valid
   useEffect(() => {
@@ -187,6 +199,7 @@ function Sign() {
     setErrors({});
     setTouched({});
     setValid({});
+    setProgress(0);
     setShowPassword(false);
     setShowConfirmPassword(false);
   }
@@ -213,6 +226,29 @@ function Sign() {
               : "Sign in to your account"}
           </p>
         </div>
+
+           {isRegister && (
+          <div className="progress-bar-wrapper">
+            <div className="progress-labels">
+              <span className={progress >= 25 ? "active" : ""}>Name</span>
+              <span className={progress >= 50 ? "active" : ""}>Email</span>
+              <span className={progress >= 75 ? "active" : ""}>Password</span>
+              <span className={progress >= 100 ? "active" : ""}>Confirm</span>
+            </div>
+            <div
+              className="progress-bar-dynamic-container"
+              title={`Progress: ${progress}%`}
+            >
+              <div
+                className="progress-bar-dynamic-filler"
+                style={{ width: `${progress}%` }}
+              ></div>
+              <div className="progress-segment"></div>
+              <div className="progress-segment"></div>
+              <div className="progress-segment"></div>
+            </div>
+          </div>
+        )}
 
         <form onSubmit={isRegister ? handleRegister : handleSignIn} noValidate>
           {isRegister && (
