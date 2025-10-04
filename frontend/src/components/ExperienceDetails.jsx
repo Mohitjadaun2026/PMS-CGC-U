@@ -7,7 +7,7 @@ const ExperienceDetails = ({ darkMode }) => {
   const { experiences } = useExperiences();
 
   // Find the experience by id
-  const exp = experiences.find((e) => String(e.id) === id);
+  const exp = experiences.find((e) => String(e._id) === id);
 
   if (!exp) {
     return (
@@ -46,7 +46,7 @@ const ExperienceDetails = ({ darkMode }) => {
           <p><strong>CTC:</strong> {exp.ctc || "N/A"}</p>
           <p><strong>Stipend:</strong> {exp.stipend || "N/A"}</p>
           <p><strong>Date:</strong> {exp.interviewDate}</p>
-          <p><strong>Submitted At:</strong> {new Date(exp.submittedAt).toLocaleString()}</p>
+          <p><strong>Submitted At:</strong> {new Date(exp.createdAt).toLocaleDateString()}</p>
         </div>
 
         <div className="mt-4">
