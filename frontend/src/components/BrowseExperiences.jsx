@@ -16,11 +16,11 @@ const BrowseExperiences = ({ darkMode }) => {
         <p className="text-gray-400">No experiences yet. Be the first to submit!</p>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {experiences.map((exp, idx) => (
+          {experiences.map((exp) => (
             // ✅ Link styled like a card with no underline
            <Link
-  key={idx}
-  to={`/experience/${exp.id}`}
+  key={exp._id}
+  to={`/experience/${exp._id}`}
   className="block no-underline hover:no-underline focus:no-underline"
   style={{ textDecoration: "none" }}
 >
