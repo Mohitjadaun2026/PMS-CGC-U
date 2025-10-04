@@ -9,6 +9,34 @@
   overflow: hidden;
 }
 
+.password-rules {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--maroon-700);
+}
+
+.password-rules ul {
+  padding-left: 1.2rem;
+  margin-top: 4px;
+}
+
+.password-rules li {
+  list-style: none;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: row;
+  gap:1%;
+}
+
+.password-rules li.valid {
+  color: green;
+  font-weight: 500;
+}
+
+.password-rules li.invalid {
+  color: var(--maroon-700);
+}
+
 /* Animated Background */
 .animated-background {
   position: absolute;
