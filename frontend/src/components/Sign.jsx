@@ -8,15 +8,30 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 import "./sign.css";
+import { CheckCircle, XCircle } from "lucide-react";
+
+const passwordRules = {
+  length: (pw) => pw.length >= 8,
+  uppercase: (pw) => /[A-Z]/.test(pw),
+  lowercase: (pw) => /[a-z]/.test(pw),
+  number: (pw) => /[0-9]/.test(pw),
+  specialChar: (pw) => /[!@#$%^&*(),.?":{}|<>]/.test(pw),
+};
 
 function Sign() {
   const [isRegister, setIsRegister] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [cardAnimation, setCardAnimation] = useState("fadeIn");
   const [fieldAnimations, setFieldAnimations] = useState({});
+  const [passwordRuleStatus, setPasswordRuleStatus] = useState({
+    length: false,
+    uppercase: false,
+    lowercase: false,
+    number: false,
+    specialChar: false,
+  });
 
   const [form, setForm] = useState({
     name: "",
@@ -28,17 +43,6 @@ function Sign() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [valid, setValid] = useState({});
-
-  useEffect(() => {
-    if (isRegister) {
-      const fields = ["name", "email", "password", "confirmPassword"];
-      const validFields = fields.filter((field) => valid[field]).length;
-      const newProgress = (validFields / fields.length) * 100;
-      setProgress(newProgress);
-    } else {
-      setProgress(0);
-    }
-  }, [valid, isRegister]);
 
   // Animate field when it becomes valid
   useEffect(() => {
@@ -86,7 +90,10 @@ function Sign() {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
         error = "Enter a valid email address";
     } else if (name === "password" && isRegister) {
-      if (value.length < 8) error = "Password must be at least 8 characters";
+      const allPassed = Object.values(passwordRules).every((fn) => fn(value));
+      if (!allPassed) {
+        error = "Password doesn't meet all requirements.";
+      }
     } else if (name === "confirmPassword") {
       if (value !== form.password) error = "Passwords do not match";
     }
@@ -100,7 +107,16 @@ function Sign() {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     validateField(name, value);
+
+    if (name === "password") {
+      const status = {};
+      Object.entries(passwordRules).forEach(([rule, test]) => {
+        status[rule] = test(value);
+      });
+      setPasswordRuleStatus(status);
+    }
   };
+
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
@@ -171,7 +187,6 @@ function Sign() {
     setErrors({});
     setTouched({});
     setValid({});
-    setProgress(0);
     setShowPassword(false);
     setShowConfirmPassword(false);
   }
@@ -199,35 +214,11 @@ function Sign() {
           </p>
         </div>
 
-        {isRegister && (
-          <div className="progress-bar-wrapper">
-            <div className="progress-labels">
-              <span className={progress >= 25 ? "active" : ""}>Name</span>
-              <span className={progress >= 50 ? "active" : ""}>Email</span>
-              <span className={progress >= 75 ? "active" : ""}>Password</span>
-              <span className={progress >= 100 ? "active" : ""}>Confirm</span>
-            </div>
-            <div
-              className="progress-bar-dynamic-container"
-              title={`Progress: ${progress}%`}
-            >
-              <div
-                className="progress-bar-dynamic-filler"
-                style={{ width: `${progress}%` }}
-              ></div>
-              <div className="progress-segment"></div>
-              <div className="progress-segment"></div>
-              <div className="progress-segment"></div>
-            </div>
-          </div>
-        )}
-
         <form onSubmit={isRegister ? handleRegister : handleSignIn} noValidate>
           {isRegister && (
             <div
-              className={`field-wrap ${
-                fieldAnimations.name === "success" ? "success-animation" : ""
-              }`}
+              className={`field-wrap ${fieldAnimations.name === "success" ? "success-animation" : ""
+                }`}
             >
               <label htmlFor="name">Full Name</label>
               <div className="input-container">
@@ -242,8 +233,8 @@ function Sign() {
                     errors.name
                       ? "input-error"
                       : valid.name
-                      ? "input-success"
-                      : ""
+                        ? "input-success"
+                        : ""
                   }
                   aria-invalid={!!errors.name}
                   aria-describedby="name-error"
@@ -264,9 +255,8 @@ function Sign() {
           )}
 
           <div
-            className={`field-wrap ${
-              fieldAnimations.email === "success" ? "success-animation" : ""
-            }`}
+            className={`field-wrap ${fieldAnimations.email === "success" ? "success-animation" : ""
+              }`}
           >
             <label htmlFor="email">Email Address</label>
             <div className="input-container">
@@ -281,8 +271,8 @@ function Sign() {
                   errors.email
                     ? "input-error"
                     : valid.email
-                    ? "input-success"
-                    : ""
+                      ? "input-success"
+                      : ""
                 }
                 aria-invalid={!!errors.email}
                 aria-describedby="email-error"
@@ -302,9 +292,8 @@ function Sign() {
           </div>
 
           <div
-            className={`field-wrap ${
-              fieldAnimations.password === "success" ? "success-animation" : ""
-            }`}
+            className={`field-wrap ${fieldAnimations.password === "success" ? "success-animation" : ""
+              }`}
           >
             <label htmlFor="password">Password</label>
             <div className="input-container">
@@ -320,8 +309,8 @@ function Sign() {
                     ? errors.password
                       ? "input-error"
                       : valid.password
-                      ? "input-success"
-                      : ""
+                        ? "input-success"
+                        : ""
                     : ""
                 }
                 aria-invalid={!!errors.password}
@@ -330,12 +319,36 @@ function Sign() {
               <span className="toggle-icon" onClick={togglePassword}>
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </span>
+
               {valid.password && (
                 <div className="success-indicator">
                   <FaCheck />
                 </div>
               )}
             </div>
+                          
+              {isRegister && (
+                <div className="password-rules">
+                  <p>Password must contain:</p>
+                  <ul>
+                    <li className={passwordRuleStatus.length ? "valid" : "invalid"}>
+                      {passwordRuleStatus.length ? <CheckCircle/> : <XCircle/>} At least 8 characters
+                    </li>
+                    <li className={passwordRuleStatus.uppercase ? "valid" : "invalid"}>
+                      {passwordRuleStatus.uppercase ? <CheckCircle/> : <XCircle/>} At least one uppercase letter
+                    </li>
+                    <li className={passwordRuleStatus.lowercase ? "valid" : "invalid"}>
+                      {passwordRuleStatus.lowercase ? <CheckCircle/> : <XCircle/>} At least one lowercase letter
+                    </li>
+                    <li className={passwordRuleStatus.number ? "valid" : "invalid"}>
+                      {passwordRuleStatus.number ? <CheckCircle/> : <XCircle/>} At least one number
+                    </li>
+                    <li className={passwordRuleStatus.specialChar ? "valid" : "invalid"}>
+                      {passwordRuleStatus.specialChar ? <CheckCircle/> : <XCircle/>} At least one special character
+                    </li>
+                  </ul>
+                </div>
+              )}
             {errors.password && (
               <div id="password-error" className="error-text" role="alert">
                 <FaExclamationTriangle className="error-icon" />
@@ -354,11 +367,10 @@ function Sign() {
 
           {isRegister && (
             <div
-              className={`field-wrap ${
-                fieldAnimations.confirmPassword === "success"
+              className={`field-wrap ${fieldAnimations.confirmPassword === "success"
                   ? "success-animation"
                   : ""
-              }`}
+                }`}
             >
               <label htmlFor="confirmpassword">Confirm Password</label>
               <div className="input-container">
@@ -373,8 +385,8 @@ function Sign() {
                     errors.confirmPassword
                       ? "input-error"
                       : valid.confirmPassword
-                      ? "input-success"
-                      : ""
+                        ? "input-success"
+                        : ""
                   }
                   aria-invalid={!!errors.confirmPassword}
                   aria-describedby="confirm-error"
@@ -399,9 +411,8 @@ function Sign() {
 
           <button
             type="submit"
-            className={`btn-signin ${loading ? "loading" : ""} ${
-              Object.keys(valid).length > 0 ? "pulse-glow" : ""
-            }`}
+            className={`btn-signin ${loading ? "loading" : ""} ${Object.keys(valid).length > 0 ? "pulse-glow" : ""
+              }`}
             disabled={loading}
           >
             <span className="btn-text">
