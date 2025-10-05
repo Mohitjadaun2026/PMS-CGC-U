@@ -142,14 +142,14 @@ const Chatbot = () => {
         <div className="chatbot-window open">
           <div className="chatbot-header">
             <img 
-  src="public/default-logo.png" 
+  src="/default-logo.png" 
   alt="Campus Recruitment Portal Logo" 
   className="chatbot-header-logo" 
 />
             <span>Campus Recruitment Portal</span>
             <button onClick={toggleChat}>
               <img
-                src="public/close.png"
+                src="/close.png"
                 alt="Close"
               />
             </button>
@@ -174,7 +174,7 @@ const Chatbot = () => {
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             />
             <button onClick={() => sendMessage()}>
-              <img src="public/send.png" alt="Send" />
+              <img src="/send.png" alt="Send" />
             </button>
           </div>
         </div>
