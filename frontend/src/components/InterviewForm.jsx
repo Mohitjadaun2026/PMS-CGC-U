@@ -8,6 +8,11 @@ const branches = [
   "Chemical", "Mathematics and Computing",
 ];
 
+let defaultTags = [
+  "on-campus", "off-campus", "internship", "full-time", "product",
+  "service", "startup", "mnc", "remote", "hybrid", "sde", "analyst", "consultant",
+]
+
 const difficulties = ["Easy", "Medium", "Hard"];
 
 const InterviewForm = ({darkMode }) => {
@@ -28,6 +33,8 @@ const InterviewForm = ({darkMode }) => {
     customTag: "",
     rounds: [],
   });
+
+  const [tags, setTags] = useState(defaultTags);
 
   const { addExperience } = useExperiences(); // ✅ get addExperience from context
 
@@ -77,12 +84,14 @@ const InterviewForm = ({darkMode }) => {
   };
 
   const addTag = () => {
-    if (formData.customTag.trim()) {
+    const trimmed = formData.customTag.trim();
+    if (trimmed && !formData.tags.includes(trimmed) && !tags.includes(trimmed)) {
       setFormData({
         ...formData,
-        tags: [...formData.tags, formData.customTag.trim()],
+        tags: [...formData.tags, trimmed],
         customTag: "",
       });
+      setTags((prev) => [...prev, trimmed]);
     }
   };
 
@@ -375,10 +384,7 @@ const InterviewForm = ({darkMode }) => {
           🏷️ Tags
         </h2>
         <div className="flex flex-wrap gap-2 mb-3">
-          {[
-            "on-campus", "off-campus", "internship", "full-time", "product",
-            "service", "startup", "mnc", "remote", "hybrid", "sde", "analyst", "consultant",
-          ].map((tag) => (
+          {tags.map((tag) => (
             <span
               key={tag}
               onClick={() =>
