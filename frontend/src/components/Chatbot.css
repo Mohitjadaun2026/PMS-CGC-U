@@ -1,0 +1,327 @@
+/*
+=====================================================
+  CHATBOT STYLESHEET (Adapted for CG University Theme)
+=====================================================
+*/
+
+/* 1. FONT & THEME VARIABLES
+----------------------------------- */
+body {
+  font-family: "Poppins", "Jost", system-ui, sans-serif;
+  margin: 0;
+
+  /* Theme-Independent Variables */
+  --chat-primary: #B91C1C; /* Main Red from your website */
+  --chat-primary-hover: #DC2626; /* Slightly brighter red */
+
+  /* Chat colors */
+  --chat-bg: rgba(17, 24, 39, 0.85);
+  --chat-body-bg: #111827;
+  --chat-border: rgba(107, 114, 128, 0.2);
+  --chat-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --chat-header-text: #FFFFFF;
+  --bot-msg-bg: #374151;
+  --bot-msg-text: #F3F4F6;
+  --user-msg-bg: var(--chat-primary);
+  --user-msg-text: #FFFFFF;
+  --input-bg: #374151;
+  --input-text: #F3F4F6;
+  --input-border: rgba(107, 114, 128, 0.3);
+  --quick-btn-bg: transparent;
+  --quick-btn-text: var(--chat-primary);
+  --quick-btn-hover-bg: rgba(185, 28, 28, 0.1);
+  --quick-btn-border: 1px solid var(--chat-primary);
+  --scrollbar-thumb: var(--chat-primary);
+  --scrollbar-track: #111827;
+}
+
+/* 2. CHATBOT CONTAINER & TOGGLE
+----------------------------------- */
+.chatbot-container {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  z-index: 1000;
+  font-size: 15px;
+}
+
+.chatbot-toggle-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--chat-primary);
+  color: #FFFFFF;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(185, 28, 28, 0.5);
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--chat-primary-hover);
+  box-shadow: 0 0 30px rgba(185, 28, 28, 0.7);
+}
+
+/* 3. CHATBOT WINDOW
+----------------------------------- */
+.chatbot-window {
+  width: 400px;
+  max-width: 90vw;
+  height: 500px;
+  max-height: 80vh;
+  background: var(--chat-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid var(--chat-border);
+  box-shadow: var(--chat-shadow);
+  position: absolute;
+  bottom: 85px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: bottom left;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.chatbot-window.open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 4. CHATBOT HEADER (SMALLER & CLEAN CLOSE BUTTON)
+----------------------------------- */
+.chatbot-header {
+  background: var(--chat-primary);
+  color: var(--chat-header-text);
+  padding: 6px 12px;  /* Reduced padding */
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;    /* Smaller font */
+  border-bottom: 1px solid var(--chat-border);
+  flex-shrink: 0;
+}
+
+.chatbot-header-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chatbot-header-logo {
+  width: auto;
+  height: 25px;  /* Smaller logo */
+}
+
+.chatbot-header span {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.chatbot-header button {
+  background: transparent;  /* Simple, no theme variables */
+  border: none;
+  color: #ec1b1b;           /* Always white */
+  font-size: 16px;
+  cursor: pointer;
+
+}
+
+
+/* 5. CHATBOT BODY & MESSAGES
+----------------------------------- */
+.chatbot-body {
+  flex: 1;
+  padding: 12px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--chat-body-bg);
+}
+
+.chatbot-msg {
+  max-width: 75%;
+  padding: 10px 16px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bot-msg {
+  background: var(--bot-msg-bg);
+  color: var(--bot-msg-text);
+  align-self: flex-start;
+  border-top-left-radius: 4px;
+}
+
+.user-msg {
+  background: var(--user-msg-bg);
+  color: var(--user-msg-text);
+  align-self: flex-end;
+  border-top-right-radius: 4px;
+}
+
+/* 6. QUICK QUESTIONS
+----------------------------------- */
+.quick-questions {
+  padding: 8px 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  background: var(--chat-body-bg);
+  border-top: 1px solid var(--chat-border);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex-shrink: 0;
+}
+
+.quick-questions::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-question-btn {
+  margin: 0;
+  padding: 6px 14px;
+  background: var(--quick-btn-bg);
+  color: var(--quick-btn-text);
+  border: var(--quick-btn-border, none);
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.quick-question-btn:hover {
+  background: var(--quick-btn-hover-bg);
+  color: var(--chat-primary-hover);
+}
+
+.quick-question-btn.toggle-btn {
+  background: var(--chat-primary);
+  color: #FFFFFF;
+  border: none;
+}
+.quick-question-btn.toggle-btn:hover {
+  background: var(--chat-primary-hover);
+}
+
+/* 7. CHATBOT INPUT
+----------------------------------- */
+.chatbot-input-container {
+  display: flex;
+  padding: 10px 12px;
+  border-top: 1px solid var(--chat-border);
+  gap: 6px;
+  background: var(--chat-bg);
+  flex-shrink: 0;
+}
+
+.chatbot-input-container input {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--input-border);
+  outline: none;
+  font-size: 15px;
+  background: var(--input-bg);
+  color: var(--input-text);
+  transition: all 0.2s;
+}
+
+.chatbot-input-container input:focus {
+  border-color: var(--chat-primary);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.3);
+}
+
+.chatbot-input-container button {
+  padding: 8px 16px;
+  background: var(--chat-primary);
+  border: none;
+  color: #FFFFFF;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-input-container button:hover {
+  background: var(--chat-primary-hover);
+}
+
+/* 8. CUSTOM SCROLLBAR
+----------------------------------- */
+.chatbot-body::-webkit-scrollbar {
+  width: 8px;
+}
+.chatbot-body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+.chatbot-body::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+.chatbot-body::-webkit-scrollbar-thumb:hover {
+  background: var(--chat-primary-hover);
+}
+
+/* 9. RESPONSIVE STYLES
+----------------------------------- */
+@media (max-width: 480px) {
+  .chatbot-container {
+    bottom: 20px;
+    left: auto;
+    right: 20px;
+  }
+
+  .chatbot-toggle-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .chatbot-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    transform-origin: bottom right;
+  }
+
+  .chatbot-header {
+    border-radius: 0;
+  }
+
+  .chatbot-header-logo {
+    height: 22px;
+  }
+
+  .chatbot-header button {
+    font-size: 14px;
+  }
+}

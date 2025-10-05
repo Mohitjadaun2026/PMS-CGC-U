@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
+import Chatbot from "./components/Chatbot";
 import Header from "./components/Header";
 import Home from "./components/home";
 import Footer from "./components/Footer";
@@ -46,6 +46,7 @@ function App() {
                   <Home />
                 </main>
                 <Footer />
+                <Chatbot/>
               </>
             }
           />
@@ -60,6 +61,7 @@ function App() {
                   <Sign />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -72,6 +74,7 @@ function App() {
                   <About />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -88,6 +91,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -104,6 +108,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -117,6 +122,7 @@ function App() {
                   <Contact />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -130,6 +136,7 @@ function App() {
                   <PrivacyPolicy />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -146,6 +153,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -160,6 +168,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -176,6 +185,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -189,6 +199,7 @@ function App() {
                   <JobsPage />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -203,6 +214,7 @@ function App() {
                   <CookiePolicy />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -217,6 +229,7 @@ function App() {
                   <TermsOfService />
                 </main>
                 <Footer />
+                 <Chatbot/>
               </>
             }
           />
@@ -231,6 +244,7 @@ function App() {
                   <GdprCompliance />
                 </main>
                 <Footer />
+                <Chatbot/>
               </>
             }
           />
@@ -262,10 +276,12 @@ function App() {
                   <ResetPassword />
                 </main>
                 <Footer />
+                <Chatbot/>
               </>
             }
           />
         </Routes>
+            <Chatbot/>
       </div>
     </Router>
   );
