@@ -8,6 +8,11 @@ const branches = [
   "Chemical", "Mathematics and Computing",
 ];
 
+let defaultTags = [
+  "on-campus", "off-campus", "internship", "full-time", "product",
+  "service", "startup", "mnc", "remote", "hybrid", "sde", "analyst", "consultant",
+]
+
 const difficulties = ["Easy", "Medium", "Hard"];
 
 const InterviewForm = ({darkMode }) => {
@@ -28,6 +33,8 @@ const InterviewForm = ({darkMode }) => {
     customTag: "",
     rounds: [],
   });
+
+  const [tags, setTags] = useState(defaultTags);
 
   const { addExperience } = useExperiences(); // ✅ get addExperience from context
 
@@ -77,45 +84,82 @@ const InterviewForm = ({darkMode }) => {
   };
 
   const addTag = () => {
-    if (formData.customTag.trim()) {
+    const trimmed = formData.customTag.trim();
+    if (trimmed && !formData.tags.includes(trimmed) && !tags.includes(trimmed)) {
       setFormData({
         ...formData,
-        tags: [...formData.tags, formData.customTag.trim()],
+        tags: [...formData.tags, trimmed],
         customTag: "",
       });
+      setTags((prev) => [...prev, trimmed]);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const finalData = {
-      ...formData,
-      name: formData.name.trim() === "" ? "Anonymous" : formData.name,
-      submittedAt: new Date().toISOString(), // ✅ timestamp
-    };
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-    addExperience(finalData); // ✅ save in context 
-    toast.success("Experience submitted successfully!");
+  const errors = [];
+  
+  const ctc = Number(formData.ctc);
+  const stipend = Number(formData.stipend);
+  const contactNum = Number(formData.contact);
 
-    // ✅ reset form
-    setFormData({
-      name: "",
-      email: "",
-      contact: "",
-      branch: "",
-      graduationYear: "",
-      companyName: "",
-      role: "",
-      ctc: "",
-      stipend: "",
-      interviewDate: "",
-      experience: "",
-      rating: 0,
-      tags: [],
-      customTag: "",
-      rounds: [],
-    });
+  if (formData.ctc && (isNaN(ctc) || ctc < 0)) {
+    errors.push("CTC must be a valid non-negative number.");
+  }
+
+  if (formData.stipend && (isNaN(stipend) || stipend < 0)) {
+    errors.push("Stipend must be a valid non-negative number.");
+  }
+
+  if (formData.contact) {
+    if (isNaN(contactNum) || contactNum < 0) {
+      errors.push("Contact number must be a valid non-negative number.");
+    } 
+    else if (!/^\d{10}$/.test(formData.contact)) {
+      errors.push("Contact number must be exactly 10 digits.");
+    }
+  }
+
+  if (errors.length > 0) {
+    errors.forEach((err) => toast.error(err));
+    return;
+  }
+
+  const finalData = {
+    ...formData,
+    name: formData.name.trim() === "" ? "Anonymous" : formData.name.trim(),
+    companyName: formData.companyName.trim(),
+    role: formData.role.trim(),
+    experience: formData.experience.trim(),
+    ctc,
+    stipend,
+    graduationYear: formData.graduationYear ? Number(formData.graduationYear) : null,
+    rating: formData.rating ? Number(formData.rating) : 0,
+    submittedAt: new Date().toISOString(),
   };
+
+  addExperience(finalData);
+  toast.success("Experience submitted successfully!");
+
+  setFormData({
+    name: "",
+    email: "",
+    contact: "",
+    branch: "",
+    graduationYear: "",
+    companyName: "",
+    role: "",
+    ctc: "",
+    stipend: "",
+    interviewDate: "",
+    experience: "",
+    rating: 0,
+    tags: [],
+    customTag: "",
+    rounds: [],
+  });
+};
 
   const inputClasses = `border p-2 rounded-lg w-full bg-transparent placeholder-gray-400 ${
     darkMode ? "text-white border-gray-600" : "text-black border-gray-400"
@@ -168,7 +212,7 @@ const InterviewForm = ({darkMode }) => {
           <div>
             <label className="block mb-1">Contact Number</label>
             <input
-              type="text"
+              type="number"
               name="contact"
               placeholder="Optional"
               value={formData.contact}
@@ -232,12 +276,12 @@ const InterviewForm = ({darkMode }) => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            { name: "companyName", label: "Company Name", placeholder: "e.g., Google" },
-            { name: "role", label: "Role", placeholder: "e.g., Software Engineer" },
-            { name: "ctc", label: "CTC (₹)", placeholder: "e.g., 1200000" },
-            { name: "stipend", label: "Stipend (₹)", placeholder: "e.g., 30000" },
+            { name: "companyName", label: "Company Name", placeholder: "e.g., Google", type : "text"  },
+            { name: "role", label: "Role", placeholder: "e.g., Software Engineer", type : "text"  },
+            { name: "ctc", label: "CTC (₹)", placeholder: "e.g., 1200000", type : "number"  },
+            { name: "stipend", label: "Stipend (₹)", placeholder: "e.g., 30000", type : "number"  },
             { name: "interviewDate", label: "Interview Date", type: "date" },
-          ].map(({ name, label, placeholder, type = "text" }) => (
+          ].map(({ name, label, placeholder, type }) => (
             <div key={name}>
               <label className="block mb-1">{label}</label>
               <input
@@ -375,10 +419,7 @@ const InterviewForm = ({darkMode }) => {
           🏷️ Tags
         </h2>
         <div className="flex flex-wrap gap-2 mb-3">
-          {[
-            "on-campus", "off-campus", "internship", "full-time", "product",
-            "service", "startup", "mnc", "remote", "hybrid", "sde", "analyst", "consultant",
-          ].map((tag) => (
+          {tags.map((tag) => (
             <span
               key={tag}
               onClick={() =>

@@ -101,6 +101,25 @@ This document records **all contributions** to the project and assigns points ba
 | 81       | divyagit21        |        3  | #219      | Updated icons and fonts theme                                                     |
 | 82       | Tushar-sonawane06 |       3 | #217      | Buttons Styling Fixed                                                             |
 | 83       | akofficial10      |        7  | #216      | Refactor adminController.js for Better Error Handling and Code Consistency        |
+| 84       | akofficial10      | 3         | #260      | UI Fix: Center section titles and add vertical padding to Admin Login page        |
+| 85       | akofficial10      | 7         | #256      | Refactor server.js for Cleaner and Optimized Code                                 |
+| 86       | akofficial10      | 3         | #255      | Refactor jobController.js for Cleaner and Optimized Code                          |
+| 87       | akofficial10      | 3         | #254      | Refactor newsletterController.js for Cleaner and Optimized Code                   |
+| 88       | akofficial10      | 7         | #253      | Refactor interviewExperienceController.js for Cleaner and Optimized Code          |
+| 89       | akofficial10      | 7         | #252      | Refactor authController.js for Cleaner and Optimized Code                         |
+| 90       | akofficial10      | 7         | #251      | Optimized applicationController.js                                                |
+| 91       | akofficial10      | 7         | #250      | Optimized adminController.js                                                      |
+| 92       | akofficial10      | 10        | #249      | Enhance Admin Login Form for Placement Management System                          |
+| 93       | akofficial10      | 7         | #248      | Add Animations to Sign In / Login Form                                            |
+| 94       | divyagit21        | 7         | #247      | Adding interview experience                                                       |
+| 95       | akofficial10      | 3         | #246      | Fix Spacing in Contact Us Section                                                 |
+| 96       | akofficial10      | 7         | #244      | Redesign About Page for Modern UI/UX                                              |
+| 97       | akofficial10      | 7         | #242      | Add Animations to Industry Partners Section                                       |
+| 98       | akofficial10      | 7         | #240      | Add Animations to Comprehensive Features Section                                  |
+| 99       | akofficial10      | 3         | #237      | Fix Hero Section Alignment and Padding                                            |
+
+
+
 
 
 
