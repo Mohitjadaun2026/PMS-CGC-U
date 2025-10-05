@@ -41,13 +41,13 @@ const InterviewExperience = ({ darkMode = false }) => {
       {/* Hero Section */}
       <div
         className={`grid md:grid-cols-2 gap-8 items-center p-8 rounded-2xl shadow-md mb-12 ${
-          actualDarkMode ? "bg-gray-800" : "bg-pink-50"
+          actualDarkMode ? "bg-gray-800" : "bg-none"
         }`}
       >
         <div>
           <div className="flex items-center mb-4 space-x-2">
-            <LightBulbIcon className="w-8 h-8 text-red-500" />
-            <h1 className={`text-3xl font-bold ${actualDarkMode ? "text-red-400" : "text-red-700"}`}>
+            <LightBulbIcon className='w-8 h-8 text-[var(--maroon-500)]'/>
+            <h1 className={`text-3xl font-bold ${actualDarkMode ? "!text-[var(--maroon-500)]" : "text-red-700"}`}>
               Empowering Your Career Journey
             </h1>
           </div>
@@ -59,16 +59,14 @@ const InterviewExperience = ({ darkMode = false }) => {
             <Link
               to="/interview-experience/share"
               style={{ textDecoration: "none" }}
-              className="px-5 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-medium shadow-md transition transform hover:scale-105 hover:shadow-lg no-underline decoration-none hover:decoration-none"
+              className="px-5 py-3 rounded-lg bg-[var(--maroon-600)] hover:bg-[var(--maroon-800)] !text-white font-medium shadow-md hover:shadow-lg no-underline decoration-none hover:decoration-none"
             >
               Share Your Experience
             </Link>
             <Link
               to="/interview-experience/browse"
               style={{ textDecoration: "none" }}
-              className={`px-5 py-3 rounded-lg font-medium shadow-md transition transform hover:scale-105 hover:shadow-lg no-underline decoration-none hover:decoration-none ${
-                actualDarkMode ? "bg-gray-700 hover:bg-gray-600 text-white" : "bg-pink-100 hover:bg-pink-200 text-pink-900"
-              }`}
+              className="px-5 py-3 rounded-lg bg-[var(--maroon-600)] hover:bg-[var(--maroon-800)] !text-white font-medium shadow-md hover:shadow-lg no-underline decoration-none hover:decoration-none"
             >
               Browse Experiences
             </Link>
@@ -93,8 +91,8 @@ const InterviewExperience = ({ darkMode = false }) => {
           }`}
         >
           <div className="flex items-center gap-3 mb-3">
-            <PencilIcon className="w-8 h-8 text-red-500" />
-            <h2 className={`text-xl font-semibold ${actualDarkMode ? "text-white" : "text-gray-800"}`}>
+            <PencilIcon className='w-8 h-8 text-[var(--maroon-500)]' />
+            <h2 className={`text-xl !font-bold ${actualDarkMode ? "text-white" : "text-gray-800"}`}>
               Share Experience
             </h2>
           </div>
@@ -111,8 +109,8 @@ const InterviewExperience = ({ darkMode = false }) => {
           }`}
         >
           <div className="flex items-center gap-3 mb-3">
-            <FolderOpenIcon className="w-8 h-8 text-pink-500" />
-            <h2 className={`text-xl font-semibold ${actualDarkMode ? "text-white" : "text-gray-800"}`}>
+            <FolderOpenIcon className="w-8 h-8 text-[var(--maroon-500)]" />
+            <h2 className={`text-xl !font-bold ${actualDarkMode ? "text-white" : "text-gray-800"}`}>
               Browse Experiences
             </h2>
           </div>
@@ -124,7 +122,7 @@ const InterviewExperience = ({ darkMode = false }) => {
 
       {/* Info Section */}
       <div className="text-center max-w-3xl mx-auto">
-        <h3 className={`text-2xl font-bold mb-4 ${actualDarkMode ? "text-white" : "text-gray-800"}`}>
+        <h3 className={`text-2xl !font-bold mb-4 ${actualDarkMode ? "text-white" : "text-gray-800"}`}>
           Unlocking Your Potential
         </h3>
         <p className={actualDarkMode ? "text-gray-200" : "text-gray-600"}>
