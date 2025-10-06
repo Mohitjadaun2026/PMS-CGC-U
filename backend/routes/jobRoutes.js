@@ -46,6 +46,7 @@ const upload = multer({
 
 // Public routes (read-only)
 router.get('/', jobController.getAllJobs);
+router.get('/:id', jobController.getJobsById);
 
 // Protected routes (admin only)
 router.post('/', requireAuth, requireAdmin, upload.single('companyLogo'), jobController.createJob);

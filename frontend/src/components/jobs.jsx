@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, MapPin, DollarSign, Clock, Building, User, Award } from 'lucide-react';
 import './jobs.css';
 import { API_ENDPOINTS } from '../config/api';
+import {useNavigate, useParams, useLocation} from 'react-router-dom'
+import { getJobsById } from '../../api/jobs';
 
 // JobCard Component
 const JobCard = ({ job, onClick }) => {
@@ -321,6 +323,7 @@ const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   // Fetch jobs from backend
   useEffect(() => {
     const fetchJobs = async () => {
@@ -345,15 +348,7 @@ const Jobs = () => {
   }, []);
 
   const handleJobClick = (job) => {
-    setSelectedJob(job);
-  };
-
-  const handleBack = () => {
-    setSelectedJob(null);
-  };
-
-  const handleApply = (job) => {
-    alert(`Applied for ${job.position} at ${job.companyName}`);
+    navigate(`/jobs/${job._id}`);
   };
 
   if (loading) {
@@ -379,7 +374,6 @@ const Jobs = () => {
 
   return (
     <div className="jobs-page-container">
-      {!selectedJob ? (
         <div>
           <div className="jobs-header">
             <h1 className="jobs-title">Available Jobs</h1>
@@ -398,15 +392,38 @@ const Jobs = () => {
             )}
           </div>
         </div>
-      ) : (
-        <JobDetails 
-          job={selectedJob} 
-          onBack={handleBack} 
-          onApply={handleApply} 
-        />
-      )}
     </div>
   );
 };
+
+export const JobWrapper = () =>{
+  const {id} = useParams();
+  const [job,setJob] = useState( null );
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    const fetchJob = async () => {
+      try {
+        const data = await getJobsById(id);
+        setJob(data);
+      } catch (err) {
+        console.error('Failed to fetch job:', err);
+      }
+    };
+
+    fetchJob();
+  },[id])
+
+  const handleBack = () => {
+     navigate('/jobs');
+  };
+
+  const handleApply = (job) => {
+    alert(`Applied for ${job.position} at ${job.companyName}`);
+  };
+
+  return <JobDetails job={job}  onBack={handleBack} onApply={handleApply}  />
+
+}
 
 export default Jobs;

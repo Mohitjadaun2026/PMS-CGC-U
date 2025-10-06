@@ -5,6 +5,12 @@ export const getAllJobs = async () => {
   return res.data;
 };
 
+export const getJobsById = async (id) =>{
+  const res = await api.get(`/api/jobs/${id}`);
+  console.log(res.data);
+  return res.data;
+}
+
 export const createJob = async (jobData) => {
   const adminToken = localStorage.getItem('adminToken');
   if (!adminToken) {

@@ -1,4 +1,5 @@
 const Job = require("../models/Job");
+const mongoose = require('mongoose');
 
 // Helper: handle array fields for job data
 const processArrayFields = (jobData, fields) => {
@@ -21,6 +22,26 @@ exports.getAllJobs = async (req, res) => {
     const jobs = await Job.find();
     console.log(`Found ${jobs.length} jobs`);
     res.json(jobs);
+  } catch (err) {
+    console.error("Error fetching jobs:", err);
+    res
+      .status(500)
+      .json({ error: "Failed to fetch jobs", details: err.message });
+  }
+};
+
+// GET jobs by ID
+exports.getJobsById = async (req, res) => {
+  const id = req.params.id;
+  const objectId = new mongoose.Types.ObjectId(id);
+  console.log(objectId);
+  try {
+    console.log("Fetching job by ID ...");
+    const job = await Job.findById(objectId);
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+    res.json(job);
   } catch (err) {
     console.error("Error fetching jobs:", err);
     res

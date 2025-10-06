@@ -14,7 +14,7 @@ import AdminJobPosting from "./components/AdminJobPosting";
 import AdminLogin from "./components/AdminLogin";
 import AdminManagement from "./components/AdminManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
-import JobsPage from "./components/jobs";
+import JobsPage, { JobWrapper } from "./components/jobs";
 import InterviewExperience from "./components/InterviewExperience";
 import InterviewForm from "./components/InterviewForm"; // Added import here
 import BrowseExperiences from "./components/BrowseExperiences"; // Added import here
@@ -200,6 +200,19 @@ function App() {
                 </main>
                 <Footer />
                  <Chatbot/>
+              </>
+            }
+          />  
+          
+          <Route
+            path="/jobs/:id"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <JobWrapper />
+                </main>
+                <Footer />
               </>
             }
           />
