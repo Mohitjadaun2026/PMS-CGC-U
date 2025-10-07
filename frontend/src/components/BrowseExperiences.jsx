@@ -36,7 +36,7 @@ const BrowseExperiences = ({ darkMode }) => {
   }, [debouncedSearchTerm]);
 
   useEffect(() => {
-    const itemsPerPage = 10;
+    const itemsPerPage = 12;
     const startIndex = (pagenumber - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentExperiences = filteredExperiences.slice(startIndex, endIndex);
@@ -45,7 +45,7 @@ const BrowseExperiences = ({ darkMode }) => {
   }, [pagenumber,filteredExperiences])
 
   function handleNextPage() {
-    const maxPage = Math.ceil(filteredExperiences.length / 10);
+    const maxPage = Math.ceil(filteredExperiences.length / 12);
     setPagenumber(prev => {
       if (prev >= maxPage) return prev;
       return prev + 1;
@@ -102,7 +102,7 @@ const BrowseExperiences = ({ darkMode }) => {
               <ChevronLeft size={20} />
             </button>
 
-            {Array.from({ length: Math.ceil(filteredExperiences.length / 10) }, (_, i) => (
+            {Array.from({ length: Math.ceil(filteredExperiences.length / 12) }, (_, i) => (
               <button
                 key={i}
                 className={`!hover:cursor-default !p-0 h-[40px] w-[40px] cursor-pointer rounded-[2px] flex items-center justify-center text-xl border border-black
@@ -118,7 +118,7 @@ const BrowseExperiences = ({ darkMode }) => {
             <button
               onClick={handleNextPage}
               disabled={pagenumber === Math.ceil(filteredExperiences.length)}
-              className={`!p-0 !hover:cursor-default h-[40px] w-[40px] cursor-pointer rounded-[2px] flex items-center justify-center !border !border-black !bg-white !text-black ${pagenumber == Math.ceil(experiences.length / 10) ? "!opacity-50 !cursor-not-allowed" : "cursor-pointer"}`}
+              className={`!p-0 !hover:cursor-default h-[40px] w-[40px] cursor-pointer rounded-[2px] flex items-center justify-center !border !border-black !bg-white !text-black ${pagenumber == Math.ceil(experiences.length / 12) ? "!opacity-50 !cursor-not-allowed" : "cursor-pointer"}`}
             >
               <ChevronRight size={20} />
             </button>
