@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useExperiences } from "../context";
 import ExperienceCard from "./ExperienceCard";
 import ExperienceModal from "./ExperienceDetails";
@@ -20,8 +20,9 @@ const BrowseExperiences = ({ darkMode }) => {
     return () => clearTimeout(delay);
   }, [searchTerm]);
 
-  const filteredExperiences = experiences.filter((exp) => {
-    const term = debouncedSearchTerm.toLowerCase();
+const filteredExperiences = useMemo(() => {
+  const term = debouncedSearchTerm.toLowerCase();
+  return experiences.filter((exp) => {
     const companyName = exp.companyName?.toLowerCase() || "";
     const tags = exp.tags?.map((tag) => tag.toLowerCase()) || [];
 
@@ -30,6 +31,7 @@ const BrowseExperiences = ({ darkMode }) => {
       tags.some((tag) => tag.includes(term))
     );
   });
+}, [debouncedSearchTerm, experiences]);
 
   useEffect(() => {
     setPagenumber(1);
@@ -117,7 +119,7 @@ const BrowseExperiences = ({ darkMode }) => {
             ))}
             <button
               onClick={handleNextPage}
-              disabled={pagenumber === Math.ceil(filteredExperiences.length)}
+              disabled={pagenumber === Math.ceil(filteredExperiences.length / 12)}
               className={`!p-0 !hover:cursor-default h-[40px] w-[40px] cursor-pointer rounded-[2px] flex items-center justify-center !border !border-black !bg-white !text-black ${pagenumber == Math.ceil(experiences.length / 12) ? "!opacity-50 !cursor-not-allowed" : "cursor-pointer"}`}
             >
               <ChevronRight size={20} />
