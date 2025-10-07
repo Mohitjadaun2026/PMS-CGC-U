@@ -19,6 +19,7 @@ import InterviewExperience from "./components/InterviewExperience";
 import InterviewForm from "./components/InterviewForm"; // Added import here
 import BrowseExperiences from "./components/BrowseExperiences"; // Added import here
 import ExperienceDetails from "./components/ExperienceDetails"; // <--- NEW IMPORT
+import BackToTopButton from "./components/Backtotopbutton"; // <--- NEW IMPORT
 
 import ScrollToTop from "./components/ScrollToTop";
 import ResetPassword from "./components/ResetPassword";
@@ -46,6 +47,7 @@ function App() {
                   <Home />
                 </main>
                 <Footer />
+                <BackToTopButton />
                 <Chatbot/>
               </>
             }
@@ -61,6 +63,7 @@ function App() {
                   <Sign />
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -74,7 +77,8 @@ function App() {
                   <About />
                 </main>
                 <Footer />
-                 <Chatbot/>
+                <BackToTopButton />
+                <Chatbot />
               </>
             }
           />
@@ -91,6 +95,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -108,6 +113,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -122,6 +128,7 @@ function App() {
                   <Contact />
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -136,6 +143,7 @@ function App() {
                   <PrivacyPolicy />
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -153,6 +161,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -168,6 +177,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -185,6 +195,7 @@ function App() {
                   </ProtectedRoute>
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -199,6 +210,7 @@ function App() {
                   <JobsPage />
                 </main>
                 <Footer />
+                <BackToTopButton /> 
                  <Chatbot/>
               </>
             }
@@ -213,6 +225,7 @@ function App() {
                   <JobWrapper />
                 </main>
                 <Footer />
+                <BackToTopButton />
               </>
             }
           />
@@ -227,6 +240,7 @@ function App() {
                   <CookiePolicy />
                 </main>
                 <Footer />
+                <BackToTopButton />
                  <Chatbot/>
               </>
             }
@@ -242,7 +256,8 @@ function App() {
                   <TermsOfService />
                 </main>
                 <Footer />
-                 <Chatbot/>
+                <BackToTopButton />
+                <Chatbot />
               </>
             }
           />
@@ -257,6 +272,7 @@ function App() {
                   <GdprCompliance />
                 </main>
                 <Footer />
+                <BackToTopButton />
                 <Chatbot/>
               </>
             }
@@ -289,11 +305,13 @@ function App() {
                   <ResetPassword />
                 </main>
                 <Footer />
+                <BackToTopButton />
                 <Chatbot/>
               </>
             }
           />
         </Routes>
+        <BackToTopButton /> 
             <Chatbot/>
       </div>
     </Router>
