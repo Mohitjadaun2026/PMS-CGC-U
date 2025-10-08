@@ -185,25 +185,42 @@ body.dark .theme-toggle-btn {
   background: rgba(128, 0, 0, 0.85);
   color: #fdfdfd;
 }
-
-/* Login Button */
+/* === NEW Unified Header Button Style === */
 .login-btn {
+  /* Style copied from .theme-toggle-btn for consistency */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.2rem; /* Adjusted padding for text */
+  border: none;
+  border-radius: 20px; /* Capsule shape */
+  background: rgba(128, 0, 0, 0.85);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(128, 0, 0, 0.85);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* Text-specific styles */
   font-weight: 600;
-  border-radius: 4px;
-  padding: 0.1rem 1rem;
-  padding: 0.1rem 1rem;
-  transition: all var(--transition-speed) ease;
-  border: 2px solid transparent;
   letter-spacing: 0.5px;
-  background: #800000;
-  color: whitesmoke !important; 
-  box-shadow: 0 2px 8px rgba(128, 0, 0, 0.3);
+  text-decoration: none;
 }
 
 .login-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
-} 
+  transform: translateY(-2px) scale(1.05); /* Add lift and slight grow */
+  box-shadow: 0 4px 8px rgba(128, 0, 0, 0.6);
+  background: rgba(140, 0, 0, 0.9); /* Slightly brighter on hover */
+}
+
+.login-btn:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 1px 3px rgba(128, 0, 0, 0.85);
+}
+
+.login-btn:focus {
+  outline: 2px solid #684a4a;
+  outline-offset: 2px;
+}
 
 body.light .login-btn:hover {
   background: transparent;
