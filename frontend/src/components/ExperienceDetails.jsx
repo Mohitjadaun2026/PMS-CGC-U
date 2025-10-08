@@ -4,11 +4,12 @@ import { useExperiences } from "../context/ExperienceContext";
 
 const ExperienceDetails = ({ darkMode }) => {
   const { id } = useParams();
+  console.log(id)
   const { experiences } = useExperiences();
 
   // Find the experience by id
   const exp = experiences.find((e) => String(e._id) === id);
-
+  console.log(exp)
   if (!exp) {
     return (
       <div className="p-6">

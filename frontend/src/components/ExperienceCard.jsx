@@ -3,7 +3,7 @@ import React from "react";
 const ExperienceCard = ({ exp, darkMode }) => {
   return (
     <div
-      className={`p-4 rounded-xl shadow-md cursor-pointer transition hover:shadow-lg no-underline ${
+      className={`min-w-[300px] p-4 rounded-xl shadow-md cursor-pointer transition hover:shadow-lg no-underline ${
         darkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-gray-900"
       }`}
     >
