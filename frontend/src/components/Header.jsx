@@ -80,7 +80,6 @@ function Header() {
             <Link to="/interview-experience">Interview Experience</Link>
           </>
         }
-        <Link to="/admin-job-posting">Admin Panel</Link>
         {isLoggedIn && (
           <button
             onClick={handleLogout}
