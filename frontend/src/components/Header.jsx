@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import "./header.css";
 import collegeLogo from "../assets/cgc logo.png"; // Make sure to add the logo to your assets folder
+import ConfirmAlert from "./ConfirmAlert";
 
 function Header() {
   const [theme, setTheme] = useState('light');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   // On mount, load saved theme or system preference
   useEffect(() => {
@@ -42,11 +44,14 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
+    setShowAlert(true); 
+  };
+
+  const confirmLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    // Optionally redirect to home or login page
-    window.location.href = '/';
+    window.location.href = '/'; // Redirect to home or login
   };
 
   // Toggle theme
@@ -59,6 +64,18 @@ function Header() {
 
   return (
     <header className="pms-header">
+      {showAlert && <ConfirmAlert
+        isOpen={showAlert}
+        title="Confirm Logout"
+        message="Are you sure you want to log out?"
+        confirmText="Yes, Logout"
+        cancelText="Cancel"
+        onConfirm={() => {
+          confirmLogout();
+          setShowAlert(false);
+        }}
+        onCancel={() => setShowAlert(false)}
+      />}
       <div className="logo">
         <img
           src={collegeLogo}
