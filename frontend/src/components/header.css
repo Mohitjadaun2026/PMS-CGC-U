@@ -194,9 +194,9 @@ body.dark .theme-toggle-btn {
   padding: 0.5rem 1.2rem; /* Adjusted padding for text */
   border: none;
   border-radius: 20px; /* Capsule shape */
-  background: rgba(202, 41, 41, 0.85);
+  background: rgba(189, 48, 48, 0.85);
   color: #fff;
-  box-shadow: 0 1px 3px rgba(128, 0, 0, 0.85);
+  box-shadow: 0 1px 3px rgba(177, 177, 177, 0.85);
   cursor: pointer;
   transition: all 0.3s ease;
 
