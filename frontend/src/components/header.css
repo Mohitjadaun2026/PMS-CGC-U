@@ -194,17 +194,23 @@ body.dark .theme-toggle-btn {
   padding: 0.5rem 1.2rem; /* Adjusted padding for text */
   border: none;
   border-radius: 20px; /* Capsule shape */
-  background: rgba(128, 0, 0, 0.85);
+  background: rgba(202, 41, 41, 0.85);
   color: #fff;
   box-shadow: 0 1px 3px rgba(128, 0, 0, 0.85);
   cursor: pointer;
   transition: all 0.3s ease;
+
+  /* --- CHANGES ARE HERE --- */
+  font-size: 1rem; /* ✅ CHANGE 1: Makes the text bigger */
+  text-shadow: 0 1px 2px rgba(104, 104, 104, 0.5); /*✅ CHANGE 2: Makes text pop */
 
   /* Text-specific styles */
   font-weight: 600;
   letter-spacing: 0.5px;
   text-decoration: none;
 }
+
+/* (The rest of your CSS remains the same) */
 
 .login-btn:hover {
   transform: translateY(-2px) scale(1.05); /* Add lift and slight grow */
@@ -218,7 +224,7 @@ body.dark .theme-toggle-btn {
 }
 
 .login-btn:focus {
-  outline: 2px solid #684a4a;
+  outline: 2px solid rgb(151, 115, 115); /* Bonus: Changed to a high-contrast color */
   outline-offset: 2px;
 }
 
