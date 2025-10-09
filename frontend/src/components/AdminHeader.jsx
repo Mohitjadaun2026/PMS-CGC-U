@@ -9,9 +9,12 @@ const AdminHeader = () => {
   const isSuperAdmin = adminUser.role === 'super_admin';
 
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUser');
-    navigate('/admin-login');
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if(confirmLogout){
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+      navigate('/admin-login');
+    }
   };
 
   const handleNavigation = (path) => {
