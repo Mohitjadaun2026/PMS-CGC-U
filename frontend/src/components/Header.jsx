@@ -48,10 +48,13 @@ function Header() {
   };
 
   const confirmLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = '/'; // Redirect to home or login
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if(confirmLogout){
+      setIsLoggedIn(false);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/';
+    }
   };
 
   // Toggle theme

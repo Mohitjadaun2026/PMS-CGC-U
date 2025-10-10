@@ -14,10 +14,12 @@ const AdminHeader = () => {
   };
 
   const confirmLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUser');
-    navigate('/');
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if(confirmLogout){
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+      navigate('/');
+    }
   };
 
   const handleNavigation = (path) => {
