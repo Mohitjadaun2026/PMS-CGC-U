@@ -13,7 +13,7 @@ const AdminHeader = () => {
     if(confirmLogout){
       localStorage.removeItem('adminToken');
       localStorage.removeItem('adminUser');
-      navigate('/admin-login');
+      navigate('/');
     }
   };
 

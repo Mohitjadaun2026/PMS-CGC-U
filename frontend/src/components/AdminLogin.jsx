@@ -76,7 +76,6 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-main-container ">
-      <Header />
       <div className="admin-login-background ">
         <div className="admin-login-glow-effect glow-1"></div>
         <div className="admin-login-glow-effect glow-2"></div>
@@ -213,14 +212,10 @@ const AdminLogin = () => {
 
             {/* Card Background Effects */}
             <div className="card-glow"></div>
-            <div className="card-corner corner-tl"></div>
-            <div className="card-corner corner-tr"></div>
-            <div className="card-corner corner-bl"></div>
-            <div className="card-corner corner-br"></div>
+           
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
