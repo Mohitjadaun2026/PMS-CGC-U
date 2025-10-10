@@ -133,7 +133,7 @@ This document records **all contributions** to the project and assigns points ba
 |    113   | [divyagit21](#)   |     3     |    #294   | Added alerts for user,admin logout              |
 |    114   | [divyagit21](#)   |     3     |    #295   | Added space between team-section and footer     |
 |    115   | [divyagit21](#)   |     7     |    #297   | Added Custom Alert                              |
-|    116   | [surajsingh9389(#)]|     3    |    #298   | Added Mail Icon to Floating Contact Form        |
+|    116   | [surajsingh9389](#)|     3    |    #298   | Added Mail Icon to Floating Contact Form        |
 |    117   | [divyagit21](#)   |     7     |    #299   | Updated style of about page                     |
 |    118   | [RAGHU1242](#)   |     7     |    #302   | UI/UX Enhancement - Additional AOS (Animate On Scroll) Effects      |
 
