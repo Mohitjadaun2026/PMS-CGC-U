@@ -17,7 +17,7 @@ const AdminHeader = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminUser');
-    window.location.href = '/'; // Redirect to home or login
+    navigate('/');
   };
 
   const handleNavigation = (path) => {

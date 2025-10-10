@@ -117,6 +117,19 @@ This document records **all contributions** to the project and assigns points ba
 | 97       | akofficial10      | 7         | #242      | Add Animations to Industry Partners Section                                       |
 | 98       | akofficial10      | 7         | #240      | Add Animations to Comprehensive Features Section                                  |
 | 99       | akofficial10      | 3         | #237      | Fix Hero Section Alignment and Padding                                            |
+|    100   | [divyagit21](#)   |     3     |    #261   | Added custom tags                               |
+|    101   | [divyagit21](#)   |     7     |    #262   | Updated Browse Experiences                      |
+|    102   | [divyagit21](#)   |     7     |    #263   | Added validations to interview form             |
+|    103   | [divyagit21](#)   |     7     |    #264   | Implemented search for interview experiences    |
+|    104   | [divyagit21](#)   |     7     |    #265   | Password validations                            |
+|    105   | [divyagit21](#)   |     7     |    #267   | Added separate route for job by ID              |
+|    106   | [divyagit21](#)   |     7     |    #268   | Updated Style of interview-experience-component |
+|    107   | [K9Patel](#)      |     10    |    #270   | Chatbot integrated                              |
+|    108   | [Saketh-175](#)   |     3     |    #273   | Added vercel.json file to resolve 404 error     |
+|    109   | [divyagit21](#)   |     7     |    #274   | Added pagination for interview experiences      |
+|    110   | [K9Patel](#)      |     7     |    #277   | Back-to-top button added                        |
+|    111   | [K9Patel](#)      |     3     |    #287   | Login button styled                             |
+
 
 
 

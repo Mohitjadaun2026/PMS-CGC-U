@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./contact.css";
+import { AiOutlineMail } from 'react-icons/ai';
 
 // Executive Director
 const executiveDirector = [{
@@ -501,14 +502,15 @@ function Contact() {
 
       {/* Floating Contact Form */}
       <div
-        className={`floating-contact-form ${isFormOpen ? "open" : ""} ${
+        className={`floating-contact-form relative ${isFormOpen ? "open" : ""} ${
           isFormExpanded ? "expanded" : ""
         } ${isSuccess ? "success" : ""}`}
       >
+        {isFormOpen ? "": (<AiOutlineMail size={26} className="text-white absolute left-4 top-4"/>)}
+
         <div className="floating-form-header" onClick={toggleForm}>
           <span className="form-title">Contact Us</span>
-          <span className="form-toggle-icon">
-            {isSuccess ? "🎉" : isFormOpen ? "✕" : "✉️"}
+          <span className="form-toggle-icon"> {isSuccess ? ( "🎉") : isFormOpen ? ("✕") : " "}
           </span>
         </div>
 
