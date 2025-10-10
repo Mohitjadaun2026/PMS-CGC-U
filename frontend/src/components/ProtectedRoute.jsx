@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {  // Check if ad
     if (!adminToken || !adminUser) {
       console.log('ProtectedRoute - No token or user, redirecting to login');
       // Redirect to admin login if not authenticated
-      return <Navigate to="/admin-login" replace />;
+      return <Navigate to="/signin" replace />;
     }
     try {
       const user = JSON.parse(adminUser);
@@ -20,14 +20,14 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {  // Check if ad
       if (user.role !== 'admin' && user.role !== 'super_admin') {
         console.log('ProtectedRoute - Invalid role, redirecting to login');
         // Redirect to admin login if not admin or super admin
-        return <Navigate to="/admin-login" replace />;
+        return <Navigate to="/signin" replace />;
       }
     } catch (error) {
       console.error('ProtectedRoute - Error parsing user:', error);
       // Invalid user data, redirect to login
       localStorage.removeItem('adminToken');
       localStorage.removeItem('adminUser');
-      return <Navigate to="/admin-login" replace />;
+      return <Navigate to="/signin" replace />;
     }
   }
   else {

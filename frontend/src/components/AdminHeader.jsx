@@ -11,7 +11,7 @@ const AdminHeader = () => {
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminUser');
-    navigate('/admin-login');
+    navigate('/');
   };
 
   const handleNavigation = (path) => {

@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import "./sign.css";
 import { CheckCircle, XCircle } from "lucide-react";
+import AdminLogin from "./AdminLogin";
 
 const passwordRules = {
   length: (pw) => pw.length >= 8,
@@ -33,6 +34,8 @@ function Sign() {
     number: false,
     specialChar: false,
   });
+
+  const [isAdminToggle, setIsAdminToggle] = useState(false)
 
   const [form, setForm] = useState({
     name: "",
@@ -205,283 +208,317 @@ function Sign() {
   }
 
   return (
-    <div className="sign-container">
-      <div className="animated-background">
-        <div className="floating-shape shape-1"></div>
-        <div className="floating-shape shape-2"></div>
-        <div className="floating-shape shape-3"></div>
-        <div className="floating-shape shape-4"></div>
-      </div>
-
-      <div className={`sign-card ${cardAnimation}`}>
-        <div className="card-header">
-          <div className="logo-sparkle">
-            <div className="sparkle"></div>
-            <h2>{isRegister ? "Create Account" : "Welcome Back"}</h2>
-            <div className="sparkle"></div>
-          </div>
-          <p className="card-subtitle">
-            {isRegister
-              ? "Join our community today"
-              : "Sign in to your account"}
-          </p>
-        </div>
-
-           {isRegister && (
-          <div className="progress-bar-wrapper">
-            <div className="progress-labels">
-              <span className={progress >= 25 ? "active" : ""}>Name</span>
-              <span className={progress >= 50 ? "active" : ""}>Email</span>
-              <span className={progress >= 75 ? "active" : ""}>Password</span>
-              <span className={progress >= 100 ? "active" : ""}>Confirm</span>
-            </div>
-            <div
-              className="progress-bar-dynamic-container"
-              title={`Progress: ${progress}%`}
-            >
-              <div
-                className="progress-bar-dynamic-filler"
-                style={{ width: `${progress}%` }}
-              ></div>
-              <div className="progress-segment"></div>
-              <div className="progress-segment"></div>
-              <div className="progress-segment"></div>
-            </div>
-          </div>
-        )}
-
-        <form onSubmit={isRegister ? handleRegister : handleSignIn} noValidate>
-          {isRegister && (
-            <div
-              className={`field-wrap ${fieldAnimations.name === "success" ? "success-animation" : ""
-                }`}
-            >
-              <label htmlFor="name">Full Name</label>
-              <div className="input-container">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter your full name"
-                  value={form.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.name
-                      ? "input-error"
-                      : valid.name
-                        ? "input-success"
-                        : ""
-                  }
-                  aria-invalid={!!errors.name}
-                  aria-describedby="name-error"
-                />
-                {valid.name && (
-                  <div className="success-indicator">
-                    <FaCheck />
-                  </div>
-                )}
-              </div>
-              {errors.name && (
-                <div id="name-error" className="error-text" role="alert">
-                  <FaExclamationTriangle className="error-icon" />
-                  <span>{errors.name}</span>
-                </div>
-              )}
-            </div>
-          )}
-
-          <div
-            className={`field-wrap ${fieldAnimations.email === "success" ? "success-animation" : ""
-              }`}
+    <>
+      <div className="flex flex-row gap-6 mt-4 justify-center">
+        <div className="flex flex-row gap-6 mt-4 justify-center">
+          <button
+            onClick={() => setIsAdminToggle(false)}
+            className={`
+      ${!isAdminToggle
+                ? "!border-[var(--maroon-500)]"
+                : "!bg-white !border-b-[3px] !border-[var(--maroon-500)] !text-gray-700"
+              }
+    `}
           >
-            <label htmlFor="email">Email Address</label>
-            <div className="input-container">
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={form.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={
-                  errors.email
-                    ? "input-error"
-                    : valid.email
-                      ? "input-success"
-                      : ""
-                }
-                aria-invalid={!!errors.email}
-                aria-describedby="email-error"
-              />
-              {valid.email && (
-                <div className="success-indicator">
-                  <FaCheck />
-                </div>
-              )}
-            </div>
-            {errors.email && (
-              <div id="email-error" className="error-text" role="alert">
-                <FaExclamationTriangle className="error-icon" />
-                <span>{errors.email}</span>
-              </div>
-            )}
-          </div>
-
-          <div
-            className={`field-wrap ${fieldAnimations.password === "success" ? "success-animation" : ""
-              }`}
-          >
-            <label htmlFor="password">Password</label>
-            <div className="input-container">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Enter your password"
-                value={form.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={
-                  isRegister
-                    ? errors.password
-                      ? "input-error"
-                      : valid.password
-                        ? "input-success"
-                        : ""
-                    : ""
-                }
-                aria-invalid={!!errors.password}
-                aria-describedby="password-error"
-              />
-              <span className="toggle-icon" onClick={togglePassword}>
-                {showPassword ? <FaEye /> : <FaEyeSlash />}
-              </span>
-
-              {valid.password && (
-                <div className="success-indicator">
-                  <FaCheck />
-                </div>
-              )}
-            </div>
-                          
-              {isRegister && (
-                <div className="password-rules">
-                  <p>Password must contain:</p>
-                  <ul>
-                    <li className={passwordRuleStatus.length ? "valid" : "invalid"}>
-                      {passwordRuleStatus.length ? <CheckCircle/> : <XCircle/>} At least 8 characters
-                    </li>
-                    <li className={passwordRuleStatus.uppercase ? "valid" : "invalid"}>
-                      {passwordRuleStatus.uppercase ? <CheckCircle/> : <XCircle/>} At least one uppercase letter
-                    </li>
-                    <li className={passwordRuleStatus.lowercase ? "valid" : "invalid"}>
-                      {passwordRuleStatus.lowercase ? <CheckCircle/> : <XCircle/>} At least one lowercase letter
-                    </li>
-                    <li className={passwordRuleStatus.number ? "valid" : "invalid"}>
-                      {passwordRuleStatus.number ? <CheckCircle/> : <XCircle/>} At least one number
-                    </li>
-                    <li className={passwordRuleStatus.specialChar ? "valid" : "invalid"}>
-                      {passwordRuleStatus.specialChar ? <CheckCircle/> : <XCircle/>} At least one special character
-                    </li>
-                  </ul>
-                </div>
-              )}
-            {errors.password && (
-              <div id="password-error" className="error-text" role="alert">
-                <FaExclamationTriangle className="error-icon" />
-                <span>{errors.password}</span>
-              </div>
-            )}
-          </div>
-
-          {!isRegister && (
-            <div className="forgot-password">
-              <Link to="/reset-password" className="forgot-link">
-                Forgot Password?
-              </Link>
-            </div>
-          )}
-
-          {isRegister && (
-            <div
-              className={`field-wrap ${fieldAnimations.confirmPassword === "success"
-                  ? "success-animation"
-                  : ""
-                }`}
-            >
-              <label htmlFor="confirmpassword">Confirm Password</label>
-              <div className="input-container">
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  name="confirmPassword"
-                  placeholder="Confirm your password"
-                  value={form.confirmPassword}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.confirmPassword
-                      ? "input-error"
-                      : valid.confirmPassword
-                        ? "input-success"
-                        : ""
-                  }
-                  aria-invalid={!!errors.confirmPassword}
-                  aria-describedby="confirm-error"
-                />
-                <span className="toggle-icon" onClick={toggleConfirmPassword}>
-                  {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
-                </span>
-                {valid.confirmPassword && (
-                  <div className="success-indicator">
-                    <FaCheck />
-                  </div>
-                )}
-              </div>
-              {errors.confirmPassword && (
-                <div id="confirm-error" className="error-text" role="alert">
-                  <FaExclamationTriangle className="error-icon" />
-                  <span>{errors.confirmPassword}</span>
-                </div>
-              )}
-            </div>
-          )}
+            User Sign In
+          </button>
 
           <button
-            type="submit"
-            className={`btn-signin ${loading ? "loading" : ""} ${Object.keys(valid).length > 0 ? "pulse-glow" : ""
-              }`}
-            disabled={loading}
+            onClick={() => setIsAdminToggle(true)}
+            className={`
+      ${isAdminToggle
+                ? "!border-[var(--maroon-500)]"
+                : "!bg-white !border-b-[3px] !border-[var(--maroon-500)] !text-gray-700"
+              }
+    `}
           >
-            <span className="btn-text">
-              {isRegister ? "Create Account" : "Sign In"}
-            </span>
-            {loading && <span className="spinner"></span>}
-            <div className="btn-shine"></div>
+            Admin Sign In
           </button>
-        </form>
-
-        {errors.general && (
-          <div className="error-general" role="alert">
-            <FaExclamationTriangle />
-            <span>{errors.general}</span>
-          </div>
-        )}
-
-        <div className="toggle-link">
-          {isRegister ? (
-            <span>
-              Already have an account?{" "}
-              <button onClick={() => toggleMode(false)}>Sign In</button>
-            </span>
-          ) : (
-            <span>
-              New user?{" "}
-              <button onClick={() => toggleMode(true)}>Create Account</button>
-            </span>
-          )}
         </div>
+
       </div>
-    </div>
-  );
+
+      {isAdminToggle ? (<AdminLogin />) : (<>
+
+        <div className="sign-container">
+          <div className="animated-background">
+            <div className="floating-shape shape-1"></div>
+            <div className="floating-shape shape-2"></div>
+            <div className="floating-shape shape-3"></div>
+            <div className="floating-shape shape-4"></div>
+          </div>
+
+          <div className={`sign-card ${cardAnimation}`}>
+            <div className="card-header">
+              <div className="logo-sparkle">
+                <div className="sparkle"></div>
+                <h2>{isRegister ? "Create Account" : "Welcome Back"}</h2>
+                <div className="sparkle"></div>
+              </div>
+              <p className="card-subtitle">
+                {isRegister
+                  ? "Join our community today"
+                  : "Sign in to your account"}
+              </p>
+            </div>
+
+            {isRegister && (
+              <div className="progress-bar-wrapper">
+                <div className="progress-labels">
+                  <span className={progress >= 25 ? "active" : ""}>Name</span>
+                  <span className={progress >= 50 ? "active" : ""}>Email</span>
+                  <span className={progress >= 75 ? "active" : ""}>Password</span>
+                  <span className={progress >= 100 ? "active" : ""}>Confirm</span>
+                </div>
+                <div
+                  className="progress-bar-dynamic-container"
+                  title={`Progress: ${progress}%`}
+                >
+                  <div
+                    className="progress-bar-dynamic-filler"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                  <div className="progress-segment"></div>
+                  <div className="progress-segment"></div>
+                  <div className="progress-segment"></div>
+                </div>
+              </div>
+            )}
+
+            <form onSubmit={isRegister ? handleRegister : handleSignIn} noValidate>
+              {isRegister && (
+                <div
+                  className={`field-wrap ${fieldAnimations.name === "success" ? "success-animation" : ""
+                    }`}
+                >
+                  <label htmlFor="name">Full Name</label>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Enter your full name"
+                      value={form.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.name
+                          ? "input-error"
+                          : valid.name
+                            ? "input-success"
+                            : ""
+                      }
+                      aria-invalid={!!errors.name}
+                      aria-describedby="name-error"
+                    />
+                    {valid.name && (
+                      <div className="success-indicator">
+                        <FaCheck />
+                      </div>
+                    )}
+                  </div>
+                  {errors.name && (
+                    <div id="name-error" className="error-text" role="alert">
+                      <FaExclamationTriangle className="error-icon" />
+                      <span>{errors.name}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div
+                className={`field-wrap ${fieldAnimations.email === "success" ? "success-animation" : ""
+                  }`}
+              >
+                <label htmlFor="email">Email Address</label>
+                <div className="input-container">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    value={form.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.email
+                        ? "input-error"
+                        : valid.email
+                          ? "input-success"
+                          : ""
+                    }
+                    aria-invalid={!!errors.email}
+                    aria-describedby="email-error"
+                  />
+                  {valid.email && (
+                    <div className="success-indicator">
+                      <FaCheck />
+                    </div>
+                  )}
+                </div>
+                {errors.email && (
+                  <div id="email-error" className="error-text" role="alert">
+                    <FaExclamationTriangle className="error-icon" />
+                    <span>{errors.email}</span>
+                  </div>
+                )}
+              </div>
+
+              <div
+                className={`field-wrap ${fieldAnimations.password === "success" ? "success-animation" : ""
+                  }`}
+              >
+                <label htmlFor="password">Password</label>
+                <div className="input-container">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Enter your password"
+                    value={form.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      isRegister
+                        ? errors.password
+                          ? "input-error"
+                          : valid.password
+                            ? "input-success"
+                            : ""
+                        : ""
+                    }
+                    aria-invalid={!!errors.password}
+                    aria-describedby="password-error"
+                  />
+                  <span className="toggle-icon" onClick={togglePassword}>
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                  </span>
+
+                  {valid.password && (
+                    <div className="success-indicator">
+                      <FaCheck />
+                    </div>
+                  )}
+                </div>
+
+                {isRegister && (
+                  <div className="password-rules">
+                    <p>Password must contain:</p>
+                    <ul>
+                      <li className={passwordRuleStatus.length ? "valid" : "invalid"}>
+                        {passwordRuleStatus.length ? <CheckCircle /> : <XCircle />} At least 8 characters
+                      </li>
+                      <li className={passwordRuleStatus.uppercase ? "valid" : "invalid"}>
+                        {passwordRuleStatus.uppercase ? <CheckCircle /> : <XCircle />} At least one uppercase letter
+                      </li>
+                      <li className={passwordRuleStatus.lowercase ? "valid" : "invalid"}>
+                        {passwordRuleStatus.lowercase ? <CheckCircle /> : <XCircle />} At least one lowercase letter
+                      </li>
+                      <li className={passwordRuleStatus.number ? "valid" : "invalid"}>
+                        {passwordRuleStatus.number ? <CheckCircle /> : <XCircle />} At least one number
+                      </li>
+                      <li className={passwordRuleStatus.specialChar ? "valid" : "invalid"}>
+                        {passwordRuleStatus.specialChar ? <CheckCircle /> : <XCircle />} At least one special character
+                      </li>
+                    </ul>
+                  </div>
+                )}
+                {errors.password && (
+                  <div id="password-error" className="error-text" role="alert">
+                    <FaExclamationTriangle className="error-icon" />
+                    <span>{errors.password}</span>
+                  </div>
+                )}
+              </div>
+
+              {!isRegister && (
+                <div className="forgot-password">
+                  <Link to="/reset-password" className="forgot-link">
+                    Forgot Password?
+                  </Link>
+                </div>
+              )}
+
+              {isRegister && (
+                <div
+                  className={`field-wrap ${fieldAnimations.confirmPassword === "success"
+                    ? "success-animation"
+                    : ""
+                    }`}
+                >
+                  <label htmlFor="confirmpassword">Confirm Password</label>
+                  <div className="input-container">
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      name="confirmPassword"
+                      placeholder="Confirm your password"
+                      value={form.confirmPassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.confirmPassword
+                          ? "input-error"
+                          : valid.confirmPassword
+                            ? "input-success"
+                            : ""
+                      }
+                      aria-invalid={!!errors.confirmPassword}
+                      aria-describedby="confirm-error"
+                    />
+                    <span className="toggle-icon" onClick={toggleConfirmPassword}>
+                      {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                    </span>
+                    {valid.confirmPassword && (
+                      <div className="success-indicator">
+                        <FaCheck />
+                      </div>
+                    )}
+                  </div>
+                  {errors.confirmPassword && (
+                    <div id="confirm-error" className="error-text" role="alert">
+                      <FaExclamationTriangle className="error-icon" />
+                      <span>{errors.confirmPassword}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className={`btn-signin ${loading ? "loading" : ""} ${Object.keys(valid).length > 0 ? "pulse-glow" : ""
+                  }`}
+                disabled={loading}
+              >
+                <span className="btn-text">
+                  {isRegister ? "Create Account" : "Sign In"}
+                </span>
+                {loading && <span className="spinner"></span>}
+                <div className="btn-shine"></div>
+              </button>
+            </form>
+
+            {errors.general && (
+              <div className="error-general" role="alert">
+                <FaExclamationTriangle />
+                <span>{errors.general}</span>
+              </div>
+            )}
+
+            <div className="toggle-link">
+              {isRegister ? (
+                <span>
+                  Already have an account?{" "}
+                  <button onClick={() => toggleMode(false)}>Sign In</button>
+                </span>
+              ) : (
+                <span>
+                  New user?{" "}
+                  <button onClick={() => toggleMode(true)}>Create Account</button>
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </>
+      )}
+    </>);
 }
 
 export default Sign;
