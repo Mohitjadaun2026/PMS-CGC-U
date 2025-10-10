@@ -129,7 +129,6 @@ This document records **all contributions** to the project and assigns points ba
 |    109   | [divyagit21](#)   |     7     |    #274   | Added pagination for interview experiences      |
 |    110   | [K9Patel](#)      |     7     |    #277   | Back-to-top button added                        |
 |    111   | [K9Patel](#)      |     3     |    #287   | Login button styled                             |
-
 |    112   | [divyagit21](#)   |     7     |    #293   | Updated Admin-Login                             |
 |    113   | [divyagit21](#)   |     3     |    #294   | Added alerts for user,admin logout              |
 |    114   | [divyagit21](#)   |     3     |    #295   | Added space between team-section and footer     |
