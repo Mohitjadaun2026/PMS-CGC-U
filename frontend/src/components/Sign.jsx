@@ -181,10 +181,10 @@ function Sign() {
     setLoading(false);
     console.log("Sign-in response:", res);
     if (res.error) {
-      alert("Sign-in failed: " + res.error);
+      alert("Sign-in failed: " + res.error); // NOTE: Still using alert, but this is outside the scope of AOS fix
       return;
     }
-    alert("Signed in as " + form.email);
+    alert("Signed in as " + form.email); // NOTE: Still using alert, but this is outside the scope of AOS fix
     window.location.href = "/";
     setForm({ name: "", email: "", password: "", confirmPassword: "" });
     setErrors({});
@@ -209,7 +209,7 @@ function Sign() {
 
   return (
     <>
-      <div className="flex flex-row gap-6 mt-4 justify-center">
+      <div className="flex flex-row gap-6 mt-4 justify-center" data-aos="fade-up">
         <div className="flex flex-row gap-6 mt-4 justify-center">
           <button
             onClick={() => setIsAdminToggle(false)}
@@ -248,7 +248,7 @@ function Sign() {
             <div className="floating-shape shape-4"></div>
           </div>
 
-          <div className={`sign-card ${cardAnimation}`}>
+          <div className={`sign-card ${cardAnimation}`} data-aos="zoom-in" data-aos-delay="200">
             <div className="card-header">
               <div className="logo-sparkle">
                 <div className="sparkle"></div>

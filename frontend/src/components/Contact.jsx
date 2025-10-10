@@ -389,7 +389,7 @@ function Contact() {
         toastClassName="custom-toast"
       />
 
-      <div className="contact-hero">
+      <div className="contact-hero" data-aos="fade-down">
         <h1>Contact Us</h1>
         <p>
           Get in touch with the DCPD (Department of Career Planning &
@@ -402,7 +402,7 @@ function Contact() {
       <div className="contact-content-wrapper">
         <div className="contact-main-content space">
           {/* Contact Info Section */}
-          <div className="contact-info">
+          <div className="contact-info" data-aos="fade-right">
             <div className="contact-card">
               <h2>General Contact</h2>
               <p>
@@ -432,10 +432,15 @@ function Contact() {
 
           {/* Executive Director Section */}
           <div className="executive-section">
-            <h2>Leadership</h2>
+            <h2 data-aos="fade-up">Leadership</h2>
             <div className="executive-scroll">
               {executiveDirector.concat(executiveDirector, executiveDirector).map((leader, idx) => (
-              <div className="executive-card" key={idx}>
+              <div 
+                className="executive-card" 
+                key={idx}
+                data-aos="fade-up" // Apply fade-up to all leader cards
+                data-aos-delay={idx * 100} 
+              >
                 <div className="photo-container">
                   <img
                   src={leader.photo}
@@ -464,15 +469,18 @@ function Contact() {
           </div>
 
 
-
-
-
           {/* DCPD Team Section */}
           <div className="team-section">
-            <h2>Meet Our DCPD Team</h2>
+            <h2 data-aos="fade-up">Meet Our DCPD Team</h2>
             <div className="team-grid">
               {dcpdTeam.map((member, idx) => (
-                <div className="team-card" key={idx}>
+                <div 
+                  className="team-card" 
+                  key={idx}
+                  data-aos="zoom-in" // Apply zoom-in to team members
+                  data-aos-delay={idx * 50}
+                  data-aos-duration="600"
+                >
                   <div className="photo-container photo-container-team">
                     <img
                       src={member.photo}

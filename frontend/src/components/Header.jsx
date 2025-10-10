@@ -48,13 +48,14 @@ function Header() {
   };
 
   const confirmLogout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to log out?");
-    if(confirmLogout){
+    // NOTE: Changed to use custom modal instead of window.confirm
+    // const confirmLogout = window.confirm("Are you sure you want to log out?");
+    // if(confirmLogout){
       setIsLoggedIn(false);
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/';
-    }
+    // }
   };
 
   // Toggle theme
@@ -66,7 +67,8 @@ function Header() {
   };
 
   return (
-    <header className="pms-header">
+    // Apply fade-down AOS effect to the header
+    <header className="pms-header" data-aos="fade-down">
       {showAlert && <ConfirmAlert
         isOpen={showAlert}
         title="Confirm Logout"
@@ -140,5 +142,3 @@ const handleLogin = async (e) => {
   localStorage.setItem('isLoggedIn', 'true');
   window.location.href = '/'; // or use navigate('/')
 };
-
-
