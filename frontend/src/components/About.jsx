@@ -149,7 +149,11 @@ function About() {
 
       <div className="relative z-10 container mx-auto px-6 py-16 max-w-7xl">
         {/* Enhanced Animated Header Section */}
-        <div className={`about-header ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`about-header ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+          // Apply AOS fade-up to the header content once the component state allows (combined with existing visibility logic)
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="mb-12 flex justify-center mt-12">
             <div className="relative group">
               
@@ -195,6 +199,9 @@ function About() {
         {/* Enhanced Main Content Card */}
         <div 
           className={`about-container rounded-3xl shadow-2xl p-8 md:p-16 mb-20 backdrop-blur-xl transition-all duration-500 border ${isDark ? 'bg-gray-900/80 border-gray-700/50 text-gray-200' : 'bg-white/80 border-gray-200/50 text-gray-800'}`}
+          // Apply AOS fade-up to the main content container
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
           <div className="about-content relative">
             <div className="flex items-center gap-4 mb-8">
@@ -229,6 +236,10 @@ function About() {
                     ? 'bg-gray-800/60 border border-gray-700/50' 
                     : 'bg-white/60 border border-gray-200/50'
                 }`}
+                // Apply AOS zoom-in effect to each feature card
+                data-aos="zoom-in"
+                data-aos-delay={100 * index}
+                data-aos-duration="600"
               >
                 {/* Animated Background */}
                 <div 
@@ -256,6 +267,8 @@ function About() {
           {/* Enhanced Commitment Section */}
           <div 
             className="about-feature relative p-12 rounded-3xl text-center shadow-2xl transition-colors duration-500 overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="100"
           >
             {/* Background Pattern */}            
             <div className="relative">
@@ -282,6 +295,10 @@ function About() {
             <div
               key={index}
               className="about-placed group relative text-center bg-[rgba(255,255,255,0.8)] border border-[rgba(128,0,32,0.1)] p-10 rounded-3xl shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden"
+              // Apply AOS flip-up effect to each stat card
+              data-aos="flip-up"
+              data-aos-delay={150 * index}
+              data-aos-duration="800"
             >              
               <div className="relative">
                 <div className="flex justify-center mb-6">

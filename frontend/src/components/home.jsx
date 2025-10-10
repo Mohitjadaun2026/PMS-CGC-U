@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Animation variants
+// Animation variants (Framer Motion existing setup)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -508,7 +508,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section (Uses Framer Motion - no AOS needed here) */}
       <section
         id="features"
         className="features-section"
@@ -545,15 +545,22 @@ function Home() {
         </div>
       </section>
 
-      {/* Alumni Success Stories */}
-      <section className="alumni-section">
+      {/* Alumni Success Stories (Using AOS) */}
+      <section className="alumni-section" data-aos="fade-up">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title pt-15">Alumni Success Stories</h2>
           </div>
           <div className="alumni-grid">
             {alumni.map((alum, index) => (
-              <div key={index} className="alumni-card">
+              <div 
+                key={index} 
+                className="alumni-card"
+                // Apply AOS effect to each card with staggered delay
+                data-aos="zoom-in" 
+                data-aos-delay={index * 100} 
+                data-aos-duration="600"
+              >
                 <img
                   src={alum.image}
                   alt={alum.name}
@@ -573,7 +580,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Enhanced Partnership Section */}
+      {/* Enhanced Partnership Section (Uses Framer Motion - no AOS needed here) */}
       <section className="partners-section" ref={partnersSectionRef}>
         <div className="container">
           <motion.div
@@ -606,23 +613,23 @@ function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="stats-section">
+      {/* Stats Section (Using AOS) */}
+      <section className="stats-section" data-aos="fade-up">
         <div className="container">
           <div className="stats-grid">
-            <div className="stat-item">
+            <div className="stat-item" data-aos="zoom-in" data-aos-delay="0">
               <div className="stat-number">95%</div>
               <div className="stat-label">Placement Rate</div>
             </div>
-            <div className="stat-item">
+            <div className="stat-item" data-aos="zoom-in" data-aos-delay="100">
               <div className="stat-number">500+</div>
               <div className="stat-label">Companies</div>
             </div>
-            <div className="stat-item">
+            <div className="stat-item" data-aos="zoom-in" data-aos-delay="200">
               <div className="stat-number">₹45L</div>
               <div className="stat-label">Highest Package</div>
             </div>
-            <div className="stat-item">
+            <div className="stat-item" data-aos="zoom-in" data-aos-delay="300">
               <div className="stat-number">10K+</div>
               <div className="stat-label">Students Placed</div>
             </div>
@@ -630,8 +637,8 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
+      {/* CTA Section (Using AOS) */}
+      <section className="cta-section" data-aos="zoom-in-up" data-aos-duration="800">
         <div className="cta-container">
           <h2 className="cta-title">Ready to Launch Your Career?</h2>
           <p className="cta-description">
