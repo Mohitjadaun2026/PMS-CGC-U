@@ -42,11 +42,14 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    // Optionally redirect to home or login page
-    window.location.href = '/';
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if(confirmLogout){
+      setIsLoggedIn(false);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      // Optionally redirect to home or login page
+      window.location.href = '/';
+    }
   };
 
   // Toggle theme
