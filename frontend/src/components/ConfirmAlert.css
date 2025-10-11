@@ -4,11 +4,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* dark overlay */
+  background-color: rgba(0, 0, 0, 0.7); 
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  height: 100vh;
 }
 
 .modal-content {
@@ -19,6 +20,7 @@
   max-width: 400px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
+  position: relative;
 }
 
 .modal-title {
@@ -37,6 +39,7 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
@@ -66,4 +69,21 @@
 
 .btn-secondary:hover {
   background-color: #f0f0f0;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1 1 45%; 
+  min-width: 120px; 
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 0.5rem; 
+  right: 0.5rem; 
+  padding: 0.5rem; 
+  border-radius: 0.375rem; 
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }

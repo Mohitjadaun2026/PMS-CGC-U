@@ -181,8 +181,8 @@ function Footer() {
             rights reserved.
           </div>
           <div className="footer-cta">
-            <a href="/signin" className="footer-cta-button">Sign In</a>
-            <a href="/contact" className="contact-outline">Contact Us</a>
+            <a href="/signin" className="button-primary">Sign In</a>
+            <a href="/contact" className="button-tertiary">Contact Us</a>
           </div>
         </div>
       </div>

@@ -406,8 +406,7 @@ const InterviewForm = ({darkMode }) => {
         ))}
         <button
           type="button"
-          onClick={addRound}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          onClick={addRound} className="px-6 py-2.5 bg-white text-[var(--maroon-600)] font-semibold border !border-[var(--maroon-600)] rounded-md hover:bg-[var(--maroon-600)] hover:text-white cursor-pointer"
         >
           + Add Round
         </button>
@@ -432,7 +431,7 @@ const InterviewForm = ({darkMode }) => {
               }
               className={`px-3 py-1 border rounded-full cursor-pointer shadow-sm ${
                 formData.tags.includes(tag)
-                  ? "bg-blue-500 text-white"
+                  ? "bg-[var(--maroon-600)] text-white"
                   : darkMode
                   ? "bg-gray-600 text-white border-gray-500"
                   : "bg-white text-gray-800 border-gray-300"
@@ -454,7 +453,7 @@ const InterviewForm = ({darkMode }) => {
           <button
             type="button"
             onClick={addTag}
-            className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-white rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500"
+            className="px-4 py-2 !bg-[var(--maroon-600)] text-gray-800 dark:text-white rounded-sm hover:!bg-[var(--maroon-800)]"
           >
             Add
           </button>
@@ -465,7 +464,7 @@ const InterviewForm = ({darkMode }) => {
       <div className="text-center">
         <button
           type="submit"
-          className="px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition"
+          className="button-primary"
         >
           🚀 Submit Experience
         </button>

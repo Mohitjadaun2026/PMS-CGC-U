@@ -500,8 +500,8 @@ function Home() {
             Empowering Dreams, Creating Futures - Your Gateway to Success
           </p>
           <div className="hero-buttons">
-            <button className="btn btn-primary">Explore Opportunities</button>
-            <Link to="/About" className="btn btn-primary">
+            <button className="button-primary">Explore Opportunities</button>
+            <Link to="/About" className="button-tertiary">
               Learn More
             </Link>
           </div>
@@ -646,10 +646,10 @@ function Home() {
             Jhanjeri
           </p>
           <div className="cta-buttons">
-            <a href="/signin" className="btn btn-primary">
+            <a href="/signin" className="button-primary">
               Register Now
             </a>
-            <a href="/Contact" className="btn btn-outline">
+            <a href="/Contact" className="button-tertiary">
               Contact Us
             </a>
           </div>
