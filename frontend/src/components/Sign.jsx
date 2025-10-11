@@ -176,20 +176,26 @@ function Sign() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     if (!validateAll()) return;
-    setLoading(true);
-    const res = await signin(form);
-    setLoading(false);
-    console.log("Sign-in response:", res);
-    if (res.error) {
-      alert("Sign-in failed: " + res.error); // NOTE: Still using alert, but this is outside the scope of AOS fix
-      return;
+    try {
+      setLoading(true);
+      const res = await signin(form);
+      console.log("Sign-in response:", res);
+      if (res.error) {
+        alert("Sign-in failed: " + res.error); // NOTE: Still using alert, but this is outside the scope of AOS fix
+        return;
+      }
+      alert("Signed in as " + form.email); // NOTE: Still using alert, but this is outside the scope of AOS fix
+      window.location.href = "/";
+      setForm({ name: "", email: "", password: "", confirmPassword: "" });
+      setErrors({});
+      setTouched({});
+      setValid({});
     }
-    alert("Signed in as " + form.email); // NOTE: Still using alert, but this is outside the scope of AOS fix
-    window.location.href = "/";
-    setForm({ name: "", email: "", password: "", confirmPassword: "" });
-    setErrors({});
-    setTouched({});
-    setValid({});
+    catch (err) {
+      console.log(err.response.data.error );
+      alert(err.response.data.error );
+    }
+      setLoading(false);
   };
 
   function resetForm() {
@@ -214,11 +220,11 @@ function Sign() {
           <button
             onClick={() => setIsAdminToggle(false)}
             className={`
-      ${!isAdminToggle
-                ? "!border-[var(--maroon-500)]"
-                : "!bg-white !border-b-[3px] !border-[var(--maroon-500)] !text-gray-700"
+              ${isAdminToggle
+                ? "!border-[var(--maroon-500)] !bg-white !border-b-[3px] rounded-md !text-lg font-semibold dark:text-black"
+                : "!bg-[var(--maroon-700)] !text-white rounded-md !text-lg font-semibold"}
               }
-    `}
+            `}
           >
             User Sign In
           </button>
@@ -226,11 +232,10 @@ function Sign() {
           <button
             onClick={() => setIsAdminToggle(true)}
             className={`
-      ${isAdminToggle
-                ? "!border-[var(--maroon-500)]"
-                : "!bg-white !border-b-[3px] !border-[var(--maroon-500)] !text-gray-700"
-              }
-    `}
+              ${!isAdminToggle
+                ? "!border-[var(--maroon-500)] !bg-white rounded-md !border-b-[3px] !text-lg font-semibold dark:text-black"
+                : "!bg-[var(--maroon-700)] !text-white rounded-md !text-lg font-semibold"}
+            `}
           >
             Admin Sign In
           </button>
