@@ -140,7 +140,7 @@ h1 {
 }
 
 /* Buttons & Links */
-button {
+.button-primary-cta {
   background-color: var(--maroon-700);
   color: white;
   border-radius: var(--border-radius);
@@ -148,14 +148,65 @@ button {
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   transition: all var(--transition-speed);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
 }
 
-button:hover {
+.button-primary-cta:hover {
   background-color: var(--maroon-800);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+}
+
+.button-primary {
+  background-color: var(--maroon-600);
+  color: white;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.65rem 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.button-primary:hover {
+  background-color: var(--maroon-800);
+  color:white;
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--maroon-700);
+  border: 2px solid var(--maroon-700);
+  border-radius: var(--border-radius);
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.button-secondary:hover {
+  background-color: var(--maroon-700);
+  color:white;
+}
+
+body.dark .button-secondary {
+  background-color: transparent;
+  color:var(--text-primary);
+  border: 2px solid var(--text-primary);
+  border-radius: var(--border-radius);
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+body.dark .button-secondary:hover {
+  background-color: var(--maroon-700);
+  color:var(--text-primary);
+  border: 2px solid var(--maroon-700);
 }
 
 .btn-outline {
@@ -167,6 +218,42 @@ button:hover {
 .btn-outline:hover {
   background: var(--maroon-700);
   color: white;
+}
+
+.button-tertiary {
+  background-color: transparent;
+  color: var(--maroon-700);
+  border: 1px solid var(--maroon-800);
+  border-radius: var(--border-radius);
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.button-tertiary:hover {
+  background-color: var(--maroon-600);
+  text-decoration: underline;
+  color:white;
+}
+
+body.dark .button-tertiary {
+  background-color: transparent;
+  color:var(--text-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: var(--border-radius);
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+body.dark .button-tertiary:hover {
+  background-color: var(--maroon-600);
+  text-decoration: underline;
+  border: 1px solid var(--maroon-600);
 }
 
 a {

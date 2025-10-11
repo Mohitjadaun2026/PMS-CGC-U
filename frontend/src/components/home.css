@@ -180,20 +180,6 @@ body.light .hero-description {
 .btn:hover{
   text-decoration: none;
 }
-.btn-primary {
-  background-color: var(--primary-maroon);
-  color: var(--text-primary);
-}
-
-.btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 20px -5px rgba(128, 0, 32, 0.4);
-  background: linear-gradient(
-    to right,
-    var(--primary-maroon-light),
-    var(--primary-maroon)
-  );
-}
 
 .btn-secondary {
   border: 2px solid var(--primary-maroon-dark);

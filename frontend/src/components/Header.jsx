@@ -105,7 +105,7 @@ function Header() {
         {isLoggedIn && (
           <button
             onClick={handleLogout}
-            className="logout-btn"
+            className="button-secondary"
             style={{ marginLeft: "10px" }}
           >
             Logout
@@ -125,7 +125,7 @@ function Header() {
           )}
         </button>
         {!isLoggedIn && (
-          <Link to="/signin" className="login-btn">Login</Link>
+          <Link to="/signin" className="button-primary-cta" style={{color:'white'}}>Login</Link>
         )}
       </nav>
     </header>

@@ -1,6 +1,7 @@
-import './ConfirmAlert.css'; 
+import './ConfirmAlert.css';
+import { X } from 'lucide-react';
 
-const ConfirmAlert = ({isOpen, title, message, confirmText, cancelText, onConfirm, onCancel}) => {
+const ConfirmAlert = ({ isOpen, title, message, confirmText, cancelText, onConfirm, onCancel }) => {
   if (!isOpen) return null;
 
   return (
@@ -9,10 +10,13 @@ const ConfirmAlert = ({isOpen, title, message, confirmText, cancelText, onConfir
         <h2 className="modal-title">{title}</h2>
         <p className="modal-message">{message}</p>
         <div className="modal-actions">
-          <button className="btn-secondary" onClick={onCancel}>
+          <button onClick={onCancel} className='modal-close-btn' aria-label="Close">
+            <X size={20} className="!text-[var(--maroon-700)]" />
+          </button>
+          <button className="button-secondary" onClick={onCancel}>
             {cancelText}
           </button>
-          <button className="btn-primary" onClick={onConfirm}>
+          <button className="button-primary" onClick={onConfirm}>
             {confirmText}
           </button>
         </div>

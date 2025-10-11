@@ -59,14 +59,14 @@ const InterviewExperience = ({ darkMode = false }) => {
             <Link
               to="/interview-experience/share"
               style={{ textDecoration: "none" }}
-              className="px-5 py-3 rounded-lg bg-[var(--maroon-600)] hover:bg-[var(--maroon-800)] !text-white font-medium shadow-md hover:shadow-lg no-underline decoration-none hover:decoration-none"
+              className="button-secondary"
             >
               Share Your Experience
             </Link>
             <Link
               to="/interview-experience/browse"
               style={{ textDecoration: "none" }}
-              className="px-5 py-3 rounded-lg bg-[var(--maroon-600)] hover:bg-[var(--maroon-800)] !text-white font-medium shadow-md hover:shadow-lg no-underline decoration-none hover:decoration-none"
+              className="button-secondary"
             >
               Browse Experiences
             </Link>
