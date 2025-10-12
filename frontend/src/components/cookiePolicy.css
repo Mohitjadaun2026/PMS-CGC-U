@@ -359,3 +359,25 @@ body.light .browser-links a:hover {
 .cookie-section:nth-child(5) { animation-delay: 0.5s; }
 .cookie-section:nth-child(6) { animation-delay: 0.6s; }
 .cookie-section:nth-child(7) { animation-delay: 0.7s; }
+
+.cookie-section:nth-child(even) {
+  background: rgba(128, 0, 32, 0.03);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+}
+
+.cookie-toc a {
+  color: var(--maroon-700);
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: color 0.5s ease;
+}
+
+.cookie-toc a:hover {
+  color: var(--maroon-900);
+  text-decoration: underline;
+}
+html {
+  scroll-behavior: smooth;
+} 
