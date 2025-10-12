@@ -17,12 +17,12 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import CookiePolicy from "./CookiePolicy";
 import Home from "./home";
 
-
-
 function Footer() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const user = localStorage.getItem('user') || null;
+  
   const handleSubscribe = async (e) => {
     e.preventDefault();
 
@@ -181,7 +181,7 @@ function Footer() {
             rights reserved.
           </div>
           <div className="footer-cta">
-            <a href="/signin" className="button-primary">Sign In</a>
+            {!user && <a href="/signin" className="button-primary">Sign In</a>}
             <a href="/contact" className="button-tertiary">Contact Us</a>
           </div>
         </div>

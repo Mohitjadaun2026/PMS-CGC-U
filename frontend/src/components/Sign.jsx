@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signup, signin } from "../../api/auth";
 import {
   FaEye,
@@ -47,6 +47,14 @@ function Sign() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [valid, setValid] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      navigate('/');
+    }
+  }, []);
 
   useEffect(() => {
     if (isRegister) {
