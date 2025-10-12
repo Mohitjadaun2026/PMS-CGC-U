@@ -25,7 +25,7 @@ const CookiePolicy = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-primary)' }}>
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="rounded-lg shadow-lg p-8" style={{ 
+        <div className="rounded-lg shadow-lg p-8 transform transition-transform duration-300 hover:scale-102 hover:shadow-2xl" style={{ 
           backgroundColor: 'var(--bg-darker)', 
           color: 'var(--text-primary)',
           border: theme === 'light' ? '1px solid rgba(128, 0, 32, 0.1)' : '1px solid rgba(128, 0, 32, 0.3)',
@@ -55,14 +55,23 @@ const CookiePolicy = () => {
             </p>
           </div>
 
-          <div className="mb-8 text-center">
+          <div className="cookie-toc mb-8 text-center">
+            <p style={{ color: 'var(--text-primary)' }}>
+              <a href="#types-of-cookies" className="toc-link"> Types of Cookies </a> | 
+              <a href="#managing-cookies" className="toc-link"> Managing Cookies </a> | 
+              <a href="#contact-us" className="toc-link"> Contact </a>
+            </p>
+          </div>
+
+          <div className="mb-8 text-center cookie-section" id="types-of-cookies">
             <h2 className="text-2xl font-semibold mb-6" style={{ color: '#800020' }}>
               Types of Cookies We Use
             </h2>
             
             <div className="mb-6">
               <h3 className="text-xl font-medium mb-3" style={{ color: '#a00028' }}>
-                1. Essential Cookies
+              <span role="img" aria-label="lock">🔒</span>
+                Essential Cookies
               </h3>
               <p className="leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                 These cookies are necessary for the website to function properly. They enable basic functions like page navigation, access to secure areas, and form submissions.
@@ -71,7 +80,8 @@ const CookiePolicy = () => {
 
             <div className="mb-6">
               <h3 className="text-xl font-medium mb-3" style={{ color: '#a00028' }}>
-                2. Functional Cookies
+              <span role="img" aria-label="settings">⚙️</span>
+                Functional Cookies
               </h3>
               <p className="leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                 These cookies allow us to remember your preferences, such as your login information, language settings, and theme preferences (light/dark mode).
@@ -80,7 +90,8 @@ const CookiePolicy = () => {
 
             <div className="mb-6">
               <h3 className="text-xl font-medium mb-3" style={{ color: '#a00028' }}>
-                3. Analytics Cookies
+              <span role="img" aria-label="graph">📊</span>
+                Analytics Cookies
               </h3>
               <p className="leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                 These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.
@@ -104,7 +115,7 @@ const CookiePolicy = () => {
             </ul>
           </div>
 
-          <div className="mb-8 text-center">
+          <div className="mb-8 text-center cookie-section" id="managing-cookies">
             <h2 className="text-2xl font-semibold mb-4" style={{ color: '#800020' }}>
               Managing Your Cookie Preferences
             </h2>
@@ -142,7 +153,7 @@ const CookiePolicy = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-center" style={{ color: '#800020' }}>
+            <h2 className="text-2xl font-semibold mb-4 text-center cookie-section" id="contact-us" style={{ color: '#800020' }}>
               Contact Us
             </h2>
             <p className="mb-4 leading-relaxed text-center" style={{ color: 'var(--text-primary)' }}>
