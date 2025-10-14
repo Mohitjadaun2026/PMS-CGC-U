@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
 import cgcBack from "../assets/cgc back2.png";
 import "./home.css";
 import {
@@ -181,6 +182,113 @@ const logoVariants = {
       stiffness: 400,
     },
   },
+};
+
+// Animated Stat Item Component
+const AnimatedStatItem = ({ number, label, suffix = "", prefix = "" }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (inView) {
+      // Extract numeric value from the number string
+      const numericValue = parseFloat(number.replace(/[^0-9.]/g, ""));
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const increment = numericValue / steps;
+      const stepDuration = duration / steps;
+
+      let currentStep = 0;
+      const timer = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+          setCount(Math.min(increment * currentStep, numericValue));
+        } else {
+          setCount(numericValue);
+          clearInterval(timer);
+        }
+      }, stepDuration);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, number]);
+
+  const formatNumber = (value) => {
+    if (number.includes("K")) {
+      return Math.floor(value) + "K";
+    } else if (number.includes("L")) {
+      return "₹" + Math.floor(value) + "L";
+    } else if (number.includes("%")) {
+      return Math.floor(value) + "%";
+    } else if (number.includes("+")) {
+      return Math.floor(value) + "+";
+    }
+    return Math.floor(value);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className="stat-item"
+      initial={{ opacity: 0, y: 50, scale: 0.8 }}
+      animate={
+        inView
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 50, scale: 0.8 }
+      }
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.8,
+      }}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        boxShadow: "0 20px 40px rgba(128, 0, 32, 0.4)",
+        transition: {
+          type: "spring",
+          stiffness: 400,
+          damping: 25,
+        },
+      }}
+    >
+      <motion.div
+        className="stat-number"
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 200,
+          delay: 0.2,
+        }}
+      >
+        {prefix}
+        {inView ? formatNumber(count) : "0"}
+        {suffix}
+      </motion.div>
+      <motion.div
+        className="stat-label"
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
+        {label}
+      </motion.div>
+
+      {/* Animated border on hover */}
+      <motion.div
+        className="stat-border-glow"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
 };
 
 // Feature Card Component
@@ -606,27 +714,30 @@ function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section with Animation */}
       <section className="stats-section">
         <div className="container">
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-number">95%</div>
-              <div className="stat-label">Placement Rate</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">500+</div>
-              <div className="stat-label">Companies</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">₹45L</div>
-              <div className="stat-label">Highest Package</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">10K+</div>
-              <div className="stat-label">Students Placed</div>
-            </div>
-          </div>
+          <motion.div
+            className="stats-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: 0.2,
+                },
+              },
+            }}
+          >
+            <AnimatedStatItem number="95%" label="Placement Rate" />
+            <AnimatedStatItem number="500+" label="Companies" />
+            <AnimatedStatItem number="45L" label="Highest Package" />
+            <AnimatedStatItem number="10K+" label="Students Placed" />
+          </motion.div>
         </div>
       </section>
 

@@ -1,7 +1,12 @@
 // src/App.jsx
-import React from "react";
+import React, { useEffect } from "react"; // Added useEffect
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+
+// AOS Import
+import AOS from 'aos';
+
+// Component Imports
 import Chatbot from "./components/Chatbot";
 import Header from "./components/Header";
 import Home from "./components/home";
@@ -11,26 +16,39 @@ import About from "./components/About";
 import StudentProfile from "./components/StudentProfile";
 import Contact from "./components/Contact";
 import AdminJobPosting from "./components/AdminJobPosting";
-import AdminLogin from "./components/AdminLogin";
+// AdminLogin is imported but not used in routes, kept for completeness
+import AdminLogin from "./components/AdminLogin"; 
 import AdminManagement from "./components/AdminManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JobsPage, { JobWrapper } from "./components/jobs";
 import InterviewExperience from "./components/InterviewExperience";
-import InterviewForm from "./components/InterviewForm"; // Added import here
-import BrowseExperiences from "./components/BrowseExperiences"; // Added import here
-import ExperienceDetails from "./components/ExperienceDetails"; // <--- NEW IMPORT
-import BackToTopButton from "./components/Backtotopbutton"; // <--- NEW IMPORT
+import InterviewForm from "./components/InterviewForm"; 
+import BrowseExperiences from "./components/BrowseExperiences"; 
+import ExperienceDetails from "./components/ExperienceDetails"; 
+import BackToTopButton from "./components/Backtotopbutton"; 
 
 import ScrollToTop from "./components/ScrollToTop";
 import ResetPassword from "./components/ResetPassword";
-import PrivacyPolicy from "./components/PrivacyPolicy"; // ✅ Added
-import CookiePolicy from "./components/CookiePolicy"; // ✅ Added
-import TermsOfService from "./components/TermsOfService"; // ✅ Added
-import GdprCompliance from "./components/GdprCompliance"; // ✅ Added
+import PrivacyPolicy from "./components/PrivacyPolicy"; 
+import CookiePolicy from "./components/CookiePolicy"; 
+import TermsOfService from "./components/TermsOfService"; 
+import GdprCompliance from "./components/GdprCompliance"; 
 
 import "../src/index.css";
 
 function App() {
+  // 1. AOS Initialization
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,    // Global duration for animations
+      once: true,        // Animation only happens once
+      easing: 'ease-in-out',
+      // Further customization can be done here (e.g., offset, delay)
+    });
+    // This is important to refresh AOS state after routes/components change
+    AOS.refresh();
+  }, []);
+
   return (
     <Router>
       <ScrollToTop /> {/* Always inside Router */}
@@ -43,6 +61,7 @@ function App() {
             element={
               <>
                 <Header />
+                {/* Use a common layout for all public pages */}
                 <main className="main-content pt-0">
                   <Home />
                 </main>
@@ -53,7 +72,7 @@ function App() {
             }
           />
 
-          {/* Public Routes */}
+          {/* Public Routes - Header/Footer/BackToTop/Chatbot repeated for consistency */}
           <Route
             path="/signin"
             element={
@@ -64,7 +83,7 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
@@ -96,12 +115,12 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
 
-          {/* NEW ROUTE FOR EXPERIENCE DETAILS */}
+          {/* Experience Details Route */}
           <Route
             path="/experience/:id"
             element={
@@ -114,7 +133,7 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
@@ -129,11 +148,12 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
-          {/* Privacy Policy Route ✅ */}
+          
+          {/* Legal/Policy Routes */}
           <Route
             path="/privacy"
             element={
@@ -144,7 +164,49 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
+              </>
+            }
+          />
+          <Route
+            path="/cookies"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <CookiePolicy />
+                </main>
+                <Footer />
+                <BackToTopButton />
+                <Chatbot/>
+              </>
+            }
+          />
+          <Route
+            path="/terms"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <TermsOfService />
+                </main>
+                <Footer />
+                <BackToTopButton />
+                <Chatbot />
+              </>
+            }
+          />
+          <Route
+            path="/gdpr"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <GdprCompliance />
+                </main>
+                <Footer />
+                <BackToTopButton />
+                <Chatbot/>
               </>
             }
           />
@@ -162,7 +224,7 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
@@ -178,12 +240,12 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
 
-          {/* Added new route for sharing interview experience */}
+          {/* Route for sharing interview experience */}
           <Route
             path="/interview-experience/share"
             element={
@@ -196,11 +258,12 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />
 
+          {/* Job Routes */}
           <Route
             path="/jobs"
             element={
@@ -211,7 +274,7 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton /> 
-                 <Chatbot/>
+                <Chatbot/>
               </>
             }
           />  
@@ -226,50 +289,18 @@ function App() {
                 </main>
                 <Footer />
                 <BackToTopButton />
+                <Chatbot/>
               </>
             }
           />
-
-          {/* Cookie Policy Route ✅ */}
+          
           <Route
-            path="/cookies"
+            path="/reset-password"
             element={
               <>
                 <Header />
                 <main className="main-content">
-                  <CookiePolicy />
-                </main>
-                <Footer />
-                <BackToTopButton />
-                 <Chatbot/>
-              </>
-            }
-          />
-
-          {/* Terms of Service Route ✅ */}
-          <Route
-            path="/terms"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <TermsOfService />
-                </main>
-                <Footer />
-                <BackToTopButton />
-                <Chatbot />
-              </>
-            }
-          />
-
-          {/* GDPR Compliance Route ✅ */}
-          <Route
-            path="/gdpr"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <GdprCompliance />
+                  <ResetPassword />
                 </main>
                 <Footer />
                 <BackToTopButton />
@@ -278,8 +309,7 @@ function App() {
             }
           />
 
-          {/* Admin Routes */}
-          <Route path="/admin-login" element={<AdminLogin />} />
+          {/* Admin Routes (usually without surrounding Header/Footer) */}
           <Route
             path="/admin-job-posting"
             element={
@@ -296,23 +326,9 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/reset-password"
-            element={
-              <>
-                <Header />
-                <main className="main-content">
-                  <ResetPassword />
-                </main>
-                <Footer />
-                <BackToTopButton />
-                <Chatbot/>
-              </>
-            }
-          />
+
         </Routes>
-        <BackToTopButton /> 
-            <Chatbot/>
+        {/* Removed duplicate BackToTopButton and Chatbot elements here */}
       </div>
     </Router>
   );

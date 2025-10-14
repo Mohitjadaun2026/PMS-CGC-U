@@ -339,7 +339,7 @@ body.light .section-description {
 
 .section-underline {
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-maroon), var(--primary-gold));
+  background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold));
   margin: 1rem auto 0;
   border-radius: 2px;
   max-width: 100px;
@@ -390,7 +390,7 @@ body.light .section-description {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary-maroon), var(--primary-gold));
+  background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -647,7 +647,7 @@ body.light .alumni-package {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary-maroon), var(--primary-gold));
+  background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -813,18 +813,42 @@ body.dark .partners-section .section-title {
   margin: 0 auto;
 }
 
+/* Enhanced Stat Item Styles */
 .stat-item {
   background: rgba(18, 18, 18, 0.8);
   padding: 2rem;
   border-radius: var(--border-radius);
   border: 1px solid rgba(128, 0, 32, 0.2);
   backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .stat-item:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(128, 0, 32, 0.4);
+}
+
+.stat-border-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary-maroon-light);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 
+    0 0 20px rgba(128, 0, 32, 0.5),
+    inset 0 0 20px rgba(128, 0, 32, 0.3);
+  transition: opacity 0.3s ease;
+}
+
+.stat-item:hover .stat-border-glow {
+  opacity: 1;
 }
 
 .stat-number {
@@ -832,12 +856,26 @@ body.dark .partners-section .section-title {
   font-weight: 800;
   margin-bottom: 0.5rem;
   color: var(--primary-maroon-light);
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.stat-item:hover .stat-number {
+  transform: scale(1.1);
+  text-shadow: 0 0 20px rgba(128, 0, 32, 0.6);
 }
 
 .stat-label {
   font-size: 1.125rem;
   color: var(--text-primary);
   opacity: 0.9;
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.stat-item:hover .stat-label {
+  opacity: 1;
 }
 
 /* Light mode stats section */
@@ -853,14 +891,31 @@ body.light .stats-section::before {
 }
 
 body.light .stat-item {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(128, 0, 32, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(128, 0, 32, 0.15);
   backdrop-filter: none;
   color: var(--text-primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+body.light .stat-item:hover {
+  box-shadow: 0 8px 25px rgba(128, 0, 32, 0.2);
+  border-color: rgba(128, 0, 32, 0.3);
+}
+
+body.light .stat-border-glow {
+  border-color: var(--primary-maroon);
+  box-shadow: 
+    0 0 20px rgba(128, 0, 32, 0.4),
+    inset 0 0 20px rgba(128, 0, 32, 0.2);
 }
 
 body.light .stat-number {
   color: var(--primary-maroon);
+}
+
+body.light .stat-item:hover .stat-number {
+  text-shadow: 0 0 15px rgba(128, 0, 32, 0.3);
 }
 
 body.light .stat-label {
@@ -975,6 +1030,39 @@ body.light .cta-buttons {
   justify-content: center;
 }
 
+/* Keyframe animations for enhanced effects */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(128, 0, 32, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(128, 0, 32, 0.6);
+  }
+}
+
+.stat-item:hover {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Smooth number transition */
+@keyframes number-pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.stat-number {
+  animation: number-pop 0.6s ease-out;
+}
+
 /* Responsive Design */
 @media (max-width: 640px) {
   .container {
@@ -1001,6 +1089,18 @@ body.light .cta-buttons {
 
   .cta-buttons {
     flex-direction: column;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+  }
+  
+  .stat-item {
+    padding: 1.5rem;
   }
 }
 
@@ -1046,6 +1146,10 @@ body.light .cta-buttons {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .stats-grid {
+    gap: 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1071,6 +1175,18 @@ body.light .cta-buttons {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 .dark .btn:hover {
-  color: white;   /* background also white → invisible */
+  color: white;
+}
+
+/* Performance optimizations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stat-item,
+  .stat-number,
+  .stat-label,
+  .stat-border-glow {
+    transition: none !important;
+    animation: none !important;
+  }
 }
