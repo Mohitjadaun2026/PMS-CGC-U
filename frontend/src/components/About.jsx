@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Sun, Moon, Users, Target, Award, Building, Calendar, BarChart3, ChevronDown, Sparkles, Rocket, TargetIcon, Zap } from "lucide-react";
 import collegeLogo from "../assets/cgc logo.png";
+import "./about.css";
 
 function About() {
   const [isDark, setIsDark] = useState(false);
