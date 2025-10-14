@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import "./header.css";
 import collegeLogo from "../assets/cgc logo.png"; // Make sure to add the logo to your assets folder
+import ConfirmAlert from "./ConfirmAlert";
 
 function Header() {
   const [theme, setTheme] = useState('light');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   // On mount, load saved theme or system preference
   useEffect(() => {
@@ -42,11 +44,18 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    // Optionally redirect to home or login page
-    window.location.href = '/';
+    setShowAlert(true); 
+  };
+
+  const confirmLogout = () => {
+    // NOTE: Changed to use custom modal instead of window.confirm
+    // const confirmLogout = window.confirm("Are you sure you want to log out?");
+    // if(confirmLogout){
+      setIsLoggedIn(false);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/';
+    // }
   };
 
   // Toggle theme
@@ -58,7 +67,20 @@ function Header() {
   };
 
   return (
-    <header className="pms-header">
+    // Apply fade-down AOS effect to the header
+    <header className="pms-header" data-aos="fade-down">
+      {showAlert && <ConfirmAlert
+        isOpen={showAlert}
+        title="Confirm Logout"
+        message="Are you sure you want to log out?"
+        confirmText="Yes, Logout"
+        cancelText="Cancel"
+        onConfirm={() => {
+          confirmLogout();
+          setShowAlert(false);
+        }}
+        onCancel={() => setShowAlert(false)}
+      />}
       <div className="logo">
         <img
           src={collegeLogo}
@@ -80,11 +102,10 @@ function Header() {
             <Link to="/interview-experience">Interview Experience</Link>
           </>
         }
-        <Link to="/admin-job-posting">Admin Panel</Link>
         {isLoggedIn && (
           <button
             onClick={handleLogout}
-            className="logout-btn"
+            className="button-secondary"
             style={{ marginLeft: "10px" }}
           >
             Logout
@@ -104,7 +125,7 @@ function Header() {
           )}
         </button>
         {!isLoggedIn && (
-          <Link to="/signin" className="login-btn">Login</Link>
+          <Link to="/signin" className="button-primary-cta" style={{color:'white'}}>Login</Link>
         )}
       </nav>
     </header>
@@ -121,5 +142,3 @@ const handleLogin = async (e) => {
   localStorage.setItem('isLoggedIn', 'true');
   window.location.href = '/'; // or use navigate('/')
 };
-
-

@@ -261,8 +261,8 @@ const StudentProfile = () => {
 
   return (
   <div className="min-h-screen bg-gray-50 w-screen p-0 m-0">
-      {/* Header */}
-      <header className="bg-white shadow-lg sticky top-0 z-50">
+      {/* Header (Top banner) */}
+      <header className="bg-white shadow-lg sticky top-0 z-50" data-aos="fade-down">
         <div className="w-full flex items-center justify-between px-0 py-0" style={{margin:0,padding:0}}>
           <div className="flex items-center gap-4 w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 rounded-none shadow-md" style={{margin:0}}>
             <div className="flex flex-col md:flex-row md:items-center gap-4 w-full">
@@ -280,17 +280,19 @@ const StudentProfile = () => {
 
       {/* Main Content */}
       <main className="w-screen p-0 m-0 min-h-screen">
-        {/* Welcome Section */}
 
         {/* Profile Overview Section */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up">
           <div className="bg-white shadow-lg p-6 w-screen m-0" style={{borderRadius:0}}>
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
-              <div className="flex items-center space-x-4 mb-4 lg:mb-0">
+              {/* Profile Picture and details */}
+              <div className="flex items-center space-x-4 mb-4 lg:mb-0" data-aos="fade-right" data-aos-duration="800">
                 <img 
                   src={studentProfile.photo} 
                   alt="Profile" 
                   className="w-28 h-28 rounded-full border-4 border-gray-200 shadow-lg"
+                  data-aos="flip-left" // Profile picture animation
+                  data-aos-delay="200"
                 />
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">{studentProfile.name}</h2>
@@ -299,27 +301,28 @@ const StudentProfile = () => {
                 </div>
               </div>
               
-              <div className="flex space-x-8">
-                <div className="text-center">
+              {/* Stats */}
+              <div className="flex space-x-8" data-aos="fade-left" data-aos-delay="400">
+                <div className="text-center" data-aos="zoom-in" data-aos-delay="500">
                   <p className="text-2xl font-bold text-green-600">{studentProfile.cgpa}</p>
                   <p className="text-sm text-gray-500">CGPA</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center" data-aos="zoom-in" data-aos-delay="600">
                   <p className="text-2xl font-bold text-blue-600">{studentProfile.backlogs}</p>
                   <p className="text-sm text-gray-500">Backlogs</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center" data-aos="zoom-in" data-aos-delay="700">
                   <p className="text-2xl font-bold text-purple-600">{studentProfile.completionPercentage}%</p>
                   <p className="text-sm text-gray-500">Completed</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center" data-aos="zoom-in" data-aos-delay="800">
                   <p className="text-2xl font-bold text-red-600">{applications.length}</p>
                   <p className="text-sm text-gray-500">Applied</p>
                 </div>
               </div>
             </div>
             
-            <div className="mb-6">
+            <div className="mb-6" data-aos="fade-up" data-aos-delay="900">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm font-medium text-gray-700">Course Progress</span>
                 <span className="text-sm font-medium text-gray-900">{studentProfile.completionPercentage}%</span>
@@ -333,11 +336,16 @@ const StudentProfile = () => {
             </div>
 
             {/* Skills Section */}
-            <div>
+            <div data-aos="fade-up" data-aos-delay="1000">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {studentProfile.skills.map((skill, index) => (
-                  <span key={index} className="px-3 py-1 bg-red-100 text-red-800 text-sm rounded-full font-medium">
+                  <span 
+                    key={index} 
+                    className="px-3 py-1 bg-red-100 text-red-800 text-sm rounded-full font-medium"
+                    data-aos="fade-right"
+                    data-aos-delay={100 * index}
+                  >
                     {skill}
                   </span>
                 ))}
@@ -347,10 +355,10 @@ const StudentProfile = () => {
         </section>
 
         {/* Quick Actions Section */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up" data-aos-delay="100">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-screen m-0" style={{borderRadius:0}}>
             {/* Resume Card */}
-            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full">
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full" data-aos="zoom-in" data-aos-delay="0">
               <div className="flex items-center mb-4">
                 <div className="bg-red-100 p-3 rounded-lg mr-4">
                   <FileText className="w-6 h-6 text-red-600" />
@@ -374,7 +382,7 @@ const StudentProfile = () => {
             </div>
 
             {/* Applications Card */}
-            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full">
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full" data-aos="zoom-in" data-aos-delay="100">
               <div className="flex items-center mb-4">
                 <div className="bg-blue-100 p-3 rounded-lg mr-4">
                   <Briefcase className="w-6 h-6 text-blue-600" />
@@ -404,7 +412,7 @@ const StudentProfile = () => {
             </div>
 
             {/* Next Interview Card */}
-            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full">
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full" data-aos="zoom-in" data-aos-delay="200">
               <div className="flex items-center mb-4">
                 <div className="bg-yellow-100 p-3 rounded-lg mr-4">
                   <Calendar className="w-6 h-6 text-yellow-600" />
@@ -425,7 +433,7 @@ const StudentProfile = () => {
             </div>
 
             {/* Eligible Jobs Card */}
-            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full">
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-full" data-aos="zoom-in" data-aos-delay="300">
               <div className="flex items-center mb-4">
                 <div className="bg-green-100 p-3 rounded-lg mr-4">
                   <Target className="w-6 h-6 text-green-600" />
@@ -447,7 +455,7 @@ const StudentProfile = () => {
         </section>
 
         {/* Analytics Section */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Placement Analytics</h2>
             <p className="text-gray-600">Comprehensive insights and trends</p>
@@ -455,7 +463,7 @@ const StudentProfile = () => {
           
           {/* Overview Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="0">
               <div className="flex items-center">
                 <div className="bg-green-100 p-3 rounded-lg mr-4">
                   <TrendingUp className="w-6 h-6 text-green-600" />
@@ -468,7 +476,7 @@ const StudentProfile = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
               <div className="flex items-center">
                 <div className="bg-blue-100 p-3 rounded-lg mr-4">
                   <Users className="w-6 h-6 text-blue-600" />
@@ -481,7 +489,7 @@ const StudentProfile = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
               <div className="flex items-center">
                 <div className="bg-yellow-100 p-3 rounded-lg mr-4">
                   <Building2 className="w-6 h-6 text-yellow-600" />
@@ -494,7 +502,7 @@ const StudentProfile = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
               <div className="flex items-center">
                 <div className="bg-purple-100 p-3 rounded-lg mr-4">
                   <DollarSign className="w-6 h-6 text-purple-600" />
@@ -511,7 +519,7 @@ const StudentProfile = () => {
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Placement Trends */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-right" data-aos-delay="400">
               <div className="flex justify-between items-center mb-4">
                 <h4 className="text-lg font-semibold text-gray-900">Placement Analytics</h4>
                 <div className="flex-shrink-0">
@@ -550,7 +558,7 @@ const StudentProfile = () => {
             </div>
 
             {/* Application Status Pie Chart */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-left" data-aos-delay="400">
               <div className="mb-4">
                 <h4 className="text-lg font-semibold text-gray-900">Application Status</h4>
                 <p className="text-gray-600">Total: {applications.length} Applications</p>
@@ -614,7 +622,7 @@ const StudentProfile = () => {
         </section>
 
         {/* Applications Section */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:mb-0">My Applications</h2>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -637,23 +645,23 @@ const StudentProfile = () => {
 
           {/* Application Stats */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="0">
               <p className="text-2xl font-bold text-gray-900">{applications.length}</p>
               <p className="text-sm text-gray-600">Total Applied</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="50">
               <p className="text-2xl font-bold text-blue-600">{applications.filter(app => app.status === 'Interview Scheduled').length}</p>
               <p className="text-sm text-gray-600">Interviews</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="100">
               <p className="text-2xl font-bold text-green-600">{applications.filter(app => app.status === 'Shortlisted').length}</p>
               <p className="text-sm text-gray-600">Shortlisted</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="150">
               <p className="text-2xl font-bold text-red-600">{applications.filter(app => app.status === 'Rejected').length}</p>
               <p className="text-sm text-gray-600">Rejected</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="200">
               <p className="text-2xl font-bold text-yellow-600">{applications.filter(app => app.status === 'Applied').length}</p>
               <p className="text-sm text-gray-600">Pending</p>
             </div>
@@ -661,8 +669,13 @@ const StudentProfile = () => {
 
           {/* Applications List */}
           <div className="space-y-6">
-            {applications.map((app) => (
-              <div key={app.id} className="bg-white rounded-lg shadow-lg p-6">
+            {applications.map((app, index) => (
+              <div 
+                key={app.id} 
+                className="bg-white rounded-lg shadow-lg p-6"
+                data-aos="fade-up"
+                data-aos-delay={100 * index} // Staggered delay for list items
+              >
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                   <div className="flex items-center mb-4 lg:mb-0">
                     <div className="bg-red-100 text-red-800 font-bold w-12 h-12 rounded-full flex items-center justify-center mr-4">
@@ -730,7 +743,7 @@ const StudentProfile = () => {
         </section>
 
         {/* Available Jobs Section */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:mb-0">Available Jobs</h2>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -752,19 +765,19 @@ const StudentProfile = () => {
 
           {/* Job Statistics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="0">
               <p className="text-2xl font-bold text-gray-900">{availableJobs.length}</p>
               <p className="text-sm text-gray-600">Total Jobs</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="50">
               <p className="text-2xl font-bold text-green-600">{availableJobs.filter(job => job.isEligible).length}</p>
               <p className="text-sm text-gray-600">Eligible</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="100">
               <p className="text-2xl font-bold text-blue-600">{availableJobs.filter(job => job.type === 'Full-time').length}</p>
               <p className="text-sm text-gray-600">Full-time</p>
             </div>
-            <div className="bg-white rounded-lg shadow p-4 text-center">
+            <div className="bg-white rounded-lg shadow p-4 text-center" data-aos="zoom-in" data-aos-delay="150">
               <p className="text-2xl font-bold text-purple-600">12</p>
               <p className="text-sm text-gray-600">Avg Package (LPA)</p>
             </div>
@@ -772,8 +785,13 @@ const StudentProfile = () => {
 
           {/* Jobs Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {availableJobs.map((job) => (
-              <div key={job.id} className="bg-white rounded-lg shadow-lg p-6">
+            {availableJobs.map((job, index) => (
+              <div 
+                key={job.id} 
+                className="bg-white rounded-lg shadow-lg p-6"
+                data-aos="fade-up"
+                data-aos-delay={100 * index} // Staggered delay for job cards
+              >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
                     <div className="bg-red-100 text-red-800 font-bold w-10 h-10 rounded-full flex items-center justify-center mr-3">
@@ -843,7 +861,7 @@ const StudentProfile = () => {
         </section>
 
         {/* Schedule Section */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Upcoming Schedule</h2>
             <p className="text-gray-600">Your scheduled interviews and application deadlines</p>
@@ -852,8 +870,13 @@ const StudentProfile = () => {
           <div className="space-y-4">
             {applications
               .filter(app => app.interviewDate)
-              .map((app) => (
-                <div key={app.id} className="bg-white rounded-lg shadow-lg p-6">
+              .map((app, index) => (
+                <div 
+                  key={app.id} 
+                  className="bg-white rounded-lg shadow-lg p-6"
+                  data-aos="fade-right"
+                  data-aos-delay={100 * index}
+                >
                   <div className="flex items-center">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4">
                       <Calendar className="w-6 h-6 text-blue-600" />
@@ -889,10 +912,10 @@ const StudentProfile = () => {
         </section>
 
         {/* Skills Demand & Department Performance */}
-        <section className="mb-8">
+        <section className="mb-8" data-aos="fade-up">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Skill Demand */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-right" data-aos-delay="100">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Most In-Demand Skills</h4>
               <div className="space-y-3">
                 {skillDemand.slice(0, 6).map((skill, index) => (
@@ -913,7 +936,7 @@ const StudentProfile = () => {
             </div>
 
             {/* Department Performance */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6" data-aos="fade-left" data-aos-delay="100">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Department-wise Placement</h4>
               <div className="space-y-3">
                 {departmentStats.map((dept, index) => (

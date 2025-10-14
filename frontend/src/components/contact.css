@@ -357,7 +357,7 @@ body.light .executive-contact p {
 .team-section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
 .team-section h2 {

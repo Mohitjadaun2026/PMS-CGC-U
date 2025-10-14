@@ -17,12 +17,12 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import CookiePolicy from "./CookiePolicy";
 import Home from "./home";
 
-
-
 function Footer() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const user = localStorage.getItem('user') || null;
+  
   const handleSubscribe = async (e) => {
     e.preventDefault();
 
@@ -60,9 +60,10 @@ function Footer() {
   };
 
   return (
-    <footer className="pms-footer">
-      {/* Newsletter Section */}
-      <div className="footer-newsletter-full">
+    // Keep data-aos on the main footer element for the overall fade-up
+    <footer className="pms-footer" data-aos="fade-up">
+      {/* Newsletter Section - Apply distinct animation */}
+      <div className="footer-newsletter-full" data-aos="fade-up" data-aos-delay="50">
         <div className="footer-container">
           <div className="footer-newsletter-content">
             <div className="footer-newsletter-text">
@@ -99,7 +100,7 @@ function Footer() {
       <div className="footer-container">
         {/* Top Section */}
         <div className="footer-top">
-          <div className="footer-brand">
+          <div className="footer-brand" data-aos="fade-right" data-aos-delay="200">
             <h3 className="footer-logo">
               Campus<span>Recruitment</span>
             </h3>
@@ -126,7 +127,8 @@ function Footer() {
           </div>
 
           <div className="footer-sections">
-            <div className="footer-section">
+            {/* Navigation Section with staggered delay */}
+            <div className="footer-section" data-aos="zoom-in" data-aos-delay="300">
               <h4 className="footer-heading">Navigation</h4>
               <ul className="footer-nav">
                 <li><a href="/">Home</a></li>
@@ -137,7 +139,8 @@ function Footer() {
               </ul>
             </div>
 
-            <div className="footer-section">
+            {/* Legal Section with staggered delay */}
+            <div className="footer-section" data-aos="zoom-in" data-aos-delay="400">
               <h4 className="footer-heading">Legal</h4>
               <ul className="footer-nav">
                 <li><a href="/privacy">Privacy Policy</a></li> {/* ✅ Updated */}
@@ -147,7 +150,8 @@ function Footer() {
               </ul>
             </div>
 
-            <div className="footer-section">
+            {/* Contact Section with staggered delay */}
+            <div className="footer-section" data-aos="zoom-in" data-aos-delay="500">
               <h4 className="footer-heading">Contact</h4>
               <ul className="footer-contact">
                 <li>
@@ -170,15 +174,15 @@ function Footer() {
         {/* Divider */}
         <div className="footer-divider"></div>
 
-        {/* Bottom Section */}
-        <div className="footer-bottom">
+        {/* Bottom Section - Apply last animation to the bottom row */}
+        <div className="footer-bottom" data-aos="fade-up" data-aos-delay="600">
           <div className="footer-copyright">
             &copy; {new Date().getFullYear()} Campus Recruitment Portal. All
             rights reserved.
           </div>
           <div className="footer-cta">
-            <a href="/signin" className="footer-cta-button">Sign In</a>
-            <a href="/contact" className="contact-outline">Contact Us</a>
+            {!user && <a href="/signin" className="button-primary">Sign In</a>}
+            <a href="/contact" className="button-tertiary">Contact Us</a>
           </div>
         </div>
       </div>

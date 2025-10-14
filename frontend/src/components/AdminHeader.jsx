@@ -4,14 +4,22 @@ import './AdminHeader.css';
 
 const AdminHeader = () => {
   const navigate = useNavigate();
+  const [showAlert, setShowAlert] = useState(false);
   
   const adminUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
   const isSuperAdmin = adminUser.role === 'super_admin';
 
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUser');
-    navigate('/admin-login');
+    setShowAlert(true); 
+  };
+
+  const confirmLogout = () => {
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if(confirmLogout){
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+      navigate('/');
+    }
   };
 
   const handleNavigation = (path) => {
@@ -20,6 +28,18 @@ const AdminHeader = () => {
 
   return (
     <header className="admin-header">
+      {showAlert && <ConfirmAlert
+        isOpen={showAlert}
+        title="Confirm Logout"
+        message="Are you sure you want to log out?"
+        confirmText="Yes, Logout"
+        cancelText="Cancel"
+        onConfirm={() => {
+          confirmLogout();
+          setShowAlert(false);
+        }}
+        onCancel={() => setShowAlert(false)}
+      />}
       <div className="admin-header-content">
         <div className="admin-header-left">
           <h1>🎓 PMS Admin Panel</h1>

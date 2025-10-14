@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Animation variants
+// Animation variants (Framer Motion existing setup)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -608,15 +608,15 @@ function Home() {
             Empowering Dreams, Creating Futures - Your Gateway to Success
           </p>
           <div className="hero-buttons">
-            <button className="btn btn-primary">Explore Opportunities</button>
-            <Link to="/About" className="btn btn-primary">
+            <button className="button-primary">Explore Opportunities</button>
+            <Link to="/About" className="button-tertiary">
               Learn More
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section (Uses Framer Motion - no AOS needed here) */}
       <section
         id="features"
         className="features-section"
@@ -653,15 +653,22 @@ function Home() {
         </div>
       </section>
 
-      {/* Alumni Success Stories */}
-      <section className="alumni-section">
+      {/* Alumni Success Stories (Using AOS) */}
+      <section className="alumni-section" data-aos="fade-up">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title pt-15">Alumni Success Stories</h2>
           </div>
           <div className="alumni-grid">
             {alumni.map((alum, index) => (
-              <div key={index} className="alumni-card">
+              <div 
+                key={index} 
+                className="alumni-card"
+                // Apply AOS effect to each card with staggered delay
+                data-aos="zoom-in" 
+                data-aos-delay={index * 100} 
+                data-aos-duration="600"
+              >
                 <img
                   src={alum.image}
                   alt={alum.name}
@@ -681,7 +688,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Enhanced Partnership Section */}
+      {/* Enhanced Partnership Section (Uses Framer Motion - no AOS needed here) */}
       <section className="partners-section" ref={partnersSectionRef}>
         <div className="container">
           <motion.div
@@ -741,8 +748,8 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
+      {/* CTA Section (Using AOS) */}
+      <section className="cta-section" data-aos="zoom-in-up" data-aos-duration="800">
         <div className="cta-container">
           <h2 className="cta-title">Ready to Launch Your Career?</h2>
           <p className="cta-description">
@@ -750,10 +757,10 @@ function Home() {
             Jhanjeri
           </p>
           <div className="cta-buttons">
-            <a href="/signin" className="btn btn-primary">
+            <a href="/signin" className="button-primary">
               Register Now
             </a>
-            <a href="/Contact" className="btn btn-outline">
+            <a href="/Contact" className="button-tertiary">
               Contact Us
             </a>
           </div>
