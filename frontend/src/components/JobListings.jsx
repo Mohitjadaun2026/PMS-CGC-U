@@ -24,7 +24,9 @@ const JobListings = ({ onClose }) => {
     try {
       const response = await fetch(
         // Add API key after getting expired...
-        'https://remotive.com/api/remote-jobs?limit=7&category=software-dev'
+        // IN this by setting limit =#number, u can fetch the jobs u want from api
+        // ranginh from 10 to 150 to 300, based on requirements
+        'https://remotive.com/api/remote-jobs?limit=15&category=software-dev'
       );
 
       if (!response.ok) {
