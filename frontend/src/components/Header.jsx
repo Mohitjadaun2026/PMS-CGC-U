@@ -98,7 +98,7 @@ function Header() {
             onClick={() => setShowJobListings(true)}
             className="job-listings-btn"
           >
-          Job Listings
+          Off-Campus Jobs
           </button>
           
           <Link to="/about">About</Link>
