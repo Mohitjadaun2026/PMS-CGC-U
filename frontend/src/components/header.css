@@ -509,3 +509,62 @@ body.dark .login-btn:hover {
     height: 48px;
   }
 }
+
+/*Added css for the Job listing button 
+  similar to About and Contact*/
+  
+.job-listings-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  text-decoration: none;
+}
+
+body.dark .job-listings-btn {
+  color: #d1d5db;
+}
+
+.job-listings-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #800000;
+  transition: width 0.3s ease;
+}
+
+.job-listings-btn:hover {
+  color: #800000;
+  text-decoration: none;
+}
+
+.job-listings-btn:hover::after {
+  width: 100%;
+}
+
+body.dark .job-listings-btn:hover {
+  color: #800000;
+}
+
+body.light .job-listings-btn {
+  color: var(--text-secondary);
+}
+
+body.light .job-listings-btn:hover {
+  color: #800000;
+}
+
+body.light .job-listings-btn::after {
+  background: var(--maroon-800);
+}
