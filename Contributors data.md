@@ -136,6 +136,15 @@ This document records **all contributions** to the project and assigns points ba
 |    116   | [surajsingh9389](#)|     3    |    #298   | Added Mail Icon to Floating Contact Form        |
 |    117   | [divyagit21](#)   |     7     |    #299   | Updated style of about page                     |
 |    118   | [RAGHU1242](#)   |     7     |    #302   | UI/UX Enhancement - Additional AOS (Animate On Scroll) Effects      |
+| 119      | @K9Patel           | 3         | #318      | Animation added                                            |
+| 120      | @aaqeebpinjari     | 10        | #317      | 🚀 Feature: Added Job Listing using API on the Header page |
+| 121      | @Tushar-sonawane06 | 3         | #316      | Improved Hover Animation for About Page Cards              |
+| 122      | @Tushar-sonawane06 | 3         | #309      | Cookies Policy UI Updated                                  |
+| 123      | @divyagit21        | 7         | #308      | Updated Footer                                             |
+| 124      | @divyagit21        | 7         | #307      | Updated Validation                                         |
+| 125      | @divyagit21        | 7         | #304      | Updated Button Styles                                      |
+
+
 
 
 
