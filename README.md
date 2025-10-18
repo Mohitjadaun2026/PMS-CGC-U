@@ -16,14 +16,37 @@
 [![Status](https://img.shields.io/badge/status-In%20Development-yellow.svg?style=for-the-badge)](README.md)
 
 ---
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+<br/>
+
+[🐛 Report Bug](https://github.com/Mohitjadaun2026/PMS-CGC-U/issues) • [💡 Request Feature](https://github.com/Mohitjadaun2026/PMS-CGC-U/issues)
 
 </div>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## 🎯 Mission: What We Aim To Achieve
+
+> Building a modern, student-first, automation-driven placement ecosystem for every college.
+
+- 🏫 Empower placement cells to run end-to-end drives with zero spreadsheet chaos
+- ⚙️ Automate repetitive workflows: eligibility, shortlisting, emails, and reports
+- 🧑‍🎓 Deliver a personalized, transparent, mobile-first experience for students
+- 🏢 Provide recruiters a professional, streamlined hiring interface
+- 🌱 Keep PMS-CGC-U open-source, modular, and easy to deploy for every college
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+</div>
+
 ## 🌟 GirlScript Summer of Code (GSSoC) 2025 
-![GSSoC Logo](https://github.com/dimpal-yadav/PMS-CGC-U/blob/add-banner/GSSoC.png)
+<div align="center">
+    <img src="https://github.com/dimpal-yadav/PMS-CGC-U/blob/add-banner/GSSoC.png" alt="GSSoC Logo" />
+  
+</div>
 
 🌟 **Exciting News...**
 
@@ -40,7 +63,7 @@
 
 🎉 **I can’t wait to welcome new contributors** from GSSoC 2025 to this PMS-CGC-U project family! Let's build, learn, and grow together — one commit at a time. 🔥
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🌟 **Vision: A Plug-and-Play Placement Portal for Every College**
 
@@ -62,7 +85,18 @@ Most colleges still rely on outdated spreadsheets and manual processes for place
 
 </div>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## ❓ Why PMS-CGC-U?
+
+- 🧩 Plug-and-Play: setup in minutes, not weeks
+- 🧠 Smart Eligibility & Filtering: branch, year, CGPA, backlogs — all automated
+- 🔔 Real-time Updates: dashboard + email notifications keep everyone in sync
+- 📊 Built-in Analytics: data-driven insights for placement teams
+- 🛡️ Security First: JWT auth, input validation, CORS, role-based access
+- 👐 Open Source: community-driven, transparent, and extensible
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🔗 **Quick Navigation**
 
@@ -82,7 +116,7 @@ Most colleges still rely on outdated spreadsheets and manual processes for place
 
 </div>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## ✨ **Key Features That Set Us Apart**
 
@@ -161,7 +195,7 @@ Most colleges still rely on outdated spreadsheets and manual processes for place
 
 </details>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🛠️ **Modern Tech Stack**
 
@@ -195,6 +229,14 @@ graph TD
 
 </div>
 
+### 🧭 High‑Level Flowchart
+
+<div align="center">
+<img width="848" height="804" alt="Mermaid Chart - Create complex, visual diagrams with text -2025-10-18-061904" src="https://github.com/user-attachments/assets/3905d359-ecb0-4341-93e0-ce094e09f308" />
+</div>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ### **🔧 Technology Breakdown**
 
 <div align="center">
@@ -212,6 +254,8 @@ graph TD
 
 </div>
 
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ### **🚀 Performance Features**
 
 - **⚡ Lightning Fast** - Optimized React components with lazy loading
@@ -221,7 +265,7 @@ graph TD
 - **🛡️ Security First** - JWT authentication, input validation, CORS protection
 - **📊 Analytics Ready** - Built-in tracking and metrics
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🚀 **Quick Start Guide**
 
@@ -314,7 +358,41 @@ docker-compose up -d
 
 </div>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## 🧩 Prerequisites (Quick)
+
+- 📦 Node.js v18+ (recommended)
+- 🗄️ MongoDB Atlas account (or local MongoDB)
+- 🔧 Git (latest) and a terminal
+- 💻 VS Code or any modern editor
+- 🐳 Docker Desktop (optional, for containerized setup)
+
+> Tip: See the detailed prerequisites table below in Quick Start for exact versions and links.
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## 📸 Screenshots
+
+> A quick visual peek at PMS-CGC-U interfaces (more coming soon!)
+
+<div align="center">
+
+<img width="1882" height="774" alt="image" src="https://github.com/user-attachments/assets/8afcc272-d388-4605-9eac-ae2d80247d10" />
+
+<img width="1071" height="773" alt="image" src="https://github.com/user-attachments/assets/fc514bff-efca-40a8-81fd-6d0299ee1a90" />
+
+<img width="640" height="798" alt="image" src="https://github.com/user-attachments/assets/0d0d1604-e3c5-4d28-9cfb-a9054799545f" />
+
+</div>
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+</div>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🗺️ **Development Roadmap**
 
@@ -371,7 +449,37 @@ docker-compose up -d
 
 </details>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## 🛠️ Troubleshooting
+
+Common issues and quick fixes to get you unblocked fast.
+
+- ⛔ Node version errors
+    - Check with: `node -v` (need v18+). Use nvm or Node installers to upgrade.
+
+- 🔐 Missing or incorrect .env
+    - Copy examples: `cp backend/.env.example backend/.env` and `cp frontend/.env.example frontend/.env`
+    - Set required keys: `MONGODB_URI`, `JWT_SECRET`, `PORT`, allowed origins, etc.
+
+- 🗄️ MongoDB connection failed
+    - In Atlas, add your IP to Network Access and verify connection string.
+    - Ensure the database user has correct roles.
+
+- 🔌 Port already in use
+    - Backend default: 5000; Frontend default: 5173 (or 3000 via Docker)
+    - Windows: `netstat -ano | findstr :5000` then `taskkill /PID <PID> /F`
+
+- 🌐 CORS errors in browser
+    - Ensure your frontend origin is allowed in backend CORS config/env.
+
+- 🐳 Docker Compose failing
+    - Reset stack: `docker compose down -v && docker compose up -d`
+    - Prune old resources: `docker system prune -af`
+
+> Still stuck? Open an issue: https://github.com/Mohitjadaun2026/PMS-CGC-U/issues
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🤝 **Join Our Mission - Contributors Wanted!**
 
@@ -379,7 +487,7 @@ docker-compose up -d
 
 ### **🌟 Why Contribute to PMS-CGC-U?**
 
-<img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" width="500">
+<img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" width="400">
 
 **🎯 Be part of revolutionizing education technology for millions of students worldwide!**
 
@@ -482,6 +590,8 @@ docker-compose up -d
 
 <div align="center">
 
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ### **🌟 Top Contributors**
 
 [![Contributors](https://contrib.rocks/image?repo=Mohitjadaun2026/PMS-CGC-U)](https://github.com/Mohitjadaun2026/PMS-CGC-U/graphs/contributors)
@@ -489,8 +599,7 @@ docker-compose up -d
 *Want to see your face here? Start contributing today!*
 
 </div>
-
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 📊 **Project Stats & Analytics**
 
@@ -511,7 +620,7 @@ docker-compose up -d
 
 </div>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 📞 **Connect With Us**
 
@@ -565,7 +674,7 @@ docker-compose up -d
 - **📚 Content Creator** - Write tutorials, create videos
 - **🌍 Regional Leader** - Lead community in your region
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🛡️ **Security & Privacy**
 
@@ -588,7 +697,7 @@ docker-compose up -d
 
 **Report Security Issues:** [security@pms-cgcu.org](mailto:security@pms-cgcu.org)
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 📄 **License & Legal**
 
@@ -608,13 +717,13 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - ❗ **No warranty** - Use at your own risk
 - ❗ **Attribution required** - Credit the original project
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 🎯 **Call to Action**
 
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="900">
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="800">
 
 ### **🚀 Ready to Transform Campus Placements?**
 
@@ -624,7 +733,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 [![Join Community](https://img.shields.io/badge/💬%20Join%20Community-Discord-7289da?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/your-server)
 [![Contribute](https://img.shields.io/badge/🤝%20Start%20Contributing-GitHub-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Mohitjadaun2026/PMS-CGC-U/issues)
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ### **💭 Our Promise to You**
 
@@ -640,7 +749,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 </div>
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 <div align="center">
 
@@ -649,3 +758,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **© 2024 PMS-CGC-U. Licensed under MIT.**
 
 </div>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
