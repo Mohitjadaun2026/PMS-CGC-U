@@ -143,6 +143,9 @@ This document records **all contributions** to the project and assigns points ba
 | 123      | @divyagit21        | 7         | #308      | Updated Footer                                             |
 | 124      | @divyagit21        | 7         | #307      | Updated Validation                                         |
 | 125      | @divyagit21        | 7         | #304      | Updated Button Styles                                      |
+| 126      | @Tushar-sonawane06 | 3         | #321      | Cards UI updated on About Page                   |
+| 127      | @PROJITAKAR        | 7         | #324      | Fix: Updated student profile on dark mode toggle |
+| 128      | @PROJITAKAR        | 10        | #325      | Added Dynamic Contributors Section               |
 
 
 
