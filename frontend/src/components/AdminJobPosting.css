@@ -1,0 +1,536 @@
+/* Main Container */
+.admin-job-posting-container {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-content {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light);
+}
+
+.admin-content h1 {
+  color: var(--maroon-700);
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Tabs */
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.admin-tabs button {
+  padding: 12px 24px;
+  border: 2px solid var(--maroon-700);
+  background: white;
+  color: var(--maroon-700);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.admin-tabs button.active,
+.admin-tabs button:hover {
+  background: var(--maroon-800);
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 2px solid var(--maroon-700);
+}
+
+/* Form Styles */
+.job-posting-form {
+  padding: 32px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.form-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1.5px solid var(--maroon-700);
+}
+
+.form-section h2 {
+  color: var(--maroon-700);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #FFD600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group input[type="url"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid var(--maroon-700);
+  border-radius: 6px;
+  font-size: 15px;
+  background: #fff;
+  color: #333;
+  transition: border 0.2s, background 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="url"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border: 2px solid var(--maroon-800);
+  outline: none;
+  color: #333;
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-group input[type="file"] {
+  padding: 10px;
+  color: black;
+}
+
+/* Enhanced Multi-Select Styles */
+.multi-select {
+  height: auto;
+  min-height: 100px;
+  padding: 5px;
+  background: #222;
+  color: #fff;
+  border: 1.5px solid #FFD60055;
+  border-radius: 6px;
+  transition: border 0.2s;
+}
+
+.multi-select:focus {
+  border: 1.5px solid #FFD600;
+  outline: none;
+}
+
+.multi-select option {
+  padding: 8px 12px;
+  background: #222;
+  color: #fff;
+  border-bottom: 1px solid #FFD60033;
+  transition: background 0.2s;
+}
+
+.multi-select option:hover {
+  background: #FFD600;
+  color: #181818;
+}
+
+.multi-select option:checked {
+  background: #FFD600;
+  color: #181818;
+  font-weight: bold;
+}
+
+/* Multi-select container for better styling */
+.multi-select-container {
+  position: relative;
+}
+
+.multi-select-container::after {
+  content: "⌄";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #FFD600;
+  pointer-events: none;
+}
+
+/* Logo Upload */
+.logo-upload {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border: 2px solid #FFD600;
+  border-radius: 8px;
+  background: #222;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.submit-btn-job {
+  color: white;
+  background-color: var(--maroon-700);
+  border: 2px solid var(--maroon-700);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.10);
+  letter-spacing: 0.5px;
+}
+
+.submit-btn-job:hover {
+  background: var(--maroon-800);
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 2px solid var(--maroon-700);
+}
+
+.cancel-btn {
+  background: #181818;
+  color: #FFD600;
+  border: 2px solid #FFD600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #FFD600;
+  color: #181818;
+  border: 2px solid #FFD600;
+}
+
+/* Job Postings List */
+.job-postings-list {
+  /* background: #181818; */
+  padding: 32px;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 24px rgba(255, 214, 0, 0.10); */
+  color: #fff;
+}
+
+.job-postings-list h2 {
+  margin-top: 0;
+  color: var(--maroon-800);
+  margin-bottom: 20px;
+}
+
+.no-postings {
+  text-align: center;
+  padding: 40px;
+  color: #FFD60099;
+  font-style: italic;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  /* background: #181818; */
+  /* color: #fff; */
+  color:var(--maroon-700);
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  /* border-bottom: 1px solid #FFD60033; */
+  border-bottom: 1px solid var(--maroon-800);
+}
+
+table th {
+  /* background-color: #222; */
+  font-weight: 600;
+  color: var(--maroon-800);
+}
+
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.company-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-logo-small {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #222;
+  border: 1.5px solid #FFD600;
+}
+
+/* Badge styles for eligibility tags */
+.eligibility-badge {
+  display: inline-block;
+  background: #FFD60022;
+  color: #FFD600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px;
+  border: 1px solid #FFD60033;
+}
+
+/* Action Buttons */
+.edit-btn {
+  background: var(--maroon-700);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.edit-btn:hover {
+  background: var(--maroon-800);
+}
+
+.delete-btn {
+  background: var(--maroon-700);
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+  background: var(--maroon-800);
+}
+
+/* Checkbox Grid Styles */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1.5px solid var(--maroon-700);
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  background: white;
+  border: 1.5px solid var(--maroon-700);
+}
+
+.checkbox-item input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--maroon-700);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+  background: #d6c9c9;
+  border-color: var(--maroon-700);
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #181818;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.checkbox-label {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+  margin-left: 10px;
+}
+
+.checkbox-item:has(input:checked) .checkbox-label {
+  color: black;
+  font-weight: 600;
+}
+
+.checkbox-item:has(input:checked){
+  background: #d6c9c9;
+  color: white;
+  font-weight:bold;
+}
+
+.selected-items {
+  margin-top: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid var(--maroon-700);
+  border-radius: 6px;
+  border-left: 3px solid var(--maroon-700);
+  color: var(--maroon-700);
+}
+
+.selected-label {
+  color: var(--maroon-700);
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* Selection Controls */
+.selection-controls {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.select-all-btn {
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-all-btn:hover {
+  background: var(--maroon-800);
+  font-weight: bold;
+  transform: translateY(-1px);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+
+  .job-posting-form,
+  .job-postings-list {
+    padding: 18px;
+  }
+
+  .form-row {
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-actions {
+    justify-content: center;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Adjust multi-select on mobile */
+  .multi-select {
+    min-height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-tabs {
+    flex-direction: column;
+  }
+
+  .admin-tabs button {
+    width: 100%;
+    text-align: left;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .admin-tabs button.active {
+    border-bottom: none;
+    border-left: 3px solid #FFD600;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+
+  /* Stack eligibility badges on small screens */
+  .eligibility-badges-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

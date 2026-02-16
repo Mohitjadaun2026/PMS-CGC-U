@@ -1,0 +1,141 @@
+.admin-header {
+  background: rgb(255 255 255);
+  border-bottom: 1px solid rgba(128, 0, 0, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none;
+  color: black;
+  padding: 0.8rem 1.2rem;
+  z-index: 1000;
+  animation: headerScroll 0.5s ease-out forwards;
+  flex-wrap: wrap;
+  /* ✅ allow wrapping for small screens */
+}
+
+.admin-header-container {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header-left h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.admin-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 4px;
+  display: block;
+}
+
+.admin-header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 15px;
+}
+
+
+.nav-btn {
+  background-color: var(--maroon-700);
+  color: white;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 1rem
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
+}
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.admin-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.admin-role-info {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.admin-logout-btn {
+  background-color: var(--maroon-700);
+  color: white;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 500;
+  font-size: 1rem
+}
+
+.admin-logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .admin-header-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .admin-header-center {
+    order: 3;
+    width: 100%;
+  }
+
+  .admin-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .admin-header-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .admin-user-info {
+    align-items: center;
+  }
+}
