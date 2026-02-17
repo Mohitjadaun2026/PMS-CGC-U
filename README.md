@@ -475,7 +475,6 @@ docker-compose up -d
 | **Role** | **Name** | **GitHub** | **Expertise** |
 |:---:|:---:|:---:|:---:|
 | 🎯 **Project Lead** | Mohit Jadaun | [@Mohitjadaun2026](https://github.com/Mohitjadaun2026) | Full-Stack Development |
-| 🧑‍🏫 **Mentor** | Sanjana Gurav | [@213sanjana](https://github.com/213sanjana) | System Architecture |
 | 🧑‍🏫 **Mentor** | Poushmita | [@Poushmita](https://github.com/Poushmita) | Frontend & UX |
 
 </div>
