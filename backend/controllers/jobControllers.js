@@ -18,9 +18,20 @@ const processArrayFields = (jobData, fields) => {
 // GET all jobs
 exports.getAllJobs = async (req, res) => {
   try {
-    console.log("Fetching all jobs...");
+    console.log("📊 Fetching all jobs...");
     const jobs = await Job.find();
-    console.log(`Found ${jobs.length} jobs`);
+    console.log(`✅ Found ${jobs.length} jobs`);
+    
+    // Log details about applicationFormFields for each job
+    jobs.forEach((job, index) => {
+      console.log(`  Job ${index + 1}: "${job.position}" (${job.jobApplicationType})`);
+      console.log(`    - Has applicationFormFields: ${!!job.applicationFormFields}`);
+      console.log(`    - Fields count: ${job.applicationFormFields?.length || 0}`);
+      if (job.applicationFormFields && job.applicationFormFields.length > 0) {
+        console.log(`    - Field names: ${job.applicationFormFields.map(f => f.fieldName).join(', ')}`);
+      }
+    });
+    
     res.json(jobs);
   } catch (err) {
     console.error("Error fetching jobs:", err);
@@ -36,11 +47,20 @@ exports.getJobsById = async (req, res) => {
   const objectId = new mongoose.Types.ObjectId(id);
   console.log(objectId);
   try {
-    console.log("Fetching job by ID ...");
+    console.log("📍 Fetching job by ID:", id);
     const job = await Job.findById(objectId);
     if (!job) {
+      console.log("❌ Job not found");
       return res.status(404).json({ error: 'Job not found' });
     }
+    
+    console.log(`✅ Job found: "${job.position}"`);
+    console.log(`  - Has applicationFormFields: ${!!job.applicationFormFields}`);
+    console.log(`  - Fields count: ${job.applicationFormFields?.length || 0}`);
+    if (job.applicationFormFields && job.applicationFormFields.length > 0) {
+      console.log(`  - Field names: ${job.applicationFormFields.map(f => f.fieldName).join(', ')}`);
+    }
+    
     res.json(job);
   } catch (err) {
     console.error("Error fetching jobs:", err);
@@ -61,11 +81,34 @@ exports.createJob = async (req, res) => {
     );
 
     const jobData = { ...req.body };
+    
+    // Process array fields
     processArrayFields(jobData, [
       "eligibleCourses",
       "eligibleBranches",
       "eligibleYears",
     ]);
+
+    // Parse applicationFormFields if it's a JSON string
+    console.log("📋 Processing applicationFormFields:");
+    console.log("  Raw value:", jobData.applicationFormFields);
+    console.log("  Type:", typeof jobData.applicationFormFields);
+    
+    if (jobData.applicationFormFields && typeof jobData.applicationFormFields === 'string') {
+      try {
+        jobData.applicationFormFields = JSON.parse(jobData.applicationFormFields);
+        console.log("  ✅ Parsed successfully. Count:", jobData.applicationFormFields.length);
+        console.log("  Fields:", jobData.applicationFormFields);
+      } catch (e) {
+        console.warn("  ❌ Failed to parse applicationFormFields:", e.message);
+        jobData.applicationFormFields = [];
+      }
+    } else if (Array.isArray(jobData.applicationFormFields)) {
+      console.log("  ✅ Already an array. Count:", jobData.applicationFormFields.length);
+    } else {
+      console.log("  ℹ️ No applicationFormFields provided");
+      jobData.applicationFormFields = [];
+    }
 
     if (req.file) {
       jobData.companyLogo = `/uploads/${req.file.filename}`;
@@ -99,11 +142,33 @@ exports.updateJob = async (req, res) => {
     );
 
     const jobData = { ...req.body };
+    
+    // Process array fields
     processArrayFields(jobData, [
       "eligibleCourses",
       "eligibleBranches",
       "eligibleYears",
     ]);
+
+    // Parse applicationFormFields if it's a JSON string
+    console.log("📋 Processing applicationFormFields for update:");
+    console.log("  Raw value:", jobData.applicationFormFields);
+    console.log("  Type:", typeof jobData.applicationFormFields);
+    
+    if (jobData.applicationFormFields && typeof jobData.applicationFormFields === 'string') {
+      try {
+        jobData.applicationFormFields = JSON.parse(jobData.applicationFormFields);
+        console.log("  ✅ Parsed successfully. Count:", jobData.applicationFormFields.length);
+        console.log("  Fields:", jobData.applicationFormFields);
+      } catch (e) {
+        console.warn("  ❌ Failed to parse applicationFormFields:", e.message);
+        jobData.applicationFormFields = [];
+      }
+    } else if (Array.isArray(jobData.applicationFormFields)) {
+      console.log("  ✅ Already an array. Count:", jobData.applicationFormFields.length);
+    } else {
+      console.log("  ℹ️ No applicationFormFields provided, keeping existing ones");
+    }
 
     if (req.file) {
       jobData.companyLogo = `/uploads/${req.file.filename}`;

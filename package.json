@@ -1,4 +1,14 @@
 {
+  "name": "pms-cgc-u",
+  "version": "1.0.0",
+  "description": "Placement Management System",
+  "scripts": {
+    "start": "node start-all.js",
+    "dev": "node start-all.js",
+    "dev:backend": "cd backend && node server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.5",

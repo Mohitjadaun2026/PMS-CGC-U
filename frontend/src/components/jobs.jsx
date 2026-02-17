@@ -4,6 +4,8 @@ import './jobs.css';
 import { API_ENDPOINTS } from '../config/api';
 import {useNavigate, useParams, useLocation} from 'react-router-dom'
 import { getJobsById } from '../../api/jobs';
+import DynamicApplicationForm from './DynamicApplicationForm';
+import { toast } from 'react-hot-toast';
 
 // JobCard Component
 const JobCard = ({ job, onClick }) => {
@@ -398,7 +400,9 @@ const Jobs = () => {
 
 export const JobWrapper = () =>{
   const {id} = useParams();
-  const [job,setJob] = useState( null );
+  const [job, setJob] = useState(null);
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -418,12 +422,57 @@ export const JobWrapper = () =>{
      navigate('/jobs');
   };
 
-  const handleApply = (job) => {
-    alert(`Applied for ${job.position} at ${job.companyName}`);
+  const handleApply = (jobToApply) => {
+    console.group('🎯 APPLY CLICKED FROM JOB DETAILS');
+    console.log('Job:', jobToApply);
+    console.log('Has applicationFormFields:', !!jobToApply.applicationFormFields);
+    console.log('Number of fields:', jobToApply.applicationFormFields?.length || 0);
+    console.groupEnd();
+    
+    setSelectedJob(jobToApply);
+    setShowApplicationModal(true);
   };
 
-  return <JobDetails job={job}  onBack={handleBack} onApply={handleApply}  />
+  const handleApplicationSuccess = () => {
+    console.log('✅ Application submitted successfully');
+    setShowApplicationModal(false);
+    setSelectedJob(null);
+    toast.success('Application submitted successfully!');
+  };
 
+  const handleApplicationClose = () => {
+    console.log('❌ Application form closed');
+    setShowApplicationModal(false);
+    setSelectedJob(null);
+  };
+
+  return (
+    <>
+      <JobDetails job={job} onBack={handleBack} onApply={handleApply} />
+      
+      {/* Application Modal */}
+      {showApplicationModal && selectedJob && (
+        <div className="application-modal-overlay" onClick={handleApplicationClose}>
+          <div className="application-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div>
+                <h2>Apply for {selectedJob.position}</h2>
+                <p className="company-name">{selectedJob.companyName}</p>
+              </div>
+              <button className="modal-close-btn" onClick={handleApplicationClose}>×</button>
+            </div>
+            <div className="modal-body">
+              <DynamicApplicationForm 
+                job={selectedJob}
+                onSuccess={handleApplicationSuccess}
+                onClose={handleApplicationClose}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default Jobs;

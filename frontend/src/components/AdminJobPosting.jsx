@@ -3,6 +3,7 @@ import './AdminJobPosting.css';
 import { API_ENDPOINTS } from '../config/api';
 import AdminHeader from './AdminHeader';
 import { getAllJobs, createJob, updateJob, deleteJob } from '../../api/jobs';
+import DynamicFormFieldBuilder from './DynamicFormFieldBuilder';
 
 const initialForm = {
   companyName: '',
@@ -24,7 +25,10 @@ const initialForm = {
   additionalInfo: '',
   eligibleCourses: [],
   eligibleBranches: [],
-  eligibleYears: []
+  eligibleYears: [],
+  jobApplicationType: 'on-campus',
+  externalApplicationLink: '',
+  applicationFormFields: []
 };
 
 // Add these arrays for dropdown options
@@ -95,7 +99,30 @@ const AdminJobPosting = () => {
     
     console.log('Form submit - editId:', editId);
     console.log('Form submit - formData:', formData);
+    console.log('Form submit - applicationFormFields:', formData.applicationFormFields);
     console.log('Form submit - logoFile:', logoFile);
+    console.log('Form submit - jobApplicationType:', formData.jobApplicationType);
+    
+    // Validate: if on-campus, must have form fields
+    if (formData.jobApplicationType === 'on-campus' && (!formData.applicationFormFields || formData.applicationFormFields.length === 0)) {
+      alert('⚠️ On-Campus jobs must have at least one application form field');
+      return;
+    }
+    
+    // Show what we're about to send
+    console.group('🚀 SUBMITTING JOB');
+    console.log('Job Type:', formData.jobApplicationType);
+    console.log('Position:', formData.position);
+    console.log('applicationFormFields count:', formData.applicationFormFields?.length || 0);
+    if (formData.applicationFormFields && formData.applicationFormFields.length > 0) {
+      console.log('Fields being sent:');
+      formData.applicationFormFields.forEach((f, i) => {
+        console.log(`  ${i+1}. ${f.fieldName} (${f.fieldType}) - Required: ${f.isRequired}`);
+      });
+    } else {
+      console.warn('⚠️ WARNING: No custom form fields will be sent!');
+    }
+    console.groupEnd();
     
     // Validate required fields
     if (formData.eligibleCourses.length === 0) {
@@ -127,11 +154,22 @@ const AdminJobPosting = () => {
         }
         
         if (Array.isArray(value)) {
-          // Handle arrays (eligibleCourses, eligibleBranches, eligibleYears)
-          if (value.length > 0) {
-            value.forEach(item => {
-              submitData.append(`${key}[]`, item);
-            });
+          // Handle arrays specially
+          if (key === 'applicationFormFields') {
+            // For applicationFormFields, serialize as JSON string
+            console.log('📤 Sending applicationFormFields to backend:');
+            console.log('  Count:', value.length);
+            console.log('  Fields:', value);
+            const jsonString = JSON.stringify(value);
+            console.log('  JSON String:', jsonString);
+            submitData.append(key, jsonString);
+          } else {
+            // Handle other arrays (eligibleCourses, eligibleBranches, eligibleYears)
+            if (value.length > 0) {
+              value.forEach(item => {
+                submitData.append(`${key}[]`, item);
+              });
+            }
           }
         } else {
           submitData.append(key, value);
@@ -169,7 +207,19 @@ const AdminJobPosting = () => {
         alert('Job created successfully!');
       }
       
-      console.log('✅ Job operation successful:', job);
+      console.group('✅ JOB SAVED - RESPONSE FROM SERVER');
+      console.log('Job ID:', job._id);
+      console.log('Position:', job.position);
+      console.log('applicationFormFields count:', job.applicationFormFields?.length || 0);
+      if (job.applicationFormFields && job.applicationFormFields.length > 0) {
+        console.log('Fields returned from server:');
+        job.applicationFormFields.forEach((f, i) => {
+          console.log(`  ${i+1}. ${f.fieldName} (${f.fieldType}) - Required: ${f.isRequired}`);
+        });
+      } else {
+        console.warn('⚠️ WARNING: Server returned NO custom form fields!');
+      }
+      console.groupEnd();
       
       setEditId(null);
       setFormData(initialForm);
@@ -208,6 +258,10 @@ const AdminJobPosting = () => {
   };
   const handleEdit = (job) => {
     console.log('Editing job:', job); // Debug log
+    console.log('Job applicationFormFields:', job.applicationFormFields);
+    console.log('applicationFormFields type:', typeof job.applicationFormFields);
+    console.log('applicationFormFields is array:', Array.isArray(job.applicationFormFields));
+    console.log('applicationFormFields length:', job.applicationFormFields?.length || 0);
     
     // Create a copy of the job without the companyLogo field (handled separately)
     const { companyLogo, ...jobWithoutLogo } = job;
@@ -218,8 +272,12 @@ const AdminJobPosting = () => {
       eligibleCourses: Array.isArray(job.eligibleCourses) ? job.eligibleCourses : [],
       eligibleBranches: Array.isArray(job.eligibleBranches) ? job.eligibleBranches : [],
       eligibleYears: Array.isArray(job.eligibleYears) ? job.eligibleYears : [],
+      jobApplicationType: job.jobApplicationType || 'on-campus',
+      externalApplicationLink: job.externalApplicationLink || '',
+      applicationFormFields: Array.isArray(job.applicationFormFields) ? job.applicationFormFields : []
     };
     
+    console.log('✅ Loaded applicationFormFields for edit:', editFormData.applicationFormFields);
     console.log('Form data for edit (without companyLogo):', editFormData); // Debug log
     
     setFormData(editFormData);
@@ -430,6 +488,83 @@ const AdminJobPosting = () => {
               </div>
             </div>
             <div className="form-section">
+              <h2>Job Application Type</h2>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Application Type*</label>
+                  <div className="radio-group">
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="jobApplicationType"
+                        value="on-campus"
+                        checked={formData.jobApplicationType === 'on-campus'}
+                        onChange={handleInputChange}
+                      />
+                      <span>On-Campus</span>
+                    </label>
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="jobApplicationType"
+                        value="off-campus"
+                        checked={formData.jobApplicationType === 'off-campus'}
+                        onChange={handleInputChange}
+                      />
+                      <span>Off-Campus</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              {formData.jobApplicationType === 'on-campus' ? (
+                <div className="form-group">
+                  <label>Application Form Fields</label>
+                  <p className="form-hint">Create a custom application form for students</p>
+                  <DynamicFormFieldBuilder 
+                    initialFields={formData.applicationFormFields}
+                    onChange={(fields) => setFormData({ ...formData, applicationFormFields: fields })}
+                  />
+                  
+                  {/* Show summary of created fields */}
+                  {formData.applicationFormFields && formData.applicationFormFields.length > 0 && (
+                    <div className="form-fields-summary" style={{
+                      marginTop: '15px',
+                      padding: '12px',
+                      backgroundColor: '#f0f7ff',
+                      border: '1px solid #d0e8ff',
+                      borderRadius: '4px'
+                    }}>
+                      <h4 style={{ margin: '0 0 10px 0', color: '#0066cc' }}>
+                        ✅ Created Fields ({formData.applicationFormFields.length}):
+                      </h4>
+                      <ul style={{ margin: '0', paddingLeft: '20px' }}>
+                        {formData.applicationFormFields.map((field, idx) => (
+                          <li key={idx} style={{ marginBottom: '5px', fontSize: '14px' }}>
+                            <strong>{field.fieldName}</strong> ({field.fieldType})
+                            {field.isRequired && <span style={{ color: 'red' }}> *</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="form-group">
+                  <label>External Application Link*</label>
+                  <input
+                    type="url"
+                    name="externalApplicationLink"
+                    value={formData.externalApplicationLink}
+                    onChange={handleInputChange}
+                    placeholder="https://example.com/apply"
+                    required={formData.jobApplicationType === 'off-campus'}
+                  />
+                  <p className="form-hint">Students will be redirected to this link to apply</p>
+                </div>
+              )}
+            </div>
+            <div className="form-section">
               <h2>Job Requirements</h2>
               <div className="form-group">
                 <label>Job Description*</label>
@@ -629,6 +764,7 @@ const AdminJobPosting = () => {
           <th>Company</th>
           <th>Position</th>
           <th>Job Type</th>
+          <th>Application Type</th>
           <th>Package</th>
           <th>Eligible Courses</th>
           <th>Eligible Years</th>
@@ -682,6 +818,11 @@ const AdminJobPosting = () => {
             </td>
             <td>{posting.position || '-'}</td>
             <td>{posting.jobType || '-'}</td>
+            <td>
+              <span className={`app-type-badge ${posting.jobApplicationType || 'on-campus'}`}>
+                {posting.jobApplicationType === 'off-campus' ? 'Off-Campus' : 'On-Campus'}
+              </span>
+            </td>
             <td>{posting.salaryPackage || '-'}</td>
             <td>
               {(posting.eligibleCourses?.join(', ') || 'None')}
