@@ -73,7 +73,7 @@ const sendConfirmationEmail = async (email, unsubscribeLink) => {
       </div>
       <p style="color: #9ca3af; margin: 0; font-size: 12px;">
         &copy; ${new Date().getFullYear()} Campus - Placement & Career Development. All rights reserved.<br />
-        Chandigarh Group of Colleges, Jhanjeri, Mohali, Punjab 140307
+        Your Campus, India
       </p>
     </div>
   </div>

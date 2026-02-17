@@ -31,11 +31,11 @@ export default function TermsOfService() {
               <h2>Acceptance of Terms</h2>
             </div>
             <div className="section-content">
-              <p>By accessing and using the CGC University Campus Recruitment Portal, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using this platform.</p>
+              <p>By accessing and using the Campus Recruitment Portal, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using this platform.</p>
               <ul>
-                <li>These terms constitute a binding agreement between you and CGC University</li>
+                <li>These terms constitute a binding agreement between you and Campus Recruitment Portal</li>
                 <li>Your continued use of the platform signifies acceptance of any updates to these terms</li>
-                <li>You must be a current student, alumni, or authorized personnel of CGC University to use this platform</li>
+                <li>You must be a current student, alumni, or authorized personnel of the campus to use this platform</li>
               </ul>
             </div>
           </section>
@@ -109,9 +109,9 @@ export default function TermsOfService() {
             <div className="section-content">
               <p>The platform and its content are protected by intellectual property laws:</p>
               <ul>
-                <li><strong>Platform Content:</strong> All text, graphics, logos, and software are owned by CGC University</li>
+                <li><strong>Platform Content:</strong> All text, graphics, logos, and software are owned by Campus Recruitment Portal</li>
                 <li><strong>User Content:</strong> You retain ownership of your uploaded content but grant us license to use it for platform purposes</li>
-                <li><strong>Trademarks:</strong> CGC University logos and trademarks may not be used without permission</li>
+                <li><strong>Trademarks:</strong> Campus Recruitment Portal logos and trademarks may not be used without permission</li>
                 <li><strong>Copyright:</strong> Respect copyright laws when uploading or sharing content</li>
               </ul>
             </div>
@@ -182,7 +182,7 @@ export default function TermsOfService() {
                   <strong>Email:</strong> <a href="mailto:support@cgcuni.edu">support@cgcuni.edu</a>
                 </div>
                 <div className="contact-item">
-                  <strong>Address:</strong> CGC University, Mohali, Punjab, India
+                  <strong>Address:</strong> Your Campus, India
                 </div>
                 <div className="contact-item">
                   <strong>Phone:</strong> +91-XXX-XXX-XXXX

@@ -42,7 +42,7 @@ const CookiePolicy = () => {
               <strong>Effective Date:</strong> {new Date().toLocaleDateString()}
             </p>
             <p className="mb-4 leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-              This Cookie Policy explains how CGC University Campus Recruitment Portal ("we," "us," or "our") uses cookies and similar technologies when you visit our website.
+              This Cookie Policy explains how Campus Recruitment Portal ("we," "us," or "our") uses cookies and similar technologies when you visit our website.
             </p>
           </div>
 
@@ -160,7 +160,7 @@ const CookiePolicy = () => {
               If you have any questions about this Cookie Policy or our use of cookies, please contact us through the contact information provided on our website.
             </p>
             <div className="leading-relaxed text-center" style={{ color: 'var(--text-primary)' }}>
-              <strong>CGC University Campus Recruitment Portal</strong><br />
+              <strong>Campus Recruitment Portal</strong><br />
               Email: recruitment@cgc.edu.in<br />
               Phone: +91-XXXX-XXXXXX
             </div>

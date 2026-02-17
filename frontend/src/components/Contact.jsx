@@ -393,7 +393,7 @@ function Contact() {
         <h1>Contact Us</h1>
         <p>
           Get in touch with the DCPD (Department of Career Planning &
-          Development) at CGC Jhanjeri.
+          Development) at Your Campus.
           <br />
           We are here to help you with all your placement and career queries.
         </p>
@@ -406,25 +406,24 @@ function Contact() {
             <div className="contact-card">
               <h2>General Contact</h2>
               <p>
-                <span className="contact-label">Address:</span> Chandigarh Group
-                of Colleges, Jhanjeri, Mohali, Punjab, India
+                <span className="contact-label">Address:</span> Your Campus, India
               </p>
               <p>
                 <span className="contact-label">Phone:</span>{" "}
-                <a href="tel:+911234567890">+91-12345-67890</a>
+                <a href="tel:+91-12345-67890">+91-12345-67890</a>
               </p>
               <p>
                 <span className="contact-label">Email:</span>{" "}
-                <a href="mailto:dcpd@cgc.ac.in">dcpd@cgc.ac.in</a>
+                <a href="mailto:placement@campus.edu">placement@campus.edu</a>
               </p>
               <p>
                 <span className="contact-label">Website:</span>{" "}
                 <a
-                  href="https://www.cgc.ac.in/"
+                  href="https://www.campus.edu/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  www.cgc.ac.in
+                  www.campus.edu
                 </a>
               </p>
             </div>

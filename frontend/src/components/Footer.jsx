@@ -156,7 +156,7 @@ function Footer() {
               <ul className="footer-contact">
                 <li>
                   <FaMapMarkerAlt className="contact-icon" />
-                  <span>CGC University, Mohali</span>
+                  <span>Your Campus, India</span>
                 </li>
                 <li>
                   <FaEnvelope className="contact-icon" />

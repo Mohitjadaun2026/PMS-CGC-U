@@ -147,7 +147,7 @@ export default function PrivacyPolicy() {
                   <strong>Email:</strong> <a href="mailto:privacy@cgcuni.edu">privacy@cgcuni.edu</a>
                 </div>
                 <div className="contact-item">
-                  <strong>Address:</strong> CGC University, Mohali, Punjab, India
+                  <strong>Address:</strong> Your Campus, India
                 </div>
                 <div className="contact-item">
                   <strong>Phone:</strong> +91-XXX-XXX-XXXX

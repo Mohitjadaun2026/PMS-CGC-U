@@ -1,7 +1,7 @@
  import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
-import cgcBack from "../assets/cgc back2.png";
+import campusBack from "../assets/campus.png";
 import "./home.css";
 import {
   Users,
@@ -598,12 +598,12 @@ function Home() {
       <section className="hero-section">
         <div
           className="hero-background"
-          style={{ backgroundImage: `url(${cgcBack})` }}
+          style={{ backgroundImage: `url(${campusBack})` }}
         >
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content">
-          <h1 className="hero-title">CGC UNIVERSITY</h1>
+          <h1 className="hero-title">CAMPUS RECRUITMENT PORTAL</h1>
           <p className="hero-description">
             Empowering Dreams, Creating Futures - Your Gateway to Success
           </p>

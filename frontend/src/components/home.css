@@ -72,7 +72,7 @@ body.light .container {
   right: 0;
   bottom: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   z-index: 1;
 }
 
@@ -84,8 +84,8 @@ body.light .container {
   bottom: 0;
   background: linear-gradient(
     to right,
-    rgba(18, 18, 18, 0.85),
-    rgba(18, 18, 18, 0.6)
+    rgba(18, 18, 18, 0.55),
+    rgba(18, 18, 18, 0.35)
   );
   z-index: 2;
 }
