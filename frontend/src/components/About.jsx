@@ -141,7 +141,7 @@ function About() {
       icon: <Award className="w-7 h-7" />,
       title: "Dedicated Support Team",
       description:
-        "Professional DCPD trainers and placement support specialists",
+        "Professional Placement & Career Development trainers and placement support specialists",
     },
     {
       icon: <Building className="w-7 h-7" />,
@@ -241,7 +241,7 @@ function About() {
             <div className="inline-flex items-center gap-3 mb-4 px-6 py-3 rounded-full border transition-colors duration-500 border-[var(--maroon-700)]">
               <Sparkles className="w-5 h-5 !text-[var(--maroon-500)]" />
               <span className="text-sm font-semibold !text-[var(--maroon-500)]">
-                DCPD CAMPUS PORTAL
+                CAMPUS RECRUITMENT PORTAL
               </span>
             </div>
 
@@ -286,7 +286,7 @@ function About() {
               <h2 className="text-4xl md:text-5xl font-bold leading-tight transition-colors duration-500 !text-[var(--maroon-700)]">
                 Department of Career Planning & Development
                 <div className="text-2xl md:text-3xl font-semibold mt-2 !text-[var(--maroon-700)]">
-                  (DCPD)
+                  (Placement & Career Development)
                 </div>
               </h2>
             </div>
@@ -297,11 +297,11 @@ function About() {
               }`}
             >
               <strong className="font-bold text-2xl transition-colors duration-500 text-[var(--maroon-500)]">
-                DCPD at CGC Jhanjeri
+                Campus Recruitment Portal at Your Campus
               </strong>{" "}
               is dedicated to empowering students with the skills, guidance, and
               opportunities needed for successful careers. Our Campus
-              Recruitment Portal is a specialized platform designed for the DCPD
+              Recruitment Portal is a specialized platform designed for the Placement & Career Development team
               department to streamline campus placements.
             </p>
           </div>
@@ -356,7 +356,7 @@ function About() {
                   isDark ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                At DCPD, CGC Jhanjeri, we are committed to{" "}
+                At the Placement & Career Development department of your campus, we are committed to{" "}
                 <span className="font-bold transition-colors duration-500 text-[var(--maroon-500)]">
                   nurturing talent
                 </span>

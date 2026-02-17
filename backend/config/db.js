@@ -4,7 +4,7 @@ const connectDB = async () => {
   try {
     console.log("Mongo URI:", process.env.MONGO_URI); // Debug log
     await mongoose.connect(process.env.MONGO_URI, {
-      dbName: "PMS-CGC-U",
+      dbName: "Campus-Recruitment-Portal",
       retryWrites: true,
       w: "majority",
     });

@@ -6,7 +6,7 @@ const os = require('os');
 
 const isWindows = os.platform() === 'win32';
 
-console.log('🚀 Starting PMS-CGC-U Application (Frontend + Backend)\n');
+console.log('🚀 Starting Campus Recruitment Portal (Frontend + Backend)\n');
 console.log('📊 Backend:  http://localhost:5000');
 console.log('🎨 Frontend: http://localhost:5180\n');
 console.log('Press CTRL+C to stop both servers\n');

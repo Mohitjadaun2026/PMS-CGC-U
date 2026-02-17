@@ -52,7 +52,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Root route
 app.get("/", (req, res) => {
-  res.send("Welcome to PMS-CGC-U Backend 🚀");
+  res.send("Welcome to Campus Recruitment Portal Backend 🚀");
 });
 
 // API routes

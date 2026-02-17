@@ -7,7 +7,7 @@ import "./Chatbot.css"; // your CSS file
 const FAQ = [
     {
     triggers: ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
-    response: "Hello 👋! Welcome to <b>Campus Recruitment Portal of CGC University Jhanjeri</b>. How can I help you today?",
+    response: "Hello 👋! Welcome to <b>Campus Recruitment Portal</b>. How can I help you today?",
   },
   {
     triggers: ["thanks", "thank you", "thx"],
@@ -18,7 +18,7 @@ const FAQ = [
     response: "Goodbye! 👋 Have a productive coding day!",
   }, {
     triggers: ["what is this", "what is this portal", "portal", "about portal"],
-    response: "Hey there! 👋 Welcome to your very own campus sidekick!<br><br>This is the <b>official DCPD Campus Portal</b> for <b>CGC Jhanjeri</b>, your <b>one-stop hub</b> for all things <b>career-related</b>.<br>From planning your path to landing your <b>dream job</b>, I’m here to guide you every step of the way. 🚀<br>Let’s make your <b>career journey exciting</b>!",
+    response: "Hey there! 👋 Welcome to your very own campus sidekick!<br><br>This is the <b>official Campus Recruitment Portal</b> for your <b>campus</b>, your <b>one-stop hub</b> for all things <b>career-related</b>.<br>From planning your path to landing your <b>dream job</b>, I'm here to guide you every step of the way. 🚀<br>Let's make your <b>career journey exciting</b>!",
   },
   {
     triggers: ["about dcpd", "dcpd team", "who are dcpd", "tell me about dcpd"],

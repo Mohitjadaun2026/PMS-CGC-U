@@ -27,21 +27,21 @@ const sendConfirmationEmail = async (email, unsubscribeLink) => {
     const transporter = createTransporter();
 
     const mailOptions = {
-      from: `"CGC Jhanjeri DCPD" <${process.env.EMAIL_USERNAME}>`,
+      from: `"Campus Placement & Career Development" <${process.env.EMAIL_USERNAME}>`,
       to: email,
       subject:
-        "Welcome to CGC Jhanjeri DCPD! 🎓 Your Career Development Partner",
+        "Welcome to Campus Recruitment Portal! 🎓 Your Career Development Partner",
       html: `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to CGC Jhanjeri DCPD</title>
+      <title>Welcome to Campus Recruitment Portal</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: #f9fafb;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
     <div style="background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%); padding: 30px 20px; text-align: center; border-radius: 8px 8px 0 0;">
-      <h1 style="color: white; margin: 0; font-size: 28px; font-weight: bold;">Welcome to CGC Jhanjeri DCPD</h1>
+      <h1 style="color: white; margin: 0; font-size: 28px; font-weight: bold;">Welcome to Campus Recruitment Portal</h1>
       <p style="color: rgba(255, 255, 255, 0.9); margin: 10px 0 0; font-size: 16px;">
         Department of Career Planning & Development<br />Empowering students for successful careers.
       </p>
@@ -49,7 +49,7 @@ const sendConfirmationEmail = async (email, unsubscribeLink) => {
     <div style="padding: 30px 20px; text-align: center;">
       <h2 style="color: #1f2937; margin-bottom: 15px;">We're excited to have you on board!</h2>
       <p style="color: #6b7280; line-height: 1.6; margin: 0;">
-        Thank you for subscribing to CGC Jhanjeri DCPD's updates. You'll now receive information about job opportunities, training programs, placement activities, and career development resources.
+        Thank you for subscribing to Campus Recruitment Portal's updates. You'll now receive information about job opportunities, training programs, placement activities, and career development resources.
       </p>
       <div style="margin: 30px 0;">
         <a href="https://cgcuet.cgcuniversity.in/admission?utm_source=google&utm_medium=search&utm_campaign=competitors&gad_source=1&gad_campaignid=22921948485&gbraid=0AAAAACuqqMirhwli4aAUiyHZJj3ZJQ0gJ&gclid=Cj0KCQjwzaXFBhDlARIsAFPv-u8V7UEgLEzK-OOOovi_VjppR0AJpWinfrxX33BTJb6YNSVd7c-zj44aAndrEALw_wcB" style="display: inline-block; background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%); color: white; padding: 14px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
@@ -59,7 +59,7 @@ const sendConfirmationEmail = async (email, unsubscribeLink) => {
     </div>
     <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
       <p style="color: #6b7280; margin: 0 0 15px; font-size: 14px;">
-        You're receiving this email because you signed up for updates from CGC Jhanjeri DCPD.
+        You're receiving this email because you signed up for updates from Campus Recruitment Portal.
       </p>
       <div style="margin-bottom: 15px;">
         <a href="${unsubscribeLink}" style="color: #ef4444; text-decoration: none; font-size: 14px;">
@@ -72,7 +72,7 @@ const sendConfirmationEmail = async (email, unsubscribeLink) => {
         <a href="https://instagram.com/cgcjhanjeri" style="display: inline-block; margin: 0 10px;"><span style="font-size: 20px;">📸</span></a>
       </div>
       <p style="color: #9ca3af; margin: 0; font-size: 12px;">
-        &copy; ${new Date().getFullYear()} CGC Jhanjeri - Department of Career Planning & Development. All rights reserved.<br />
+        &copy; ${new Date().getFullYear()} Campus - Placement & Career Development. All rights reserved.<br />
         Chandigarh Group of Colleges, Jhanjeri, Mohali, Punjab 140307
       </p>
     </div>
@@ -102,7 +102,7 @@ const sendBulkNewsletter = async (
     const unsubscribeLink = unsubscribeLinkGenerator(subscriber.email);
 
     const mailOptions = {
-      from: `"CGC Jhanjeri DCPD" <${process.env.EMAIL_USERNAME}>`,
+      from: `"Campus Placement & Career Development" <${process.env.EMAIL_USERNAME}>`,
       to: subscriber.email,
       subject: subject,
       html: `<!DOCTYPE html>
@@ -110,12 +110,12 @@ const sendBulkNewsletter = async (
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CGC Jhanjeri DCPD Update</title>
+  <title>Campus Recruitment Portal Update</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: #f9fafb;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
     <div style="background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%); padding: 25px 20px; text-align: center; border-radius: 8px 8px 0 0;">
-      <h1 style="color: white; margin: 0; font-size: 24px; font-weight: bold;">CGC Jhanjeri DCPD</h1>
+      <h1 style="color: white; margin: 0; font-size: 24px; font-weight: bold;">Campus Recruitment Portal</h1>
       <p style="color: rgba(255, 255, 255, 0.9); margin: 8px 0 0; font-size: 14px;">
         Department of Career Planning & Development - Empowering students for successful careers.
       </p>
@@ -125,13 +125,13 @@ const sendBulkNewsletter = async (
     </div>
     <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
       <p style="color: #6b7280; margin: 0 0 15px; font-size: 14px;">
-        You're receiving this email because you subscribed to CGC Jhanjeri DCPD updates.
+        You're receiving this email because you subscribed to Campus Recruitment Portal updates.
       </p>
       <a href="${unsubscribeLink}" style="color: #ef4444; text-decoration: none; font-size: 14px;">
         Unsubscribe
       </a>
       <p style="color: #9ca3af; margin: 15px 0 0; font-size: 12px;">
-        &copy; ${new Date().getFullYear()} CGC Jhanjeri - Department of Career Planning & Development.
+        &copy; ${new Date().getFullYear()} Campus - Placement & Career Development.
       </p>
     </div>
   </div>
