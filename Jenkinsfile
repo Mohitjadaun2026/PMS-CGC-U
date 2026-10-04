@@ -9,93 +9,91 @@ pipeline {
 
     environment {
         CI = 'true'
+        IMAGE_TAG = "build-${BUILD_NUMBER}"
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Install dependencies') {
+        stage('Install Dependencies') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'node --version && npm --version'
-                        sh 'npm ci'
-                        dir('backend') { sh 'npm ci' }
-                        dir('frontend') { sh 'npm ci' }
-                    } else {
-                        bat 'node --version && npm --version'
-                        bat 'npm ci'
-                        dir('backend') { bat 'npm ci' }
-                        dir('frontend') { bat 'npm ci' }
-                    }
+                bat 'npm ci --prefix backend'
+                bat 'npm ci --prefix frontend'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                bat 'npm run lint --prefix backend'
+                bat 'npm run lint --prefix frontend'
+            }
+        }
+
+        stage('Test Backend') {
+            steps {
+                bat 'npm test --prefix backend'
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                bat 'npm run build --prefix frontend'
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                bat 'node scripts/smoke-frontend.cjs'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                bat 'docker compose build'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                withCredentials([
+                    string(credentialsId: 'pms-mongo-uri', variable: 'MONGO_URI'),
+                    string(credentialsId: 'pms-jwt-secret', variable: 'JWT_SECRET'),
+                    string(credentialsId: 'pms-newsletter-secret', variable: 'NEWSLETTER_SUBSCRIBE_SECRET'),
+                    usernamePassword(
+                        credentialsId: 'pms-smtp',
+                        usernameVariable: 'EMAIL_USERNAME',
+                        passwordVariable: 'EMAIL_PASSWORD'
+                    )
+                ]) {
+                    bat 'docker compose up -d --remove-orphans'
                 }
             }
         }
 
-        stage('Lint frontend') {
+        stage('Deployment Smoke Test') {
             steps {
-                script {
-                    if (isUnix()) {
-                        dir('frontend') { sh 'npm run lint' }
-                    } else {
-                        dir('frontend') { bat 'npm run lint' }
-                    }
-                }
-            }
-        }
-
-        stage('Build frontend') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        dir('frontend') { sh 'npm run build' }
-                    } else {
-                        dir('frontend') { bat 'npm run build' }
-                    }
-                }
-            }
-        }
-
-        stage('Smoke test frontend') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        sh 'node scripts/smoke-frontend.cjs'
-                    } else {
-                        bat 'node scripts/smoke-frontend.cjs'
-                    }
-                }
-            }
-        }
-
-        stage('Package release') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        sh 'node scripts/package-release.cjs'
-                    } else {
-                        bat 'node scripts/package-release.cjs'
-                    }
-                }
-                archiveArtifacts artifacts: 'release/**', fingerprint: true
-            }
-        }
-
-        stage('Manual deploy handoff') {
-            steps {
-                input message: 'Download the archived release/ artifact and deploy it using your hosting provider.', ok: 'Ready for manual deployment'
-                echo 'Release artifact is archived and ready for manual deployment.'
+                bat '''
+                    timeout /t 10 /nobreak >nul
+                    curl --fail http://localhost:5000/
+                    curl --fail http://localhost:8080/health
+                '''
             }
         }
     }
 
     post {
         success {
-            echo 'Lint, frontend build and smoke test passed; release artifact is archived for manual deployment.'
+            echo 'PMS-CGC-U CI/CD pipeline completed successfully.'
+        }
+
+        failure {
+            echo 'Pipeline failed. Showing Docker logs...'
+            bat 'docker compose logs --tail=100'
         }
     }
 }
