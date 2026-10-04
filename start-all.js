@@ -1,10 +1,32 @@
 #!/usr/bin/env node
 
-const { spawn } = require('child_process');
+const { spawn, execFileSync } = require('child_process');
 const path = require('path');
 const os = require('os');
 
 const isWindows = os.platform() === 'win32';
+
+function startJenkinsService() {
+  if (!isWindows) {
+    console.log('ℹ️  Jenkins service auto-start is only configured for Windows.');
+    return;
+  }
+
+  try {
+    execFileSync('powershell.exe', [
+      '-NoProfile', '-NonInteractive', '-Command',
+      "$service = Get-Service -Name Jenkins -ErrorAction Stop; if ($service.Status -ne 'Running') { Start-Service -Name Jenkins -ErrorAction Stop }; Write-Output 'Jenkins is running.'"
+    ], { stdio: 'pipe' });
+    console.log('✅ Jenkins:   http://localhost:8080');
+  } catch (error) {
+    const detail = error.stderr?.toString().trim();
+    console.error('❌ Could not start the Jenkins Windows service.');
+    if (detail) console.error(detail);
+    console.error('   Open PowerShell as Administrator, then run: npm start\n');
+  }
+}
+
+startJenkinsService();
 
 console.log('🚀 Starting Campus Recruitment Portal (Frontend + Backend)\n');
 console.log('📊 Backend:  http://localhost:5000');
@@ -15,8 +37,8 @@ console.log('=' .repeat(60) + '\n');
 // Start backend
 console.log('🔧 Starting Backend Server...\n');
 const backendProcess = spawn(
-  isWindows ? 'node.exe' : 'node',
-  [path.join(__dirname, 'backend', 'node_modules', 'nodemon', 'bin', 'nodemon.js'), 'server.js'],
+  'npm',
+  ['run', 'dev'],
   {
     cwd: path.join(__dirname, 'backend'),
     stdio: 'inherit',
