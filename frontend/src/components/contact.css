@@ -1,5 +1,5 @@
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 /* Contact Page Dark Theme */
 .contact-page {
@@ -25,7 +25,7 @@ body.light .contact-page {
   width: 100vw;
   background-image: radial-gradient(
       circle at 20% 30%,
-      rgba(212, 55, 55, 0.05) 0%,
+      rgba(212, 175, 55, 0.05) 0%,
       transparent 25%
     ),
     radial-gradient(
@@ -55,7 +55,7 @@ body.light .contact-page {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--maroon-500));
+  background: linear-gradient(90deg, var(--text-primary), #e5c158);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -76,12 +76,12 @@ body.light .contact-hero {
   );
   color: var(--text-primary);
   margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
   backdrop-filter: none;
 }
 
 body.light .contact-hero h1 {
-  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
+  background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -105,16 +105,16 @@ body.light .contact-hero p {
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(212, 55, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   backdrop-filter: blur(8px);
 }
 
 .contact-card h2 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--maroon-500);
+  color: #e5c158;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--maroon-600);
+  border-bottom: 2px solid #d4af37;
   padding-bottom: 0.5rem;
   display: inline-block;
 }
@@ -126,7 +126,7 @@ body.light .contact-hero p {
 }
 
 .contact-label {
-  color: var(--maroon-500);
+  color: #e5c158;
   font-weight: 600;
   margin-right: 0.5rem;
 }
@@ -150,7 +150,7 @@ body.light .contact-hero p {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--maroon-600);
+  background: #d4af37;
   transition: width var(--transition-speed) ease;
 }
 
@@ -160,14 +160,14 @@ body.light .contact-hero p {
 
 body.light .contact-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 55, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: none;
 }
 
 body.light .contact-card h2 {
   color: var(--maroon-700);
-  border-bottom: 2px solid var(--maroon-600);
+  border-bottom: 2px solid #d4af37;
 }
 
 body.light .contact-card p {
@@ -175,7 +175,7 @@ body.light .contact-card p {
 }
 
 body.light .contact-label {
-  color: var(--maroon-600);
+  color: #d4af37;
 }
 
 body.light .contact-card a {
@@ -188,7 +188,7 @@ body.light .contact-card a:hover {
 }
 
 body.light .contact-card a::after {
-  background: var(--maroon-600);
+  background: #d4af37;
 }
 
 body.light .contact-card a:hover::after {
@@ -212,7 +212,7 @@ body.dark .contact-info{
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 2rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
+  background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -251,7 +251,7 @@ body.dark .contact-info{
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--maroon-600);
+  border: 3px solid #d4af37;
   box-shadow: 0 0 20px rgba(255, 21, 0, 0.2);
 }
 
@@ -280,7 +280,7 @@ body.dark .contact-info{
 
 .executive-title {
   font-size: 1.125rem;
-  color: var(--maroon-500);
+  color: #e5c158;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -301,7 +301,7 @@ body.dark .contact-info{
 }
 
 body.light .executive-section h2 {
-  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
+  background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -327,12 +327,12 @@ body.light .executive-card:hover {
 }
 
 body.light .executive-photo {
-  border: 3px solid var(--maroon-600);
-  box-shadow: 0 0 20px rgba(212, 55, 55, 0.2);
+  border: 3px solid #d4af37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 body.light .photo-overlay {
-  background: rgba(212, 55, 55, 0.1);
+  background: rgba(212, 175, 55, 0.1);
 }
 
 body.light .executive-info h3 {
@@ -344,7 +344,7 @@ body.light .executive-title {
 }
 
 body.light .contact-label {
-  color: var(--maroon-600);
+  color: #d4af37;
 }
 body.light .executive-contact p {
   color: var(--text-secondary);
@@ -366,7 +366,7 @@ body.light .executive-contact p {
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 3rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
+  background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -406,7 +406,7 @@ body.light .executive-contact p {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--maroon-600);
+  border: 3px solid #d4af37;
   margin: 0 auto 1rem;
   display: block;
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
@@ -427,7 +427,7 @@ body.light .executive-contact p {
 
 .team-title {
   font-size: 1rem;
-  color: var(--maroon-500);
+  color: #e5c158;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -450,7 +450,7 @@ body.light .executive-contact p {
 }
 
 body.light .team-section h2 {
-  background: linear-gradient(90deg, var(--text-primary), var(--maroon-600));
+  background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -473,7 +473,7 @@ body.light .team-card:hover {
 }
 
 body.light .team-photo {
-  border: 3px solid var(--maroon-600);
+  border: 3px solid #d4af37;
   box-shadow: 0 0 15px rgba(255, 15, 15, 0.2);
   transition: all var(--transition-speed) ease;
 }
@@ -507,7 +507,7 @@ body.light .team-contact p {
   width: 60px;
   height: 60px;
   border-radius: 10%;
-  background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
+  background: linear-gradient(135deg, #d4af37, var(--maroon-700));
   color: white;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   cursor: pointer;
@@ -525,7 +525,7 @@ body.light .team-contact p {
   max-height: 75vh;
   overflow-y: auto;
   background: rgba(30, 30, 30, 0.95);
-  border: 1px solid rgba(212, 55, 55, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
@@ -602,7 +602,7 @@ body.light .team-contact p {
 }
 
 .progress-step.active {
-  background: var(--maroon-500);
+  background: #e5c158;
   transform: scale(1.2);
 }
 
@@ -666,8 +666,8 @@ body.light .team-contact p {
 .form-group.floating input:focus,
 .form-group.floating textarea:focus {
   outline: none;
-  border-color: var(--maroon-500);
-  box-shadow: 0 0 0 3px rgba(212, 55, 55, 0.2);
+  border-color: #e5c158;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
   background: rgba(30, 30, 30, 0.8);
 }
 
@@ -702,7 +702,7 @@ body.light .team-contact p {
 /* Submit Button */
 .submit-bttn {
   width: 100%;
-  background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
+  background: linear-gradient(135deg, #d4af37, var(--maroon-700));
   color: white;
   border: none;
   padding: 1rem;
@@ -719,7 +719,7 @@ body.light .team-contact p {
 .submit-bttn:hover:not(:disabled) {
   background: linear-gradient(135deg, var(--maroon-700), var(--maroon-800));
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(212, 55, 55, 0.4);
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
 }
 
 .submit-bttn:active:not(:disabled) {
@@ -924,14 +924,14 @@ body.light .team-contact p {
 
 /* Light theme adjustments */
 body.light .floating-contact-form {
-  background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
+  background: linear-gradient(135deg, #d4af37, var(--maroon-700));
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 body.light .floating-contact-form.open {
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(212, 55, 55, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
@@ -954,7 +954,7 @@ body.light .form-group.floating input:focus + label,
 body.light .form-group.floating textarea:focus + label,
 body.light .form-group.floating input:not(:placeholder-shown) + label,
 body.light .form-group.floating textarea:not(:placeholder-shown) + label {
-  color: var(--maroon-600);
+  color: #d4af37;
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -967,8 +967,8 @@ body.light .form-group.floating textarea {
 
 body.light .form-group.floating input:focus,
 body.light .form-group.floating textarea:focus {
-  border-color: var(--maroon-500);
-  box-shadow: 0 0 0 3px rgba(212, 55, 55, 0.2);
+  border-color: #e5c158;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -1247,6 +1247,63 @@ body.dark .form-title{
 }
 body.light .progress-step{
   color:grey;
+}
+
+.contact-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.contact-info {
+  width: min(100% - 2rem, 1200px);
+  max-width: 1200px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.contact-main-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.team-section,
+.executive-section {
+  width: min(100% - 2rem, 1400px);
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.team-card,
+.executive-card,
+.contact-card {
+  min-width: 0;
+}
+
+.team-contact a,
+.executive-contact a,
+.contact-card a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .contact-info,
+  .team-section,
+  .executive-section {
+    width: min(100% - 1.5rem, 640px);
+  }
+
+  .executive-card {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .floating-contact-form.open {
+    width: min(100% - 1.5rem, 360px);
+    left: auto;
+    right: 0.75rem;
+  }
 }
 body.light .form-toggle-icon{
   color:#000000;

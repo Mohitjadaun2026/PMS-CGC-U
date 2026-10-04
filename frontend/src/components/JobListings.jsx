@@ -27,7 +27,7 @@ const JobListings = ({ onClose }) => {
     setError(null);
 
     try {
-      const data = await getAllJobs();
+      const data = await getAllJobs('OFF_CAMPUS');
       console.log('📋 Jobs fetched from API:', data);
       console.log('📋 First job sample:',  data && data[0] ? {
         position: data[0].position,
@@ -43,10 +43,6 @@ const JobListings = ({ onClose }) => {
       setLoading(false);
     }
   };
-
-  // Separate jobs by application type
-  const onCampusJobs = jobs.filter(job => job.jobApplicationType !== 'off-campus');
-  const offCampusJobs = jobs.filter(job => job.jobApplicationType === 'off-campus');
 
   // Function to strip HTML tags and clean text
   const cleanDescription = (html) => {
@@ -64,28 +60,6 @@ const JobListings = ({ onClose }) => {
     return decoded.length > 150 
       ? decoded.substring(0, 150) + '...'
       : decoded;
-  };
-
-  const handleApplyOnCampus = (job) => {
-    console.group('🎯 APPLY ON-CAMPUS CLICKED');
-    console.log('Job:', job);
-    console.log('Job ID:', job._id);
-    console.log('Has applicationFormFields:', !!job.applicationFormFields);
-    console.log('Number of fields:', job.applicationFormFields?.length || 0);
-    
-    if (!job.applicationFormFields || job.applicationFormFields.length === 0) {
-      console.warn('⚠️ WARNING: No application form fields found for this job!');
-      console.log('Will show form anyway to allow manual entry');
-    } else {
-      console.log('✅ Form fields found:');
-      console.table(job.applicationFormFields);
-    }
-    console.groupEnd();
-    
-    console.log('📌 Setting selectedJob and showing modal...');
-    setSelectedJob(job);
-    setShowApplicationModal(true);
-    console.log('📌 Modal should now be visible');
   };
 
   const handleApplyOffCampus = (job) => {
@@ -110,8 +84,6 @@ const JobListings = ({ onClose }) => {
   };
 
   const renderJobCard = (job) => {
-    const isOffCampus = job.jobApplicationType === 'off-campus';
-    
     return (
       <div key={job._id} className="job-card">
         <div className="job-header">
@@ -129,9 +101,7 @@ const JobListings = ({ onClose }) => {
             <h3>{job.position}</h3>
             <p className="company-name">{job.companyName}</p>
           </div>
-          <span className={`job-type-badge ${isOffCampus ? 'off-campus' : 'on-campus'}`}>
-            {isOffCampus ? 'Off-Campus' : 'On-Campus'}
-          </span>
+          <span className="job-type-badge off-campus">Off-Campus</span>
         </div>
 
         <div className="job-tags">
@@ -157,10 +127,10 @@ const JobListings = ({ onClose }) => {
               : 'Not specified'}
           </span>
           <button 
-            className={`apply-btn ${isOffCampus ? 'off-campus' : 'on-campus'}`}
-            onClick={() => isOffCampus ? handleApplyOffCampus(job) : handleApplyOnCampus(job)}
+            className="apply-btn off-campus"
+            onClick={() => handleApplyOffCampus(job)}
           >
-            {isOffCampus ? 'Apply (External) →' : 'Apply Now →'}
+            Apply (External) →
           </button>
         </div>
       </div>
@@ -214,28 +184,14 @@ const JobListings = ({ onClose }) => {
 
           {!loading && !error && jobs.length > 0 ? (
             <div className="job-sections">
-              {/* On-Campus Jobs Section */}
-              {onCampusJobs.length > 0 && (
-                <div className="job-section on-campus-section">
-                  <div className="section-header">
-                    <h3>🎓 On-Campus Opportunities</h3>
-                    <span className="job-count">{onCampusJobs.length}</span>
-                  </div>
-                  <div className="jobs-grid">
-                    {onCampusJobs.map(renderJobCard)}
-                  </div>
-                </div>
-              )}
-
-              {/* Off-Campus Jobs Section */}
-              {offCampusJobs.length > 0 && (
+              {jobs.length > 0 && (
                 <div className="job-section off-campus-section">
                   <div className="section-header">
                     <h3>🌐 Off-Campus Opportunities</h3>
-                    <span className="job-count">{offCampusJobs.length}</span>
+                    <span className="job-count">{jobs.length}</span>
                   </div>
                   <div className="jobs-grid">
-                    {offCampusJobs.map(renderJobCard)}
+                    {jobs.map(renderJobCard)}
                   </div>
                 </div>
               )}

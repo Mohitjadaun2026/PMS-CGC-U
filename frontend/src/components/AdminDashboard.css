@@ -1,0 +1,50 @@
+.admin-dashboard {
+  --admin-bg: #f7f4ef;
+  --admin-surface: #f0e8dc;
+  --admin-border: #e7ded1;
+  --admin-text: #33252a;
+  --admin-muted: #74676a;
+  --admin-accent: #8a2638;
+  min-height: 100vh;
+  color: var(--admin-text);
+  background: var(--admin-bg);
+}
+
+.admin-dashboard.super-admin-theme { background: #f6f2eb; }
+.admin-dashboard-main { width: min(100%, 1280px); padding-top: clamp(2rem, 5vw, 4.5rem); padding-bottom: 4rem; }
+.admin-dashboard-intro {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(212, 175, 55, .45);
+  border-radius: 22px;
+  background: linear-gradient(120deg, #54202a 0%, #762737 58%, #8b3541 100%);
+  box-shadow: 0 18px 45px rgba(75, 25, 36, .15);
+}
+.admin-dashboard-intro::after {
+  content: ""; position: absolute; width: 280px; height: 280px; right: -70px; top: -130px;
+  border: 1px solid rgba(240, 207, 103, .27); border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(240, 207, 103, .035), 0 0 0 58px rgba(240, 207, 103, .025);
+}
+.admin-dashboard-intro h1 { position: relative; z-index: 1; margin: .45rem 0 .7rem; color: #fff; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.035em; }
+.admin-dashboard-intro p:not(.admin-eyebrow) { position: relative; z-index: 1; max-width: 650px; margin: 0; color: #f2e7df; font-size: 1rem; }
+.admin-eyebrow { position: relative; z-index: 1; margin: 0; color: #f0cf67; font-size: .72rem; letter-spacing: .18em; }
+.admin-metrics-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
+.admin-metric-card {
+  position: relative; min-height: 150px; padding: 1.4rem 1.5rem; overflow: hidden;
+  background: #f0e8dc; border: 1px solid rgba(212, 175, 55, .48); border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(58, 35, 37, .055); transition: transform .2s ease, box-shadow .2s ease;
+}
+.admin-metric-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(#d8b54d, #8a2638); }
+.admin-metric-card:hover { transform: translateY(-3px); box-shadow: 0 15px 32px rgba(58, 35, 37, .11); }
+.admin-dashboard .admin-metric-card p:first-child { margin: 0; color: #74676a; font-size: .87rem; font-weight: 600; }
+.admin-dashboard .admin-metric-card p:last-child { margin: .8rem 0 0; color: #702536; font-size: 2.35rem; line-height: 1; letter-spacing: -.04em; }
+.admin-dashboard .rounded-lg.bg-white { color: #702536; background: #fff; border: 1px solid #eadfcf; border-radius: 14px; box-shadow: 0 10px 28px rgba(58, 35, 37, .07); }
+@media (max-width: 900px) { .admin-metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .admin-dashboard-main { padding: 1.25rem .9rem 2.5rem; }
+  .admin-dashboard-intro { margin-bottom: 1.1rem; border-radius: 16px; }
+  .admin-metrics-grid { grid-template-columns: 1fr; gap: .8rem; }
+  .admin-metric-card { min-height: 112px; }
+}
+@media (prefers-reduced-motion: reduce) { .admin-metric-card { transition: none; } }

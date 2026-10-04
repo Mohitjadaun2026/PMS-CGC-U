@@ -14,11 +14,13 @@ import Footer from "./components/Footer";
 import Sign from "./components/Sign";
 import About from "./components/About";
 import StudentProfile from "./components/StudentProfile";
+import StudentApplicationsDashboard from "./components/StudentApplicationsDashboard";
 import Contact from "./components/Contact";
 import AdminJobPosting from "./components/AdminJobPosting";
 // AdminLogin is imported but not used in routes, kept for completeness
 import AdminLogin from "./components/AdminLogin"; 
 import AdminManagement from "./components/AdminManagement";
+import AdminDashboard from "./components/AdminDashboard";
 import ApplicationManagement from "./components/ApplicationManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JobsPage, { JobWrapper } from "./components/jobs";
@@ -219,13 +221,29 @@ function App() {
               <>
                 <Header />
                 <main className="main-content">
-                  <ProtectedRoute requireAdmin={false}>
+                  <ProtectedRoute requireStudent>
                     <StudentProfile />
                   </ProtectedRoute>
                 </main>
                 <Footer />
                 <BackToTopButton />
                 <Chatbot/>
+              </>
+            }
+          />
+          <Route
+            path="/applications"
+            element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <ProtectedRoute requireStudent>
+                    <StudentApplicationsDashboard />
+                  </ProtectedRoute>
+                </main>
+                <Footer />
+                <BackToTopButton />
+                <Chatbot />
               </>
             }
           />
@@ -312,6 +330,14 @@ function App() {
 
           {/* Admin Routes (usually without surrounding Header/Footer) */}
           <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRoute requireAdmin>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/admin-login"
             element={<AdminLogin />}
           />
@@ -334,7 +360,7 @@ function App() {
           <Route
             path="/admin-management"
             element={
-              <ProtectedRoute requireAdmin={true}>
+              <ProtectedRoute requireSuperAdmin>
                 <AdminManagement />
               </ProtectedRoute>
             }

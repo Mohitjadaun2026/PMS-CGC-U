@@ -45,7 +45,6 @@ function Sign() {
   });
 
   const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState({});
   const [valid, setValid] = useState({});
   const navigate = useNavigate();
 
@@ -143,7 +142,6 @@ function Sign() {
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
-    setTouched((p) => ({ ...p, [name]: true }));
     validateField(name, value);
   };
 
@@ -206,7 +204,6 @@ function Sign() {
       console.log("Login successful! User:", res.user);
       setForm({ name: "", email: "", password: "", confirmPassword: "" });
       setErrors({});
-      setTouched({});
       setValid({});
       setLoading(false);
       
@@ -231,7 +228,6 @@ function Sign() {
       confirmPassword: "",
     });
     setErrors({});
-    setTouched({});
     setValid({});
     setProgress(0);
     setShowPassword(false);
@@ -326,6 +322,7 @@ function Sign() {
                     <input
                       type="text"
                       name="name"
+                      autoComplete="name"
                       placeholder="Enter your full name"
                       value={form.name}
                       onChange={handleChange}
@@ -364,6 +361,7 @@ function Sign() {
                   <input
                     type="email"
                     name="email"
+                    autoComplete="email"
                     placeholder="Enter your email"
                     value={form.email}
                     onChange={handleChange}
@@ -401,6 +399,7 @@ function Sign() {
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
+                    autoComplete={isRegister ? "new-password" : "current-password"}
                     placeholder="Enter your password"
                     value={form.password}
                     onChange={handleChange}
@@ -478,6 +477,7 @@ function Sign() {
                     <input
                       type={showConfirmPassword ? "text" : "password"}
                       name="confirmPassword"
+                      autoComplete="new-password"
                       placeholder="Confirm your password"
                       value={form.confirmPassword}
                       onChange={handleChange}

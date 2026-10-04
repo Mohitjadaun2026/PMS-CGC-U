@@ -83,7 +83,7 @@ const filteredExperiences = useMemo(() => {
       ) : (
         <div className="flex flex-col gap-[10px]">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {selectedPageExperience.map((exp, idx) => (
+            {selectedPageExperience.map((exp) => (
               <Link
                 key={exp._id}
                 to={`/experience/${exp._id}`}

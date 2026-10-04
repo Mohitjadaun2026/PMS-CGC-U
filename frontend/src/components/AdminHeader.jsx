@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AdminHeader.css';
+import './superAdminTheme.css';
 import ConfirmAlert from './ConfirmAlert';
+import collegeLogo from '../assets/cgc logo.png';
 
 const AdminHeader = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showAlert, setShowAlert] = useState(false);
   
   const adminUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
@@ -26,7 +29,7 @@ const AdminHeader = () => {
   };
 
   return (
-    <header className="admin-header">
+    <header className={`admin-header ${isSuperAdmin ? 'super-admin-header' : ''}`}>
       {showAlert && <ConfirmAlert
         isOpen={showAlert}
         title="Confirm Logout"
@@ -41,31 +44,40 @@ const AdminHeader = () => {
       />}
       <div className="admin-header-content">
         <div className="admin-header-left">
-          <h1>🎓 PMS Admin Panel</h1>
+          {isSuperAdmin && <img className="admin-brand-logo" src={collegeLogo} alt="CGC University" />}
+          <div className="admin-brand-copy">
+          <h1>PMS Admin Panel</h1>
           <span className="admin-subtitle">Placement Management System</span>
+          </div>
         </div>
         
         <div className="admin-header-center">
           <nav className="admin-nav">
+            <button
+              className={`nav-btn ${location.pathname === '/admin-dashboard' ? 'is-active' : ''}`}
+              onClick={() => handleNavigation('/admin-dashboard')}
+            >
+              Dashboard
+            </button>
             <button 
-              className="nav-btn"
+              className={`nav-btn ${location.pathname === '/admin-job-posting' ? 'is-active' : ''}`}
               onClick={() => handleNavigation('/admin-job-posting')}
             >
-              📝 Job Management
+              Job Management
+            </button>
+            <button
+              className={`nav-btn ${location.pathname === '/application-management' ? 'is-active' : ''}`}
+              onClick={() => handleNavigation('/application-management')}
+            >
+              Application Management
             </button>
             {isSuperAdmin && (
               <>
                 <button 
-                  className="nav-btn"
-                  onClick={() => handleNavigation('/application-management')}
-                >
-                  📋 Application Management
-                </button>
-                <button 
-                  className="nav-btn"
+                  className={`nav-btn ${location.pathname === '/admin-management' ? 'is-active' : ''}`}
                   onClick={() => handleNavigation('/admin-management')}
                 >
-                  🔧 Admin Management
+                  Admin Management
                 </button>
               </>
             )}
@@ -74,14 +86,12 @@ const AdminHeader = () => {
         
         <div className="admin-header-right">
           <div className="admin-user-info">
-            <span className="admin-name">👤 {adminUser.name || 'Admin'}</span>
+            <span className="admin-name">{adminUser.name || 'Admin'}</span>
             <span className="admin-role-info">
-              {isSuperAdmin ? '👑 Super Admin' : '🔑 Admin'}
+              {isSuperAdmin ? 'SUPER ADMIN' : 'ADMIN'}
             </span>
           </div>
-          <button onClick={handleLogout} className="admin-logout-btn">
-            🚪 Logout
-          </button>
+          <button onClick={handleLogout} className="admin-logout-btn">Logout</button>
         </div>
       </div>
     </header>

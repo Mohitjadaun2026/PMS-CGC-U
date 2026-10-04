@@ -3,6 +3,19 @@ const path = require('path');
 const fs = require('fs');
 const router = express.Router();
 
+router.get('/profile-pictures/:filename', (req, res) => {
+  const filename = path.basename(req.params.filename);
+  const uploadsDirectory = path.join(__dirname, '..', 'uploads');
+  const fileCandidates = [
+    path.join(uploadsDirectory, 'profile-pictures', filename),
+    path.join(uploadsDirectory, filename),
+  ];
+  const filePath = fileCandidates.find((candidate) => fs.existsSync(candidate));
+  if (!filePath) return res.status(404).json({ error: 'Profile picture not found' });
+  res.setHeader('Cache-Control', 'no-store');
+  return res.sendFile(filePath);
+});
+
 // Serve images and documents from uploads folder
 router.get('/:filename', (req, res) => {
   try {

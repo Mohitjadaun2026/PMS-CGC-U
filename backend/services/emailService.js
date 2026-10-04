@@ -17,7 +17,8 @@ const createTransporter = () => {
 
 // Generate unsubscribe token
 const generateUnsubscribeToken = (email) => {
-  const secret = process.env.NEWSLETTER_SUBSCRIBE_SECRET;
+  const secret = process.env.NEWSLETTER_SUBSCRIBE_SECRET || process.env.JWT_SECRET;
+  if (!secret) throw new Error("JWT_SECRET is not configured");
   return crypto.createHmac("sha256", secret).update(email).digest("hex");
 };
 

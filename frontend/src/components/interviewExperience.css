@@ -7,6 +7,83 @@
   text-overflow: ellipsis;
   min-height: 5.5em;
 }
+
+.interview-experience-page {
+  width: min(100%, 1200px);
+  min-width: 0;
+  overflow-x: clip;
+  color: var(--text-primary);
+}
+
+.interview-experience-page .interview-hero,
+.interview-experience-page a[class*="border"] {
+  border-color: color-mix(in srgb, var(--maroon-700) 28%, transparent);
+}
+
+.interview-experience-page .interview-hero,
+.interview-experience-page a[class*="border"] {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.interview-experience-page a[class*="border"]:hover {
+  border-color: var(--maroon-700);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .interview-experience-page {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .interview-experience-page .interview-hero {
+    padding: 1.25rem;
+  }
+
+  .interview-experience-page .interview-hero .flex.gap-4 {
+    flex-direction: column;
+  }
+
+  .interview-experience-page .interview-hero a {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.interview-experience-page {
+  background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.05) 0%, transparent 25%),
+    var(--bg-light, #f8f9fa) !important;
+}
+
+body.dark .interview-experience-page {
+  background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.08) 0%, transparent 25%),
+    var(--bg-dark, #1a1a1a) !important;
+}
+
+.interview-experience-page .interview-hero,
+.interview-experience-page a[class*="border"] {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+body.dark .interview-experience-page .interview-hero,
+body.dark .interview-experience-page a[class*="border"] {
+  background: rgba(30, 30, 30, 0.82) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+.interview-experience-page h1,
+.interview-experience-page h2,
+.interview-experience-page h3 {
+  color: var(--maroon-700) !important;
+}
+
+body.dark .interview-experience-page h1,
+body.dark .interview-experience-page h2,
+body.dark .interview-experience-page h3 {
+  color: var(--maroon-500) !important;
+}
 /* Show cards in a 3-column grid for interview experience */
 .ie-list-redesign {
   display: grid;
@@ -255,13 +332,13 @@ body.dark .ie-detail-body p {
   overflow-x: auto;
   padding-bottom: 1.5rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--maroon-700) #eee;
+  scrollbar-color: #702536 #eee;
 }
 .ie-list-redesign.horizontal-scroll::-webkit-scrollbar {
   height: 10px;
 }
 .ie-list-redesign.horizontal-scroll::-webkit-scrollbar-thumb {
-  background: var(--maroon-700);
+  background: #8a5360;
   border-radius: 6px;
 }
 .ie-list-redesign.horizontal-scroll::-webkit-scrollbar-track {
@@ -315,7 +392,7 @@ body.dark .ie-detail-body p {
   font-size: 1rem;
 }
 .ie-form button {
-  background: #007bff;
+  background: #d4af37;
   color: #fff;
   border: none;
   padding: 0.7rem 1.5rem;
@@ -380,5 +457,5 @@ body.dark .ie-text{
   color: white;
 }
 .ie-item strong {
-  color: #007bff;
+  color: #d4af37;
 }

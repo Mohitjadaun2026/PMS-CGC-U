@@ -15,7 +15,8 @@ const sendError = (res, status, message) =>
 // Submit a job application with resume upload
 exports.submitApplication = async (req, res) => {
   try {
-    let { jobId, applicantData, formResponses, userId } = req.body;
+    let { jobId, applicantData, formResponses } = req.body;
+    const userId = req.user.id;
     const resumeFile = req.file;
 
     console.log("\n🎯 ===== APPLICATION SUBMISSION START =====");
@@ -55,6 +56,15 @@ exports.submitApplication = async (req, res) => {
       }
     }
 
+    if (!jobId || !applicantData || typeof applicantData !== 'object' || !applicantData.applicantEmail) {
+      if (resumeFile) {
+        const fs = require('fs');
+        const path = require('path');
+        fs.unlink(path.join(__dirname, '..', 'uploads', 'resumes', resumeFile.filename), () => {});
+      }
+      return sendError(res, 400, 'Job, applicant email, and application data are required');
+    }
+
     console.log("📋 Form data after parsing:");
     console.log("   - applicantData:", applicantData);
     console.log("   - formResponses count:", Array.isArray(formResponses) ? formResponses.length : 0);
@@ -66,7 +76,7 @@ exports.submitApplication = async (req, res) => {
       if (resumeFile) {
         const fs = require('fs');
         const path = require('path');
-        fs.unlink(path.join(__dirname, '..', 'uploads', resumeFile.filename), (err) => {
+        fs.unlink(path.join(__dirname, '..', 'uploads', 'resumes', resumeFile.filename), (err) => {
           if (err) console.error("Error deleting file:", err);
         });
       }
@@ -74,11 +84,12 @@ exports.submitApplication = async (req, res) => {
     }
 
     // Check if job accepts applications (only on-campus jobs accept form submissions)
-    if (job.jobApplicationType !== "on-campus") {
+    const jobType = String(job.jobApplicationType || 'ON_CAMPUS').toUpperCase().replace(/-/g, '_');
+    if (jobType !== "ON_CAMPUS") {
       if (resumeFile) {
         const fs = require('fs');
         const path = require('path');
-        fs.unlink(path.join(__dirname, '..', 'uploads', resumeFile.filename), (err) => {
+        fs.unlink(path.join(__dirname, '..', 'uploads', 'resumes', resumeFile.filename), (err) => {
           if (err) console.error("Error deleting file:", err);
         });
       }
@@ -99,7 +110,7 @@ exports.submitApplication = async (req, res) => {
       if (resumeFile) {
         const fs = require('fs');
         const path = require('path');
-        fs.unlink(path.join(__dirname, '..', 'uploads', resumeFile.filename), (err) => {
+        fs.unlink(path.join(__dirname, '..', 'uploads', 'resumes', resumeFile.filename), (err) => {
           if (err) console.error("Error deleting file:", err);
         });
       }
@@ -170,7 +181,7 @@ exports.submitApplication = async (req, res) => {
     if (req.file) {
       const fs = require('fs');
       const path = require('path');
-      fs.unlink(path.join(__dirname, '..', 'uploads', req.file.filename), (err) => {
+      fs.unlink(path.join(__dirname, '..', 'uploads', 'resumes', req.file.filename), (err) => {
         if (err) console.error("Error deleting file:", err);
       });
     }
@@ -215,6 +226,9 @@ exports.getAllApplications = async (_req, res) => {
 exports.getStudentApplications = async (req, res) => {
   try {
     const { userId } = req.params;
+    if (userId !== req.user.id) {
+      return sendError(res, 403, "You can only view your own applications");
+    }
 
     const applications = await Application.find({ userId })
       .populate("job", "position companyName salaryPackage jobApplicationType")

@@ -242,7 +242,7 @@ graph TD
 
 ```bash
 # Clone and setup everything at once
-git clone https://github.com/Mohitjadaun2026/PMS-CGC-U.git && cd PMS-CGC-U && npm run setup
+git clone https://github.com/Mohitjadaun2026/PMS-CGC-U.git && cd PMS-CGC-U
 ```
 
 ### **📚 Step-by-Step Installation**
@@ -259,28 +259,28 @@ cd PMS-CGC-U
 #### **2️⃣ Setup Environment Variables**
 ```bash
 # Copy environment templates
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env
+# Windows PowerShell: Copy-Item backend/.env.example backend/.env
+# Windows PowerShell: Copy-Item frontend/.env.example frontend/.env
+# Then edit backend/.env: set MONGO_URI and a long random JWT_SECRET.
 
 # Edit the .env files with your configuration
 ```
 
 #### **3️⃣ Backend Setup**
 ```bash
-cd backend
-npm install
-npm run dev  # Development with hot reload
+npm run install-all
+npm run dev
 ```
+In Windows PowerShell, use `npm.cmd run install-all` and `npm.cmd run dev` if
+PowerShell blocks `npm.ps1` under its execution policy.
 🌐 **Backend Server:** `http://localhost:5000`
 📚 **API Documentation:** `http://localhost:5000/api/docs`
 
 #### **4️⃣ Frontend Setup**
 ```bash
-cd ../frontend
-npm install
-npm run dev  # Development server
+# The root command starts both the backend and frontend together.
 ```
-🎨 **Frontend App:** `http://localhost:5173`
+🎨 **Frontend App:** `http://localhost:5180`
 
 #### **5️⃣ Database Configuration**
 1. Create a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) account
@@ -308,7 +308,7 @@ docker-compose up -d
 
 | Check | Command | Expected Result |
 |:---|:---|:---|
-| 🎨 Frontend | `curl http://localhost:5173` | React app loads |
+| 🎨 Frontend | `curl http://localhost:5180` | React app loads |
 | ⚡ Backend | `curl http://localhost:5000/health` | `{"status": "OK"}` |
 | 🗄️ Database | Check MongoDB Atlas | Connection successful |
 
@@ -475,7 +475,6 @@ docker-compose up -d
 | **Role** | **Name** | **GitHub** | **Expertise** |
 |:---:|:---:|:---:|:---:|
 | 🎯 **Project Lead** | Mohit Jadaun | [@Mohitjadaun2026](https://github.com/Mohitjadaun2026) | Full-Stack Development |
-| 🧑‍🏫 **Mentor** | Sanjana Gurav | [@213sanjana](https://github.com/213sanjana) | System Architecture |
 | 🧑‍🏫 **Mentor** | Poushmita | [@Poushmita](https://github.com/Poushmita) | Frontend & UX |
 
 </div>
@@ -649,3 +648,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **© 2024 PMS-CGC-U. Licensed under MIT.**
 
 </div>
+
+## Local development
+
+Requirements: Node.js 18+ and MongoDB running locally, or a MongoDB Atlas connection string.
+
+1. Copy `backend/.env.example` to `backend/.env` and set `MONGO_URI` and a long random `JWT_SECRET`.
+2. Copy `frontend/.env.example` to `frontend/.env` (optional for local use).
+3. Run `npm run install-all` from the repository root.
+4. Run `npm run dev` from the repository root.
+
+Open the frontend at `http://localhost:5180`; the backend listens at `http://localhost:5000`. Email settings are optional. Never commit `.env` files or user uploads under `backend/uploads/`.

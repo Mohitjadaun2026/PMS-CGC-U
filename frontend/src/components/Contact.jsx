@@ -297,7 +297,6 @@ function Contact() {
   };
 
   const validateForm = () => {
-    let formErrors = {};
     let isValid = true;
 
     if (!validateField("name", formData.name)) isValid = false;
@@ -306,7 +305,7 @@ function Contact() {
     if (!validateField("subject", formData.subject)) isValid = false;
     if (!validateField("message", formData.message)) isValid = false;
 
-    return { isValid, formErrors: errors };
+    return { isValid };
   };
 
   const handleSubmit = async (e) => {
@@ -321,15 +320,16 @@ function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const subject = encodeURIComponent(formData.subject);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\n${formData.message}`
+      );
+      window.location.href = `mailto:placement@campus.edu?subject=${subject}&body=${body}`;
 
-      // Show success state
       setIsSuccess(true);
 
-      // Show success notification
       toast.success(
-        "Your message has been sent successfully! We will get back to you soon."
+        "Your email client is ready. Send the message to complete delivery."
       );
 
       // Reset form after delay
@@ -346,7 +346,7 @@ function Contact() {
         setIsSuccess(false);
         setCurrentStep(1);
       }, 3000);
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);

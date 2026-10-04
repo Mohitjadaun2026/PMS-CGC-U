@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import "./header.css";
-import collegeLogo from "../assets/cgc logo.png";
+import collegeLogo from "../assets/Campuslogo.png";
 import ConfirmAlert from "./ConfirmAlert";
 import JobListings from "./JobListings"; // Import JobListings component
 
 function Header() {
   const [theme, setTheme] = useState('light');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isStudent, setIsStudent] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showJobListings, setShowJobListings] = useState(false); // State for job modal
 
@@ -35,6 +36,7 @@ function Header() {
       // Check if either regular user OR admin user is logged in
       const isLogged = !!(token && user) || !!(adminToken && adminUser);
       setIsLoggedIn(isLogged);
+      setIsStudent(!!(token && user));
     };
 
     checkAuthStatus();
@@ -115,10 +117,11 @@ function Header() {
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
           
-          {isLoggedIn && (
+          {isStudent && (
             <>
               <Link to="/jobs">Jobs</Link>
               <Link to="/profile">Student Profile</Link>
+              <Link to="/applications">Applications</Link>
               <Link to="/interview-experience">Interview Experience</Link>
             </>
           )}

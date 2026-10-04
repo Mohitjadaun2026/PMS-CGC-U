@@ -4,6 +4,58 @@
   padding: 20px;
 }
 
+.application-management-container.super-admin-theme {
+  color: #fff;
+  background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, .08), transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 97, .08), transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(180, 140, 40, .06), transparent 25%), #1a1a1a;
+}
+.super-admin-theme .application-management-header,
+.super-admin-theme .filter-section,
+.super-admin-theme .applications-list,
+.super-admin-theme .application-card {
+  color: #34272a;
+  border: 1px solid rgba(212, 175, 55, .48);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .24);
+}
+.super-admin-theme .application-management-header { color: #f7f1e8; background: #38272b; }
+.super-admin-theme .filter-section,
+.super-admin-theme .applications-list { background: #e9dfd1; }
+.super-admin-theme .application-card { background: #f7f1e8; }
+.super-admin-theme .application-management-header h1,
+.super-admin-theme .applications-list h2,
+.super-admin-theme .applicant-info h3,
+.super-admin-theme .detail-value,
+.super-admin-theme .job-info h4,
+.super-admin-theme .filter-section label { color: #fff; }
+.super-admin-theme .applicant-email,
+.super-admin-theme .applicant-phone,
+.super-admin-theme .detail-label,
+.super-admin-theme .no-applications { color: #e2e2e2; }
+.super-admin-theme .stat-card { background: linear-gradient(135deg, #6b1f2a, #42131b); border: 1px solid #d4af37; }
+.super-admin-theme .job-info { color: #4f252b; background: #f7f1e8; border: 1px solid rgba(212, 175, 55, .35); }
+.super-admin-theme .job-info p,
+.super-admin-theme .job-info strong,
+.super-admin-theme .form-response,
+.super-admin-theme .response-value { color: #4b3438; }
+.super-admin-theme .application-management-header h1,
+.super-admin-theme .applications-list h2,
+.super-admin-theme .applicant-info h3,
+.super-admin-theme .detail-value,
+.super-admin-theme .job-info h4,
+.super-admin-theme .filter-section label { color: #6b1f2a; }
+.super-admin-theme .application-management-header h1 { color: #f0cf67; }
+.super-admin-theme .applicant-email,
+.super-admin-theme .applicant-phone,
+.super-admin-theme .detail-label,
+.super-admin-theme .no-applications { color: #5e5354; }
+.super-admin-theme .application-header { border-bottom-color: rgba(107, 31, 42, .2); }
+.super-admin-theme .detail-row { border-bottom-color: rgba(107, 31, 42, .12); }
+.super-admin-theme .filter-section select,
+.super-admin-theme .admin-notes textarea { color: #252125; background: #fff; border-color: #d4af37; }
+.super-admin-theme .admin-notes textarea::placeholder { color: #626262; }
+.super-admin-theme .application-card:hover { border-color: #6b1f2a; box-shadow: 0 14px 32px rgba(35, 15, 18, .18); }
+
 .application-management-header {
   background: white;
   padding: 30px;

@@ -6,10 +6,11 @@ const Job = require('../models/Job');
 
 dotenv.config();
 
-const MONGODB_URI = 'mongodb+srv://jadaunmohit0:Mohit%40123@pms-cgcu.gkrai7w.mongodb.net/PMS-CGC-U?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGO_URI;
 
 async function addSampleApplications() {
   try {
+    if (!MONGODB_URI) throw new Error('MONGO_URI is required in backend/.env');
     await mongoose.connect(MONGODB_URI);
     console.log('Connected to MongoDB');
 

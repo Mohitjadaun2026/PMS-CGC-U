@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 10, 10, 0.95);
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(26, 26, 26, 0.95);
+  background: rgba(26, 26, 26, 0.95);
   color: var(--text-primary);
   padding: 0.8rem 1.2rem;
   padding: 0.8rem 1.2rem;
@@ -11,7 +11,7 @@
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(212, 55, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   animation: headerScroll 0.5s ease-out forwards;
   flex-wrap: wrap; /* ✅ allow wrapping for small screens */
@@ -27,14 +27,15 @@ body.light .pms-header {
 .logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   transition: all var(--transition-speed) ease;
 }
 
 .logo-image {
-  height: 42px;
+  height: 60px;
   width: auto;
-  filter: drop-shadow(0 0 4px rgba(128, 0, 0, 0.9));
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.8));
   transition: transform 0.3s ease;
 }
 
@@ -48,7 +49,7 @@ body.light .logo-image {
 
 .logo-link {
   font-size: 1.3rem;
-    background: linear-gradient(90deg, var(--text-primary), #800000);
+    background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -74,7 +75,7 @@ body.light .logo-link:hover {
 }
 
 body.dark .logo-link {
-  background: linear-gradient(90deg, var(--text-primary), #800000);
+  background: linear-gradient(90deg, var(--text-primary), #d4af37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: none; 
@@ -105,12 +106,18 @@ body.dark .logo-link:hover {
   transition: color 0.3s ease;
 }
 
+.nav-links,
+.nav-links button,
+.nav-links a {
+  min-width: 0;
+}
+
 .dark .nav-links a {
   color: #d1d5db;
 }
 
 .dark .nav-links a:hover {
-  color: #800000;
+  color: #d4af37;
 }
 
 .nav-links a::after {
@@ -139,7 +146,7 @@ body.light .nav-links a {
 }
 
 body.light .nav-links a:hover {
-  color: #800000;
+  color: #d4af37;
 }
 
 body.light .nav-links a::after {
@@ -147,7 +154,7 @@ body.light .nav-links a::after {
 }
 
 .dark .nav-links a::after {
-  background: #800000;
+  background: #d4af37;
 }
 
 /* Theme Toggle */
@@ -230,8 +237,8 @@ body.dark .theme-toggle-btn {
 
 body.light .login-btn:hover {
   background: transparent;
-  color: #800000 !important;
-  border-color: #800000;
+  color: #d4af37 !important;
+  border-color: #d4af37;
 }
 .logo {
   display: flex;
@@ -270,7 +277,7 @@ body.dark .login-btn {
 }
 
 body.dark .login-btn:hover {
-  border-color: #800000;
+  border-color: #d4af37;
   color: #fff; 
 }
 
@@ -392,7 +399,9 @@ body.dark .login-btn:hover {
 /* Mobile phones (480px and down) - Hide logo */
 @media (max-width: 480px) {
   .logo {
-    display: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
   
   .pms-header {
@@ -408,6 +417,7 @@ body.dark .login-btn:hover {
     gap: 1rem;
     justify-content: space-around;
     width: 100%;
+    row-gap: 0.6rem;
   }
   
   .nav-links a {
@@ -540,12 +550,12 @@ body.dark .job-listings-btn {
   left: 0;
   width: 0;
   height: 2px;
-  background: #800000;
+  background: #d4af37;
   transition: width 0.3s ease;
 }
 
 .job-listings-btn:hover {
-  color: #800000;
+  color: #d4af37;
   text-decoration: none;
 }
 
@@ -554,7 +564,7 @@ body.dark .job-listings-btn {
 }
 
 body.dark .job-listings-btn:hover {
-  color: #800000;
+  color: #d4af37;
 }
 
 body.light .job-listings-btn {
@@ -562,7 +572,7 @@ body.light .job-listings-btn {
 }
 
 body.light .job-listings-btn:hover {
-  color: #800000;
+  color: #d4af37;
 }
 
 body.light .job-listings-btn::after {

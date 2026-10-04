@@ -11,6 +11,12 @@
   /* ✅ allow wrapping for small screens */
 }
 
+body.dark .admin-header {
+  background: rgba(30, 30, 30, 0.92);
+  color: var(--text-primary);
+  border-bottom-color: rgba(212, 175, 55, 0.25);
+}
+
 .admin-header-container {
   width: 100vw;
   max-width: 100vw;
@@ -96,6 +102,81 @@
   font-weight: 600;
 }
 
+.super-admin-header {
+  background: rgba(20, 20, 20, 0.97);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  color: #fff;
+}
+
+.super-admin-header .admin-header-content {
+  justify-content: flex-start;
+}
+
+.super-admin-header .admin-header-left {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0.75rem;
+}
+
+.admin-brand-logo {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  object-fit: cover;
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, .28);
+}
+
+.admin-brand-copy { min-width: 0; }
+
+.super-admin-header .admin-header-center {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.super-admin-header .admin-nav {
+  justify-content: flex-end;
+}
+
+.super-admin-header .admin-header-left h1,
+.super-admin-header .admin-name {
+  color: #f0cf67;
+}
+
+.super-admin-header .admin-subtitle {
+  color: #e2e2e2;
+}
+
+.super-admin-header .nav-btn,
+.super-admin-header .admin-logout-btn {
+  background: #6b1f2a !important;
+  color: #fff !important;
+  border: 1px solid #d4af37;
+  font-weight: 700;
+  opacity: 1;
+  min-height: 42px;
+  line-height: 1.25;
+  text-transform: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
+}
+
+.super-admin-header .nav-btn:hover,
+.super-admin-header .nav-btn:focus-visible,
+.super-admin-header .admin-logout-btn:hover,
+.super-admin-header .admin-logout-btn:focus-visible {
+  background: #8a2938 !important;
+  border-color: #d4af37;
+  color: #fff;
+}
+
+.super-admin-header .admin-role-info {
+  background: rgba(212, 175, 55, 0.16);
+  color: #f0cf67;
+}
+
 .admin-logout-btn {
   background-color: var(--maroon-700);
   color: white;
@@ -137,5 +218,151 @@
 
   .admin-user-info {
     align-items: center;
+  }
+}
+
+.admin-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-lighter, #fff);
+  color: var(--text-primary, #212529);
+  border-bottom: 1px solid var(--border-light, #e5e7eb);
+  box-shadow: 0 3px 16px rgba(15, 23, 42, 0.08);
+}
+
+.admin-header-content {
+  width: min(100%, 1440px);
+  padding: 0;
+  gap: 1rem;
+}
+
+.admin-header-left {
+  flex: 0 1 220px;
+  min-width: 0;
+}
+
+.admin-header-left h1 {
+  color: var(--maroon-700);
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.admin-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.admin-header-center {
+  min-width: 0;
+}
+
+.admin-nav {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.nav-btn,
+.admin-logout-btn {
+  background: transparent;
+  border: 1px solid var(--border-light, #d4af37);
+  border-radius: 8px;
+  color: var(--text-primary, #212529);
+  font-size: 0.82rem;
+  padding: 0.55rem 0.75rem;
+  white-space: nowrap;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible,
+.admin-logout-btn:hover,
+.admin-logout-btn:focus-visible {
+  background: var(--maroon-700);
+  border-color: var(--maroon-700);
+  color: #fff;
+  transform: none;
+}
+
+.admin-header-right {
+  flex: 0 1 auto;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.admin-user-info {
+  align-items: flex-end;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.admin-name {
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-role-info {
+  background: color-mix(in srgb, var(--maroon-700) 14%, transparent);
+  color: var(--maroon-800);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.45rem;
+}
+
+@media (max-width: 900px) {
+  .admin-header-content {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .admin-header-left {
+    flex-basis: 180px;
+  }
+
+  .admin-header-center {
+    flex: 1 1 100%;
+    order: 3;
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-header {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .admin-header-content {
+    gap: 0.7rem;
+  }
+
+  .admin-header-left {
+    flex: 1 1 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .admin-header-left h1 {
+    font-size: 1.1rem;
+  }
+
+  .admin-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-btn,
+  .admin-logout-btn {
+    min-height: 42px;
+    overflow: hidden;
+    padding: 0.5rem;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  .admin-header-right {
+    justify-content: center;
+    width: 100%;
   }
 }

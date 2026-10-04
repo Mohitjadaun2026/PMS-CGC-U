@@ -16,7 +16,7 @@ console.log('=' .repeat(60) + '\n');
 console.log('🔧 Starting Backend Server...\n');
 const backendProcess = spawn(
   isWindows ? 'node.exe' : 'node',
-  ['server.js'],
+  [path.join(__dirname, 'backend', 'node_modules', 'nodemon', 'bin', 'nodemon.js'), 'server.js'],
   {
     cwd: path.join(__dirname, 'backend'),
     stdio: 'inherit',

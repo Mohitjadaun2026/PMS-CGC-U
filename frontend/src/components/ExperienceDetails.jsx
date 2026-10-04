@@ -14,7 +14,7 @@ const ExperienceDetails = ({ darkMode }) => {
     return (
       <div className="p-6">
         <p className="text-red-500">Experience not found.</p>
-        <Link to="/interview-experience/browse" className="text-blue-500 underline">
+        <Link to="/interview-experience/browse" className="text-yellow-400 underline">
           ← Back to all experiences
         </Link>
       </div>
@@ -27,7 +27,7 @@ const ExperienceDetails = ({ darkMode }) => {
         darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
       }`}
     >
-      <Link to="/interview-experience/browse" className="text-blue-500 underline block mb-4">
+      <Link to="/interview-experience/browse" className="text-yellow-400 underline block mb-4">
         ← Back to Experiences
       </Link>
 
@@ -72,7 +72,7 @@ const ExperienceDetails = ({ darkMode }) => {
           {exp.tags?.map((tag, i) => (
             <span
               key={i}
-              className="px-2 py-1 text-xs bg-blue-600 text-white rounded-full"
+              className="px-2 py-1 text-xs bg-yellow-600 text-white rounded-full"
             >
               {tag}
             </span>

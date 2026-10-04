@@ -26,7 +26,7 @@ const initialForm = {
   eligibleCourses: [],
   eligibleBranches: [],
   eligibleYears: [],
-  jobApplicationType: 'on-campus',
+  jobApplicationType: 'ON_CAMPUS',
   externalApplicationLink: '',
   applicationFormFields: []
 };
@@ -104,7 +104,7 @@ const AdminJobPosting = () => {
     console.log('Form submit - jobApplicationType:', formData.jobApplicationType);
     
     // Validate: if on-campus, must have form fields
-    if (formData.jobApplicationType === 'on-campus' && (!formData.applicationFormFields || formData.applicationFormFields.length === 0)) {
+    if (formData.jobApplicationType === 'ON_CAMPUS' && (!formData.applicationFormFields || formData.applicationFormFields.length === 0)) {
       alert('⚠️ On-Campus jobs must have at least one application form field');
       return;
     }
@@ -234,28 +234,6 @@ const AdminJobPosting = () => {
       alert('Error saving job. Please try again.');
     }
   };
-  const handleSuccess = (job) => {
-    console.log('handleSuccess called with:', job); // Debug log
-    
-    if (editId) {
-      setJobPostings(jobPostings.map(j => j._id === editId ? job : j));
-      alert('Job updated successfully!');
-      setActiveTab('manage'); // Switch back to manage tab after edit
-    } else {
-      setJobPostings([...jobPostings, job]);
-      alert('Job created successfully!');
-    }
-    
-    setEditId(null);
-    setFormData(initialForm);
-    setLogoPreview('');
-    setLogoFile(null);
-  };
-
-  const handleError = (err) => {
-    console.error('Error saving job:', err);
-    alert('Error saving job. Please try again.');
-  };
   const handleEdit = (job) => {
     console.log('Editing job:', job); // Debug log
     console.log('Job applicationFormFields:', job.applicationFormFields);
@@ -264,7 +242,8 @@ const AdminJobPosting = () => {
     console.log('applicationFormFields length:', job.applicationFormFields?.length || 0);
     
     // Create a copy of the job without the companyLogo field (handled separately)
-    const { companyLogo, ...jobWithoutLogo } = job;
+    const jobWithoutLogo = { ...job };
+    delete jobWithoutLogo.companyLogo;
     
     // Ensure arrays are properly handled
     const editFormData = {
@@ -272,7 +251,7 @@ const AdminJobPosting = () => {
       eligibleCourses: Array.isArray(job.eligibleCourses) ? job.eligibleCourses : [],
       eligibleBranches: Array.isArray(job.eligibleBranches) ? job.eligibleBranches : [],
       eligibleYears: Array.isArray(job.eligibleYears) ? job.eligibleYears : [],
-      jobApplicationType: job.jobApplicationType || 'on-campus',
+      jobApplicationType: job.jobApplicationType || 'ON_CAMPUS',
       externalApplicationLink: job.externalApplicationLink || '',
       applicationFormFields: Array.isArray(job.applicationFormFields) ? job.applicationFormFields : []
     };
@@ -324,7 +303,7 @@ const AdminJobPosting = () => {
   };
 
   return (
-    <div className="admin-job-posting-container">
+    <div className={`admin-job-posting-container ${JSON.parse(localStorage.getItem('adminUser') || '{}').role === 'super_admin' ? 'super-admin-theme' : ''}`}>
       <AdminHeader />
       <div className="admin-content">
         <h1>Job Posting Management</h1>
@@ -497,8 +476,8 @@ const AdminJobPosting = () => {
                       <input
                         type="radio"
                         name="jobApplicationType"
-                        value="on-campus"
-                        checked={formData.jobApplicationType === 'on-campus'}
+                        value="ON_CAMPUS"
+                        checked={formData.jobApplicationType === 'ON_CAMPUS'}
                         onChange={handleInputChange}
                       />
                       <span>On-Campus</span>
@@ -507,8 +486,8 @@ const AdminJobPosting = () => {
                       <input
                         type="radio"
                         name="jobApplicationType"
-                        value="off-campus"
-                        checked={formData.jobApplicationType === 'off-campus'}
+                        value="OFF_CAMPUS"
+                        checked={formData.jobApplicationType === 'OFF_CAMPUS'}
                         onChange={handleInputChange}
                       />
                       <span>Off-Campus</span>
@@ -517,7 +496,7 @@ const AdminJobPosting = () => {
                 </div>
               </div>
               
-              {formData.jobApplicationType === 'on-campus' ? (
+              {formData.jobApplicationType === 'ON_CAMPUS' ? (
                 <div className="form-group">
                   <label>Application Form Fields</label>
                   <p className="form-hint">Create a custom application form for students</p>
@@ -558,7 +537,7 @@ const AdminJobPosting = () => {
                     value={formData.externalApplicationLink}
                     onChange={handleInputChange}
                     placeholder="https://example.com/apply"
-                    required={formData.jobApplicationType === 'off-campus'}
+                    required={formData.jobApplicationType === 'OFF_CAMPUS'}
                   />
                   <p className="form-hint">Students will be redirected to this link to apply</p>
                 </div>
@@ -800,8 +779,8 @@ const AdminJobPosting = () => {
                     display: posting.companyLogo ? 'none' : 'flex',
                     width: '30px',
                     height: '30px',
-                    backgroundColor: '#8B0000',
-                    color: 'white',
+                    backgroundColor: '#d4af37',
+                    color: '#1a1a1a',
                     borderRadius: '6px',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -819,8 +798,8 @@ const AdminJobPosting = () => {
             <td>{posting.position || '-'}</td>
             <td>{posting.jobType || '-'}</td>
             <td>
-              <span className={`app-type-badge ${posting.jobApplicationType || 'on-campus'}`}>
-                {posting.jobApplicationType === 'off-campus' ? 'Off-Campus' : 'On-Campus'}
+              <span className={`app-type-badge ${(posting.jobApplicationType || 'ON_CAMPUS').toLowerCase().replace('_', '-')}`}>
+                {posting.jobApplicationType === 'OFF_CAMPUS' || posting.jobApplicationType === 'off-campus' ? 'Off-Campus' : 'On-Campus'}
               </span>
             </td>
             <td>{posting.salaryPackage || '-'}</td>

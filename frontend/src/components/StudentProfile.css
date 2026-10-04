@@ -2,11 +2,11 @@
 
 /* CSS Variables */
 :root {
-  --primary-color: #650b22;
-  --primary-light: #51061a;
-  --primary-dark: #600018;
+  --primary-color: #1a1a1a;
+  --primary-light: #0f0f0f;
+  --primary-dark: #1a1a1a;
   --secondary-color: #f5f5f5;
-  --accent-color: #ff6b6b;
+  --accent-color: #d4af37;
   --success-color: #4caf50;
   --warning-color: #ff9800;
   --danger-color: #f44336;
@@ -18,8 +18,8 @@
   --text-muted: rgba(255, 255, 255, 0.6);
   
   /* Dark Mode Background colors - Dark Maroon */
-  --bg-primary: #2d0a11;
-  --bg-secondary: #400513;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #0f0f0f;
   --bg-card: rgba(255, 255, 255, 0.08);
   --bg-hover: rgba(255, 255, 255, 0.12);
   --bg-input: rgba(255, 255, 255, 0.1);
@@ -36,8 +36,8 @@
 
 /* Light Theme Variables - White Background with Dark Maroon Text */
 .light-theme {
-  --text-primary: #2d0a11;
-  --text-secondary: #400513;
+  --text-primary: #1a1a1a;
+  --text-secondary: #0f0f0f;
   --text-muted: #666;
   
   --bg-primary: #ffffff;
@@ -66,12 +66,44 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
 .student-dashboard {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(180, 140, 40, 0.06) 0%, transparent 25%),
+    var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.student-dashboard > header,
+.student-dashboard > main {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.student-dashboard > main {
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.light .student-dashboard {
+  background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(180, 140, 40, 0.06) 0%, transparent 25%),
+    var(--bg-dark);
 }
 
 /* Header */
@@ -206,6 +238,37 @@ body {
   border-radius: 50%;
   border: 4px solid var(--border-light);
 }
+
+.student-profile-photo-wrap {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
+}
+
+.student-profile-photo {
+  width: 7.5rem;
+  height: 7.5rem;
+  border: 3px solid #d4af37;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+}
+
+.student-profile-photo-button {
+  border: 1px solid #d4af37;
+  border-radius: 999px;
+  padding: .4rem .8rem;
+  background: #6b1f2a;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.student-profile-photo-button:hover:not(:disabled) { background: #8a2938; }
+.student-profile-photo-button:disabled { cursor: wait; opacity: .75; }
 
 .profile-name {
   font-size: 1.5rem;

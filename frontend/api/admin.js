@@ -11,6 +11,15 @@ export const getAllAdmins = async () => {
   }
 };
 
+export const getUserStats = async () => {
+  try {
+    const response = await api.get(`${API_ENDPOINTS.ADMIN_MANAGEMENT}/stats`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
 // Invite new admin
 export const inviteAdmin = async (adminData) => {
   try {

@@ -6,13 +6,20 @@ require('dotenv').config();
 async function createSuperAdmin() {
   try {
     // Super Admin credentials
-    const adminEmail = 'superadmin@gmail.com';
-    const adminPassword = 'super@123';
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (!process.env.MONGO_URI || !adminEmail || !adminPassword) {
+      throw new Error('Set MONGO_URI, ADMIN_EMAIL, and ADMIN_PASSWORD in backend/.env');
+    }
     const adminName = 'Super Admin';
 
     // Connect to MongoDB using environment variable
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('✅ Connected to MongoDB');
+    await mongoose.connect(process.env.MONGO_URI, {
+      dbName: "Campus-Recruitment-Portal",
+      retryWrites: true,
+      w: "majority",
+    });
+    console.log('✅ Connected to MongoDB - Campus-Recruitment-Portal database');
 
     // Check if super admin already exists
     const existingSuperAdmin = await User.findOne({ role: 'super_admin' });
@@ -81,4 +88,3 @@ async function createSuperAdmin() {
 }
 
 createSuperAdmin();
-

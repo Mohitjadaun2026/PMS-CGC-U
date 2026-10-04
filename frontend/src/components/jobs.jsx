@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, MapPin, DollarSign, Clock, Building, User, Award } from 'lucide-react';
 import './jobs.css';
 import { API_ENDPOINTS } from '../config/api';
-import {useNavigate, useParams, useLocation} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { getJobsById } from '../../api/jobs';
 import DynamicApplicationForm from './DynamicApplicationForm';
 import { toast } from 'react-hot-toast';
@@ -54,8 +54,8 @@ const JobCard = ({ job, onClick }) => {
               display: logoUrl ? 'none' : 'flex',
               width: '50px',
               height: '50px',
-              backgroundColor: '#8B0000',
-              color: 'white',
+              backgroundColor: '#d4af37',
+              color: '#1a1a1a',
               borderRadius: '8px',
               alignItems: 'center',
               justifyContent: 'center',
@@ -204,8 +204,8 @@ const JobDetails = ({ job, onBack, onApply }) => {
             display: logoUrl ? 'none' : 'flex',
             width: '80px',
             height: '80px',
-            backgroundColor: '#8B0000',
-            color: 'white',
+            backgroundColor: '#d4af37',
+            color: '#1a1a1a',
             borderRadius: '12px',
             alignItems: 'center',
             justifyContent: 'center',
@@ -321,7 +321,6 @@ const JobDetails = ({ job, onBack, onApply }) => {
 
 // Main Jobs Component
 const Jobs = () => {
-  const [selectedJob, setSelectedJob] = useState(null);
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -331,7 +330,7 @@ const Jobs = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await fetch(API_ENDPOINTS.JOBS);
+        const response = await fetch(`${API_ENDPOINTS.JOBS}?type=ON_CAMPUS`);
         if (!response.ok) {
           throw new Error('Failed to fetch jobs');
         }
@@ -378,7 +377,7 @@ const Jobs = () => {
     <div className="jobs-page-container">
         <div>
           <div className="jobs-header">
-            <h1 className="jobs-title">Available Jobs</h1>
+            <h1 className="jobs-title">On-Campus Jobs</h1>
             <p className="jobs-subtitle">{jobs.length} job(s) available</p>
           </div>
           <div className="jobs-list">
@@ -408,7 +407,7 @@ export const JobWrapper = () =>{
   useEffect(()=>{
     const fetchJob = async () => {
       try {
-        const data = await getJobsById(id);
+        const data = await getJobsById(id, 'ON_CAMPUS');
         setJob(data);
       } catch (err) {
         console.error('Failed to fetch job:', err);

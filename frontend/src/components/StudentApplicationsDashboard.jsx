@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './StudentApplicationsDashboard.css';
 import { getStudentApplications, downloadResume } from '../../api/jobs';
 import { toast } from 'react-hot-toast';
+import API_BASE_URL from '../config/api';
 
 const StudentApplicationsDashboard = () => {
   const [applications, setApplications] = useState([]);
@@ -21,12 +22,12 @@ const StudentApplicationsDashboard = () => {
     setError(null);
 
     try {
-      const userId = localStorage.getItem('userId');
-      if (!userId) {
+      const user = JSON.parse(localStorage.getItem('user') || 'null');
+      if (!user?.id) {
         throw new Error('User not authenticated');
       }
 
-      const data = await getStudentApplications(userId);
+      const data = await getStudentApplications(user.id);
       setApplications(data || []);
     } catch (err) {
       setError(err.message || 'Failed to fetch applications');

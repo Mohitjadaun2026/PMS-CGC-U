@@ -44,7 +44,7 @@ const resumeUpload = multer({
 });
 
 // Public routes
-router.post('/submit', resumeUpload.single('resume'), applicationController.submitApplication);
+router.post('/submit', requireAuth, resumeUpload.single('resume'), applicationController.submitApplication);
 
 // Protected routes (student)
 router.get('/student/:userId', requireAuth, applicationController.getStudentApplications);

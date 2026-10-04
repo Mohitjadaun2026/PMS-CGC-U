@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AdminHeader from './AdminHeader';
 import './ApplicationManagement.css';
+import './superAdminTheme.css';
+import API_BASE_URL from '../config/api';
 
 const ApplicationManagement = () => {
   const [applications, setApplications] = useState([]);
@@ -20,8 +22,8 @@ const ApplicationManagement = () => {
       setLoading(true);
       const token = localStorage.getItem('adminToken');
       const url = selectedJob === 'all' 
-        ? '/api/applications/all' 
-        : `/api/applications/job/${selectedJob}`;
+        ? `${API_BASE_URL}/api/applications/all` 
+        : `${API_BASE_URL}/api/applications/job/${selectedJob}`;
       
       const response = await fetch(url, {
         headers: {
@@ -49,7 +51,7 @@ const ApplicationManagement = () => {
   const fetchJobs = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/jobs', {
+      const response = await fetch(`${API_BASE_URL}/api/jobs`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -70,7 +72,7 @@ const ApplicationManagement = () => {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/applications/stats', {
+      const response = await fetch(`${API_BASE_URL}/api/applications/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -93,7 +95,7 @@ const ApplicationManagement = () => {
   // Update application status
   const updateApplicationStatus = async (applicationId, status, adminNotes) => {
     try {
-      const response = await fetch(`/api/applications/${applicationId}/status`, {
+      const response = await fetch(`${API_BASE_URL}/api/applications/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +193,7 @@ const ApplicationManagement = () => {
 
   if (loading) {
     return (
-      <div className="application-management-container">
+      <div className={`application-management-container ${JSON.parse(localStorage.getItem('adminUser') || '{}').role === 'super_admin' ? 'super-admin-theme' : ''}`}>
         <AdminHeader />
         <div className="loading">Loading applications...</div>
       </div>
@@ -199,7 +201,7 @@ const ApplicationManagement = () => {
   }
 
   return (
-    <div className="application-management-container">
+    <div className={`application-management-container ${JSON.parse(localStorage.getItem('adminUser') || '{}').role === 'super_admin' ? 'super-admin-theme' : ''}`}>
       <AdminHeader />
       
       <div className="application-management-header">

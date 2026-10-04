@@ -46,18 +46,15 @@ const AdminLogin = () => {
         response.user &&
         (response.user.role === "admin" || response.user.role === "super_admin")
       ) {
-        console.log(
-          "Admin login successful, redirecting to:",
-          "/admin-job-posting"
-        );
+        console.log("Admin login successful");
         console.log("User role:", response.user.role);
-        navigate("/admin-job-posting");
+        navigate("/admin-dashboard");
         setTimeout(() => {
-          if (window.location.pathname !== "/admin-job-posting") {
+          if (window.location.pathname !== "/admin-dashboard") {
             console.log(
               "React Router navigation failed, using window.location"
             );
-            window.location.href = "/admin-job-posting";
+            window.location.href = "/admin-dashboard";
           }
         }, 1000);
       } else {

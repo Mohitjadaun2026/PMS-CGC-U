@@ -1,4 +1,3 @@
- import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 import campusBack from "../assets/campus.png";
@@ -14,6 +13,9 @@ import {
   BookOpen,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+// JSX member expressions are not counted by the current ESLint configuration.
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 // Animation variants (Framer Motion existing setup)
 const containerVariants = {

@@ -31,7 +31,7 @@
 
 /* Full Width Newsletter Section */
 .footer-newsletter-full {
-  background: linear-gradient(90deg, var(--primary-color) 0%, #600000 100%);
+  background: linear-gradient(90deg, var(--primary-color) 0%, #d4af37 100%);
   padding: 3rem 0;
   width: 100%;
 }
@@ -97,7 +97,7 @@
 .footer-newsletter-button {
   padding: 1rem 2rem;
   background: white;
-  color: var(--primary-color);
+  color: #1a1a1a;
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -140,7 +140,7 @@
 }
 
 .footer-logo span {
-  color: var(--accent-color);
+  color: #d4af37;
   margin-left: 4px;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .footer-social a:hover {
-  color: var(--accent-color);
+  color: #d4af37;
   transform: translateY(-3px);
 }
 
@@ -195,7 +195,7 @@
   left: 0;
   width: 50px;
   height: 3px;
-  background: var(--accent-color);
+  background: #d4af37;
 }
 
 .footer-nav {
@@ -254,7 +254,7 @@
 }
 
 .contact-icon {
-  color: var(--accent-color);
+  color: #d4af37;
   flex-shrink: 0;
   margin-top: 0.2rem;
   font-size: 1.2rem;
@@ -300,8 +300,8 @@
   text-decoration: none;
   transition: all var(--transition-speed) ease;
   color: white;
-  background: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background: #d4af37;
+  border: 1px solid #d4af37;
 }
 
 .contact-outline {
@@ -311,8 +311,8 @@
   font-size: 1rem;
   transition: all var(--transition-speed) ease;
   color: white;
-  background: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background: #d4af37;
+  border: 1px solid #d4af37;
   text-decoration: none;
 }
 
@@ -359,7 +359,7 @@ body.light .footer-divider {
 }
 
 body.light .footer-newsletter-full {
-  background: linear-gradient(90deg, var(--primary-color) 0%, #a00000 100%);
+  background: linear-gradient(90deg, var(--primary-color) 0%, #d4af37 100%);
 }
 
 body.light .footer-newsletter-input {

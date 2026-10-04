@@ -5,6 +5,7 @@ const { requireAuth, requireAdmin } = require('../middleware/auth');
 
 // Get all admins (super admin only)
 router.get('/admins', requireAuth, requireAdmin, adminController.getAllAdmins);
+router.get('/stats', requireAuth, requireAdmin, adminController.getUserStats);
 
 // Invite new admin (super admin only)
 router.post('/invite', requireAuth, requireAdmin, adminController.inviteAdmin);

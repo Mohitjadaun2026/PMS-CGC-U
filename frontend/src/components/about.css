@@ -3,23 +3,23 @@
   min-height: 100vh;
   background: radial-gradient(
       circle at 20% 30%,
-      rgba(59, 130, 246, 0.08) 0%,
+      rgba(212, 175, 55, 0.08) 0%,
       transparent 25%
     ),
     radial-gradient(
       circle at 80% 70%,
-      rgba(168, 85, 247, 0.08) 0%,
+      rgba(201, 169, 97, 0.08) 0%,
       transparent 25%
     ),
     radial-gradient(
       circle at 40% 80%,
-      rgba(236, 72, 153, 0.06) 0%,
+      rgba(180, 140, 40, 0.06) 0%,
       transparent 25%
     ),
     var(--bg-dark);
   padding: 2rem 0;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .contact-hero {
@@ -105,7 +105,7 @@
 }
 
 .contact-card a {
-  color: #007bff;
+  color: #d4af37;
   text-decoration: none;
 }
 
@@ -146,9 +146,9 @@
   background: rgba(30, 30, 30, 0.85);
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(139, 92, 246, 0.1),
+    0 0 0 1px rgba(212, 175, 55, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   padding: 3rem;
   border-radius: 2rem;
   margin: 2rem auto;
@@ -162,17 +162,17 @@
 body.light .about-bg {
   background: radial-gradient(
       circle at 20% 30%,
-      rgba(59, 130, 246, 0.05) 0%,
+      rgba(212, 175, 55, 0.05) 0%,
       transparent 25%
     ),
     radial-gradient(
       circle at 80% 70%,
-      rgba(168, 85, 247, 0.05) 0%,
+      rgba(201, 169, 97, 0.05) 0%,
       transparent 25%
     ),
     radial-gradient(
       circle at 40% 80%,
-      rgba(236, 72, 153, 0.04) 0%,
+      rgba(180, 140, 40, 0.04) 0%,
       transparent 25%
     ),
     var(--bg-light);
@@ -183,7 +183,7 @@ body.light .about-container {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(139, 92, 246, 0.1),
+    0 0 0 1px rgba(212, 175, 55, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
   max-width: 1200px;
   margin: 0 auto;
@@ -208,11 +208,11 @@ body.light .about-container {
 }
 
 body.dark .about-header h1 {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899);
+  background: linear-gradient(135deg, #d4af37, #e5c158, #c9a961);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
 }
 
 body.dark .about-header p {
@@ -228,11 +228,11 @@ body.dark .about-header span {
   height: 120px;
   object-fit: contain;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(201, 169, 97, 0.1));
   padding: 8px;
   box-shadow: 
-    0 8px 32px rgba(59, 130, 246, 0.2),
-    0 0 0 2px rgba(59, 130, 246, 0.3);
+    0 8px 32px rgba(212, 175, 55, 0.2),
+    0 0 0 2px rgba(212, 175, 55, 0.3);
   transition: all 0.5s ease;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
@@ -240,33 +240,33 @@ body.dark .about-header span {
 .about-logo:hover {
   transform: scale(1.05) rotate(5deg);
   box-shadow: 
-    0 12px 40px rgba(59, 130, 246, 0.4),
-    0 0 0 2px rgba(59, 130, 246, 0.5);
+    0 12px 40px rgba(212, 175, 55, 0.4),
+    0 0 0 2px rgba(212, 175, 55, 0.5);
 }
 
 body.light .about-logo {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(201, 169, 97, 0.1));
   box-shadow: 
-    0 8px 32px rgba(59, 130, 246, 0.15),
-    0 0 0 2px rgba(59, 130, 246, 0.2);
+    0 8px 32px rgba(212, 175, 55, 0.15),
+    0 0 0 2px rgba(212, 175, 55, 0.2);
   transition: all 0.5s ease;
 }
 
 body.light .about-logo:hover {
   transform: scale(1.05) rotate(5deg);
   box-shadow: 
-    0 12px 40px rgba(59, 130, 246, 0.25),
-    0 0 0 2px rgba(59, 130, 246, 0.3);
+    0 12px 40px rgba(212, 175, 55, 0.25),
+    0 0 0 2px rgba(212, 175, 55, 0.3);
 }
 
 .about-header h1 {
   font-size: 2.8rem;
   margin: 0;
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899);
+  background: linear-gradient(135deg, #d4af37, #e5c158, #c9a961);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
   animation: gradientShift 3s ease-in-out infinite;
 }
 
@@ -275,7 +275,7 @@ body.light .about-logo:hover {
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
   border-left: 4px solid;
-  border-image: linear-gradient(to bottom, #3B82F6, #8B5CF6) 1;
+  border-image: linear-gradient(to bottom, #d4af37, #c9a961) 1;
   padding-left: 1rem;
 }
 
@@ -287,7 +287,7 @@ body.light .about-logo:hover {
 }
 
 .about-content p strong {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  background: linear-gradient(135deg, #d4af37, #c9a961);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -368,8 +368,8 @@ body.light .about-logo:hover {
 }
 
 .particle-light {
-  background: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.4);
+  background: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 0 10px 2px rgba(212, 175, 55, 0.4);
 }
 
 @keyframes particle-float {
@@ -387,17 +387,17 @@ body.light .about-logo:hover {
 }
 
 body.light .about-header h1 {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899);
+  background: linear-gradient(135deg, #d4af37, #c9a961, #e5c158);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
 }
 
 body.light .about-content h2 {
   color: var(--gray-900);
   border-left: 4px solid;
-  border-image: linear-gradient(to bottom, #3B82F6, #8B5CF6) 1;
+  border-image: linear-gradient(to bottom, #d4af37, #c9a961) 1;
   padding-left: 1rem;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
@@ -411,7 +411,7 @@ body.light .about-content p {
 }
 
 body.light .about-content p strong {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  background: linear-gradient(135deg, #d4af37, #c9a961);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -432,7 +432,7 @@ body.light .about-content ul li {
 
 body.light .about-content ul li::before {
   content: "•";
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  background: linear-gradient(135deg, #d4af37, #c9a961);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -486,7 +486,7 @@ body.dark .about-container {
   background: rgba(30, 30, 30, 0.85);
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(139, 92, 246, 0.1);
+    0 0 0 1px rgba(212, 175, 55, 0.1);
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
@@ -495,7 +495,7 @@ body.dark .about-container {
   backdrop-filter: blur(20px);
   transition: all 0.5s ease;
   margin-bottom: 60px;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 body.dark .about-feature {
@@ -518,7 +518,7 @@ body.dark .about-placed p {
 
 body.dark .about-button {
   background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9));
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 body.dark .about-button span {
@@ -549,12 +549,13 @@ body.dark .about-button span {
 }
 
 .about-bg::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-  border-radius: 4px;
+  background: #8a5360;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
 }
 
 .about-bg::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #2563EB, #7C3AED);
+  background: #702536;
 }
 
 .about-feature {

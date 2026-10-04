@@ -2,13 +2,17 @@ import { api } from './index';
 
 // ==================== JOBS ====================
 
-export const getAllJobs = async () => {
-  const res = await api.get('/api/jobs');
+export const getAllJobs = async (type) => {
+  const res = await api.get('/api/jobs', {
+    params: type ? { type } : undefined
+  });
   return res.data;
 };
 
-export const getJobsById = async (id) =>{
-  const res = await api.get(`/api/jobs/${id}`);
+export const getJobsById = async (id, type) =>{
+  const res = await api.get(`/api/jobs/${id}`, {
+    params: type ? { type } : undefined
+  });
   console.log(res.data);
   return res.data;
 }

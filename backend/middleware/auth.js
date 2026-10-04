@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 exports.requireAuth = (req, res, next) => {
   const authHeader = req.headers['authorization'] || req.headers['Authorization'];
@@ -9,6 +9,7 @@ exports.requireAuth = (req, res, next) => {
   }
   const token = authHeader.split(' ')[1];
   try {
+    if (!JWT_SECRET) throw new Error('JWT_SECRET is not configured');
     const payload = jwt.verify(token, JWT_SECRET);
     req.user = { id: payload.sub, email: payload.email, role: payload.role };
     return next();
@@ -36,5 +37,4 @@ exports.requireAdmin = (req, res, next) => {
   }
   return next();
 };
-
 

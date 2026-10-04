@@ -67,7 +67,7 @@ const DynamicFormFieldBuilder = ({ fields = [], initialFields = [], onChange }) 
       setFields(initialFields);
       updateParent(initialFields); // 🔧 IMPORTANT: Tell parent about these fields
     }
-  }, [initialFields, onChange]);
+  }, [initialFields]); // ✅ FIXED: Removed onChange to prevent infinite loop
 
   // On component mount, tell parent about initial predefined fields
   useEffect(() => {
@@ -146,17 +146,6 @@ const DynamicFormFieldBuilder = ({ fields = [], initialFields = [], onChange }) 
     setSelectedField(null);
   };
 
-  const handleReorderFields = (fromIndex, toIndex) => {
-    const newFields = [...fields_state];
-    const [movedField] = newFields.splice(fromIndex, 1);
-    newFields.splice(toIndex, 0, movedField);
-    
-    // Update order values
-    const updatedFields = newFields.map((f, idx) => ({ ...f, order: idx }));
-    setFields(updatedFields);
-    updateParent(updatedFields);
-  };
-
   const toggleRequired = (fieldId) => {
     const newFields = fields_state.map(f =>
       f.fieldId === fieldId ? { ...f, isRequired: !f.isRequired } : f
@@ -174,7 +163,7 @@ const DynamicFormFieldBuilder = ({ fields = [], initialFields = [], onChange }) 
 
       {/* Fields List */}
       <div className="fields-list">
-        {fields_state.map((field, index) => (
+        {fields_state.map((field) => (
           <div 
             key={field.fieldId} 
             className={`field-item ${field.isPredefined ? 'predefined' : 'custom'} ${selectedField?.fieldId === field.fieldId ? 'selected' : ''}`}

@@ -1,0 +1,169 @@
+/* Shared visual system for every super-admin workspace screen. */
+.super-admin-theme {
+  --sa-ink: #38252b;
+  --sa-maroon: #702536;
+  --sa-maroon-deep: #4d1d28;
+  --sa-gold: #c6a044;
+  --sa-gold-bright: #e7c663;
+  --sa-paper: #f6f2eb;
+  --sa-panel: #fff;
+  --sa-muted: #76696a;
+  --sa-line: #e9e0d5;
+}
+
+/* Navigation */
+.admin-header.super-admin-header {
+  position: sticky; z-index: 1000; top: 0; padding: .7rem clamp(.8rem, 2vw, 1.6rem);
+  color: #fff; background: rgba(67, 25, 35, .97); border-bottom: 1px solid rgba(231, 198, 99, .52);
+  box-shadow: 0 8px 28px rgba(43, 17, 23, .18); backdrop-filter: blur(14px);
+}
+.super-admin-header .admin-header-content { width: min(100%, 1480px); min-height: 58px; gap: 1.2rem; }
+.super-admin-header .admin-header-left { flex: 0 0 auto; display: flex; align-items: center; gap: .8rem; }
+.super-admin-header .admin-brand-logo { width: 44px; height: 44px; flex-basis: 44px; object-fit: contain; padding: 3px; background: #fff; border: 1px solid var(--sa-gold); border-radius: 12px; }
+.super-admin-header .admin-header-left h1 { margin: 0; color: #fff; font-size: 1.08rem; letter-spacing: -.02em; }
+.super-admin-header .admin-subtitle { margin-top: .15rem; color: #e2d5d0; font-size: .69rem; letter-spacing: .035em; }
+.super-admin-header .admin-header-center { justify-content: center; }
+.super-admin-header .admin-nav { flex-wrap: nowrap; gap: .35rem; }
+.super-admin-header .nav-btn,
+.super-admin-header .admin-logout-btn {
+  min-height: 39px; padding: .52rem .75rem; color: #f8f3ed !important; background: transparent !important;
+  border: 1px solid transparent; border-radius: 9px; font-size: .78rem; font-weight: 600; text-shadow: none;
+  transition: color .18s ease, background .18s ease, border-color .18s ease;
+}
+.super-admin-header .nav-btn:hover,
+.super-admin-header .nav-btn:focus-visible { color: #fff !important; background: rgba(255,255,255,.09) !important; border-color: rgba(255,255,255,.12); }
+.super-admin-header .nav-btn.is-active { color: #ffe18a !important; background: rgba(231,198,99,.12) !important; border-color: rgba(231,198,99,.35); }
+.super-admin-header .admin-header-right { gap: .7rem; }
+.super-admin-header .admin-user-info { align-items: flex-end; gap: .25rem; }
+.super-admin-header .admin-name { max-width: 150px; color: #fff; font-size: .82rem; }
+.super-admin-header .admin-role-info { padding: .14rem .42rem; color: #f2d77e; background: rgba(231,198,99,.14); border: 1px solid rgba(231,198,99,.23); font-size: .59rem; letter-spacing: .09em; }
+.super-admin-header .admin-logout-btn { color: #fff !important; background: rgba(255,255,255,.08) !important; border-color: rgba(255,255,255,.18); }
+.super-admin-header .admin-logout-btn:hover { color: #fff !important; background: #8d3446 !important; border-color: #b86670; }
+
+/* Shared page canvas and content surfaces */
+body .application-management-container.super-admin-theme,
+.admin-management-container.super-admin-theme,
+.admin-job-posting-container.super-admin-theme,
+.admin-dashboard.super-admin-theme {
+  color: var(--sa-ink); background: var(--sa-paper);
+}
+.admin-management-container.super-admin-theme { padding: 0 0 3.5rem; }
+.admin-management-container.super-admin-theme > :not(.admin-header) { width: min(calc(100% - 3rem), 1240px); margin-left: auto; margin-right: auto; }
+.admin-management-container.super-admin-theme .admin-management-header { margin-top: 2rem; padding: 1.5rem 1.7rem; background: linear-gradient(120deg, #fff, #fbf7ef); border: 1px solid var(--sa-line); border-left: 4px solid var(--sa-gold); border-radius: 16px; box-shadow: 0 8px 26px rgba(58,35,37,.06); }
+.admin-management-container.super-admin-theme .admin-management-header h1 { color: var(--sa-maroon); font-size: clamp(1.55rem, 3vw, 2rem); letter-spacing: -.025em; }
+.admin-management-container.super-admin-theme .invite-form-container,
+.admin-management-container.super-admin-theme .admin-card { background: #fff; border: 1px solid var(--sa-line); border-radius: 15px; box-shadow: 0 8px 26px rgba(58,35,37,.06); }
+.admin-management-container.super-admin-theme .invite-form-container h2,
+.admin-management-container.super-admin-theme .admins-list h2 { color: var(--sa-maroon); }
+.admin-management-container.super-admin-theme .admin-info h3,
+.admin-management-container.super-admin-theme .admin-status { color: var(--sa-ink); }
+.admin-management-container.super-admin-theme .admin-email,
+.admin-management-container.super-admin-theme .admin-management-loading,
+.admin-management-container.super-admin-theme .no-admins { color: var(--sa-muted); }
+.admin-management-container.super-admin-theme .form-group label { color: #514148; }
+.admin-management-container.super-admin-theme .form-group input,
+.admin-management-container.super-admin-theme .form-group select { color: #33262b; background: #fff; border: 1px solid #d9cfc4; }
+.admin-management-container.super-admin-theme .form-group input:focus,
+.admin-management-container.super-admin-theme .form-group select:focus { border-color: var(--sa-gold); box-shadow: 0 0 0 3px rgba(198,160,68,.15); }
+.admin-management-container.super-admin-theme .invite-admin-btn,
+.admin-management-container.super-admin-theme .submit-btn { color: #fff; background: var(--sa-maroon); border: 1px solid var(--sa-maroon); border-radius: 9px; }
+.admin-management-container.super-admin-theme .invite-admin-btn:hover,
+.admin-management-container.super-admin-theme .submit-btn:hover { background: var(--sa-maroon-deep); box-shadow: 0 8px 18px rgba(112,37,54,.18); }
+.admin-management-container.super-admin-theme .cancel-btn { background: #f1ece5; color: var(--sa-maroon); border: 1px solid #dfd3c5; }
+.admin-management-container.super-admin-theme .admin-role.super_admin { color: #5a4210; background: #f6e8b9; }
+.admin-management-container.super-admin-theme .admin-role.admin { color: #fff; background: var(--sa-maroon); }
+
+body .application-management-container.super-admin-theme { padding: 0 max(1rem, calc((100vw - 1240px) / 2)) 3rem; }
+body .application-management-container.super-admin-theme > .admin-header {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.application-management-container.super-admin-theme .application-management-header,
+.application-management-container.super-admin-theme .filter-section,
+.application-management-container.super-admin-theme .applications-list { color: var(--sa-ink); background: #fff; border: 1px solid var(--sa-line); border-radius: 16px; box-shadow: 0 8px 26px rgba(58,35,37,.06); }
+.application-management-container.super-admin-theme .application-management-header { margin-top: 2rem; padding: 1.6rem; border-top: 3px solid var(--sa-gold); }
+.application-management-container.super-admin-theme .application-management-header h1 { color: var(--sa-maroon); font-size: clamp(1.55rem, 3vw, 2rem); }
+.application-management-container.super-admin-theme .stats-overview { gap: .8rem; }
+.application-management-container.super-admin-theme .stat-card { color: #fff; background: linear-gradient(135deg, #702536, #4d1d28); border: 1px solid rgba(198,160,68,.65); border-radius: 12px; box-shadow: none; }
+.application-management-container.super-admin-theme .stat-number { color: #f2d77e; }
+.application-management-container.super-admin-theme .stat-label { color: #f2e9e4; }
+.application-management-container.super-admin-theme .filter-section,
+.application-management-container.super-admin-theme .applications-list { padding: 1.35rem; }
+.application-management-container.super-admin-theme .filter-section label { color: var(--sa-maroon); }
+.application-management-container.super-admin-theme .filter-section select,
+.application-management-container.super-admin-theme .status-select,
+.application-management-container.super-admin-theme .admin-notes textarea { color: #33262b; background: #fff; border: 1px solid #d9cfc4; border-radius: 9px; }
+.application-management-container.super-admin-theme .applications-list h2,
+.application-management-container.super-admin-theme .applicant-info h3,
+.application-management-container.super-admin-theme .job-info h4 { color: var(--sa-maroon); }
+.application-management-container.super-admin-theme .application-card { color: var(--sa-ink); background: #fffdfa; border: 1px solid var(--sa-line); border-radius: 13px; box-shadow: 0 4px 14px rgba(58,35,37,.035); }
+.application-management-container.super-admin-theme .application-card:hover { border-color: var(--sa-gold); box-shadow: 0 12px 28px rgba(58,35,37,.09); }
+.application-management-container.super-admin-theme .applicant-email,
+.application-management-container.super-admin-theme .applicant-phone,
+.application-management-container.super-admin-theme .detail-label { color: var(--sa-muted); }
+.application-management-container.super-admin-theme .detail-value { color: var(--sa-ink); }
+.application-management-container.super-admin-theme .job-info,
+.application-management-container.super-admin-theme .form-responses { color: var(--sa-ink); background: #f8f4ed; border: 1px solid #eee4d6; border-radius: 10px; }
+.application-management-container.super-admin-theme .job-info p,
+.application-management-container.super-admin-theme .form-response,
+.application-management-container.super-admin-theme .response-value,
+.application-management-container.super-admin-theme .form-response strong { color: #53474a; }
+.application-management-container.super-admin-theme .application-header { border-bottom-color: #eee4d6; }
+.application-management-container.super-admin-theme .detail-row { border-bottom-color: #eee4d6; }
+.application-management-container.super-admin-theme .no-applications,
+.application-management-container.super-admin-theme .loading { color: var(--sa-muted); }
+
+.admin-job-posting-container.super-admin-theme { padding-bottom: 3rem; }
+.admin-job-posting-container.super-admin-theme .admin-content { width: min(100%, 1280px); margin: 0 auto; padding: 2rem clamp(1rem, 3vw, 2rem); }
+.admin-job-posting-container.super-admin-theme .admin-content h1 { color: var(--sa-maroon); text-align: left; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.admin-job-posting-container.super-admin-theme .admin-tabs { justify-content: flex-start; flex-wrap: wrap; gap: .55rem; }
+.admin-job-posting-container.super-admin-theme .admin-tabs button { padding: .7rem 1.1rem; color: var(--sa-maroon); background: #fff; border: 1px solid #dfd1bc; border-radius: 9px; }
+.admin-job-posting-container.super-admin-theme .admin-tabs button.active,
+.admin-job-posting-container.super-admin-theme .admin-tabs button:hover { color: #fff; background: var(--sa-maroon); border-color: var(--sa-maroon); }
+.admin-job-posting-container.super-admin-theme .job-posting-form,
+.admin-job-posting-container.super-admin-theme .job-postings-list { color: var(--sa-ink); background: #fff; border: 1px solid var(--sa-line); border-radius: 16px; box-shadow: 0 8px 26px rgba(58,35,37,.06); }
+.admin-job-posting-container.super-admin-theme .job-posting-form { padding: clamp(1.1rem, 3vw, 2rem); }
+.admin-job-posting-container.super-admin-theme .job-postings-list { padding: clamp(1rem, 3vw, 2rem); }
+.admin-job-posting-container.super-admin-theme .admin-content .form-section { background: #fcfaf6; border: 1px solid #eee4d6; border-left: 3px solid var(--sa-gold); border-radius: 11px; }
+.admin-job-posting-container.super-admin-theme .admin-content .form-section h2,
+.admin-job-posting-container.super-admin-theme .admin-content .form-section label { color: #514148; }
+.admin-job-posting-container.super-admin-theme .admin-content .job-posting-form h2,
+.admin-job-posting-container.super-admin-theme .admin-content .job-postings-list h2 { color: var(--sa-maroon); }
+.admin-job-posting-container.super-admin-theme .job-posting-form input,
+.admin-job-posting-container.super-admin-theme .job-posting-form select,
+.admin-job-posting-container.super-admin-theme .job-posting-form textarea { color: #33262b !important; background: #fff !important; border-color: #d9cfc4; border-radius: 8px; }
+.admin-job-posting-container.super-admin-theme .job-posting-form input:focus,
+.admin-job-posting-container.super-admin-theme .job-posting-form select:focus,
+.admin-job-posting-container.super-admin-theme .job-posting-form textarea:focus { border-color: var(--sa-gold) !important; box-shadow: 0 0 0 3px rgba(198,160,68,.15); }
+.admin-job-posting-container.super-admin-theme .admin-content .form-hint { color: var(--sa-muted); }
+.admin-job-posting-container.super-admin-theme .admin-content .job-postings-list table { color: var(--sa-ink); background: #fff; }
+.admin-job-posting-container.super-admin-theme .admin-content .job-postings-list th { color: var(--sa-maroon); background: #f8f4ed; }
+.admin-job-posting-container.super-admin-theme .admin-content .job-postings-list td { color: #514148; }
+.admin-job-posting-container.super-admin-theme .admin-content .job-postings-list tr:nth-child(even) { background: #fcfaf6; }
+.admin-job-posting-container.super-admin-theme .admin-content .job-postings-list tr:hover { color: var(--sa-maroon); background: #f8f0dd; }
+.admin-job-posting-container.super-admin-theme .submit-btn-job,
+.admin-job-posting-container.super-admin-theme .edit-btn,
+.admin-job-posting-container.super-admin-theme .delete-btn { color: #fff; background: var(--sa-maroon); border-color: var(--sa-maroon); border-radius: 8px; }
+.admin-job-posting-container.super-admin-theme .submit-btn-job:hover,
+.admin-job-posting-container.super-admin-theme .edit-btn:hover,
+.admin-job-posting-container.super-admin-theme .delete-btn:hover { background: var(--sa-maroon-deep); }
+
+@media (max-width: 900px) {
+  .super-admin-header .admin-header-content { flex-wrap: wrap; }
+  .super-admin-header .admin-header-center { flex: 1 1 100%; order: 3; }
+  .super-admin-header .admin-nav { justify-content: center; flex-wrap: wrap; }
+}
+@media (max-width: 560px) {
+  .super-admin-header .admin-header-content { justify-content: center; }
+  .super-admin-header .admin-header-left { flex: 1 1 100%; justify-content: center; }
+  .super-admin-header .admin-header-center { order: 2; }
+  .super-admin-header .admin-nav { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .super-admin-header .admin-header-right { order: 3; justify-content: center; width: 100%; }
+  .super-admin-header .admin-user-info { align-items: center; }
+  .admin-management-container.super-admin-theme > :not(.admin-header) { width: min(calc(100% - 1.5rem), 1240px); }
+  body .application-management-container.super-admin-theme { padding: 0 .75rem 2rem; }
+  .application-management-container.super-admin-theme .application-management-header,
+  .application-management-container.super-admin-theme .filter-section,
+  .application-management-container.super-admin-theme .applications-list { padding: 1rem; }
+}

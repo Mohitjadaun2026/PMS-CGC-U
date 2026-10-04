@@ -15,8 +15,11 @@ async function createAdminUser() {
 
     // Check if admin already exists
 
-    const newEmail = 'jadaunmohit0@gmail.com';
-    const newPassword = 'Mohit@123';
+    const newEmail = process.env.ADMIN_EMAIL;
+    const newPassword = process.env.ADMIN_PASSWORD;
+    if (!newEmail || !newPassword) {
+      throw new Error('Set ADMIN_EMAIL and ADMIN_PASSWORD in backend/.env');
+    }
     const existingAdmin = await User.findOne({ email: newEmail });
     if (existingAdmin) {
       console.log('Admin user already exists');
@@ -37,7 +40,7 @@ async function createAdminUser() {
     await adminUser.save();
   console.log('Admin user created successfully!');
   console.log('Email: ' + newEmail);
-  console.log('Password: ' + newPassword);
+  console.log('Set ADMIN_PASSWORD from your local environment; it is not printed.');
   console.log('Role: admin');
 
   } catch (error) {
@@ -49,4 +52,3 @@ async function createAdminUser() {
 }
 
 createAdminUser();
-

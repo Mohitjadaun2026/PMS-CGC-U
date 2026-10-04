@@ -56,10 +56,24 @@ import {
   Legend,
 } from "recharts";
 import profile from "../assets/profile.png"
+import { getMyProfile, updateMyProfile, uploadMyResume, uploadMyProfilePicture } from "../../api/profile";
+import { getStudentApplications, getAllJobs } from "../../api/jobs";
+import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import API_BASE_URL from "../config/api";
+import "./StudentProfile.css";
+
+const getProfilePictureUrl = (picture, refresh = false) => {
+  if (!picture) return profile;
+  const imageUrl = /^(https?:|data:|blob:)/i.test(picture)
+    ? picture
+    : `${API_BASE_URL}${picture.startsWith('/') ? '' : '/'}${picture}`;
+  return refresh ? `${imageUrl}${imageUrl.includes('?') ? '&' : '?'}updated=${Date.now()}` : imageUrl;
+};
 
 const StudentProfile = () => {
   const [isDark, setIsDark] = useState(false);
-  const [forceUpdate, setForceUpdate] = useState(0); 
+  const [, setForceUpdate] = useState(0);
 
   useEffect(() => {
     const checkTheme = () => {
@@ -92,6 +106,61 @@ const StudentProfile = () => {
     };
   }, []);
 
+  const [profileLoading, setProfileLoading] = useState(true);
+  const [profileError, setProfileError] = useState('');
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [profileDraft, setProfileDraft] = useState(null);
+
+  const loadStudentData = async () => {
+    setProfileLoading(true);
+    setProfileError('');
+    try {
+      const [profileData, applicationData, jobData] = await Promise.all([
+        getMyProfile(),
+        getStudentApplications(JSON.parse(localStorage.getItem('user') || 'null')?.id),
+        getAllJobs('ON_CAMPUS'),
+      ]);
+      const completionFields = [profileData.phone, profileData.rollNo, profileData.department, profileData.batch, profileData.cgpa, profileData.skills?.length];
+      const completionPercentage = Math.round((completionFields.filter(Boolean).length / completionFields.length) * 100);
+      setStudentProfile((current) => ({
+        ...current,
+        ...profileData,
+        photo: getProfilePictureUrl(profileData.profilePicture),
+        completionPercentage,
+        resume: profileData.resumeFileName || 'No resume uploaded',
+      }));
+      setProfileDraft(profileData);
+      setApplications(applicationData.map((application) => ({
+        ...application,
+        company: application.job?.companyName || 'Company',
+        position: application.job?.position || 'Position',
+        appliedDate: application.createdAt,
+        status: ({ pending: 'Applied', shortlisted: 'Shortlisted', interviewed: 'Interview Scheduled', selected: 'Selected', rejected: 'Rejected' })[application.status] || 'Applied',
+        package: application.job?.salaryPackage || 'Not specified',
+        interviewDate: null,
+      })));
+      setAvailableJobs(jobData.map((job) => ({
+        ...job,
+        id: job._id,
+        company: job.companyName,
+        position: job.position,
+        package: job.salaryPackage,
+        deadline: job.applicationDeadline,
+        type: job.jobType,
+        isEligible: true,
+      })));
+    } catch (error) {
+      console.error('[PROFILE] Failed to load student data:', error);
+      setProfileError(error.response?.data?.error || error.message || 'Failed to load profile');
+    } finally {
+      setProfileLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadStudentData();
+  }, []);
+
 
   const bgPrimary = isDark ? "bg-[#0a0a0a]" : "bg-gray-50"; 
   const bgHeader = isDark ? "bg-[#1a1a1a]/95" : "bg-white/90"; 
@@ -100,8 +169,6 @@ const StudentProfile = () => {
   const textPrimary = isDark ? "text-gray-50" : "text-gray-900"; 
   const textSecondary = isDark ? "text-gray-200" : "text-gray-600"; 
   const textTertiary = isDark ? "text-gray-300" : "text-gray-500"; 
-  const accentColor = "#dc2626"; 
-  const accentColorDark = "#ef4444";
 
   const getStatusColor = (status) => {
     const base = "px-3 py-1 rounded-full text-sm font-medium ";
@@ -141,7 +208,7 @@ const StudentProfile = () => {
   };
 
   // Student Profile Data (Content remains unchanged)
-  const [studentProfile] = useState({
+  const [studentProfile, setStudentProfile] = useState({
     name: "Mohit Jadaun",
     rollNo: "CGC2024CS456",
     email: "mohit.jadaun@student.cgc.ac.in",
@@ -166,38 +233,13 @@ const StudentProfile = () => {
       "MongoDB",
       "Docker",
     ],
-    certifications: [
-      "AWS Certified Cloud Practitioner",
-      "Google Data Analytics",
-      "React Certification",
-      "Python for Data Science",
-    ],
+    certifications: [],
     resume: "Mohit_Jadaun_Resume.pdf",
-    projects: [
-      {
-        name: "E-commerce Platform",
-        tech: "React, Node.js",
-        status: "Completed",
-      },
-      {
-        name: "Task Management App",
-        tech: "Python, Django",
-        status: "In Progress",
-      },
-      {
-        name: "Portfolio Website",
-        tech: "React, Tailwind",
-        status: "Completed",
-      },
-    ],
-    achievements: [
-      "Dean's List Fall 2023",
-      "Best Project Award - Web Development",
-      "Hackathon Winner - TechFest 2024",
-    ],
+    projects: [],
+    achievements: [],
   });
 
-  const [applications] = useState([
+  const [applications, setApplications] = useState([
     {
       id: 1,
       company: "Tech Solutions Inc.",
@@ -265,7 +307,7 @@ const StudentProfile = () => {
     },
   ]);
 
-  const [availableJobs] = useState([
+  const [availableJobs, setAvailableJobs] = useState([
     {
       id: 1,
       company: "Accenture",
@@ -324,108 +366,106 @@ const StudentProfile = () => {
     },
   ]);
 
-  const placementTrends = [
-    { year: "2020", placementRate: 74, avgPackage: 3.2 },
-    { year: "2021", placementRate: 78, avgPackage: 3.6 },
-    { year: "2022", placementRate: 85, avgPackage: 4.2 },
-    { year: "2023", placementRate: 89, avgPackage: 4.8 },
-    { year: "2024", placementRate: 92, avgPackage: 5.2 },
-  ];
+  const placementTrends = [];
 
-  const monthlyTrends = [
-    { month: "Jan", placements: 45, applications: 120, offers: 52 },
-    { month: "Feb", placements: 52, applications: 135, offers: 60 },
-    { month: "Mar", placements: 38, applications: 98, offers: 45 },
-    { month: "Apr", placements: 61, applications: 156, offers: 72 },
-    { month: "May", placements: 74, applications: 189, offers: 85 },
-    { month: "Jun", placements: 66, applications: 167, offers: 78 },
-    { month: "Jul", placements: 58, applications: 145, offers: 68 },
-    { month: "Aug", placements: 71, applications: 178, offers: 82 },
-  ];
+  const skillDemand = [];
 
-  const companyWiseStats = [
-    { name: "Tech Giants", value: 35, color: "#7c2d12" },
-    { name: "Startups", value: 28, color: "#991b1b" },
-    { name: "Service Companies", value: 22, color: "#dc2626" },
-    { name: "Product Companies", value: 15, color: "#ef4444" },
-  ];
+  const departmentStats = [];
 
-  const packageDistribution = [
-    { range: "0-5 LPA", count: 12, color: "#fee2e2" },
-    { range: "5-10 LPA", count: 28, color: "#fecaca" },
-    { range: "10-15 LPA", count: 35, color: "#f87171" },
-    { range: "15-20 LPA", count: 18, color: "#ef4444" },
-    { range: "20+ LPA", count: 7, color: "#dc2626" },
-  ];
+  const nextInterview = applications.find(
+    (application) => application.status === 'Interview Scheduled' && application.interviewDate
+  );
 
-  const skillDemand = [
-    { skill: "JavaScript", demand: 85, jobs: 120 },
-    { skill: "React", demand: 78, jobs: 95 },
-    { skill: "Python", demand: 72, jobs: 88 },
-    { skill: "Java", demand: 68, jobs: 82 },
-    { skill: "Node.js", demand: 65, jobs: 75 },
-    { skill: "AWS", demand: 60, jobs: 70 },
-    { skill: "MongoDB", demand: 45, jobs: 55 },
-    { skill: "Docker", demand: 42, jobs: 48 },
-  ];
-
-  const departmentStats = [
-    { department: "CSE", placed: 85, total: 110, percentage: 77 },
-    { department: "IT", placed: 72, total: 90, percentage: 80 },
-    { department: "ECE", placed: 45, total: 70, percentage: 64 },
-    { department: "Mechanical", placed: 38, total: 80, percentage: 48 },
-    { department: "Civil", placed: 25, total: 60, percentage: 42 },
-  ];
-
-  // Other State Management (Content remains unchanged)
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterStatus, setFilterStatus] = useState("all");
-  const [notifications] = useState([
-    {
-      id: 1,
-      message: "Interview scheduled with Tech Solutions Inc. on Nov 10",
-      type: "info",
-      time: "2 hours ago",
-      unread: true,
-    },
-    {
-      id: 2,
-      message: "New job posting: ML Engineer at AI Innovations",
-      type: "success",
-      time: "1 day ago",
-      unread: true,
-    },
-    {
-      id: 3,
-      message: "Application deadline reminder: Digital Solutions (Nov 20)",
-      type: "warning",
-      time: "2 days ago",
-      unread: false,
-    },
-    {
-      id: 4,
-      message: "Congratulations! Shortlisted for StartupX interview",
-      type: "success",
-      time: "3 days ago",
-      unread: false,
-    },
-  ]);
-  const [showNotifications, setShowNotifications] = useState(false);
   const fileInputRef = useRef(null);
+  const profilePictureInputRef = useRef(null);
+  const [isUploadingPicture, setIsUploadingPicture] = useState(false);
+
+  const handleProfilePictureChange = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 5 * 1024 * 1024) {
+      toast.error('Choose a PNG, JPG, or WebP image under 5 MB');
+      event.target.value = '';
+      return;
+    }
+    setIsUploadingPicture(true);
+    const previousPhoto = studentProfile.photo;
+    const previewUrl = URL.createObjectURL(file);
+    setStudentProfile((current) => ({ ...current, photo: previewUrl }));
+    try {
+      const result = await uploadMyProfilePicture(file);
+      const updatedProfile = result.profile;
+      if (!updatedProfile?.profilePicture) throw new Error('The server did not return the saved profile picture');
+      setStudentProfile((current) => ({
+        ...current,
+        ...updatedProfile,
+        photo: getProfilePictureUrl(updatedProfile.profilePicture, true),
+      }));
+      setProfileDraft((current) => current ? { ...current, ...updatedProfile } : updatedProfile);
+      toast.success('Profile picture updated');
+    } catch (error) {
+      setStudentProfile((current) => ({ ...current, photo: previousPhoto }));
+      toast.error(error.response?.data?.error || error.message || 'Failed to update profile picture');
+    } finally {
+      URL.revokeObjectURL(previewUrl);
+      setIsUploadingPicture(false);
+      event.target.value = '';
+    }
+  };
 
   const handleResumeUpload = () => {
     fileInputRef.current?.click();
   };
 
+  const handleResumeChange = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    try {
+      const result = await uploadMyResume(file);
+      setStudentProfile((current) => ({ ...current, ...result.profile, resume: result.profile.resumeFileName }));
+      toast.success('Resume uploaded successfully');
+    } catch (error) {
+      toast.error(error.response?.data?.error || 'Failed to upload resume');
+    } finally {
+      event.target.value = '';
+    }
+  };
+
+  const handleProfileSave = async (event) => {
+    event.preventDefault();
+    try {
+      const result = await updateMyProfile({ ...profileDraft, skills: profileDraft.skills || [] });
+      setStudentProfile((current) => ({ ...current, ...result.profile }));
+      setProfileDraft(result.profile);
+      setIsEditingProfile(false);
+      toast.success('Profile updated successfully');
+    } catch (error) {
+      toast.error(error.response?.data?.error || 'Failed to update profile');
+    }
+  };
+
+  if (profileLoading) {
+    return <div className="student-dashboard flex min-h-screen items-center justify-center p-8">Loading your profile...</div>;
+  }
+
+  if (profileError || !studentProfile) {
+    return (
+      <div className="student-dashboard flex min-h-screen flex-col items-center justify-center gap-4 p-8">
+        <p>{profileError || 'Profile unavailable'}</p>
+        <button type="button" onClick={loadStudentData} className="bg-red-600 px-4 py-2 text-white rounded-lg">Retry</button>
+      </div>
+    );
+  }
+
   // JSX RENDER - Applying theme classes and REDUCING ANIMATION IMPACT
   return (
     <div
-      className={`w-full min-h-screen p-0 ${bgPrimary} transition-colors duration-500`}
+      className={`student-dashboard w-full min-h-screen p-0 ${bgPrimary} transition-colors duration-500`}
     >
       {/* Header (Top banner) */}
       {/* Reduced data-aos to simple fade-down with no delay */}
       <header
-        className={`${bgHeader} shadow-lg ml-23 mr-23 transition-colors duration-500 rounded-b-lg`}
+        className={`${bgHeader} shadow-lg w-full m-0 transition-colors duration-500 rounded-b-lg`}
       >
         <div
           className="w-full flex items-center justify-between px-0 py-0"
@@ -462,15 +502,64 @@ const StudentProfile = () => {
       </header>
 
       {/* Main Content */}
-      <main className="p-8 ml-16 mr-16 min-h-screen">
-        {/* The original was w-screen p-0 m-0, changed to p-8 to allow space for cards */}
-
+      <main className="w-full max-w-none mx-0 p-0 min-h-screen">
         {/* Profile Overview Section */}
         {/* Reduced data-aos-delay and simplified effect */}
         <section className="mb-8" data-aos="fade-up">
           <div
             className={`${bgCard} shadow-lg p-6 w-full ${borderColor} border rounded-lg transition-colors duration-500`}
           >
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+              <h2 className={`text-xl font-bold ${textPrimary}`}>Profile Information</h2>
+              <button
+                type="button"
+                onClick={() => {
+                  setProfileDraft({ ...studentProfile });
+                  setIsEditingProfile((current) => !current);
+                }}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+              >
+                {isEditingProfile ? 'Cancel' : 'Edit Profile'}
+              </button>
+            </div>
+            {isEditingProfile && profileDraft && (
+              <form onSubmit={handleProfileSave} className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {[
+                  ['name', 'Full name'],
+                  ['phone', 'Phone'],
+                  ['rollNo', 'Roll number'],
+                  ['department', 'Department'],
+                  ['batch', 'Batch'],
+                  ['semester', 'Semester'],
+                  ['cgpa', 'CGPA'],
+                  ['backlogs', 'Backlogs'],
+                  ['linkedin', 'LinkedIn'],
+                  ['github', 'GitHub'],
+                ].map(([field, label]) => (
+                  <label key={field} className={`flex flex-col gap-1 text-sm ${textSecondary}`}>
+                    {label}
+                    <input
+                      type={field === 'cgpa' ? 'number' : field === 'backlogs' ? 'number' : 'text'}
+                      min={field === 'cgpa' ? '0' : field === 'backlogs' ? '0' : undefined}
+                      max={field === 'cgpa' ? '10' : undefined}
+                      step={field === 'cgpa' ? '0.1' : undefined}
+                      value={profileDraft[field] ?? ''}
+                      onChange={(event) => setProfileDraft({ ...profileDraft, [field]: event.target.value })}
+                      className="rounded-lg border border-gray-300 px-3 py-2 text-gray-900"
+                    />
+                  </label>
+                ))}
+                <label className={`md:col-span-2 flex flex-col gap-1 text-sm ${textSecondary}`}>
+                  Skills (comma separated)
+                  <input
+                    value={(profileDraft.skills || []).join(', ')}
+                    onChange={(event) => setProfileDraft({ ...profileDraft, skills: event.target.value.split(',').map((skill) => skill.trim()).filter(Boolean) })}
+                    className="rounded-lg border border-gray-300 px-3 py-2 text-gray-900"
+                  />
+                </label>
+                <button type="submit" className="w-fit rounded-lg bg-red-600 px-5 py-2 font-semibold text-white hover:bg-red-700">Save Profile</button>
+              </form>
+            )}
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
               {/* Profile Picture and details */}
               {/* Reduced data-aos-delay and simplified effect */}
@@ -479,13 +568,26 @@ const StudentProfile = () => {
                 data-aos="fade-right"
                 data-aos-duration="500"
               >
-                <img
-                  src={studentProfile.photo}
-                  alt="Profile"
-                  className={`w-30 h-30 rounded-full object-cover border-4 ${
-                    isDark ? "border-gray-700" : "border-gray-200"
-                  } shadow-lg`}
-                />
+                <div className="student-profile-photo-wrap">
+                  <img src={studentProfile.photo} alt="Profile" className="student-profile-photo" />
+                  <button
+                    type="button"
+                    className="student-profile-photo-button"
+                    onClick={() => profilePictureInputRef.current?.click()}
+                    disabled={isUploadingPicture}
+                    aria-label="Choose a new profile picture"
+                  >
+                    {isUploadingPicture ? 'Uploading…' : 'Change photo'}
+                  </button>
+                  <input
+                    ref={profilePictureInputRef}
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp"
+                    onChange={handleProfilePictureChange}
+                    aria-label="Upload profile picture"
+                    hidden
+                  />
+                </div>
                 <div>
                   <h2 className={`text-2xl font-bold ${textPrimary}`}>
                     {studentProfile.name}
@@ -651,13 +753,23 @@ const StudentProfile = () => {
                       isDark ? "text-red-400" : "text-red-600"
                     }`}
                   >
-                    Missing
+                    {studentProfile.resumeFileName ? 'Uploaded' : 'Missing'}
                   </p>
                 </div>
               </div>
-              <p className={`text-sm ${textSecondary} mb-4`}>
-                Upload your resume
+              <p className={`text-sm ${textSecondary} mb-4 break-words`}>
+                {studentProfile.resumeFileName || 'Upload your resume'}
               </p>
+              {studentProfile.resumePath && (
+                <a
+                  href={`${API_BASE_URL}${studentProfile.resumePath}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mb-3 text-sm font-semibold text-red-700 hover:underline"
+                >
+                  View uploaded resume
+                </a>
+              )}
               <button
                 onClick={handleResumeUpload}
                 className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center"
@@ -670,6 +782,7 @@ const StudentProfile = () => {
                 ref={fileInputRef}
                 style={{ display: "none" }}
                 accept=".pdf,.doc,.docx"
+                onChange={handleResumeChange}
               />
             </div>
 
@@ -747,15 +860,16 @@ const StudentProfile = () => {
                   </span>
                 </div>
               </div>
-              <button
+              <Link
+                to="/applications"
                 className={`w-full ${
                   isDark ? "bg-red-500" : "bg-red-600"
                 } text-white py-2 px-4 rounded-lg ${
                   isDark ? "hover:bg-red-600" : "hover:bg-red-700"
-                } transition-colors`}
+                } transition-colors text-center block`}
               >
                 View All Applications
-              </button>
+              </Link>
             </div>
 
             {/* Next Interview Card */}
@@ -787,16 +901,20 @@ const StudentProfile = () => {
                   </p>
                 </div>
               </div>
-              <div className="mb-4">
-                <p className={`font-medium ${textPrimary}`}>Infosys Limited</p>
-                <p className={`text-sm ${textSecondary}`}>Software Developer</p>
-                <p className={`text-sm ${textTertiary}`}>
-                  Aug 26, 2025, 1:03 PM
-                </p>
-              </div>
-              <button className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors">
-                View Full Schedule
-              </button>
+              {nextInterview ? (
+                <div className="mb-4">
+                  <p className={`font-medium ${textPrimary}`}>{nextInterview.company}</p>
+                  <p className={`text-sm ${textSecondary}`}>{nextInterview.position}</p>
+                  <p className={`text-sm ${textTertiary}`}>
+                    {new Date(nextInterview.interviewDate).toLocaleString()}
+                  </p>
+                </div>
+              ) : (
+                <p className={`mb-4 text-sm ${textSecondary}`}>No interviews scheduled yet.</p>
+              )}
+              <Link to="/applications" className="block w-full rounded-lg bg-red-600 px-4 py-2 text-center text-white hover:bg-red-700 transition-colors">
+                View Applications
+              </Link>
             </div>
 
             {/* Eligible Jobs Card */}
@@ -838,9 +956,9 @@ const StudentProfile = () => {
                   Available
                 </p>
               </div>
-              <button className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors">
+              <Link to="/jobs" className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors text-center block">
                 Browse Jobs
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -1406,7 +1524,7 @@ const StudentProfile = () => {
                 {/* Rounds */}
                 <div className="ml-2 flex flex-col sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex flex-wrap gap-2 mb-4 sm:mb-0">
-                    {app.rounds.map((round, index) => (
+                    {(app.rounds || []).map((round, index) => (
                       <span
                         key={index}
                         className={`px-3 py-1 rounded-full text-sm ${
@@ -1608,7 +1726,7 @@ const StudentProfile = () => {
                     Requirements:
                   </p>
                   <div className="flex flex-wrap gap-1">
-                    {job.requirements.map((req, index) => (
+                    {(job.requirements || []).map((req, index) => (
                       <span
                         key={index}
                         className={`px-2 py-1 ${

@@ -260,6 +260,46 @@
   font-size: 18px;
 }
 
+/* Super Admin uses the same charcoal and gold atmosphere as About Us. */
+.admin-management-container.super-admin-theme {
+  --sa-surface: #f0e8dc;
+  min-height: 100vh;
+  max-width: none;
+  padding: 0 0 3rem;
+  color: #33252a;
+  background: #f6f2eb;
+}
+.super-admin-theme .admin-management-header,
+.super-admin-theme .invite-form-container,
+.super-admin-theme .admin-card {
+  color: #33252a;
+  background: var(--sa-surface);
+  border: 1px solid rgba(107, 31, 42, .12);
+  box-shadow: 0 10px 28px rgba(58, 35, 37, .07);
+}
+.super-admin-theme .admin-management-header {
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, .48);
+  border-radius: 18px;
+  background: linear-gradient(120deg, #54202a, #762737 60%, #8b3541);
+}
+.super-admin-theme .admin-management-header h1,
+.super-admin-theme .invite-form-container h2,
+.super-admin-theme .admins-list h2,
+.super-admin-theme .admin-info h3,
+.super-admin-theme .admin-status { color: #33252a; }
+.super-admin-theme .admin-management-header h1 { color: #fff; }
+.super-admin-theme .admin-email,
+.super-admin-theme .no-admins,
+.super-admin-theme .admin-management-loading { color: #65585a; }
+.super-admin-theme .form-group label { color: #54202a; }
+.super-admin-theme .invite-form-container input,
+.super-admin-theme .invite-form-container select {
+  color: #34272a; background: #f3eadc; border-color: rgba(212, 175, 55, .72);
+}
+.super-admin-theme .invite-admin-btn { background: #d8b54d; border: 1px solid #a27e26; color: #3c2527; }
+.super-admin-theme .submit-btn { background: #702536; border: 1px solid #d4af37; color: #fff; }
+
 @media (max-width: 768px) {
   .admin-management-header {
     flex-direction: column;

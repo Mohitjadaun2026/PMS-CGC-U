@@ -6,6 +6,13 @@ const cors = require("cors");
 // Load environment variables
 dotenv.config();
 
+for (const key of ["MONGO_URI", "JWT_SECRET"]) {
+  if (!process.env[key]) {
+    console.error(`Missing required environment variable: ${key}`);
+    process.exit(1);
+  }
+}
+
 // Connect to database
 const connectDB = require("./config/db.js");
 connectDB();
@@ -19,6 +26,7 @@ const applicationRoutes = require("./routes/applicationRoutes");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const adminManagementRoutes = require("./routes/adminManagementRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 const app = express();
 
@@ -30,6 +38,7 @@ const allowedOrigins = [
   "http://127.0.0.1:5173",
   "http://localhost:5174",
   "http://localhost:5180",
+  "http://127.0.0.1:5180",
   "https://pms-cgc-u.vercel.app",
 ];
 
@@ -64,6 +73,7 @@ app.use("/api/applications", applicationRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin-management", adminManagementRoutes);
+app.use("/api/profile", profileRoutes);
 
 // ===== Start server =====
 const PORT = process.env.PORT || 5000;

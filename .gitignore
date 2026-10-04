@@ -6,10 +6,19 @@
 .env.test.local
 .env.production.local
 
+# Local environment files (commit the matching .env.example files)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
 # Dependencies
 node_modules/
-yarn.lock
-package-lock.json
+
+# User uploads and locally generated data
+backend/uploads/**
+!backend/uploads/.gitkeep
+PMS-CGC-U-master/
 
 # Build outputs
 dist/
@@ -40,14 +49,13 @@ Thumbs.db
 .settings/
 .classpath
 
-# Sensitive/Private files
+# Sensitive/private files
 *.pem
 *.key
 *.p12
 *.pfx
 credentials.json
 aws-credentials.json
-config/db.js
 
 # Temporary files
 .tmp/

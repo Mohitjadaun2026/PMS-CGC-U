@@ -14,13 +14,12 @@ import {
   TargetIcon,
   Zap,
 } from "lucide-react";
-import collegeLogo from "../assets/cgc logo.png";
+import collegeLogo from "../assets/Campuslogo.png";
 import "./about.css";
 
 function About() {
   const [isDark, setIsDark] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(null);
+  const [isVisible] = useState(false);
   const statsRef = useRef(null);
   const [animatedStats, setAnimatedStats] = useState({
     students: 0,
@@ -28,7 +27,6 @@ function About() {
     rate: 0,
   });
 
-  const owner = "Mohitjadaun2026";
 
   useEffect(() => {
     const checkTheme = () => {
@@ -108,10 +106,6 @@ function About() {
       }
       setAnimatedStats((prev) => ({ ...prev, rate }));
     }, 15);
-  };
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
   };
 
   const features = [
@@ -382,7 +376,7 @@ function About() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="about-placed group relative text-center bg-[rgba(255,255,255,0.8)] border border-[rgba(128,0,32,0.1)] p-10 rounded-3xl shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden"
+              className="about-placed group relative text-center bg-[rgba(255,255,255,0.8)] border border-[rgba(212,175,55,0.2)] p-10 rounded-3xl shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden"
               data-aos="flip-up"
               data-aos-delay={150 * index}
               data-aos-duration="800"

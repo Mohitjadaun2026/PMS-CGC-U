@@ -1,6 +1,43 @@
 const Job = require("../models/Job");
 const mongoose = require('mongoose');
 
+const JOB_TYPES = {
+  ON_CAMPUS: 'ON_CAMPUS',
+  OFF_CAMPUS: 'OFF_CAMPUS'
+};
+
+const normalizeJobType = (value) => {
+  const normalized = String(value || '').trim().toUpperCase().replace(/-/g, '_');
+  return normalized === JOB_TYPES.OFF_CAMPUS ? JOB_TYPES.OFF_CAMPUS : JOB_TYPES.ON_CAMPUS;
+};
+
+const getJobTypeFilter = (value) => {
+  if (!value) return null;
+
+  const normalized = String(value).trim().toUpperCase().replace(/-/g, '_');
+  if (![JOB_TYPES.ON_CAMPUS, JOB_TYPES.OFF_CAMPUS].includes(normalized)) {
+    return { error: 'type must be ON_CAMPUS or OFF_CAMPUS' };
+  }
+
+  if (normalized === JOB_TYPES.OFF_CAMPUS) {
+    return { jobApplicationType: { $in: [JOB_TYPES.OFF_CAMPUS, 'off-campus'] } };
+  }
+
+  return {
+    $or: [
+      { jobApplicationType: { $in: [JOB_TYPES.ON_CAMPUS, 'on-campus'] } },
+      { jobApplicationType: { $exists: false } },
+      { jobApplicationType: null }
+    ]
+  };
+};
+
+const serializeJob = (job) => {
+  const serialized = job.toObject ? job.toObject() : { ...job };
+  serialized.jobApplicationType = normalizeJobType(serialized.jobApplicationType);
+  return serialized;
+};
+
 // Helper: handle array fields for job data
 const processArrayFields = (jobData, fields) => {
   fields.forEach((field) => {
@@ -18,21 +55,13 @@ const processArrayFields = (jobData, fields) => {
 // GET all jobs
 exports.getAllJobs = async (req, res) => {
   try {
-    console.log("📊 Fetching all jobs...");
-    const jobs = await Job.find();
-    console.log(`✅ Found ${jobs.length} jobs`);
-    
-    // Log details about applicationFormFields for each job
-    jobs.forEach((job, index) => {
-      console.log(`  Job ${index + 1}: "${job.position}" (${job.jobApplicationType})`);
-      console.log(`    - Has applicationFormFields: ${!!job.applicationFormFields}`);
-      console.log(`    - Fields count: ${job.applicationFormFields?.length || 0}`);
-      if (job.applicationFormFields && job.applicationFormFields.length > 0) {
-        console.log(`    - Field names: ${job.applicationFormFields.map(f => f.fieldName).join(', ')}`);
-      }
-    });
-    
-    res.json(jobs);
+    const typeFilter = getJobTypeFilter(req.query.type);
+    if (typeFilter?.error) {
+      return res.status(400).json({ error: typeFilter.error });
+    }
+
+    const jobs = await Job.find(typeFilter || {}).sort({ createdAt: -1 });
+    res.json(jobs.map(serializeJob));
   } catch (err) {
     console.error("Error fetching jobs:", err);
     res
@@ -43,25 +72,23 @@ exports.getAllJobs = async (req, res) => {
 
 // GET jobs by ID
 exports.getJobsById = async (req, res) => {
-  const id = req.params.id;
-  const objectId = new mongoose.Types.ObjectId(id);
-  console.log(objectId);
   try {
-    console.log("📍 Fetching job by ID:", id);
-    const job = await Job.findById(objectId);
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) {
+      return res.status(400).json({ error: 'Invalid job ID' });
+    }
+
+    const typeFilter = getJobTypeFilter(req.query.type);
+    if (typeFilter?.error) {
+      return res.status(400).json({ error: typeFilter.error });
+    }
+
+    const job = await Job.findOne({ _id: id, ...(typeFilter || {}) });
     if (!job) {
-      console.log("❌ Job not found");
       return res.status(404).json({ error: 'Job not found' });
     }
-    
-    console.log(`✅ Job found: "${job.position}"`);
-    console.log(`  - Has applicationFormFields: ${!!job.applicationFormFields}`);
-    console.log(`  - Fields count: ${job.applicationFormFields?.length || 0}`);
-    if (job.applicationFormFields && job.applicationFormFields.length > 0) {
-      console.log(`  - Field names: ${job.applicationFormFields.map(f => f.fieldName).join(', ')}`);
-    }
-    
-    res.json(job);
+
+    res.json(serializeJob(job));
   } catch (err) {
     console.error("Error fetching jobs:", err);
     res
@@ -80,7 +107,7 @@ exports.createJob = async (req, res) => {
       req.file ? req.file.filename : "No file uploaded"
     );
 
-    const jobData = { ...req.body };
+    const jobData = { ...req.body, jobApplicationType: normalizeJobType(req.body.jobApplicationType) };
     
     // Process array fields
     processArrayFields(jobData, [
@@ -118,11 +145,9 @@ exports.createJob = async (req, res) => {
       console.log("ℹ️ No logo uploaded for this job");
     }
 
-    console.log("Processed job data:", jobData);
     const job = new Job(jobData);
     await job.save();
-    console.log("✅ Job created successfully:", job._id);
-    res.status(201).json(job);
+    res.status(201).json(serializeJob(job));
   } catch (err) {
     console.error("❌ Error creating job:", err);
     res
@@ -142,6 +167,9 @@ exports.updateJob = async (req, res) => {
     );
 
     const jobData = { ...req.body };
+    if (Object.prototype.hasOwnProperty.call(jobData, 'jobApplicationType')) {
+      jobData.jobApplicationType = normalizeJobType(jobData.jobApplicationType);
+    }
     
     // Process array fields
     processArrayFields(jobData, [
@@ -184,8 +212,7 @@ exports.updateJob = async (req, res) => {
     });
     if (!job) return res.status(404).json({ error: "Job not found" });
 
-    console.log("Updated job:", job);
-    res.json(job);
+    res.json(serializeJob(job));
   } catch (err) {
     console.error("Error updating job:", err);
     res

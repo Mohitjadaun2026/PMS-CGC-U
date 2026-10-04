@@ -25,8 +25,8 @@ const jobSchema = new mongoose.Schema({
   jobType: String,  // Internship, Full-time, etc.
   jobApplicationType: {
     type: String,
-    enum: ['on-campus', 'off-campus'],
-    default: 'on-campus'
+    enum: ['ON_CAMPUS', 'OFF_CAMPUS', 'on-campus', 'off-campus'],
+    default: 'ON_CAMPUS'
   },
   externalApplicationLink: String,  // For off-campus jobs
   salaryPackage: String,

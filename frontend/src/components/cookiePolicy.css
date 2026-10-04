@@ -205,12 +205,12 @@ body.light .cookie-policy-bg {
 body.light .cookie-policy-container {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px #a3032b;
-  border: 1px solid #71011d;
+  border: 1px solid #d4af37;
   backdrop-filter: none;
 }
 
 body.light .cookie-policy-header {
-  border-bottom: 2px solid #71011d;
+  border-bottom: 2px solid #d4af37;
 }
 
 body.light .cookie-section {
@@ -218,11 +218,11 @@ body.light .cookie-section {
 }
 
 body.light .cookie-section h2 {
-  color: #71011d;
+  color: #d4af37;
 }
 
 body.light .cookie-section h3 {
-  color: #8B0000;
+  color: #d4af37;
 }
 
 body.light .cookie-section p,
@@ -231,7 +231,7 @@ body.light .cookie-section li {
 }
 
 body.light .cookie-section li strong {
-  color: #71011d;
+  color: #d4af37;
 }
 
 body.light .last-updated {
@@ -239,30 +239,30 @@ body.light .last-updated {
 }
 
 body.light .cookie-type {
-  background: rgba(128, 0, 32, 0.05);
-  border: 1px solid rgba(128, 0, 32, 0.2);
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 body.light .cookie-type:hover {
-  box-shadow: 0 4px 12px rgba(128, 0, 32, 0.1);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
 }
 
 body.light .browser-links,
 body.light .contact-info {
-  background: rgba(128, 0, 32, 0.03);
+  background: rgba(212, 175, 55, 0.03);
 }
 
 body.light .browser-links h4,
 body.light .contact-info strong {
-  color: #71011d;
+  color: #d4af37;
 }
 
 body.light .browser-links a {
-  color: #8B0000;
+  color: #d4af37;
 }
 
 body.light .browser-links a:hover {
-  color: #71011d;
+  color: #e5c158;
 }
 
 /* Responsive Design */

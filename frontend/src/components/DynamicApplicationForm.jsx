@@ -309,7 +309,7 @@ const DynamicApplicationForm = ({ jobId, job, onClose, onSuccess }) => {
 
       <form onSubmit={handleSubmit} className="form-content">
         <div className="form-fields-container">
-          {fieldsToUse.map((field, index) => (
+          {fieldsToUse.map((field) => (
             <div key={field.fieldId} className="form-field-group">
               <label className="field-label">
                 {field.fieldName}

@@ -97,14 +97,15 @@ exports.addExperience = async (req, res) => {
 exports.editExperience = async (req, res) => {
   try {
     const { id } = req.params;
-    const { company, role, experience } = req.body;
-    if (![company, role, experience].every(Boolean)) {
+    const { companyName, company, role, experience } = req.body;
+    const nextCompanyName = companyName || company;
+    if (![nextCompanyName, role, experience].every(Boolean)) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
     const updatedExp = await InterviewExperience.findByIdAndUpdate(
       id,
-      { company, role, experience },
+      { companyName: nextCompanyName, role, experience },
       { new: true, runValidators: true }
     );
 

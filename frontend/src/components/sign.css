@@ -52,7 +52,7 @@
 .floating-shape {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(45deg, #800000, #b30000);
+  background: linear-gradient(45deg, #d4af37, #c9a961);
   opacity: 0.1;
 }
 
@@ -190,7 +190,7 @@ body.light .sign-card {
 }
 
 body.light .sign-card h2 {
-  background: linear-gradient(45deg, #800000, #b30000);
+  background: linear-gradient(45deg, #d4af37, #c9a961);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -250,7 +250,7 @@ body.light .sign-card input {
 }
 
 .sign-card input:focus {
-  border-color: #800000;
+  border-color: #d4af37;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 
     0 8px 25px rgba(128, 0, 0, 0.15),
@@ -271,7 +271,7 @@ body.light .sign-card input:focus {
 }
 
 body.light .field-wrap label {
-  color: #800000;
+  color: #d4af37;
 }
 
 /* Success Indicator */
@@ -308,7 +308,7 @@ body.dark .toggle-icon {
 /* Button Styles */
 .btn-signin {
   position: relative;
-  background: linear-gradient(45deg, #800000, #b30000);
+  background: linear-gradient(45deg, #d4af37, #c9a961);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -503,7 +503,7 @@ body.dark .progress-labels span.active {
 
 .progress-bar-dynamic-filler {
   height: 100%;
-  background: linear-gradient(90deg, #b90000, #800000, #b90000);
+  background: linear-gradient(90deg, #b90000, #d4af37, #b90000);
   background-size: 200% 100%;
   border-radius: 4px;
   transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);

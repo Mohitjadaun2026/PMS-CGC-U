@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PencilIcon, FolderOpenIcon, LightBulbIcon } from "@heroicons/react/24/outline";
+import "./interviewExperience.css";
 
 const InterviewExperience = ({ darkMode = false }) => {
   // TEMPORARY WORKAROUND: Detect dark mode from document/body class
@@ -34,14 +35,14 @@ const InterviewExperience = ({ darkMode = false }) => {
   }, [darkMode]);
 
   return (
-    <div className={`max-w-6xl mx-auto p-8 ${actualDarkMode ? "text-gray-900 bg-gray-900" : "text-gray-900 bg-white"}`}>
+    <div className={`interview-experience-page max-w-6xl mx-auto p-8 ${actualDarkMode ? "text-gray-100 bg-gray-950" : "text-gray-900 bg-gray-50"}`}>
       
      
 
       {/* Hero Section */}
       <div
-        className={`grid md:grid-cols-2 gap-8 items-center p-8 rounded-2xl shadow-md mb-12 ${
-          actualDarkMode ? "bg-gray-800" : "bg-none"
+        className={`interview-hero grid md:grid-cols-2 gap-8 items-center p-8 rounded-2xl shadow-md mb-12 ${
+          actualDarkMode ? "bg-gray-900" : "bg-white"
         }`}
       >
         <div>
@@ -59,7 +60,7 @@ const InterviewExperience = ({ darkMode = false }) => {
             <Link
               to="/interview-experience/share"
               style={{ textDecoration: "none" }}
-              className="button-secondary"
+              className="button-primary"
             >
               Share Your Experience
             </Link>

@@ -49,6 +49,22 @@ exports.getAllAdmins = async (req, res) => {
   }
 };
 
+exports.getUserStats = async (req, res) => {
+  try {
+    if (!isSuperAdmin(req.user)) {
+      return sendError(res, 403, "Super admin access required");
+    }
+
+    const [students, admins] = await Promise.all([
+      User.countDocuments({ role: 'user' }),
+      User.countDocuments({ role: { $in: ['admin', 'super_admin'] } }),
+    ]);
+    return res.json({ students, admins });
+  } catch (error) {
+    return sendError(res, 500, "Internal server error", error.message);
+  }
+};
+
 // Invite new admin (super admin only)
 exports.inviteAdmin = async (req, res) => {
   try {

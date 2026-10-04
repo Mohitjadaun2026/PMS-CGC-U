@@ -79,7 +79,7 @@ const AdminManagement = () => {
 
   if (loading) {
     return (
-      <div className="admin-management-container">
+      <div className={`admin-management-container ${JSON.parse(localStorage.getItem('adminUser') || '{}').role === 'super_admin' ? 'super-admin-theme' : ''}`}>
         <AdminHeader />
         <div className="admin-management-loading">Loading admins...</div>
       </div>
@@ -87,7 +87,7 @@ const AdminManagement = () => {
   }
 
   return (
-    <div className="admin-management-container">
+    <div className={`admin-management-container ${JSON.parse(localStorage.getItem('adminUser') || '{}').role === 'super_admin' ? 'super-admin-theme' : ''}`}>
       <AdminHeader />
       
       <div className="admin-management-header">

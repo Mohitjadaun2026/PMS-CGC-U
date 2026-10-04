@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children, requireAdmin = false }) => {  // Check if admin is authenticated or user is authenticated
+const ProtectedRoute = ({ children, requireAdmin = false, requireSuperAdmin = false, requireStudent = false }) => {
   if (requireAdmin) {
     const adminToken = localStorage.getItem('adminToken');
     const adminUser = localStorage.getItem('adminUser');
@@ -30,6 +30,20 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {  // Check if ad
       return <Navigate to="/signin" replace />;
     }
   }
+  else if (requireStudent) {
+    const userToken = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    if (!userToken || !user) return <Navigate to="/signin" replace />;
+    try {
+      if (JSON.parse(user).role && JSON.parse(user).role !== 'user') {
+        return <Navigate to="/" replace />;
+      }
+    } catch {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      return <Navigate to="/signin" replace />;
+    }
+  }
   else {
     // Check if either regular user OR admin user is authenticated
     const userToken = localStorage.getItem('token');
@@ -47,7 +61,10 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {  // Check if ad
       return <Navigate to="/signin" replace />;
     }
   }
-  console.log('ProtectedRoute - Access granted');
+  if (requireSuperAdmin) {
+    const adminUser = JSON.parse(localStorage.getItem('adminUser') || 'null');
+    if (adminUser?.role !== 'super_admin') return <Navigate to="/admin-job-posting" replace />;
+  }
   return children;
 };
 

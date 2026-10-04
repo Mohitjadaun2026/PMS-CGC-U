@@ -21,8 +21,11 @@ api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token'); // For general user
     const adminToken = localStorage.getItem('adminToken'); // For admin user
+    const isStudentProfileRequest = config.url?.startsWith('/api/profile/me');
 
-    if (adminToken) { // Prioritize admin token if available
+    if (isStudentProfileRequest && token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    } else if (adminToken) { // Prioritize admin token for admin requests
       config.headers.Authorization = `Bearer ${adminToken}`;
     } else if (token) {
       config.headers.Authorization = `Bearer ${token}`;
