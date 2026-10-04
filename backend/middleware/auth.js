@@ -13,7 +13,7 @@ exports.requireAuth = (req, res, next) => {
     const payload = jwt.verify(token, JWT_SECRET);
     req.user = { id: payload.sub, email: payload.email, role: payload.role };
     return next();
-  } catch (err) {
+  } catch{
     return res.status(401).json({ error: 'Invalid or expired token' });
   }
 };
